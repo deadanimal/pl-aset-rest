@@ -74,6 +74,11 @@ use App\Http\Controllers\InfoPlpkPa0209Controller;
 use App\Http\Controllers\PlpkPa0209Controller;
 use App\Http\Controllers\InfoPlpkPa0202Controller;
 
+# umum controller
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\PengumumanController;
+
 # ATA
 # alpha 
 Route::resource('kewpa1', Kewpa1Controller::class);
@@ -149,3 +154,9 @@ Route::resource('kewpa36', Kewpa36Controller::class);
 Route::resource('info_kewpa36', InfoKewpa36Controller::class);
 Route::resource('kewpa37', Kewpa37Controller::class);
 Route::resource('info_kewpa37', InfoKewpa37Controller::class);
+
+# umum routes
+Route::resource('staff', StaffController::class);
+Route::resource('lokasi', LokasiController::class);
+Route::resource('pengumuman', PengumumanController::class);
+
