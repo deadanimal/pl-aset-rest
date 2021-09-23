@@ -15,7 +15,6 @@ class CreateKewpa1Table extends Migration
     {
         Schema::create('kewpa1', function (Blueprint $table) {
             $table->id()->unique();
-            $table->string('rujukan_kewpa1')->unique();
             $table->string('nama_pembekal')->nullable();
             $table->string('alamat_pembekal')->nullable();
             $table->string('jenis_penerimaan')->nullable();

@@ -1,0 +1,85 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Plpk_pa_0208;
+use Illuminate\Http\Request;
+
+class PlpkPa0208Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Plpk_pa_0208  $plpk_pa_0208
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Plpk_pa_0208 $plpk_pa_0208)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Plpk_pa_0208  $plpk_pa_0208
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Plpk_pa_0208 $plpk_pa_0208)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Plpk_pa_0208  $plpk_pa_0208
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Plpk_pa_0208 $plpk_pa_0208)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Plpk_pa_0208  $plpk_pa_0208
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Plpk_pa_0208 $plpk_pa_0208)
+    {
+        //
+    }
+}
