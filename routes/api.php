@@ -1,5 +1,6 @@
 <?php use Illuminate\Http\Request; use Illuminate\Support\Facades\Route;
 
+# ata controller
 use App\Http\Controllers\Kewpa1Controller;
 use App\Http\Controllers\Kewpa2Controller;
 use App\Http\Controllers\InfoKewpa1Controller;
@@ -74,10 +75,35 @@ use App\Http\Controllers\InfoPlpkPa0209Controller;
 use App\Http\Controllers\PlpkPa0209Controller;
 use App\Http\Controllers\InfoPlpkPa0202Controller;
 
+# atk controller
+use App\Http\Controllers\Kewatk1Controller;
+use App\Http\Controllers\Kewatk2Controller;
+use App\Http\Controllers\Kewatk3aController;
+use App\Http\Controllers\Kewatk3bController;
+use App\Http\Controllers\Kewatk4Controller;
+use App\Http\Controllers\Kewatk5Controller;
+use App\Http\Controllers\Kewatk6Controller;
+use App\Http\Controllers\Kewatk7Controller;
+use App\Http\Controllers\Kewatk8Controller;
+use App\Http\Controllers\Kewatk9Controller;
+
+use App\Http\Controllers\Kewatk10Controller;
+use App\Http\Controllers\Kewatk11Controller;
+use App\Http\Controllers\Kewatk12Controller;
+
+use App\Http\Controllers\InfoKewatk1Controller;
+use App\Http\Controllers\InfoKewatk2Controller;
+use App\Http\Controllers\InfoKewatk4Controller;
+use App\Http\Controllers\InfoKewatk6Controller;
+use App\Http\Controllers\InfoKewatk9Controller;
+use App\Http\Controllers\InfoKewatk10Controller;
+
 # umum controller
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PengumumanController;
+
+
 
 # ATA
 # alpha 
@@ -159,4 +185,26 @@ Route::resource('info_kewpa37', InfoKewpa37Controller::class);
 Route::resource('staff', StaffController::class);
 Route::resource('lokasi', LokasiController::class);
 Route::resource('pengumuman', PengumumanController::class);
+
+# atk routes
+Route::resource('kewatk1',Kewatk1Controller::class);
+Route::resource('kewatk2',Kewatk2Controller::class);
+Route::resource('kewatk3a',Kewatk3aController::class);
+Route::resource('kewatk3b',Kewatk3bController::class);
+Route::resource('kewatk4',Kewatk4Controller::class);
+Route::resource('kewatk5',Kewatk5Controller::class);
+Route::resource('kewatk6',Kewatk6Controller::class);
+Route::resource('kewatk7',Kewatk7Controller::class);
+Route::resource('kewatk8',Kewatk8Controller::class);
+Route::resource('kewatk9',Kewatk9Controller::class);
+Route::resource('kewatk10',Kewatk10Controller::class);
+Route::resource('kewatk11',Kewatk11Controller::class);
+Route::resource('kewatk12',Kewatk12Controller::class);
+
+Route::resource('info_kewatk1',InfoKewatk1Controller::class);
+Route::resource('info_kewatk2',InfoKewatk2Controller::class);
+Route::resource('info_kewatk4',InfoKewatk4Controller::class);
+Route::resource('info_kewatk6',InfoKewatk6Controller::class);
+Route::resource('info_kewatk9',InfoKewatk9Controller::class);
+Route::resource('info_kewatk10',InfoKewatk10Controller::class);
 
