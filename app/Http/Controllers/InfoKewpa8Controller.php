@@ -29,6 +29,8 @@ class InfoKewpa8Controller extends Controller
       $info_kewpa8 -> jumlah_nilai_semasa = $request->jumlah_nilai_semasa;
       $info_kewpa8 -> no_siri_pendaftaran = $request->no_siri_pendaftaran;
       $info_kewpa8 -> kewpa8_id = $request->kewpa8_id;
+
+
       $info_kewpa8 -> save();
 
       return $info_kewpa8;
@@ -55,6 +57,8 @@ class InfoKewpa8Controller extends Controller
       $info_kewpa8 -> jumlah_nilai_semasa = $request->jumlah_nilai_semasa;
       $info_kewpa8 -> no_siri_pendaftaran = $request->no_siri_pendaftaran;
       $info_kewpa8 -> kewpa8_id = $request->kewpa8_id;
+
+
       $info_kewpa8 -> save();
 
       return $info_kewpa8;

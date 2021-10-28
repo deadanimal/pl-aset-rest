@@ -7,79 +7,40 @@ use Illuminate\Http\Request;
 
 class Kewpa37Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Kewpa37::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $kewpa37 = new Kewpa37;
+      $kewpa37->tahun=$request->tahun;
+      $kewpa37->ketua_jabatan=$request->ketua_jabatan;
+      $kewpa37 -> save();
+
+      return $kewpa37;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kewpa37  $kewpa37
-     * @return \Illuminate\Http\Response
-     */
     public function show(Kewpa37 $kewpa37)
     {
-        //
+      return $kewpa37;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kewpa37  $kewpa37
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kewpa37 $kewpa37)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kewpa37  $kewpa37
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Kewpa37 $kewpa37)
     {
-        //
+
+      $kewpa37->tahun=$request->tahun;
+      $kewpa37->ketua_jabatan=$request->ketua_jabatan;
+      $kewpa37 -> save();
+
+      return $kewpa37;
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kewpa37  $kewpa37
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kewpa37 $kewpa37)
     {
-        //
+      return $kewpa37->delete();
     }
 }

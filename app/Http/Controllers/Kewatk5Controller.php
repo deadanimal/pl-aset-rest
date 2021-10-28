@@ -3,60 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kewatk5;
+use App\Models\Kewatk3a;
 use Illuminate\Http\Request;
+use PDF;
 
 class Kewatk5Controller extends Controller
 {
-public function index()
+    public function index()
     {
-      return Kewatk5::all();
+      $kewatk3a = Kewatk3a::all();
+
+      $context = [
+        "kewatk5" => $kewatk3a,
+      ];
+
+      return view('modul.aset_tak_ketara.kewatk5.index', $context);
+
     }
 
-    public function store(Request $request)
+    public function generatePdf(Request $request) 
     {
-      $kewatk5 = new Kewatk5;
 
-      $kewatk5->cara_diperolehi=$request->cara_diperolehi;
-      $kewatk5->tarikh_terima=$request->tarikh_terima;
-      $kewatk5->harga_perolehan_asal=$request->harga_perolehan_asal;
-      $kewatk5->anggaran_nilai_semasa=$request->anggaran_nilai_semasa;
-      $kewatk5->status_aset=$request->status_aset;
-      $kewatk5->staff_id=$request->staff_id;
-      $kewatk5->no_siri_pendaftaran=$request->no_siri_pendaftaran;
+      $kewatk3a = Kewatk3a::all();
 
-      $kewatk5 -> save();
+      $pdf = PDF::loadView('modul.aset_tak_ketara.kewatk5.kewatk5_template', [
+        'kewatk3' => $kewatk3a
+          
+      ])->setPaper('a4', 'potrait');
 
+      $pdf->save('kewatk5.pdf');
 
-      return $kewatk5;
+      $context = [
+        "url" => "/kewatk5.pdf"
+      ];
 
-      
-    }
-
-    public function show(Kewatk5 $kewatk5)
-    {
-      return $kewatk5;
-    }
-
-    public function update(Request $request, Kewatk5 $kewatk5)
-    {
-      $kewatk5->cara_diperolehi=$request->cara_diperolehi;
-      $kewatk5->tarikh_terima=$request->tarikh_terima;
-      $kewatk5->harga_perolehan_asal=$request->harga_perolehan_asal;
-      $kewatk5->anggaran_nilai_semasa=$request->anggaran_nilai_semasa;
-      $kewatk5->status_aset=$request->status_aset;
-      $kewatk5->staff_id=$request->staff_id;
-      $kewatk5->no_siri_pendaftaran=$request->no_siri_pendaftaran;
-
-      $kewatk5 -> save();
-
-
-      return $kewatk5;
+      return view('modul.aset_tak_ketara.kewatk1.pdf', $context);
 
 
     }
 
-    public function destroy(Kewatk5 $kewatk5)
-    {
-      return $kewatk5->delete();
-    }
+
+
 }

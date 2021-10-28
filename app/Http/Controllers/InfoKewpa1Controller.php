@@ -9,7 +9,8 @@ class InfoKewpa1Controller extends Controller
 {
     public function index()
     {
-      return InfoKewpa1::all();
+      return infoKewpa1::all();
+
     }
 
     public function store(Request $request)
@@ -24,7 +25,7 @@ class InfoKewpa1Controller extends Controller
       $info_kewpa1 -> rujukan_kewpa1_id = $request -> rujukan_kewpa1_id;
       $info_kewpa1 -> save();
 
-      return $info_kewpa1;
+      return redirect('/kewpa1/'.$request -> rujukan_kewpa1_id);
 
     }
 
@@ -46,13 +47,15 @@ class InfoKewpa1Controller extends Controller
       $info_kewpa1 -> rujukan_kewpa1_id = $request -> rujukan_kewpa1_id;
       $info_kewpa1 -> save();
 
-      return $info_kewpa1;
+      return redirect('/kewpa1/'.$request -> rujukan_kewpa1_id);
 
     }
 
-    public function destroy(InfoKewpa1 $info_kewpa1)
+    public function destroy(Request $request,InfoKewpa1 $info_kewpa1)
     {
-      return $info_kewpa1->delete();
+      $info_kewpa1->delete();
+      return redirect('/kewpa1/'.$request -> rujukan_kewpa1_id);
+
     }
 
 }

@@ -15,6 +15,10 @@ class CreatePlpkPa0209sTable extends Migration
     {
         Schema::create('plpk_pa_0209s', function (Blueprint $table) {
             $table->id();
+            $table->string("perihal_kerosakan")->nullable();
+            $table->string("kewpa14_id")->nullable();
+            $table->string("plpk09_id")->nullable();
+
             $table->timestamps();
         });
     }

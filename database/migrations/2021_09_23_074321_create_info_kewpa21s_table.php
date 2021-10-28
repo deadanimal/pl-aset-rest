@@ -15,6 +15,14 @@ class CreateInfoKewpa21sTable extends Migration
     {
         Schema::create('info_kewpa21s', function (Blueprint $table) {
             $table->id();
+
+            $table->string("keadaan_aset")->nullable();
+            $table->string("kaedah_pelupusan")->nullable();
+            $table->string("justifikasi")->nullable();
+            $table->string("keputusan_melulus")->nullable();
+            $table->string("catatan")->nullable();
+            $table->string("no_siri_pendaftaran")->nullable();
+            $table->string("kewpa21_id")->nullable();
             $table->timestamps();
         });
     }

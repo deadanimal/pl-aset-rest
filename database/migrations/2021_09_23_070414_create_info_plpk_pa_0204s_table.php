@@ -15,6 +15,12 @@ class CreateInfoPlpkPa0204sTable extends Migration
     {
         Schema::create('info_plpk_pa_0204s', function (Blueprint $table) {
             $table->id();
+            $table->string("status")->nullable();
+            $table->string("kuantiti")->nullable();
+            $table->string("kos")->nullable();
+            $table->string("bacaan")->nullable();
+            $table->string("kewpa14_id")->nullable();
+            $table->string("plpk04_id")->nullable();
             $table->timestamps();
         });
     }

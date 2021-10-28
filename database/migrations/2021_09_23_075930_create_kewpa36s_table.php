@@ -15,6 +15,11 @@ class CreateKewpa36sTable extends Migration
     {
         Schema::create('kewpa36s', function (Blueprint $table) {
             $table->id();
+
+            $table->string("no_surat")->nullable();
+            $table->string("tarikh_surat")->nullable();
+            $table->date("date_created")->nullable();
+            $table->date("date_modified")->nullable();
             $table->timestamps();
         });
     }

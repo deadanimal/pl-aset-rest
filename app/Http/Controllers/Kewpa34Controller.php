@@ -7,79 +7,48 @@ use Illuminate\Http\Request;
 
 class Kewpa34Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Kewpa34::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $kewpa34 = new Kewpa34;
+      $kewpa34->tarikh=$request->tarikh;
+      $kewpa34->tarikh_tamat=$request->tarikh_tamat;
+      $kewpa34->pegawai_dilantik=$request->pegawai_dilantik;
+      $kewpa34->kewpa33_id=$request->kewpa33_id;
+      $kewpa34->pegawai_pengawal=$request->pegawai_pengawal;
+
+      $kewpa34 -> save();
+
+      return $kewpa34;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kewpa34  $kewpa34
-     * @return \Illuminate\Http\Response
-     */
     public function show(Kewpa34 $kewpa34)
     {
-        //
+      return $kewpa34;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kewpa34  $kewpa34
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kewpa34 $kewpa34)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kewpa34  $kewpa34
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Kewpa34 $kewpa34)
     {
-        //
+
+      $kewpa34->tarikh=$request->tarikh;
+      $kewpa34->tarikh_tamat=$request->tarikh_tamat;
+      $kewpa34->pegawai_dilantik=$request->pegawai_dilantik;
+      $kewpa34->kewpa33_id=$request->kewpa33_id;
+      $kewpa34->pegawai_pengawal=$request->pegawai_pengawal;
+
+      $kewpa34 -> save();
+
+      return $kewpa34;
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kewpa34  $kewpa34
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kewpa34 $kewpa34)
     {
-        //
+      return $kewpa34->delete();
     }
 }

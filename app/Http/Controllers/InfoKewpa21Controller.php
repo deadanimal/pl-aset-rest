@@ -7,79 +7,56 @@ use Illuminate\Http\Request;
 
 class InfoKewpa21Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return InfoKewpa21::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $info_kewpa21 = new InfoKewpa21;
+      $info_kewpa21->keadaan_aset=$request->keadaan_aset;
+      $info_kewpa21->kaedah_pelupusan=$request->kaedah_pelupusan;
+      $info_kewpa21->justifikasi=$request->justifikasi;
+      $info_kewpa21->keputusan_melulus=$request->keputusan_melulus;
+      $info_kewpa21->catatan=$request->catatan;
+      $info_kewpa21->no_siri_pendaftaran=$request->no_siri_pendaftaran;
+      $info_kewpa21->kewpa21_id=$request->kewpa21_id;
+
+      $info_kewpa21 -> save();
+
+      return $info_kewpa21;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa21  $infoKewpa21
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InfoKewpa21 $infoKewpa21)
+    public function show(InfoKewpa21 $info_kewpa21)
     {
-        //
+      return $info_kewpa21;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa21  $infoKewpa21
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InfoKewpa21 $infoKewpa21)
+    public function update(Request $request, InfoKewpa21 $info_kewpa21)
     {
-        //
+
+      $info_kewpa21->keadaan_aset=$request->keadaan_aset;
+      $info_kewpa21->kaedah_pelupusan=$request->kaedah_pelupusan;
+      $info_kewpa21->justifikasi=$request->justifikasi;
+      $info_kewpa21->keputusan_melulus=$request->keputusan_melulus;
+      $info_kewpa21->catatan=$request->catatan;
+      $info_kewpa21->no_siri_pendaftaran=$request->no_siri_pendaftaran;
+      $info_kewpa21->kewpa21_id=$request->kewpa21_id;
+
+
+      $info_kewpa21 -> save();
+
+      return $info_kewpa21;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoKewpa21  $infoKewpa21
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InfoKewpa21 $infoKewpa21)
+    public function destroy(InfoKewpa21 $info_kewpa21)
     {
-        //
+      return $info_kewpa21->delete();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\InfoKewpa21  $infoKewpa21
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InfoKewpa21 $infoKewpa21)
-    {
-        //
-    }
+
+
 }

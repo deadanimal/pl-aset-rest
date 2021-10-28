@@ -9,7 +9,7 @@ class Kewatk6Controller extends Controller
 {
     public function index()
     {
-      return Kewatk6::all();
+      return view('modul.aset_tak_ketara.kewatk6.index');
     }
 
     public function store(Request $request)

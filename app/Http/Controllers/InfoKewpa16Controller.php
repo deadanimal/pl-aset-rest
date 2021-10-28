@@ -7,79 +7,60 @@ use Illuminate\Http\Request;
 
 class InfoKewpa16Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return InfoKewpa16::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+
+      $info_kewpa16 = new InfoKewpa16;
+      $info_kewpa16->agensi=$request->agensi;
+      $info_kewpa16->kuantiti_aset_pencegahan=$request->kuantiti_aset_pencegahan;
+      $info_kewpa16->kos_aset_pencegahan=$request->kos_aset_pencegahan;
+      $info_kewpa16->kuantiti_aset_pembaikan=$request->kuantiti_aset_pembaikan;
+      $info_kewpa16->kos_aset_pembaikan=$request->kos_aset_pembaikan;
+      $info_kewpa16->jumlah_aset=$request->jumlah_aset;
+      $info_kewpa16->jumlah_kos=$request->jumlah_kos;
+      $info_kewpa16->kewpa14_id=$request->kewpa14_id;
+      $info_kewpa16->kewpa16_id=$request->kewpa16_id;      
+
+
+      $info_kewpa16 -> save();
+
+      return $info_kewpa16;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa16  $infoKewpa16
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InfoKewpa16 $infoKewpa16)
+    public function show(InfoKewpa16 $info_kewpa16)
     {
-        //
+      return $info_kewpa16;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa16  $infoKewpa16
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InfoKewpa16 $infoKewpa16)
+    public function update(Request $request, InfoKewpa16 $info_kewpa16)
     {
-        //
+
+      $info_kewpa16->agensi=$request->agensi;
+      $info_kewpa16->kuantiti_aset_pencegahan=$request->kuantiti_aset_pencegahan;
+      $info_kewpa16->kos_aset_pencegahan=$request->kos_aset_pencegahan;
+      $info_kewpa16->kuantiti_aset_pembaikan=$request->kuantiti_aset_pembaikan;
+      $info_kewpa16->kos_aset_pembaikan=$request->kos_aset_pembaikan;
+      $info_kewpa16->jumlah_aset=$request->jumlah_aset;
+      $info_kewpa16->jumlah_kos=$request->jumlah_kos;
+      $info_kewpa16->kewpa14_id=$request->kewpa14_id;
+      $info_kewpa16->kewpa16_id=$request->kewpa16_id;      
+      $info_kewpa16 -> save();
+
+      return $info_kewpa16;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoKewpa16  $infoKewpa16
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InfoKewpa16 $infoKewpa16)
+    public function destroy(InfoKewpa16 $info_kewpa16)
     {
-        //
+      return $info_kewpa16->delete();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\InfoKewpa16  $infoKewpa16
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InfoKewpa16 $infoKewpa16)
-    {
-        //
-    }
+
+
 }

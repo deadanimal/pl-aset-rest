@@ -7,79 +7,51 @@ use Illuminate\Http\Request;
 
 class InfoKewpa25Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return InfoKewpa25::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $info_kewpa25 = new InfoKewpa25;
+      $info_kewpa25->kuantiti=$request->kuantiti;
+      $info_kewpa25->harga_tawaran=$request->harga_tawaran;
+      $info_kewpa25->deposit_tender=$request->deposit_tender;
+      $info_kewpa25->no_tender=$request->no_tender;
+      $info_kewpa25->kewpa25_id=$request->kewpa25_id;
+
+      $info_kewpa25 -> save();
+
+      return $info_kewpa25;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa25  $infoKewpa25
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InfoKewpa25 $infoKewpa25)
+    public function show(InfoKewpa25 $info_kewpa25)
     {
-        //
+      return $info_kewpa25;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa25  $infoKewpa25
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InfoKewpa25 $infoKewpa25)
+    public function update(Request $request, InfoKewpa25 $info_kewpa25)
     {
-        //
+
+      $info_kewpa25->kuantiti=$request->kuantiti;
+      $info_kewpa25->harga_tawaran=$request->harga_tawaran;
+      $info_kewpa25->deposit_tender=$request->deposit_tender;
+      $info_kewpa25->no_tender=$request->no_tender;
+      $info_kewpa25->kewpa25_id=$request->kewpa25_id;
+
+      $info_kewpa25 -> save();
+
+      return $info_kewpa25;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoKewpa25  $infoKewpa25
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InfoKewpa25 $infoKewpa25)
+    public function destroy(InfoKewpa25 $info_kewpa25)
     {
-        //
+      return $info_kewpa25->delete();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\InfoKewpa25  $infoKewpa25
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InfoKewpa25 $infoKewpa25)
-    {
-        //
-    }
+
+
 }

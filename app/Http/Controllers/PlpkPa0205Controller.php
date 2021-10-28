@@ -7,79 +7,52 @@ use Illuminate\Http\Request;
 
 class PlpkPa0205Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Plpk_pa_0205::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+
+      $plpk_pa_0205 = new Plpk_pa_0205;
+
+      $info_plpk_pa_0205->pemandu=$request->pemandu;
+      $info_plpk_pa_0205->kewpal14_id=$request->kewpal14_id;
+      $info_plpk_pa_0205->pengarah=$request->pengarah;
+      $info_plpk_pa_0205->created_date=$request->created_date;
+      $info_plpk_pa_0205->modified_date=$request->modified_date;      
+      $plpk_pa_0205->save();
+
+
+
+      return $plpk_pa_0205;
+
+
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Plpk_pa_0205  $plpk_pa_0205
-     * @return \Illuminate\Http\Response
-     */
     public function show(Plpk_pa_0205 $plpk_pa_0205)
     {
-        //
+      return $plpk_pa_0205;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Plpk_pa_0205  $plpk_pa_0205
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Plpk_pa_0205 $plpk_pa_0205)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Plpk_pa_0205  $plpk_pa_0205
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Plpk_pa_0205 $plpk_pa_0205)
     {
-        //
+
+      $info_plpk_pa_0205->pemandu=$request->pemandu;
+      $info_plpk_pa_0205->kewpal14_id=$request->kewpal14_id;
+      $info_plpk_pa_0205->pengarah=$request->pengarah;
+      $info_plpk_pa_0205->created_date=$request->created_date;
+      $info_plpk_pa_0205->modified_date=$request->modified_date;      
+      $plpk_pa_0205->save();
+
+      return $plpk_pa_0205;
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Plpk_pa_0205  $plpk_pa_0205
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Plpk_pa_0205 $plpk_pa_0205)
     {
-        //
+      return $plpk_pa_0205->delete();
     }
 }

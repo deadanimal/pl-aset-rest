@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class InfoKewpa29Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Kewpa29::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $kewpa29 = new Kewpa29;
+      $info_kewpa29->kod_penyebut=$request->kod_penyebut;
+      $info_kewpa29->harga=$request->harga;
+      $info_kewpa29->no_sebut_harga=$request->no_sebut_harga;
+      $info_kewpa29->kewpa29_id=$request->kewpa29_id;
+      $kewpa29 -> save();
+
+      return $kewpa29;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa29  $infoKewpa29
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InfoKewpa29 $infoKewpa29)
+    public function show(Kewpa29 $kewpa29)
     {
-        //
+      return $kewpa29;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa29  $infoKewpa29
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InfoKewpa29 $infoKewpa29)
+    public function update(Request $request, Kewpa29 $kewpa29)
     {
-        //
+
+      $info_kewpa29->kod_penyebut=$request->kod_penyebut;
+      $info_kewpa29->harga=$request->harga;
+      $info_kewpa29->no_sebut_harga=$request->no_sebut_harga;
+      $info_kewpa29->kewpa29_id=$request->kewpa29_id;
+      $kewpa29 -> save();
+
+      return $kewpa29;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoKewpa29  $infoKewpa29
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InfoKewpa29 $infoKewpa29)
+    public function destroy(Kewpa29 $kewpa29)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\InfoKewpa29  $infoKewpa29
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InfoKewpa29 $infoKewpa29)
-    {
-        //
+      return $kewpa29->delete();
     }
 }

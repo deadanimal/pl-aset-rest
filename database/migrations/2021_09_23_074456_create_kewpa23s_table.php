@@ -15,6 +15,13 @@ class CreateKewpa23sTable extends Migration
     {
         Schema::create('kewpa23s', function (Blueprint $table) {
             $table->id();
+
+            $table->string("no_resit")->nullable();
+            $table->string("bilangan_item")->nullable();
+            $table->string("tarikh")->nullable();
+            $table->string("salinan_rekod")->nullable();
+            $table->string("ketua_jabatan")->nullable();
+            $table->string("kewpa21_id")->nullable();
             $table->timestamps();
         });
     }

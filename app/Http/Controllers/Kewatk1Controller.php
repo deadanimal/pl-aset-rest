@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Kewatk1;
+use App\Models\InfoKewatk1;
 use Illuminate\Http\Request;
+use PDF;
 
 class Kewatk1Controller extends Controller
 {
     public function index()
     {
-      return Kewatk1::all();
+      $kewatk1 = Kewatk1::all();
+      $context = [
+        "kewatk1" => $kewatk1
+      ];
+
+      return view('modul.aset_tak_ketara.kewatk1.index', $context);
     }
 
     public function store(Request $request)
@@ -23,19 +31,25 @@ class Kewatk1Controller extends Controller
       $kewatk1->no_do=$request->no_do;
       $kewatk1->tarikh_do=$request->tarikh_do;
       $kewatk1->maklumat_pengangkutan=$request->maklumat_pengangkutan;
-      $kewatk1->pegawai_penerima=$request->pegawai_penerima;
+      $kewatk1->pegawai_penerima=$request->user()->name;
       $kewatk1->pegawai_pakar=$request->pegawai_pakar;      
+      $kewatk1->status = "DRAFT";
+
       $kewatk1 -> save();
 
-
-      return $kewatk1;
-
+      return redirect('/kewatk1');
       
     }
 
     public function show(Kewatk1 $kewatk1)
     {
-      return $kewatk1;
+      $info_kewatk1 = InfoKewatk1::where('no_rujukan', $kewatk1->id)->get();
+      $context = [
+        "info_kewatk1" => $info_kewatk1,
+        "rujukan_kewatk1" => $kewatk1->id
+      ];
+      return view('modul.aset_tak_ketara.kewatk1.info_kewatk1', $context);
+
     }
 
     public function update(Request $request, Kewatk1 $kewatk1)
@@ -48,19 +62,43 @@ class Kewatk1Controller extends Controller
       $kewatk1->no_do=$request->no_do;
       $kewatk1->tarikh_do=$request->tarikh_do;
       $kewatk1->maklumat_pengangkutan=$request->maklumat_pengangkutan;
-      $kewatk1->pegawai_penerima=$request->pegawai_penerima;
       $kewatk1->pegawai_pakar=$request->pegawai_pakar;     
+      $kewatk1->status=$request->status;     
 
       $kewatk1 -> save();
 
-
-      return $kewatk1;
+      return redirect('/kewatk1');
 
 
     }
 
     public function destroy(Kewatk1 $kewatk1)
     {
-      return $kewatk1->delete();
+      $kewatk1->delete();
+      return redirect('/kewatk1');
+    }
+
+    public function generatePdf(Request $request, Kewatk1 $kewatk1) {
+
+
+      $info_kewatk1 = InfoKewatk1::where('no_rujukan', $kewatk1->id)->get();
+      $pegawai_penerima = User::where('name', $kewatk1->pegawai_penerima)->first();
+
+      $pdf = PDF::loadView('modul.aset_tak_ketara.kewatk1.kewatk1_template', [
+            'kewatk1' => $kewatk1,
+            'info_kewatk1' => $info_kewatk1,
+            'pegawai_penerima' => $pegawai_penerima
+          
+      ])->setPaper('a4', 'landscape');
+
+      $pdf->save('kewatk1.pdf');
+
+      $context = [
+        "url" => "/kewatk1.pdf"
+      ];
+
+      return view('modul.aset_tak_ketara.kewatk1.pdf', $context);
+
+
     }
 }

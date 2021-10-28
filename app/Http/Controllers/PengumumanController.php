@@ -16,16 +16,12 @@ class PengumumanController extends Controller
     {
       $pengumuman = new Pengumuman;
       $pengumuman->info_pengumuman=$request->info_pengumuman;
-      $pengumuman->gambar_pengumuman=$request->gambar_pengumuman;
       $pengumuman->tarikh_pengumuman=$request->tarikh_pengumuman;
       $pengumuman->staff_id=$request->staff_id;
+      $pengumuman->gambar_pengumuman = $request->file('gambar_pengumuman')->store('pengumuman');
+
       $pengumuman -> save();
-
-
-
       return $pengumuman;
-
-      
     }
 
     public function show(Pengumuman $pengumuman)

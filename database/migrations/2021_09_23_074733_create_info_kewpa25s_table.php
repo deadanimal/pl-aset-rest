@@ -15,6 +15,11 @@ class CreateInfoKewpa25sTable extends Migration
     {
         Schema::create('info_kewpa25s', function (Blueprint $table) {
             $table->id();
+            $table->string("kuantiti")->nullable();
+            $table->string("harga_tawaran")->nullable();
+            $table->string("deposit_tender")->nullable();
+            $table->string("no_tender")->nullable();
+            $table->string("kewpa25_id")->nullable();
             $table->timestamps();
         });
     }

@@ -15,6 +15,12 @@ class CreateInfoKewpa11sTable extends Migration
     {
         Schema::create('info_kewpa11s', function (Blueprint $table) {
             $table->id();
+            $table->string("lokasi_sebenar")->nullable();
+            $table->string("status_aset")->nullable();
+            $table->string("catatan")->nullable();
+            $table->string("no_siri_pendaftaran")->nullable();
+            $table->string("rujukan_kewpa11_id")->nullable();
+
             $table->timestamps();
         });
     }

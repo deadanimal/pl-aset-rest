@@ -7,79 +7,41 @@ use Illuminate\Http\Request;
 
 class Kewpa16Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Kewpa16::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $kewpa16 = new Kewpa16;
+      $kewpa16->tahun=$request->tahun;
+      $kewpa16->ketua_jabatan=$request->ketua_jabatan;
+
+      $kewpa16 -> save();
+
+      return $kewpa16;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kewpa16  $kewpa16
-     * @return \Illuminate\Http\Response
-     */
     public function show(Kewpa16 $kewpa16)
     {
-        //
+      return $kewpa16;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kewpa16  $kewpa16
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kewpa16 $kewpa16)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kewpa16  $kewpa16
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Kewpa16 $kewpa16)
     {
-        //
+
+      $kewpa16->tahun=$request->tahun;
+      $kewpa16->ketua_jabatan=$request->ketua_jabatan;
+      $kewpa15 -> save();
+
+      return $kewpa16;
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kewpa16  $kewpa16
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kewpa16 $kewpa16)
     {
-        //
+      return $kewpa16->delete();
     }
 }

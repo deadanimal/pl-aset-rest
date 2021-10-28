@@ -15,6 +15,13 @@ class CreateKewpa17sTable extends Migration
     {
         Schema::create('kewpa17s', function (Blueprint $table) {
             $table->id();
+
+            $table->date("date_created")->nullable();
+            $table->date("date_modified")->nullable();
+            $table->string("pemohon_id")->nullable();
+            $table->string("penyerah_id")->nullable();
+            $table->string("pelulus_id")->nullable();
+            $table->string("penerima_id")->nullable();
             $table->timestamps();
         });
     }

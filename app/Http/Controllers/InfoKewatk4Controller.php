@@ -29,10 +29,10 @@ class InfoKewatk4Controller extends Controller
       $info_kewatk4->kewatk4_id=$request->kewatk4_id;
 
 
+
       $info_kewatk4 -> save();
 
-
-      return $info_kewatk4;
+      return redirect('/kewatk4/'.$request -> kewatk4_id);
 
       
     }
@@ -58,6 +58,7 @@ class InfoKewatk4Controller extends Controller
       $info_kewatk4->kewatk4_id=$request->kewatk4_id;
       $info_kewatk4 -> save();
 
+      return redirect('/kewatk4/'.$request -> kewatk4_id);
 
       return $info_kewatk4;
 
@@ -67,5 +68,6 @@ class InfoKewatk4Controller extends Controller
     public function destroy(InfoKewatk4 $info_kewatk4)
     {
       return $info_kewatk4->delete();
+      return redirect('/kewatk4/'.$request -> kewatk4_id);
     }
 }

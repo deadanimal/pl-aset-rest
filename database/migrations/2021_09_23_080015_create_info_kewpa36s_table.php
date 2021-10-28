@@ -15,6 +15,9 @@ class CreateInfoKewpa36sTable extends Migration
     {
         Schema::create('info_kewpa36s', function (Blueprint $table) {
             $table->id();
+            $table->string("jenis_aset_alih")->nullable();
+            $table->string("kewpa33_id")->nullable();
+            $table->string("kewpa36_id")->nullable();
             $table->timestamps();
         });
     }

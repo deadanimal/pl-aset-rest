@@ -7,79 +7,48 @@ use Illuminate\Http\Request;
 
 class Kewpa20Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Kewpa20::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $kewpa20 = new Kewpa20;
+      $kewpa20->tarikh=$request->tarikh;
+      $kewpa20->tempoh=$request->tempoh;
+      $kewpa20->tarikh_mula=$request->tarikh_mula;
+      $kewpa20->tarikh_tamat=$request->tarikh_tamat;
+      $kewpa20->pegawai_dilantik=$request->pegawai_dilantik;
+      $kewpa20->ketua_jabatan=$request->ketua_jabatan;
+      $kewpa20 -> save();
+
+      return $kewpa20;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kewpa20  $kewpa20
-     * @return \Illuminate\Http\Response
-     */
     public function show(Kewpa20 $kewpa20)
     {
-        //
+      return $kewpa20;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kewpa20  $kewpa20
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kewpa20 $kewpa20)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kewpa20  $kewpa20
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Kewpa20 $kewpa20)
     {
-        //
+
+      $kewpa20->tarikh=$request->tarikh;
+      $kewpa20->tempoh=$request->tempoh;
+      $kewpa20->tarikh_mula=$request->tarikh_mula;
+      $kewpa20->tarikh_tamat=$request->tarikh_tamat;
+      $kewpa20->pegawai_dilantik=$request->pegawai_dilantik;
+      $kewpa20->ketua_jabatan=$request->ketua_jabatan;
+      $kewpa20 -> save();
+
+      return $kewpa20;
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kewpa20  $kewpa20
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kewpa20 $kewpa20)
     {
-        //
+      return $kewpa20->delete();
     }
 }

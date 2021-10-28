@@ -7,79 +7,50 @@ use Illuminate\Http\Request;
 
 class InfoPlpkPa0206Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return InfoPlpk_pa_0206::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+
+      $info_plpk_pa_0206 = new InfoPlpk_pa_0206;
+      $info_plpk_pa_0206->deskripsi_alat_ganti=$request->deskripsi_alat_ganti;
+      $info_plpk_pa_0206->kuantiti=$request->kuantiti;
+      $info_plpk_pa_0206->catitan=$request->catitan;
+      $info_plpk_pa_0206->kewpa14_id=$request->kewpa14_id;
+      $info_plpk_pa_0206->plpk06_id=$request->plpk06_id;
+      $info_plpk_pa_0206->save()
+
+      return $info_plpk_pa_0206;
+
+      
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\InfoPlpk_pa_0206  $infoPlpk_pa_0206
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InfoPlpk_pa_0206 $infoPlpk_pa_0206)
+    public function show(InfoPlpk_pa_0206 $info_plpk_pa_0206)
     {
-        //
+      return $info_plpk_pa_0206;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\InfoPlpk_pa_0206  $infoPlpk_pa_0206
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InfoPlpk_pa_0206 $infoPlpk_pa_0206)
+    public function update(Request $request, InfoPlpk_pa_0206 $info_plpk_pa_0206)
     {
-        //
+
+      $info_plpk_pa_0206->deskripsi_alat_ganti=$request->deskripsi_alat_ganti;
+      $info_plpk_pa_0206->kuantiti=$request->kuantiti;
+      $info_plpk_pa_0206->catitan=$request->catitan;
+      $info_plpk_pa_0206->kewpa14_id=$request->kewpa14_id;
+      $info_plpk_pa_0206->plpk06_id=$request->plpk06_id;
+
+
+      $info_plpk_pa_0206->save()
+
+      return $info_plpk_pa_0206;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoPlpk_pa_0206  $infoPlpk_pa_0206
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InfoPlpk_pa_0206 $infoPlpk_pa_0206)
+    public function destroy(InfoPlpk_pa_0206 $info_plpk_pa_0206)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\InfoPlpk_pa_0206  $infoPlpk_pa_0206
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InfoPlpk_pa_0206 $infoPlpk_pa_0206)
-    {
-        //
+      return $info_plpk_pa_0206->delete();
     }
 }

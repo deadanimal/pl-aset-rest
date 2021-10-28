@@ -15,6 +15,11 @@ class CreateInfoPlpkPa0206sTable extends Migration
     {
         Schema::create('info_plpk_pa_0206s', function (Blueprint $table) {
             $table->id();
+            $table->string("deskripsi_alat_ganti")->nullable();
+            $table->string("kuantiti")->nullable();
+            $table->string("catitan")->nullable();
+            $table->string("kewpa14_id")->nullable();
+            $table->string("plpk06_id")->nullable();
             $table->timestamps();
         });
     }

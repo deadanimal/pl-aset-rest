@@ -15,6 +15,8 @@ class CreateKewatk1sTable extends Migration
     {
         Schema::create('kewatk1s', function (Blueprint $table) {
             $table->id();
+            $table->string("no_rujukan_kewatk1")->nullable();
+            $table->string("status")->nullable();
             $table->string("nama_pembekal")->nullable();
             $table->string("alamat_pembekal")->nullable();
             $table->string("jenis_penerimaan")->nullable();

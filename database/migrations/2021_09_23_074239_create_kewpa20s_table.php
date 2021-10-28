@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,15 @@ class CreateKewpa20sTable extends Migration
     {
         Schema::create('kewpa20s', function (Blueprint $table) {
             $table->id();
+            $table->string("tarikh")->nullable();
+            $table->string("tempoh")->nullable();
+            $table->string("tarikh_mula")->nullable();
+            $table->string("tarikh_tamat")->nullable();
+            $table->date("date_created")->nullable();
+            $table->date("date_modified")->nullable();
+            $table->string("pegawai_dilantik")->nullable();
+            $table->string("ketua_jabatan")->nullable();
+
             $table->timestamps();
         });
     }

@@ -7,79 +7,49 @@ use Illuminate\Http\Request;
 
 class InfoKewpa11Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return InfoKewpa11::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $info_kewpa11 = new InfoKewpa11;
+      $info_kewpa11->lokasi_sebenar=$request->lokasi_sebenar;
+      $info_kewpa11->status_aset=$request->status_aset;
+      $info_kewpa11->catatan=$request->catatan;
+      $info_kewpa11->no_siri_pendaftaran=$request->no_siri_pendaftaran;
+      $info_kewpa11->rujukan_kewpa11_id=$request->rujukan_kewpa11_id;      
+      $info_kewpa11 -> save();
+
+      return $info_kewpa11;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa11  $infoKewpa11
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InfoKewpa11 $infoKewpa11)
+    public function show(InfoKewpa11 $info_kewpa11)
     {
-        //
+      return $info_kewpa11;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa11  $infoKewpa11
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InfoKewpa11 $infoKewpa11)
+    public function update(Request $request, InfoKewpa11 $info_kewpa11)
     {
-        //
+
+      $info_kewpa11->lokasi_sebenar=$request->lokasi_sebenar;
+      $info_kewpa11->status_aset=$request->status_aset;
+      $info_kewpa11->catatan=$request->catatan;
+      $info_kewpa11->no_siri_pendaftaran=$request->no_siri_pendaftaran;
+      $info_kewpa11->rujukan_kewpa11_id=$request->rujukan_kewpa11_id;      
+      $info_kewpa11 -> save();
+
+      return $info_kewpa11;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoKewpa11  $infoKewpa11
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InfoKewpa11 $infoKewpa11)
+    public function destroy(InfoKewpa11 $info_kewpa11)
     {
-        //
+      return $info_kewpa11->delete();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\InfoKewpa11  $infoKewpa11
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InfoKewpa11 $infoKewpa11)
-    {
-        //
-    }
+
+
 }

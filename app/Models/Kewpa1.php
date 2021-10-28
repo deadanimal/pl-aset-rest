@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kewpa1 extends Model
 {
-    public $table = 'kewpa1';
+    public $table = 'kewpa1s';
     use HasFactory;
 
     public function info_kewpa1s() {

@@ -61,6 +61,7 @@ class Kewpa10Controller extends Controller
       $kewpa10 -> pegawai_aset = $request -> pegawai_aset;
       $kewpa10 -> ketua_jabatan = $request -> ketua_jabatan;
       $kewpa10 -> no_siri_pendaftaran = $request -> no_siri_pendaftaran;
+      $kewpa10 -> save();
 
       return $kewpa10;
 

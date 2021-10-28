@@ -17,8 +17,9 @@ class InfoPlpkPa0203Controller extends Controller
 
       $info_plpk_pa_0203 = new InfoPlpk_pa_0203;
       $info_plpk_pa_0203->butiran_kerosakan=$request->butiran_kerosakan;
-      $info_plpk_pa_0203->kewpa14_id=$return->kewpa14_id;
-      $info_plpk_pa_0203->plpk03_id=$return->plpk03_id;
+      $info_plpk_pa_0203->kewpa14_id=$request->kewpa14_id;
+      $info_plpk_pa_0203->plpk03_id=$request->plpk03_id;
+      $info_plpk_pa_0203->save()
 
       return $info_plpk_pa_0203;
 
@@ -33,8 +34,10 @@ class InfoPlpkPa0203Controller extends Controller
     public function update(Request $request, InfoPlpk_pa_0203 $info_plpk_pa_0203)
     {
       $info_plpk_pa_0203->butiran_kerosakan=$request->butiran_kerosakan;
-      $info_plpk_pa_0203->kewpa14_id=$return->kewpa14_id;
-      $info_plpk_pa_0203->plpk03_id=$return->plpk03_id;
+      $info_plpk_pa_0203->kewpa14_id=$request->kewpa14_id;
+      $info_plpk_pa_0203->plpk03_id=$request->plpk03_id;
+
+      $info_plpk_pa_0203->save()
 
       return $info_plpk_pa_0203;
 

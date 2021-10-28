@@ -7,79 +7,42 @@ use Illuminate\Http\Request;
 
 class Kewpa32Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Kewpa32::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $kewpa32 = new Kewpa32;
+      $kewpa32->tahun=$request->tahun;
+      $kewpa32->ketua_jabatan=$request->ketua_jabatan;
+
+      $kewpa32 -> save();
+
+      return $kewpa32;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kewpa32  $kewpa32
-     * @return \Illuminate\Http\Response
-     */
     public function show(Kewpa32 $kewpa32)
     {
-        //
+      return $kewpa32;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kewpa32  $kewpa32
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kewpa32 $kewpa32)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kewpa32  $kewpa32
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Kewpa32 $kewpa32)
     {
-        //
+
+      $kewpa32->tahun=$request->tahun;
+      $kewpa32->ketua_jabatan=$request->ketua_jabatan;
+
+      $kewpa32 -> save();
+
+      return $kewpa32;
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kewpa32  $kewpa32
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kewpa32 $kewpa32)
     {
-        //
+      return $kewpa32->delete();
     }
 }

@@ -7,79 +7,59 @@ use Illuminate\Http\Request;
 
 class InfoKewpa37Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return InfoKewpa37::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $info_kewpa37 = new InfoKewpa37;
+      $info_kewpa37->agensi=$request->agensi;
+      $info_kewpa37->kuantiti_hapus=$request->kuantiti_hapus;
+      $info_kewpa37->nilai_perolehan_hapus=$request->nilai_perolehan_hapus;
+      $info_kewpa37->nilai_semasa_hapus=$request->nilai_semasa_hapus;
+      $info_kewpa37->kes_surcaj=$request->kes_surcaj;
+      $info_kewpa37->nilai_surcaj=$request->nilai_surcaj;
+      $info_kewpa37->kes_tatatertib=$request->kes_tatatertib;
+      $info_kewpa37->kewpa33_id=$request->kewpa33_id;
+      $info_kewpa37->kewpa37_id=$request->kewpa37_id;
+      $info_kewpa37 -> save();
+
+      return $info_kewpa37;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa37  $infoKewpa37
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InfoKewpa37 $infoKewpa37)
+    public function show(InfoKewpa37 $info_kewpa37)
     {
-        //
+      return $info_kewpa37;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa37  $infoKewpa37
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InfoKewpa37 $infoKewpa37)
+    public function update(Request $request, InfoKewpa37 $info_kewpa37)
     {
-        //
+
+
+      $info_kewpa37->agensi=$request->agensi;
+      $info_kewpa37->kuantiti_hapus=$request->kuantiti_hapus;
+      $info_kewpa37->nilai_perolehan_hapus=$request->nilai_perolehan_hapus;
+      $info_kewpa37->nilai_semasa_hapus=$request->nilai_semasa_hapus;
+      $info_kewpa37->kes_surcaj=$request->kes_surcaj;
+      $info_kewpa37->nilai_surcaj=$request->nilai_surcaj;
+      $info_kewpa37->kes_tatatertib=$request->kes_tatatertib;
+      $info_kewpa37->kewpa33_id=$request->kewpa33_id;
+      $info_kewpa37->kewpa37_id=$request->kewpa37_id;
+
+      $info_kewpa37 -> save();
+
+      return $info_kewpa37;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoKewpa37  $infoKewpa37
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InfoKewpa37 $infoKewpa37)
+    public function destroy(InfoKewpa37 $info_kewpa37)
     {
-        //
+      return $info_kewpa37->delete();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\InfoKewpa37  $infoKewpa37
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InfoKewpa37 $infoKewpa37)
-    {
-        //
-    }
+
+
 }

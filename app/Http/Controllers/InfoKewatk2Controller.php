@@ -12,6 +12,7 @@ class InfoKewatk2Controller extends Controller
       return InfoKewatk2::all();
     }
 
+    // deprecated
     public function store(Request $request)
     {
       $info_kewatk2 = new InfoKewatk2;
@@ -21,12 +22,11 @@ class InfoKewatk2Controller extends Controller
       $info_kewatk2->catatan=$request->catatan;
       $info_kewatk2->no_rujukan_atk2=$request->no_rujukan_atk2;
 
+
       $info_kewatk2 -> save();
 
+      return redirect('/kewatk2/'.$request -> no_rujukan_atk2);
 
-      return $info_kewatk2;
-
-      
     }
 
     public function show(InfoKewatk2 $info_kewatk2)
@@ -43,9 +43,8 @@ class InfoKewatk2Controller extends Controller
       $info_kewatk2->no_rujukan_atk2=$request->no_rujukan_atk2;
 
       $info_kewatk2 -> save();
+      return redirect('/kewatk2/'.$request -> no_rujukan_atk2);
 
-
-      return $info_kewatk2;
 
 
     }
@@ -53,5 +52,6 @@ class InfoKewatk2Controller extends Controller
     public function destroy(InfoKewatk2 $info_kewatk2)
     {
       return $info_kewatk2->delete();
+      return redirect('/kewatk2/'.$request -> no_rujukan_atk2);
     }
 }

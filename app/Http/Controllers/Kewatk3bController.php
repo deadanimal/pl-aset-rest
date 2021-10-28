@@ -4,12 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Kewatk3b;
 use Illuminate\Http\Request;
+use PDF;
 
 class Kewatk3bController extends Controller
 {
 public function index()
     {
-      return Kewatk3b::all();
+      $kewatk3b = Kewatk3b::all();
+
+      $context = [
+        "kewatk3b" => $kewatk3b,
+      ];
+
+      return view('modul.aset_tak_ketara.kewatk3.index_b', $context);
+
+
     }
 
     public function store(Request $request)
@@ -28,8 +37,7 @@ public function index()
 
       $kewatk3b -> save();
 
-
-      return $kewatk3b;
+      return redirect('/kewatk3b');
 
       
     }
@@ -55,8 +63,7 @@ public function index()
       $kewatk3b -> save();
 
 
-
-      return $kewatk3b;
+      return redirect('/kewatk3b');
 
 
     }
@@ -65,4 +72,24 @@ public function index()
     {
       return $kewatk3b->delete();
     }
+
+    public function generatePdf(Request $request, Kewatk3b $kewatk3b) 
+    {
+
+      $pdf = PDF::loadView('modul.aset_tak_ketara.kewatk3.kewatk3b_template', [
+          
+      ])->setPaper('a4', 'landscape');
+
+      $pdf->save('kewatk3.pdf');
+
+      $context = [
+        "url" => "/kewatk3.pdf"
+      ];
+
+      return view('modul.aset_tak_ketara.kewatk1.pdf', $context);
+
+
+    }
+
+
 }

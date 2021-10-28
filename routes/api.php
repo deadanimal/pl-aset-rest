@@ -1,5 +1,9 @@
 <?php use Illuminate\Http\Request; use Illuminate\Support\Facades\Route;
 
+# auth
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\UserController;
+
 # ata controller
 use App\Http\Controllers\Kewpa1Controller;
 use App\Http\Controllers\Kewpa2Controller;
@@ -103,10 +107,17 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PengumumanController;
 
+# kewatk3a supporting component
+use App\Http\Controllers\Kewatk3aPembaharuanController;
+use App\Http\Controllers\Kewatk3aPenempatanController;
+use App\Http\Controllers\Kewatk3aPemeriksaanController;
+use App\Http\Controllers\Kewatk3aPindahanController;
 
 
-# ATA
-# alpha 
+# authentication
+Route::post('auth', [AuthenticationController::class, 'authenticateUser']);
+
+
 Route::resource('kewpa1', Kewpa1Controller::class);
 Route::resource('info_kewpa1', InfoKewpa1Controller::class);
 Route::resource('kewpa2', Kewpa2Controller::class);
@@ -124,8 +135,6 @@ Route::resource('plpk_pa_0202', PlpkPa0202Controller::class);
 Route::resource('info_plpk_pa_0202', InfoPlpkPa0202Controller::class);
 Route::resource('plpk_pa_0203', PlpkPa0203Controller::class);
 Route::resource('plpk_pa_0204', PlpkPa0204Controller::class);
-
-# beta 
 Route::resource('info_plpk_pa_0204', InfoPlpkPa0204Controller::class);
 Route::resource('plpk_pa_0205', PlpkPa0205Controller::class);
 Route::resource('plpk_pa_0206', PlpkPa0206Controller::class);
@@ -185,6 +194,7 @@ Route::resource('info_kewpa37', InfoKewpa37Controller::class);
 Route::resource('staff', StaffController::class);
 Route::resource('lokasi', LokasiController::class);
 Route::resource('pengumuman', PengumumanController::class);
+Route::resource('pengguna', UserController::class);
 
 # atk routes
 Route::resource('kewatk1',Kewatk1Controller::class);
@@ -200,7 +210,6 @@ Route::resource('kewatk9',Kewatk9Controller::class);
 Route::resource('kewatk10',Kewatk10Controller::class);
 Route::resource('kewatk11',Kewatk11Controller::class);
 Route::resource('kewatk12',Kewatk12Controller::class);
-
 Route::resource('info_kewatk1',InfoKewatk1Controller::class);
 Route::resource('info_kewatk2',InfoKewatk2Controller::class);
 Route::resource('info_kewatk4',InfoKewatk4Controller::class);
@@ -208,3 +217,9 @@ Route::resource('info_kewatk6',InfoKewatk6Controller::class);
 Route::resource('info_kewatk9',InfoKewatk9Controller::class);
 Route::resource('info_kewatk10',InfoKewatk10Controller::class);
 
+# other routes
+Route::resource('kewatk3a_penempatan',Kewatk3aPenempatanController::class);
+Route::resource('kewatk3a_pembaharuan',Kewatk3aPembaharuanController::class);
+Route::resource('kewatk3a_pemeriksaan',Kewatk3aPemeriksaanController::class);
+Route::resource('kewatk3a_usiaguna',UgdansController::class);
+Route::resource('kewatk3a_pindahan',Kewatk3aPindahanController::class);

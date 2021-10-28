@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class Kewpa21Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Kewpa21::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $kewpa21 = new Kewpa21;
+      $kewpa21->pegawai_pemeriksa1=$request->pegawai_pemeriksa1;
+      $kewpa21->pegawai_pemeriksa2=$request->pegawai_pemeriksa2;
+      $kewpa21->kuasa_melulus=$request->kuasa_melulus;
+
+      $kewpa21 -> save();
+
+      return $kewpa21;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kewpa21  $kewpa21
-     * @return \Illuminate\Http\Response
-     */
     public function show(Kewpa21 $kewpa21)
     {
-        //
+      return $kewpa21;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kewpa21  $kewpa21
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kewpa21 $kewpa21)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kewpa21  $kewpa21
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Kewpa21 $kewpa21)
     {
-        //
+
+      $kewpa21->pegawai_pemeriksa1=$request->pegawai_pemeriksa1;
+      $kewpa21->pegawai_pemeriksa2=$request->pegawai_pemeriksa2;
+      $kewpa21->kuasa_melulus=$request->kuasa_melulus;
+
+      $kewpa15 -> save();
+
+      return $kewpa21;
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kewpa21  $kewpa21
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kewpa21 $kewpa21)
     {
-        //
+      return $kewpa21->delete();
     }
 }

@@ -7,79 +7,48 @@ use Illuminate\Http\Request;
 
 class Kewpa13Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Kewpa13::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $kewpa13 = new Kewpa13;
+      $kewpa13->tahun=$request->tahun;
+      $kewpa13->agensi=$request->agensi;
+      $kewpa13->peratus=$request->peratus;
+      $kewpa13->created_date=$request->created_date;
+      $kewpa13->modified_date=$request->modified_date;
+      $kewpa13->ketua_jabatan=$request->ketua_jabatan;
+      $kewpa13->kewpa12_id=$request->kewpa12_id;
+      $kewpa13 -> save();
+
+      return $kewpa13;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kewpa13  $kewpa13
-     * @return \Illuminate\Http\Response
-     */
     public function show(Kewpa13 $kewpa13)
     {
-        //
+      return $kewpa13;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kewpa13  $kewpa13
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kewpa13 $kewpa13)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kewpa13  $kewpa13
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Kewpa13 $kewpa13)
     {
-        //
+
+      $kewpa13->tahun=$request->tahun;
+      $kewpa13->agensi=$request->agensi;
+      $kewpa13->peratus=$request->peratus;
+      $kewpa13->created_date=$request->created_date;
+      $kewpa13->modified_date=$request->modified_date;
+      $kewpa13->ketua_jabatan=$request->ketua_jabatan;
+      $kewpa13->kewpa12_id=$request->kewpa12_id;
+      return $kewpa13;
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kewpa13  $kewpa13
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kewpa13 $kewpa13)
     {
-        //
+      return $kewpa13->delete();
     }
 }

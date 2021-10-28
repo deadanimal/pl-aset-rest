@@ -15,6 +15,9 @@ class CreateInfoKewpa17sTable extends Migration
     {
         Schema::create('info_kewpa17s', function (Blueprint $table) {
             $table->id();
+            $table->string("catatan")->nullable();
+            $table->string("no_siri_pendaftaran")->nullable();
+            $table->string("no_permohonan_kewpa17")->nullable();
             $table->timestamps();
         });
     }

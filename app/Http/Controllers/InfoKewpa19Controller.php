@@ -7,79 +7,50 @@ use Illuminate\Http\Request;
 
 class InfoKewpa19Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return InfoKewpa19::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $table->string("butiran_penambahbaikan")->nullable();
+      $table->string("laporan_pemeriksaan")->nullable();
+      $table->string("no_siri_pendaftaran")->nullable();
+      $table->string("kewpa19_id")->nullable();
+
+
+      $info_kewpa19 -> save();
+
+      return $info_kewpa19;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa19  $infoKewpa19
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InfoKewpa19 $infoKewpa19)
+    public function show(InfoKewpa19 $info_kewpa19)
     {
-        //
+      return $info_kewpa19;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\InfoKewpa19  $infoKewpa19
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InfoKewpa19 $infoKewpa19)
+    public function update(Request $request, InfoKewpa19 $info_kewpa19)
     {
-        //
+
+      $table->string("butiran_penambahbaikan")->nullable();
+      $table->string("laporan_pemeriksaan")->nullable();
+      $table->string("no_siri_pendaftaran")->nullable();
+      $table->string("kewpa19_id")->nullable();
+
+
+      $info_kewpa19 -> save();
+
+      return $info_kewpa19;
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoKewpa19  $infoKewpa19
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InfoKewpa19 $infoKewpa19)
+    public function destroy(InfoKewpa19 $info_kewpa19)
     {
-        //
+      return $info_kewpa19->delete();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\InfoKewpa19  $infoKewpa19
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InfoKewpa19 $infoKewpa19)
-    {
-        //
-    }
+
+
 }

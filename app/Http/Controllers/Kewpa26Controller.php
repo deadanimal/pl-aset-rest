@@ -7,79 +7,38 @@ use Illuminate\Http\Request;
 
 class Kewpa26Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+      return Kewpa26::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+      
+      $kewpa26 = new Kewpa26;
+      $kewpa26->staff_id=$request->staff_id;      
+      $kewpa26 -> save();
+
+      return $kewpa26;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kewpa26  $kewpa26
-     * @return \Illuminate\Http\Response
-     */
     public function show(Kewpa26 $kewpa26)
     {
-        //
+      return $kewpa26;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kewpa26  $kewpa26
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kewpa26 $kewpa26)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kewpa26  $kewpa26
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Kewpa26 $kewpa26)
     {
-        //
+
+      $kewpa26->staff_id=$request->staff_id;      
+      $kewpa15 -> save();
+
+      return $kewpa26;
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kewpa26  $kewpa26
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Kewpa26 $kewpa26)
     {
-        //
+      return $kewpa26->delete();
     }
 }
