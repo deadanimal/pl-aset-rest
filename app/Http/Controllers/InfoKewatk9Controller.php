@@ -12,7 +12,7 @@ class InfoKewatk9Controller extends Controller
       return InfoKewatk9::all();
     }
 
-    public function store(Request $request)
+    public function store($request)
     {
       $info_kewatk9 = new InfoKewatk9;
       $info_kewatk9->lokasi_sebenar=$request->lokasi_sebenar;
@@ -23,19 +23,18 @@ class InfoKewatk9Controller extends Controller
 
       $info_kewatk9 -> save();
 
-
-      return $info_kewatk9;
-
-      
-    }
-
-    public function show(InfoKewatk9 $info_kewatk9)
-    {
       return $info_kewatk9;
     }
 
-    public function update(Request $request, InfoKewatk9 $info_kewatk9)
+    public function show($kewatk9)
     {
+      $info_kewatk9 = InfoKewatk9::where('no_rujukan_atk9', $kewatk9)->get();
+      return $info_kewatk9;
+    }
+
+    public function update($request, $info_kewatk9_id)
+    {
+      $info_kewatk9 = InfoKewatk9::where('id', $info_kewatk9_id)->first();
       $info_kewatk9->lokasi_sebenar=$request->lokasi_sebenar;
       $info_kewatk9->status_harta=$request->status_harta;
       $info_kewatk9->catatan=$request->catatan;
@@ -44,9 +43,7 @@ class InfoKewatk9Controller extends Controller
 
       $info_kewatk9 -> save();
 
-
       return $info_kewatk9;
-
 
     }
 

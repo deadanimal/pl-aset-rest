@@ -114,6 +114,7 @@ use App\Http\Controllers\Kewatk9Controller;
 use App\Http\Controllers\Kewatk10Controller;
 use App\Http\Controllers\Kewatk11Controller;
 use App\Http\Controllers\Kewatk12Controller;
+use App\Http\Controllers\Kewatk13Controller;
 
 use App\Http\Controllers\InfoKewatk1Controller;
 use App\Http\Controllers\InfoKewatk2Controller;
@@ -231,6 +232,7 @@ Route::resource('kewatk9',Kewatk9Controller::class);
 Route::resource('kewatk10',Kewatk10Controller::class);
 Route::resource('kewatk11',Kewatk11Controller::class);
 Route::resource('kewatk12',Kewatk12Controller::class);
+Route::resource('kewatk13',Kewatk13Controller::class);
 Route::resource('info_kewatk1',InfoKewatk1Controller::class);
 Route::resource('info_kewatk2',InfoKewatk2Controller::class);
 Route::resource('info_kewatk4',InfoKewatk4Controller::class);
@@ -255,4 +257,10 @@ Route::get('kewatk5pdf', [Kewatk5Controller::class, 'generatePdf']);
 Route::get('kewatk3apdf/{kewatk3}', [Kewatk3aController::class, 'generatePdf']);
 Route::get('kewatk3bpdf/{kewatk3}', [Kewatk3bController::class, 'generatePdf']);
 Route::get('kewatk7pdf/{kewatk7}', [Kewatk7Controller::class, 'generatePdf']);
+Route::get('kewatk10pdf/{tahun}', [Kewatk10Controller::class, 'generatePdf']);
+Route::get('kewatk11pdf/{tahun}', [Kewatk11Controller::class, 'generatePdf']);
+Route::get('kewatk12pdf', [Kewatk12Controller::class, 'generatePdf']);
+Route::get('kewatk13pdf/{kewatk13}', [Kewatk13Controller::class, 'generatePdf']);
+
+# custom 
 

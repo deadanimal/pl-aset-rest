@@ -58,9 +58,9 @@
           </br>
           <div class="card-body pt-0">
             
-            <label for="">Singkatan</label>
+            <label for="">Kod Lokasi</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="singkatan" value="">
+              <input class="form-control mb-3" type="text" name="kod_lokasi" value="">
             </div>
             <label for="">Nama Lokasi</label>
             <div class="input-group">
@@ -88,9 +88,9 @@
           </br>
           <div class="card-body pt-0">
             
-            <label for="">Singkatan</label>
+            <label for="">Kod Lokasi</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="singkatan" value="">
+              <input class="form-control mb-3" type="text" name="kod_lokasi" value="">
             </div>
             <label for="">Nama Lokasi</label>
             <div class="input-group">
@@ -126,7 +126,7 @@
 
       $("#show").hide();
 
-      $("#updateForm input[name=singkatan]").val(obj.singkatan);
+      $("#updateForm input[name=kod_lokasi]").val(obj.kod_lokasi);
       $("#updateForm input[name=nama_lokasi]").val(obj.nama_lokasi);
       $("#updateForm action").val("/lokasi/" + obj.id);      
       $("#updateForm").attr('action', "/lokasi/" + obj.id)
@@ -136,7 +136,7 @@
     }
 
     function updateStatus(obj, mode) {
-      $("#updateForm input[name=singkatan]").val(obj.singkatan);
+      $("#updateForm input[name=kod_lokasi]").val(obj.kod_lokasi);
       $("#updateForm input[name=nama_lokasi]").val(obj.nama_lokasi);
       $("#updateForm action").val("/lokasi/" + obj.id);      
       $("#updateForm").attr('action', "/lokasi/" + obj.id)

@@ -125,6 +125,22 @@
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="rajuk" value="">
             </div>
+
+            <label for="">Penyelenggaraan</label>
+            <div class="input-group">
+              <select class="form-control mb-3" name="status_selenggara">
+                  <option value="" selected disabled hidden>sila pilih</option>
+                  <option value="ya">ya</option>
+                  <option value="tidak">tidak</option>
+                </select>
+
+            </div>
+            <label for="">Tempoh Penyelenggaraan</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="tempoh_selenggara" value="">
+            </div>
+
+
             <label for="">Nombor Dalam Negara</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="nombor_dalam_negara" value="">
@@ -277,10 +293,25 @@
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="jenis" value="">
             </div>
-            <label for="">Rajuk</label>
+            <label for="">Tajuk</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="rajuk" value="">
             </div>
+            <label for="">Penyelenggaraan</label>
+            <div class="input-group">
+              <select class="form-control mb-3" name="status_selenggara">
+                  <option value="" selected disabled hidden>sila pilih</option>
+                  <option value="ya">ya</option>
+                  <option value="tidak">tidak</option>
+                </select>
+
+            </div>
+            <label for="">Tempoh Penyelenggaraan</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="tempoh_selenggara" value="">
+            </div>
+
+
             <label for="">Nombor Dalam Negara</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="nombor_dalam_negara" value="">
@@ -400,6 +431,8 @@
       $("#updateForm input[name=kategori]").val(obj.kategori);
       $("#updateForm input[name=sub_kategori]").val(obj.sub_kategori);
       $("#updateForm input[name=jenis]").val(obj.jenis);
+      $("#updateForm select[name=status_selenggara]").val(obj.status_selenggara);
+      $("#updateForm input[name=tempoh_selenggara]").val(obj.status_selenggara);
       $("#updateForm input[name=rajuk]").val(obj.rajuk);
       $("#updateForm input[name=nombor_dalam_negara]").val(obj.nombor_dalam_negara);
       $("#updateForm input[name=nombor_luar_negara]").val(obj.nombor_luar_negara);
@@ -438,6 +471,8 @@
       $("#updateForm input[name=jenis]").val(obj.jenis);
       $("#updateForm input[name=rajuk]").val(obj.rajuk);
       $("#updateForm input[name=nombor_dalam_negara]").val(obj.nombor_dalam_negara);
+      $("#updateForm select[name=status_selenggara]").val(obj.status_selenggara);
+      $("#updateForm input[name=tempoh_selenggara]").val(obj.status_selenggara);
       $("#updateForm input[name=nombor_luar_negara]").val(obj.nombor_luar_negara);
       $("#updateForm input[name=tarikh_lulus_luput_dalam]").val(obj.tarikh_lulus_luput_dalam);
       $("#updateForm input[name=tarikh_lulus_luput_luar]").val(obj.tarikh_lulus_luput_luar);

@@ -53,12 +53,12 @@
               @if (Auth::user()->jawatan=="superadmin")
               <a href="/kewatk8" onclick="updateStatus({{$k8}}, 'LULUS')"><i class="fas fa-check-circle"></i></a>
               <a href="/kewatk8" onclick="updateStatus({{$k8}}, 'DITOLAK')"><i class="fas fa-times-circle"></i></a>
-              <a href="/kewatk8pdf/"><i class="fas fa-print"></i></a>
+              <a onclick="cetakPdf()" href=""><i class="fas fa-print"></i></a>
 
               @else
               <a href="/kewatk8" onclick="updateStatus({{$k8}}, 'HANTAR')"><i class="fas fa-arrow-up"></i></a>
               <a href="#" onclick="updateData({{$k8}})"><i class="fas fa-pen"></i></a>
-              <a href="/kewatk8pdf/{{$k8->id}}"><i class="fas fa-print"></i></a>
+              <a onclick="cetakPdf()" href=""><i class="fas fa-print"></i></a>
               <a href="/kewatk8" onclick="deleteData({{$k8}})"><i class="fas fa-trash"></i></a>
               @endif
             </td>
@@ -67,11 +67,11 @@
             <td scope="col">
               @if (Auth::user()->jawatan=="superadmin")
               <a href="/kewatk8" onclick="updateStatus({{$k8}}, 'SOKONG')"><i class="fas fa-arrow-up"></i></a>
-              <a href="/kewatk8pdf/"><i class="fas fa-print"></i></a>
+              <a onclick="cetakPdf()" href=""><i class="fas fa-print"></i></a>
               <a href="#" onclick="updateData({{$k8}})"><i class="fas fa-pen"></i></a>
 
               @else
-              <a href="/kewatk8pdf/{{$k8->id}}"><i class="fas fa-print"></i></a>
+              <a onclick="cetakPdf()" href=""><i class="fas fa-print"></i></a>
               @endif
             </td>
             @endif
@@ -379,6 +379,10 @@
           fixedHeight: true,
           sortable: false
       });
+    }
+
+    function cetakPdf() {
+      window.open('http://127.0.0.1:8001/cetak/atk8')
     }
 
         

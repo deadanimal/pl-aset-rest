@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusToKewatk8s extends Migration
+class AddStatusToKewatk9s extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class AddStatusToKewatk8s extends Migration
      */
     public function up()
     {
-        Schema::table('kewatk8s', function (Blueprint $table) {
-
+        Schema::table('kewatk9s', function (Blueprint $table) {
           $table->string("status")->nullable();
         });
     }
@@ -26,7 +25,7 @@ class AddStatusToKewatk8s extends Migration
      */
     public function down()
     {
-        Schema::table('kewatk8s', function (Blueprint $table) {
+        Schema::table('kewatk9s', function (Blueprint $table) {
             //
         });
     }

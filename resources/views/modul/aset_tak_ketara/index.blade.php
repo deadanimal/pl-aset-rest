@@ -18,7 +18,6 @@
 <a href="/kewatk8" >KEWATK 8</a><br>
 <a href="/kewatk9" >KEWATK 9</a><br>
 <a href="/kewatk10" >KEWATK 10</a><br>
-<a href="/kewatk11" >KEWATK 11</a><br>
 
 <h6>Penyelenggaraan Aset Tak Ketara</h6>
 <a href="/kewatk12" >KEWATK 12</a><br>

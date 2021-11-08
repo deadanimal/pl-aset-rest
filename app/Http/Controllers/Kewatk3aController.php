@@ -47,6 +47,8 @@ class Kewatk3aController extends Controller
       $kewatk3a->kod_nasional=$request->kod_nasional;
       $kewatk3a->kategori=$request->kategori;
       $kewatk3a->sub_kategori=$request->sub_kategori;
+      $kewatk3a->status_selenggara=$request->status_selenggara;
+      $kewatk3a->tempoh_selenggara=$request->tempoh_selenggara;
       $kewatk3a->jenis=$request->jenis;
       $kewatk3a->rajuk=$request->rajuk;
       $kewatk3a->nombor_dalam_negara=$request->nombor_dalam_negara;
