@@ -1,4 +1,4 @@
-@extends('layouts.base') @section('content')
+@extends('layouts.base_stor') @section('content')
     <form method="POST" action="/infokewps1/{{ $infokewps1->id }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
