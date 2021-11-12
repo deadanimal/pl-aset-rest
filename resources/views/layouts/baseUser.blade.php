@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
     <title>
-       ASET STOR 
+        ASET STOR
     </title>
     <!-- Extra details for Live View on GitHub Pages -->
     <!-- Canonical SEO -->
@@ -150,7 +150,7 @@
                 document.write(new Date().getFullYear())
               </script>, --}}
                             <p class="text-gray">
-                               <b>Perbadanan Labuan</b> 
+                                <b>Perbadanan Labuan</b>
                             </p>
 
                         </div>

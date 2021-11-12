@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InfoKewatk1Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,85 +21,42 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-
-use App\Http\Controllers\OtherController;
-use App\Http\Controllers\Kewpa1Controller;
-use App\Http\Controllers\Kewpa2Controller;
+use App\Http\Controllers\InfoKewatk2Controller;
+use App\Http\Controllers\InfoKewatk4Controller;
+use App\Http\Controllers\InfoKewatk6Controller;
+use App\Http\Controllers\InfoKewatk7Controller;
+use App\Http\Controllers\InfoKewatk9Controller;
+use App\Http\Controllers\InfoKewatk10Controller;
 use App\Http\Controllers\InfoKewpa1Controller;
-use App\Http\Controllers\Kewpa3AController;
-use App\Http\Controllers\Kewpa3BController;
-use App\Http\Controllers\Kewpa5n6Controller;
-use App\Http\Controllers\Kewpa7Controller;
-use App\Http\Controllers\Kewpa8Controller;
-use App\Http\Controllers\Kewpa9Controller;
-use App\Http\Controllers\Kewpa10Controller;
-use App\Http\Controllers\Kewpa11Controller;
-use App\Http\Controllers\Kewpa12Controller;
-use App\Http\Controllers\Kewpa13Controller;
-use App\Http\Controllers\Kewpa14Controller;
-use App\Http\Controllers\InfoKewpa14Controller;
-use App\Http\Controllers\Kewpa15Controller;
-use App\Http\Controllers\InfoKewpa15Controller;
-use App\Http\Controllers\Kewpa16Controller;
-use App\Http\Controllers\InfoKewpa16Controller;
-use App\Http\Controllers\Kewpa17Controller;
-use App\Http\Controllers\InfoKewpa17Controller;
-use App\Http\Controllers\Kewpa18Controller;
-use App\Http\Controllers\InfoKewpa18Controller;
-use App\Http\Controllers\Kewpa19Controller;
-use App\Http\Controllers\InfoKewpa19Controller;
-use App\Http\Controllers\Kewpa20Controller;
-use App\Http\Controllers\Kewpa21Controller;
-use App\Http\Controllers\InfoKewpa21Controller;
-use App\Http\Controllers\Kewpa22Controller;
-use App\Http\Controllers\Kewpa23Controller;
-use App\Http\Controllers\Kewpa24Controller;
-use App\Http\Controllers\InfoKewpa24Controller;
-use App\Http\Controllers\Kewpa25Controller;
-use App\Http\Controllers\InfoKewpa25Controller;
-use App\Http\Controllers\Kewpa26Controller;
-use App\Http\Controllers\InfoKewpa26Controller;
-use App\Http\Controllers\Kewpa27Controller;
-use App\Http\Controllers\InfoKewpa27Controller;
-use App\Http\Controllers\Kewpa28Controller;
-use App\Http\Controllers\InfoKewpa28Controller;
-use App\Http\Controllers\Kewpa29Controller;
-use App\Http\Controllers\InfoKewpa29Controller;
-use App\Http\Controllers\Kewpa30Controller;
-use App\Http\Controllers\Kewpa31Controller;
-use App\Http\Controllers\Kewpa32Controller;
-use App\Http\Controllers\InfoKewpa32Controller;
-use App\Http\Controllers\Kewpa33Controller;
-use App\Http\Controllers\Kewpa34Controller;
-use App\Http\Controllers\Kewpa35Controller;
-use App\Http\Controllers\Kewpa36Controller;
-use App\Http\Controllers\InfoKewpa36Controller;
-use App\Http\Controllers\Kewpa37Controller;
-use App\Http\Controllers\InfoKewpa37Controller;
-
-use App\Http\Controllers\InfoKewpa11Controller;
 use App\Http\Controllers\InfoKewpa8Controller;
 use App\Http\Controllers\InfoKewpa9Controller;
-use App\Http\Controllers\PlpkPa0201Controller;
-use App\Http\Controllers\PlpkPa0202Controller;
-use App\Http\Controllers\PlpkPa0203Controller;
-use App\Http\Controllers\InfoPlpkPa0203Controller;
-use App\Http\Controllers\PlpkPa0204Controller;
+use App\Http\Controllers\InfoKewpa11Controller;
+use App\Http\Controllers\InfoKewpa14Controller;
+use App\Http\Controllers\InfoKewpa15Controller;
+use App\Http\Controllers\InfoKewpa16Controller;
+use App\Http\Controllers\InfoKewpa17Controller;
+use App\Http\Controllers\InfoKewpa18Controller;
+use App\Http\Controllers\InfoKewpa19Controller;
+use App\Http\Controllers\InfoKewpa21Controller;
+use App\Http\Controllers\InfoKewpa24Controller;
+use App\Http\Controllers\InfoKewpa25Controller;
+use App\Http\Controllers\InfoKewpa26Controller;
+use App\Http\Controllers\InfoKewpa27Controller;
+use App\Http\Controllers\InfoKewpa28Controller;
+use App\Http\Controllers\InfoKewpa29Controller;
+use App\Http\Controllers\InfoKewpa32Controller;
+use App\Http\Controllers\InfoKewpa36Controller;
+use App\Http\Controllers\InfoKewpa37Controller;
+use App\Http\Controllers\InfoKewps1Controller;
+use App\Http\Controllers\InfoKewps2Controller;
+use App\Http\Controllers\InfoPlpkPa0202Controller;
 use App\Http\Controllers\InfoPlpkPa0204Controller;
-use App\Http\Controllers\PlpkPa0205Controller;
-use App\Http\Controllers\PlpkPa0206Controller;
 use App\Http\Controllers\InfoPlpkPa0206Controller;
-use App\Http\Controllers\PlpkPa0207Controller;
 use App\Http\Controllers\InfoPlpkPa0207Controller;
-use App\Http\Controllers\PlpkPa0208Controller;
 use App\Http\Controllers\InfoPlpkPa0208Controller;
 use App\Http\Controllers\InfoPlpkPa0209Controller;
-use App\Http\Controllers\PlpkPa0209Controller;
-use App\Http\Controllers\InfoPlpkPa0202Controller;
-
-# atk controller
 use App\Http\Controllers\Kewatk1Controller;
 use App\Http\Controllers\Kewatk2Controller;
 use App\Http\Controllers\Kewatk3aController;
@@ -110,34 +67,74 @@ use App\Http\Controllers\Kewatk6Controller;
 use App\Http\Controllers\Kewatk7Controller;
 use App\Http\Controllers\Kewatk8Controller;
 use App\Http\Controllers\Kewatk9Controller;
-
 use App\Http\Controllers\Kewatk10Controller;
 use App\Http\Controllers\Kewatk11Controller;
 use App\Http\Controllers\Kewatk12Controller;
 use App\Http\Controllers\Kewatk13Controller;
+use App\Http\Controllers\Kewpa1Controller;
+use App\Http\Controllers\Kewpa2Controller;
+use App\Http\Controllers\Kewpa3AController;
+use App\Http\Controllers\Kewpa3BController;
+use App\Http\Controllers\Kewpa5n6Controller;
+use App\Http\Controllers\Kewpa7Controller;
+use App\Http\Controllers\Kewpa8Controller;
+use App\Http\Controllers\Kewpa10Controller;
+use App\Http\Controllers\Kewpa11Controller;
+use App\Http\Controllers\Kewpa12Controller;
+use App\Http\Controllers\Kewpa13Controller;
+use App\Http\Controllers\Kewpa14Controller;
+use App\Http\Controllers\Kewpa15Controller;
+use App\Http\Controllers\Kewpa16Controller;
+use App\Http\Controllers\Kewpa17Controller;
+use App\Http\Controllers\Kewpa18Controller;
+use App\Http\Controllers\Kewpa19Controller;
+use App\Http\Controllers\Kewpa20Controller;
+use App\Http\Controllers\Kewpa21Controller;
+use App\Http\Controllers\Kewpa22Controller;
+use App\Http\Controllers\Kewpa23Controller;
+use App\Http\Controllers\Kewpa24Controller;
+use App\Http\Controllers\Kewpa25Controller;
+use App\Http\Controllers\Kewpa26Controller;
+use App\Http\Controllers\Kewpa27Controller;
 
-use App\Http\Controllers\InfoKewatk1Controller;
-use App\Http\Controllers\InfoKewatk2Controller;
-use App\Http\Controllers\InfoKewatk4Controller;
-use App\Http\Controllers\InfoKewatk6Controller;
-use App\Http\Controllers\InfoKewatk7Controller;
-use App\Http\Controllers\InfoKewatk9Controller;
-use App\Http\Controllers\InfoKewatk10Controller;
-
-# umum controller
-use App\Http\Controllers\StaffController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\LokasiController;
-use App\Http\Controllers\PengumumanController;
+# atk controller
+use App\Http\Controllers\Kewpa28Controller;
+use App\Http\Controllers\Kewpa29Controller;
+use App\Http\Controllers\Kewpa30Controller;
+use App\Http\Controllers\Kewpa31Controller;
+use App\Http\Controllers\Kewpa32Controller;
+use App\Http\Controllers\Kewpa33Controller;
+use App\Http\Controllers\Kewpa34Controller;
+use App\Http\Controllers\Kewpa35Controller;
+use App\Http\Controllers\Kewpa36Controller;
+use App\Http\Controllers\Kewpa37Controller;
+use App\Http\Controllers\Kewps1Controller;
+use App\Http\Controllers\Kewps2Controller;
+use App\Http\Controllers\Kewps3aController;
+use App\Http\Controllers\Kewps3bController;
+use App\Http\Controllers\Kewps4Controller;
+use App\Http\Controllers\Kewps5Controller;
 use App\Http\Controllers\KodAsetController;
 use App\Http\Controllers\KodJabatanController;
 use App\Http\Controllers\KodLokasiController;
+use App\Http\Controllers\OtherController;
+use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PlpkPa0201Controller;
+use App\Http\Controllers\PlpkPa0202Controller;
+use App\Http\Controllers\PlpkPa0203Controller;
+use App\Http\Controllers\PlpkPa0204Controller;
+use App\Http\Controllers\PlpkPa0205Controller;
 
-
+# umum controller
+use App\Http\Controllers\PlpkPa0206Controller;
+use App\Http\Controllers\PlpkPa0207Controller;
+use App\Http\Controllers\PlpkPa0208Controller;
+use App\Http\Controllers\PlpkPa0209Controller;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 # authentication
 Route::post('auth', [AuthenticationController::class, 'authenticateUser']);
-
 
 Route::resource('kewpa1', Kewpa1Controller::class);
 Route::resource('info_kewpa1', InfoKewpa1Controller::class);
@@ -219,35 +216,44 @@ Route::resource('pengumuman', PengumumanController::class);
 Route::resource('pengguna', UserController::class);
 
 # atk routes
-Route::resource('kewatk1',Kewatk1Controller::class);
-Route::resource('kewatk2',Kewatk2Controller::class);
-Route::resource('kewatk3a',Kewatk3aController::class);
-Route::resource('kewatk3b',Kewatk3bController::class);
-Route::resource('kewatk4',Kewatk4Controller::class);
-Route::resource('kewatk5',Kewatk5Controller::class);
-Route::resource('kewatk6',Kewatk6Controller::class);
-Route::resource('kewatk7',Kewatk7Controller::class);
-Route::resource('kewatk8',Kewatk8Controller::class);
-Route::resource('kewatk9',Kewatk9Controller::class);
-Route::resource('kewatk10',Kewatk10Controller::class);
-Route::resource('kewatk11',Kewatk11Controller::class);
-Route::resource('kewatk12',Kewatk12Controller::class);
-Route::resource('kewatk13',Kewatk13Controller::class);
-Route::resource('info_kewatk1',InfoKewatk1Controller::class);
-Route::resource('info_kewatk2',InfoKewatk2Controller::class);
-Route::resource('info_kewatk4',InfoKewatk4Controller::class);
-Route::resource('info_kewatk6',InfoKewatk6Controller::class);
-Route::resource('info_kewatk7',InfoKewatk7Controller::class);
-Route::resource('info_kewatk9',InfoKewatk9Controller::class);
-Route::resource('info_kewatk10',InfoKewatk10Controller::class);
+Route::resource('kewatk1', Kewatk1Controller::class);
+Route::resource('kewatk2', Kewatk2Controller::class);
+Route::resource('kewatk3a', Kewatk3aController::class);
+Route::resource('kewatk3b', Kewatk3bController::class);
+Route::resource('kewatk4', Kewatk4Controller::class);
+Route::resource('kewatk5', Kewatk5Controller::class);
+Route::resource('kewatk6', Kewatk6Controller::class);
+Route::resource('kewatk7', Kewatk7Controller::class);
+Route::resource('kewatk8', Kewatk8Controller::class);
+Route::resource('kewatk9', Kewatk9Controller::class);
+Route::resource('kewatk10', Kewatk10Controller::class);
+Route::resource('kewatk11', Kewatk11Controller::class);
+Route::resource('kewatk12', Kewatk12Controller::class);
+Route::resource('kewatk13', Kewatk13Controller::class);
+Route::resource('info_kewatk1', InfoKewatk1Controller::class);
+Route::resource('info_kewatk2', InfoKewatk2Controller::class);
+Route::resource('info_kewatk4', InfoKewatk4Controller::class);
+Route::resource('info_kewatk6', InfoKewatk6Controller::class);
+Route::resource('info_kewatk7', InfoKewatk7Controller::class);
+Route::resource('info_kewatk9', InfoKewatk9Controller::class);
+Route::resource('info_kewatk10', InfoKewatk10Controller::class);
 
+# stor routes
+Route::resource('kewps1', Kewps1Controller::class);
+Route::resource('infokewps1', InfoKewps1Controller::class);
+Route::resource('kewps2', Kewps2Controller::class);
+Route::resource('infokewps2', InfoKewps2Controller::class);
+Route::resource('kewps3a', Kewps3aController::class);
+Route::resource('kewps3b', Kewps3bController::class);
+Route::resource('kewps4', Kewps4Controller::class);
+Route::resource('kewps5', Kewps5Controller::class);
 
 Route::get('modul', [OtherController::class, 'modul_index']);
 Route::get('aset-alih', [OtherController::class, 'aset_alih_index']);
 Route::get('aset-tak-alih', [OtherController::class, 'aset_tak_alih_index']);
 Route::get('aset-tak-ketara', [OtherController::class, 'aset_tak_ketara_index']);
+Route::get('stor', [OtherController::class, 'stor_index']);
 Route::get('umum', [OtherController::class, 'umum_index']);
-
 
 # kewatk1 utility
 Route::get('kewatk1pdf/{kewatk1}', [Kewatk1Controller::class, 'generatePdf']);
@@ -262,5 +268,9 @@ Route::get('kewatk11pdf/{tahun}', [Kewatk11Controller::class, 'generatePdf']);
 Route::get('kewatk12pdf', [Kewatk12Controller::class, 'generatePdf']);
 Route::get('kewatk13pdf/{kewatk13}', [Kewatk13Controller::class, 'generatePdf']);
 
-# custom 
-
+# stor utility
+Route::get('/kewps1pdf/{kewps1}', [Kewps1Controller::class, 'generatePdf']);
+Route::get('/kewps2pdf/{kewps2}', [Kewps2Controller::class, 'generatePdf']);
+Route::get('/kewps3apdf/{kewps3a}', [Kewps3aController::class, 'generatePdf']);
+Route::get('/kewps3bpdf', [Kewps3bController::class, 'generatePdf']);
+Route::get('/kewps4pdf', [Kewps4Controller::class, 'generatePdf']);
