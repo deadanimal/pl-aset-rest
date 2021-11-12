@@ -1,19 +1,106 @@
-@extends('layouts.base') @section('content')
-    <div id="show">
+@extends('layouts.base_atk') @section('content')
+<div id="show">
 
-        <div class="card mt-4">
-            <div class="card-header text-end" style="
-                background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-                ">
-                <div class="row">
-                    <div class="col text-start">
-                        <h6 class="text-white">KEWATK 9</h6>
-                    </div>
-                    <div class="col text-end">
-                        <button class="btn btn-sm btn-primary" id="tambah"><i class="fas fa-plus"></i></button>
+  <div class="card mt-4">
+    <div class="card-header text-end" style="
+    background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
+    ">
+      <div class="row">
+        <div class="col text-start">
+          <h6 class="text-white">KEWATK 9</h6>
+        </div>
+        <div class="col text-end">
+          <button class="btn btn-sm btn-primary" id="tambah"><i class="fas fa-plus"></i></button>
 
-                    </div>
-                </div>
+        </div>
+      </div>
+    </div>
+    </br>
+    <div class="card-body pt-0">
+
+      <table class="table" id="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Bil</th>
+            <th scope="col">Pegawai Pemeriksa1</th>
+            <th scope="col">Pegawai Pemeriksa2</th>
+            <th scope="col">Status</th>
+            <th scope="col">Tindakan</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($kewatk9 as $k9)
+          <tr>
+            <td scope="col">{{$loop->index + 1}}</td>
+            <td scope="col">{{$k9->pegawai_pemeriksa1}}</td>
+            <td scope="col">{{$k9->pegawai_pemeriksa2}}</td>
+
+            @if ($k9->status=="DERAF") 
+              <td scope="col"><span class="badge bg-warning">{{$k9->status}}</span></th>
+            @elseif ($k9->status=="HANTAR") 
+              <td scope="col"><span class="badge bg-primary">{{$k9->status}}</span></th>
+            @elseif ($k9->status=="SOKONG") 
+              <td scope="col"><span class="badge bg-warning">{{$k9->status}}</span></th>
+            @elseif ($k9->status=="LULUS") 
+              <td scope="col"><span class="badge bg-success">{{$k9->status}}</span></th>
+            @elseif ($k9->status=="DITOLAK") 
+              <td scope="col"><span class="badge bg-danger">{{$k9->status}}</span></th>
+            @endif
+
+
+            @if ($k9->status=="DERAF") 
+            <td scope="col">
+              @if (Auth::user()->jawatan=="superadmin")
+              <a href="/kewatk9" onclick="updateStatus({{$k9}}, 'LULUS')"><i class="fas fa-check-circle"></i></a>
+              <a href="/kewatk9" onclick="updateStatus({{$k9}}, 'DITOLAK')"><i class="fas fa-times-circle"></i></a>
+              <a href="" onclick="cetakPdf()"><i class="fas fa-print"></i></a>
+
+              @else
+              <a href="/kewatk9" onclick="updateStatus({{$k9}}, 'HANTAR')"><i class="fas fa-arrow-up"></i></a>
+              <a href="#" onclick="updateData({{$k9}})"><i class="fas fa-pen"></i></a>
+              <a href="" onclick="cetakPdf()"><i class="fas fa-print"></i></a>
+              <a href="/kewatk9" onclick="deleteData({{$k9}})"><i class="fas fa-trash"></i></a>
+              @endif
+            </td>
+
+            @elseif ($k9->status=="SOKONG") 
+            <td scope="col">
+              @if (Auth::user()->jawatan=="superadmin")
+              <a href="/kewatk9" onclick="updateStatus({{$k9}}, 'SOKONG')"><i class="fas fa-arrow-up"></i></a>
+              <a href="/kewatk9pdf/"><i class="fas fa-print"></i></a>
+              <a href="#" onclick="updateData({{$k9}})"><i class="fas fa-pen"></i></a>
+
+              @else
+              <a href="/kewatk9pdf/{{$k9->id}}"><i class="fas fa-print"></i></a>
+              @endif
+            </td>
+            @endif
+
+
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="create" style="display: none;">
+  <form method="POST" action="/kewatk9" enctype="multipart/form-data">
+      @csrf
+      <div class="card mt-4" id="basic-info">
+          <div class="card-header" style="
+          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
+          ">
+              <h6 class="text-white">KEWATK 9</h6>
+          </div>
+          </br>
+          <div class="card-body pt-0">
+
+            <label for="">Agensi</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="agensi" value="">
+>>>>>>> main
             </div>
             </br>
             <div class="card-body pt-0">

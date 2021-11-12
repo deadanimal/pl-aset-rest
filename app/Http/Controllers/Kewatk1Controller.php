@@ -90,13 +90,12 @@ class Kewatk1Controller extends Controller
 
         ])->setPaper('a4', 'landscape');
 
-        $pdf->save('kewatk1.pdf');
+      $context = [
+        "url" => "/kewatk1.pdf",
+        "title" => "kewatk",
+      ];
 
-        $context = [
-            "url" => "/kewatk1.pdf",
-        ];
-
-        return view('modul.aset_tak_ketara.kewatk1.pdf', $context);
+      return view('modul.borang_viewer_atk', $context);
 
     }
 }

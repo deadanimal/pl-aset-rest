@@ -1,0 +1,67 @@
+/* Custom Customization */
+.bg-primary {
+    background-color: #17a2b8!important;
+
+}
+.text-primary {
+    color: #17a2b8 !important;
+}
+
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .nav-link.active
+{
+    color: #17a2b8 !important;
+}
+
+.btn-primary {
+    color: #fff;
+    border-color:  #17a2b8 !important;
+    background-color: #17a2b8 !important;
+}
+
+.bg-01 {
+    background-image: url('/static/assets/img/theme/bg-1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.table td, .table th {
+    white-space: normal !important;
+}
+
+.form-control {
+    color:black !important;
+}
+
+td.day.active {
+    font-weight: bold !important;
+    text-shadow: none !important;
+    color: #00aeb1 !important;
+}
+span.month.active {
+    font-weight: bold !important;
+    text-shadow: none !important;
+    color: #00aeb1 !important;
+}
+span.year.active {
+    font-weight: bold !important;
+    text-shadow: none !important;
+    color: #00aeb1 !important;
+}
+
+.badge {
+  color: #fff;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05px;
+
+  img {
+    height: 30px;
+  }
+}
