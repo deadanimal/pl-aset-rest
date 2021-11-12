@@ -1,14 +1,36 @@
-@extends('layouts.base') @section('content')
+@extends('layouts.base_atk') @section('content')
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Perbadanan Labuan</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
+                <li class="breadcrumb-item"><a href="">Kewatk15</a></li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="container-fluid mt--6">
 <div id="create">
   <form method="POST" action="/info_kewatk15/{{$info_kewatk15->id}}" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-          <h6 class="text-white">KEWATK 15</h6>
-          </div>
+          <div class="card-header">
+           <div class="row">
+             <div class="col">
+               <h2 class="mb-0">Pindahan Aset</h2>
+             </div>
+           </div>
+         </div>
           </br>
           <div class="card-body pt-0">
             <div class="row">
@@ -53,6 +75,7 @@
           </div>
       </div>
   </form>
+</div>
 </div>
 
 

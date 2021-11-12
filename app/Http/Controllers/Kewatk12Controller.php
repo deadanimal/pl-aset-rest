@@ -64,16 +64,17 @@ class Kewatk12Controller extends Controller
         "data" => $k12_array
       ];
 
-      $response = Http::post('http://127.0.0.1:8001/cetak/atk12', [$context]);
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk12', [$context]);
 
       $res = $response->getBody()->getContents();
       $url = "data:application/pdf;base64,".$res;
 
       $context = [
-        "url" => $url
+        "url" => $url,
+        "title" => "kewatk12",
       ];
 
-      return view('modul.borang_viewer', $context);
+      return view('modul.borang_viewer_atk', $context);
 
 
 

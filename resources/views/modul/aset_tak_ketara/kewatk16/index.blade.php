@@ -23,9 +23,14 @@
   <div id="show">
     <div class="card mt-4">
      
-          <div class="card-header text-center">
+      <div class="card-header">
+        <div class="row">
+          <div class="col">
             <h2 class="mb-0">Laporan Pindahan Aset Tak Ketara</h2>
           </div>
+        </div>
+      </div>
+
 
       </br>
       <div class="card-body pt-0">
