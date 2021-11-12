@@ -1,27 +1,44 @@
-@extends('layouts.base') @section('content') <div id="show">
-
-  <div class="card mt-4">
-    <div class="card-header text-end" style="
-    background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-    ">
-      <div class="row">
-        <div class="col text-start">
-          <h6 class="text-white">KEWATK 13</h6>
-        </div>
-        <div class="col text-end">
-          <button class="btn btn-sm btn-primary" id="tambah"><i class="fas fa-plus"></i></button>
-
+@extends('layouts.base_atk') @section('content') 
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Perbadanan Labuan</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
+                <li class="breadcrumb-item"><a href="">Kewatk13</a></li>
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
-    </br>
-    <div class="card-body pt-0">
+</div>
 
-      <table class="table" id="table">
+
+
+<div class="container-fluid mt--6">
+  <div id="show">
+    <div class="card mt-4">
+      <div class="card-header">
+        <div class="row">
+          <div class="col">
+            <h2 class="mb-0">Rekod Penyelenggaraan</h2>
+          </div>
+          <div class="text-end mr-2">
+            <button class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive py-4">
+
+      <table class="table table-custom-simplified table-flush" id="table">
         <thead class="thead-light">
           <tr>
-
-            <th scope="col">Bil</th>
+              <th scope="col">Bil</th>
               <th scope="col">Tarikh</th>
               <th scope="col">Jenis Penyelenggaraan</th>
               <th scope="col">No Siri Pendaftaran</th>
@@ -31,8 +48,9 @@
           </tr>
         </thead>
 
-        @foreach ($kewatk13 as $k13)
         <tbody>
+
+        @foreach ($kewatk13 as $k13)
           <tr>
 
 
@@ -51,9 +69,8 @@
             </td>
 
           </tr>
-
+          @endforeach
         </tbody>
-        @endforeach
       </table>
     </div>
   </div>
@@ -63,13 +80,18 @@
   <form method="POST" action="/kewatk13" enctype="multipart/form-data">
       @csrf
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">KEWATK 13</h6>
-          </div>
-          </br>
-          <div class="card-body pt-0">
+             <div class="card-header">
+                <div class="row">
+                  <div class="col">
+                    <h2 class="mb-0">Tambah Penyelenggaraan</h2>
+                  </div>
+                </div>
+              </div>
+
+            <div class="card-body pt-0">
+              
+            </br>
+
 
             <label for="">No Siri Pendaftaran</label>
             <div class="input-group">
@@ -117,11 +139,14 @@
       @csrf
       @method('PUT')
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="          
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">KEWATK 13</h6>
+          <div class="card-header">
+            <div class="row">
+              <div class="col">
+                <h2 class="mb-0">Sunting Penyelenggaraan</h2>
+              </div>
+            </div>
           </div>
+
           </br>
           <div class="card-body pt-0"> 
 

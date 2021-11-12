@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
 
 <div class="container-fluid mt--6">
@@ -93,6 +93,7 @@
     </div>
   </div>
 <div>
+
 
 <div id="create" style="display: none;">
   <form method="POST" action="/kewatk1" enctype="multipart/form-data">
