@@ -65,6 +65,7 @@ body {
 		sans-serif,
 		'Apple Color Emoji',
 		'Segoe UI Emoji';
+    background-image: "/assets/img/labuan_city.jpeg";
 }
 
 /*
@@ -329,7 +330,6 @@ pre {
 
 button {
   background-color: transparent;
-  background-image: none;
 }
 
 fieldset {

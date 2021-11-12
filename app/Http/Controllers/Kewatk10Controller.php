@@ -64,7 +64,7 @@ class Kewatk10Controller extends Controller
 
     public function generatePdf(Request $request, $tahun) {
       $info_kewatk10 = InfoKewatk10::where('tahun_semasa', $tahun)->first();
-      $response = Http::post('http://127.0.0.1:8001/cetak/atk10', [$info_kewatk10]);
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk14', [$info_kewatk10]);
 
       $res = $response->getBody()->getContents();
       $url = "data:application/pdf;base64,".$res;

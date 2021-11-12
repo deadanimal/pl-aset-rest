@@ -94,10 +94,11 @@ class Kewatk1Controller extends Controller
       $pdf->save('kewatk1.pdf');
 
       $context = [
-        "url" => "/kewatk1.pdf"
+        "url" => "/kewatk1.pdf",
+        "title" => "kewatk",
       ];
 
-      return view('modul.aset_tak_ketara.kewatk1.pdf', $context);
+      return view('modul.borang_viewer_atk', $context);
 
 
     }
