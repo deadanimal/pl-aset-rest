@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\InfoKewatk1Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +22,6 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-use App\Http\Controllers\InfoKewatk2Controller;
-use App\Http\Controllers\InfoKewatk4Controller;
-use App\Http\Controllers\InfoKewatk6Controller;
-use App\Http\Controllers\InfoKewatk7Controller;
-use App\Http\Controllers\InfoKewatk9Controller;
-use App\Http\Controllers\InfoKewatk10Controller;
 use App\Http\Controllers\InfoKewpa1Controller;
 use App\Http\Controllers\InfoKewpa8Controller;
 use App\Http\Controllers\InfoKewpa9Controller;
@@ -57,20 +50,6 @@ use App\Http\Controllers\InfoPlpkPa0206Controller;
 use App\Http\Controllers\InfoPlpkPa0207Controller;
 use App\Http\Controllers\InfoPlpkPa0208Controller;
 use App\Http\Controllers\InfoPlpkPa0209Controller;
-use App\Http\Controllers\Kewatk1Controller;
-use App\Http\Controllers\Kewatk2Controller;
-use App\Http\Controllers\Kewatk3aController;
-use App\Http\Controllers\Kewatk3bController;
-use App\Http\Controllers\Kewatk4Controller;
-use App\Http\Controllers\Kewatk5Controller;
-use App\Http\Controllers\Kewatk6Controller;
-use App\Http\Controllers\Kewatk7Controller;
-use App\Http\Controllers\Kewatk8Controller;
-use App\Http\Controllers\Kewatk9Controller;
-use App\Http\Controllers\Kewatk10Controller;
-use App\Http\Controllers\Kewatk11Controller;
-use App\Http\Controllers\Kewatk12Controller;
-use App\Http\Controllers\Kewatk13Controller;
 use App\Http\Controllers\Kewpa1Controller;
 use App\Http\Controllers\Kewpa2Controller;
 use App\Http\Controllers\Kewpa3AController;
@@ -96,8 +75,6 @@ use App\Http\Controllers\Kewpa24Controller;
 use App\Http\Controllers\Kewpa25Controller;
 use App\Http\Controllers\Kewpa26Controller;
 use App\Http\Controllers\Kewpa27Controller;
-
-# atk controller
 use App\Http\Controllers\Kewpa28Controller;
 use App\Http\Controllers\Kewpa29Controller;
 use App\Http\Controllers\Kewpa30Controller;
@@ -124,13 +101,6 @@ use App\Http\Controllers\PlpkPa0202Controller;
 use App\Http\Controllers\PlpkPa0203Controller;
 use App\Http\Controllers\PlpkPa0204Controller;
 use App\Http\Controllers\PlpkPa0205Controller;
-
-# umum controller
-use App\Http\Controllers\PlpkPa0206Controller;
-use App\Http\Controllers\PlpkPa0207Controller;
-use App\Http\Controllers\PlpkPa0208Controller;
-use App\Http\Controllers\PlpkPa0209Controller;
-use App\Http\Controllers\InfoPlpkPa0202Controller;
 
 # atk controller
 use App\Http\Controllers\Kewatk1Controller;

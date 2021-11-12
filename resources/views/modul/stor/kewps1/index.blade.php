@@ -1,4 +1,4 @@
-@extends('layouts.base') @section('content')
+@extends('layouts.base_stor') @section('content')
     <div id="show">
 
         <div class="card mt-4">
