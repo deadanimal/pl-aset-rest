@@ -92,7 +92,7 @@ return view('modul.aset_tak_ketara.kewatk15.edit', $context); }
         "url" => $url
       ];
 
-      return view('modul.borang_viewer', $context);
+      return view('modul.borang_viewer_atk', $context);
 
 
     }
