@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Kewatk8;
 use App\Models\Kewatk3a;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewatk8Controller extends Controller
 {
@@ -30,28 +31,12 @@ class Kewatk8Controller extends Controller
 
     public function store(Request $request)
     {
-      #dd(Kewatk3a::all());
-      #dd($request->no_siri_pendaftaran."\n");
-       
-      $kewatk8 = new Kewatk8;
-      $kewatk8->no_siri_pendaftaran=$request->no_siri_pendaftaran;      
-      $kewatk8->tajuk=Kewatk3a::where('no_siri_pendaftaran', $request->no_siri_pendaftaran)->first()->rajuk;
-      $kewatk8->tarikh_kerosakan=$request->tarikh_kerosakan;
-      $kewatk8->perihal_kerosakan=$request->perihal_kerosakan;
+      $kewatk8 = Kewatk8::create($request->all());
+      $kewatk8->status = "DERAF";
+      $kewatk8->pengadu = $request->user()->id;
 
-      $kewatk8->tarikh_aduan=date('Y-m-d H:i:s');;
-
-      $kewatk8->catatan=$request->catatan;
-      $kewatk8->jumlah_kos=$request->jumlah_kos;
-      $kewatk8->anggaran_kos=$request->anggaran_kos;
-      $kewatk8->syor_ulasan=$request->syor_ulasan;
-      $kewatk8->tarikh_pegawai=$request->tarikh_pegawai;
-      $kewatk8->status="DERAF";
-      $kewatk8->pengadu=$request->user()->name;
-      $kewatk8->pengguna_terakhir=$request->pengguna_terakhir;
-      $kewatk8->pegawai_aset=$request->pegawai_aset;
-      $kewatk8->ketua_jabatan=$request->ketua_jabatan;
       $kewatk8->save();
+       
 
       return redirect('/kewatk8');
     }
@@ -66,23 +51,7 @@ class Kewatk8Controller extends Controller
     public function update(Request $request, Kewatk8 $kewatk8)
     {
 
-
-      $kewatk8->tajuk=Kewatk3a::where('no_siri_pendaftaran', $request->no_siri_pendaftaran)->first()->rajuk;
-      $kewatk8->tarikh_kerosakan=$request->tarikh_kerosakan;
-      $kewatk8->perihal_kerosakan=$request->perihal_kerosakan;
-      $kewatk8->tarikh_aduan=$request->tarikh_aduan;
-      $kewatk8->catatan=$request->catatan;
-      $kewatk8->jumlah_kos=$request->jumlah_kos;
-      $kewatk8->anggaran_kos=$request->anggaran_kos;
-      $kewatk8->syor_ulasan=$request->syor_ulasan;
-      $kewatk8->tarikh_pegawai=$request->tarikh_pegawai;
-      $kewatk8->status=$request->status;
-      $kewatk8->pengadu=$request->pengadu;
-      $kewatk8->pengguna_terakhir=$request->pengguna_terakhir;
-      $kewatk8->pegawai_aset=$request->pegawai_aset;
-      $kewatk8->ketua_jabatan=$request->ketua_jabatan;
-      $kewatk8->no_siri_pendaftaran=$request->no_siri_pendaftaran;      
-      $kewatk8->save();
+      $kewatk8->update($request->all());
 
       return redirect('/kewatk8');
 
@@ -93,4 +62,24 @@ class Kewatk8Controller extends Controller
 
       return $kewatk8->delete();
     }
+
+    public function generatePdf(Request $request, Kewatk8 $kewatk8) {
+
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk8', [$kewatk8]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewatk8"
+      ];
+
+      return view('modul.borang_viewer_atk', $context);
+
+
+
+    }
+
+
 }

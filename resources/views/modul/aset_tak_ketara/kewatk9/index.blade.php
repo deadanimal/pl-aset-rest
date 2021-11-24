@@ -69,12 +69,12 @@
               @if (Auth::user()->jawatan=="superadmin")
               <a href="/kewatk9" onclick="updateStatus({{$k9}}, 'LULUS')"><i class="fas fa-check-circle"></i></a>
               <a href="/kewatk9" onclick="updateStatus({{$k9}}, 'DITOLAK')"><i class="fas fa-times-circle"></i></a>
-              <a href="" onclick="cetakPdf()"><i class="fas fa-print"></i></a>
+              <a href="/kewatk9pdf/{{$k9->id}}"><i class="fas fa-print"></i></a>
 
               @else
               <a href="/kewatk9" onclick="updateStatus({{$k9}}, 'HANTAR')"><i class="fas fa-arrow-up"></i></a>
-              <a href="#" onclick="updateData({{$k9}})"><i class="fas fa-pen"></i></a>
-              <a href="" onclick="cetakPdf()"><i class="fas fa-print"></i></a>
+              <a href="/kewatk9/{{$k9->id}}"><i class="fas fa-pen"></i></a>
+              <a href="/kewatk9pdf/{{$k9->id}}"><i class="fas fa-print"></i></a>
               <a href="/kewatk9" onclick="deleteData({{$k9}})"><i class="fas fa-trash"></i></a>
               @endif
             </td>
@@ -83,7 +83,7 @@
             <td scope="col">
               @if (Auth::user()->jawatan=="superadmin")
               <a href="/kewatk9" onclick="updateStatus({{$k9}}, 'SOKONG')"><i class="fas fa-arrow-up"></i></a>
-              <a href="/kewatk9pdf/"><i class="fas fa-print"></i></a>
+              <a href="/kewatk9pdf/{{$k9->id}}"><i class="fas fa-print"></i></a>
               <a href="#" onclick="updateData({{$k9}})"><i class="fas fa-pen"></i></a>
 
               @else
@@ -112,26 +112,34 @@
                </div>
              </div>
            </div>
+          <br>
           <div class="card-body pt-0">
 
+            <div class="row">
+            <div class="col-6">
             <label for="">Agensi</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="agensi" value="">
+              <input class="form-control mb-3" type="text" name="agensi" value="" required>
             </div>
+            </div>
+
+
+            <div class="col-6">
             <label for="">Bahagian</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="bahagian" value="">
+              <input class="form-control mb-3" type="text" name="bahagian" value="" required>
+            </div>
+            </div>
             </div>
           
-            <div id="info_kewatk9_create"></div>
 
             <a id="button_aset_diperiksa" class="btn btn-sm btn-primary text-white" onclick="tambahAsetDiperiksa()">Tambah Aset</a>
-
-            <hr>
 
             <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
           </div>
       </div>
+
+    <div id="info_kewatk9_create"></div>
   </form>
 </div>
 
@@ -152,17 +160,17 @@
 
             <label for="">Agensi</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="agensi" value="">
+              <input class="form-control mb-3" type="text" name="agensi" value="" required>
             </div>
             <label for="">Bahagian</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="bahagian" value="">
+              <input class="form-control mb-3" type="text" name="bahagian" value="" required>
             </div>
 
             <!-- hidden form -->
-            <input class="form-control mb-3" type="hidden" name="status" value="">
-            <input class="form-control mb-3" type="hidden" name="pegawai_pemeriksa1" value="">
-            <input class="form-control mb-3" type="hidden" name="pegawai_pemeriksa2" value="">
+            <input class="form-control mb-3" type="hidden" name="status" value="" required>
+            <input class="form-control mb-3" type="hidden" name="pegawai_pemeriksa1" value="" required>
+            <input class="form-control mb-3" type="hidden" name="pegawai_pemeriksa2" value="" required>
 
           
             <div id="info_kewatk9_update"></div>
@@ -190,6 +198,9 @@
     $( "#tambah" ).click(function() {
       $("#show").hide();
       $("#create").show();
+      tambahAsetDiperiksa();
+
+
     });
     function updateData(obj) {
       $("#show").hide();
@@ -335,13 +346,33 @@
     }
     function tambahAsetDiperiksa() {
      $("#info_kewatk9_create").append(
-          `<div class="row">
+
+       `
+          <div class="card mt-4" id="basic-info">
+              <div class="card-header">
+                 <div class="row">
+                   <div class="col">
+                     <h2 class="mb-0">Tambah Info Penyelenggaraan</h2>
+                   </div>
+                  <div class="text-end mr-2">
+                    <a class="align-self-end btn btn-sm btn-primary text-white" onclick="$(this).closest('.card').remove()">Buang</a>
+                  </div>
+
+                 </div>
+               </div>
+
+              <div class="card-body pt-0">
+
+              <br>
+
+
+          <div class="row">
               
             <div class="col">
               <label for="">No Siri Pendaftaran</label>
               <div class="input-group">
                 <select class="form-control mb-3" name="no_siri_pendaftaran[]">
-                <option value=""></option>
+                <option value="" required></option>
                 @foreach ($kewatk3a as $k3)
                 <option value="{{$k3->no_siri_pendaftaran}}">{{$k3->no_siri_pendaftaran}}</option>
                 @endforeach
@@ -352,7 +383,7 @@
               <label for="">lokasi</label>
               <div class="input-group">
                 <select id="no_kod_select" class="form-control mb-3" name="lokasi_sebenar[]">
-                <option value="" selected disabled hidden>Pilih Lokasi Sebenar</option>
+                <option value="" required selected disabled hidden>Pilih Lokasi Sebenar</option>
                 @foreach ($lokasi as $lok)
                 <option value="{{$lok->kod_lokasi}}">{{$lok->kod_lokasi}}</option>
                 @endforeach
@@ -363,7 +394,7 @@
               <label for="">Status</label>
               <div class="input-group">
                 <select class="form-control mb-3" name="status_harta[]">
-                <option value="" selected disabled hidden>Pilih Status</option>
+                <option value="" required selected disabled hidden>Pilih Status</option>
                 <option value="(A) Sempurna">(A) Sempurna</option>
                 <option value="(B) Tidak Sempurna">(B) Tidak Sempurna</option>
                 <option value="(C) Perlu Pembaikan">(C) Perlu Pembaikan</option>
@@ -376,8 +407,12 @@
             <div class="col">
               <label for="">Catatan</label>
               <div class="input-group">
-                <input class="form-control mb-3" type="text" name="catatan[]" value="">
+                <input class="form-control mb-3" type="text" name="catatan[]" value="" required>
               </div>
+            </div>
+
+            </div>
+            </div>
             </div>
          </div>`
      )
@@ -390,7 +425,7 @@
               <label for="">No Siri Pendaftaran</label>
               <div class="input-group">
                 <select class="form-control mb-3" name="no_siri_pendaftaran[]">
-                <option value=""></option>
+                <option value="" required></option>
                 @foreach ($kewatk3a as $k3)
                 <option value="{{$k3->no_siri_pendaftaran}}">{{$k3->no_siri_pendaftaran}}</option>
                 @endforeach
@@ -401,7 +436,7 @@
               <label for="">lokasi</label>
               <div class="input-group">
                 <select id="no_kod_select" class="form-control mb-3" name="lokasi_sebenar[]">
-                <option value="" selected disabled hidden>Pilih Lokasi Sebenar</option>
+                <option value="" required selected disabled hidden>Pilih Lokasi Sebenar</option>
                 @foreach ($lokasi as $lok)
                 <option value="{{$lok->kod_lokasi}}">{{$lok->kod_lokasi}}</option>
                 @endforeach
@@ -412,7 +447,7 @@
               <label for="">Status</label>
               <div class="input-group">
                 <select class="form-control mb-3" name="status_harta[]">
-                <option value="" selected disabled hidden>Pilih Status</option>
+                <option value="" required selected disabled hidden>Pilih Status</option>
                 <option value="(A) Sempurna">(A) Sempurna</option>
                 <option value="(B) Tidak Sempurna">(B) Tidak Sempurna</option>
                 <option value="(C) Perlu Pembaikan">(C) Perlu Pembaikan</option>
@@ -425,7 +460,7 @@
             <div class="col">
               <label for="">Catatan</label>
               <div class="input-group">
-                <input class="form-control mb-3" type="text" name="catatan[]" value="">
+                <input class="form-control mb-3" type="text" name="catatan[]" value="" required>
               </div>
             </div>
          </div>`

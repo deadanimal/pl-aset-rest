@@ -290,11 +290,13 @@ Route::get('umum', [OtherController::class, 'umum_index']);
 # kewatk1 utility
 Route::get('kewatk1pdf/{kewatk1}', [Kewatk1Controller::class, 'generatePdf']);
 Route::get('kewatk2pdf/{kewatk2}', [Kewatk2Controller::class, 'generatePdf']);
-Route::get('kewatk4pdf', [Kewatk4Controller::class, 'generatePdf']);
+Route::get('kewatk4pdf/{kewatk4}', [Kewatk4Controller::class, 'generatePdf']);
 Route::get('kewatk5pdf', [Kewatk5Controller::class, 'generatePdf']);
 Route::get('kewatk3apdf/{kewatk3}', [Kewatk3aController::class, 'generatePdf']);
 Route::get('kewatk3bpdf/{kewatk3}', [Kewatk3bController::class, 'generatePdf']);
 Route::get('kewatk7pdf/{kewatk7}', [Kewatk7Controller::class, 'generatePdf']);
+Route::get('kewatk8pdf/{kewatk8}', [Kewatk8Controller::class, 'generatePdf']);
+Route::get('kewatk9pdf/{kewatk9}', [Kewatk9Controller::class, 'generatePdf']);
 Route::get('kewatk10pdf/{tahun}', [Kewatk10Controller::class, 'generatePdf']);
 Route::get('kewatk11pdf/{tahun}', [Kewatk11Controller::class, 'generatePdf']);
 Route::get('kewatk12pdf', [Kewatk12Controller::class, 'generatePdf']);

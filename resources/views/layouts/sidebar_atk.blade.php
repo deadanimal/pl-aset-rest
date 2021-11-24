@@ -75,7 +75,7 @@
                           <li class="nav-item">
                               <a href="/kewatk5" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK5 </span>
-                              <span class="sidenav-normal"> Daftar Harta Intelek </span>
+                              <span class="sidenav-normal"> Senarai Harta Intelek </span>
                               </a>
                           </li>
                           <li class="nav-item">
