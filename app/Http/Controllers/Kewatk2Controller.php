@@ -7,7 +7,7 @@ use App\Models\InfoKewatk1;
 use App\Models\Kewatk2;
 use App\Models\Kewatk1;
 use Illuminate\Http\Request;
-use NcJoes\OfficeConverter\OfficeConverter;
+use Illuminate\Support\Facades\Http;
 
 class Kewatk2Controller extends Controller
 {
@@ -31,7 +31,7 @@ class Kewatk2Controller extends Controller
     {
       $kewatk2 = new Kewatk2;
       $kewatk2->tindakan_diterima=$request->tindakan_diterima;
-      $kewatk2->pegawai_penerima=$request->user()->name;
+      $kewatk2->pegawai_penerima=$request->user()->id;
       $kewatk2->pembekal=$request->pembekal;
       $kewatk2->no_rujukan_atk1=$request->no_rujukan_atk1;
       $kewatk2->jenis_penolakan=$request->jenis_penolakan;
@@ -63,9 +63,14 @@ class Kewatk2Controller extends Controller
     {
 
       $info_kewatk2 = InfoKewatk2::where('no_rujukan_atk2', $kewatk2->id)->get();
+
+      $no_rujukan = Kewatk1::where('id', $kewatk2->no_rujukan_atk1)->first();
       $context = [
         "info_kewatk2" => $info_kewatk2,
-        "rujukan_kewatk2" => $kewatk2->id
+        "rujukan_kewatk2" => $kewatk2->id,
+        "kewatk2" => $kewatk2,
+        "kewatk1" => Kewatk1::all(),
+        "info_kewatk1" => InfoKewatk1::where('no_rujukan', $no_rujukan->id)->get(),
       ];
       return view('modul.aset_tak_ketara.kewatk2.info_kewatk2', $context);
 
@@ -74,14 +79,9 @@ class Kewatk2Controller extends Controller
 
     public function update(Request $request, Kewatk2 $kewatk2)
     {
-      $kewatk2->tindakan_diterima=$request->tindakan_diterima;
-      $kewatk2->pembekal=$request->pembekal;
-      $kewatk2->no_rujukan_atk1=$request->no_rujukan_atk1;
-      $kewatk2->jenis_penolakan=$request->jenis_penolakan;
-      $kewatk2->status=$request->status;
-      $kewatk2->save();
+      $kewatk2->update($request->all());
 
-      return redirect('/kewatk2');
+      return redirect('/kewatk2/'.$kewatk2->id);
     }
 
     public function destroy(Kewatk2 $kewatk2)
@@ -90,18 +90,22 @@ class Kewatk2Controller extends Controller
       return $kewatk2->delete();
     }
 
-    public function generatePdf(Request $request, Kewatk2 $kewatk2) {
-      $kewatk1 = Kewatk1::where('id', $kewatk2->no_rujukan_atk1)->get();
-      $all_kewatk2 = Kewatk2::all();
-      $info_kewatk2 = InfoKewatk2::where('no_rujukan_atk2', $kewatk2->id)->get();
+    public function generatePdf(Request $request, Kewatk2 $kewatk2) 
+    {
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk2', [$kewatk2]);
 
-      $info_kewatk1 = array();
-      foreach ($info_kewatk2 as $ik2) {
-        $ik1 = InfoKewatk1::where('no_kod', $ik2->no_kod);
-        array_push($info_kewatk1, $ik1);
-      }
-      
-      echo "Not Implemented Yet";
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewatk1"
+      ];
+
+      return view('modul.borang_viewer_atk', $context);
+
+
 
     }
 

@@ -60,7 +60,7 @@
                           </li>
 
                           <li class="nav-item">
-                              <a href="/kewatk3a" class="nav-link">
+                              <a href="/kewatk3b" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK3(B) </span>
                               <span class="sidenav-normal"> Naik Taraf/Penambahan </span>
                               </a>
@@ -192,13 +192,74 @@
                               <span class="sidenav-normal"> Borang Lantikan </span>
                               </a>
                           </li>
+                          <li class="nav-item">
+                              <a href="/kewatk19" class="nav-link">
+                              <span class="sidenav-mini-icon"> ATK19 </span>
+                              <span class="sidenav-normal"> Pelupusan Harta Intelek </span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="/kewatk20" class="nav-link">
+                              <span class="sidenav-mini-icon"> ATK20 </span>
+                              <span class="sidenav-normal"> Sijil Penyaksian Pemusnahan </span>
+                              </a>
+                          </li>
+
+                          <li class="nav-item">
+                              <a href="/kewatk21" class="nav-link">
+                              <span class="sidenav-mini-icon"> ATK21 </span>
+                              <span class="sidenav-normal"> Sijil Pelupusan HI </span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="/kewatk22" class="nav-link">
+                              <span class="sidenav-mini-icon"> ATK22 </span>
+                              <span class="sidenav-normal"> Laporan Pelupusan HI </span>
+                              </a>
+                          </li>
                         </ul>
                     </div>
+                    <a class="nav-link" href="#navbar-kehilangan" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
 
+                        <i class="fas fa-list text-primary"></i>
+                        <span class="nav-link-text">Kehilangan</span>
+                    </a>
 
+                    <div class="collapse" id="navbar-kehilangan">
+                        <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                              <a href="/kewatk23" class="nav-link">
+                              <span class="sidenav-mini-icon"> ATK23 </span>
+                              <span class="sidenav-normal"> Laporan Awal Kehilangan </span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="/kewatk24" class="nav-link">
+                              <span class="sidenav-mini-icon"> ATK24 </span>
+                              <span class="sidenav-normal"> Borang Lantikan </span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="/kewatk25" class="nav-link">
+                              <span class="sidenav-mini-icon"> ATK25 </span>
+                              <span class="sidenav-normal"> Laporan Akhir Kehilangan </span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="/kewatk26" class="nav-link">
+                              <span class="sidenav-mini-icon"> ATK26 </span>
+                              <span class="sidenav-normal"> Sijil Hapus Kira </span>
+                              </a>
+                          </li>
 
-
-
+                          <li class="nav-item">
+                              <a href="/kewatk27" class="nav-link">
+                              <span class="sidenav-mini-icon"> ATK27 </span>
+                              <span class="sidenav-normal"> Laporan Hapus Kira </span>
+                              </a>
+                          </li>
+                        </ul>
+                    </div>
 
                 </li>
               </ul>
