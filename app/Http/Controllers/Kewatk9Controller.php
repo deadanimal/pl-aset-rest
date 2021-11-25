@@ -10,6 +10,7 @@ use App\Models\Kewatk9;
 use App\Models\KodLokasi;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewatk9Controller extends Controller
 {
@@ -54,23 +55,28 @@ class Kewatk9Controller extends Controller
 
     public function show(Kewatk9 $kewatk9)
     {
+        $kewatk3a = Kewatk3a::all();
+        $info_kewatk1 = InfoKewatk1::all();
+        $lokasi = KodLokasi::all();
 
-        return $kewatk9;
+        $context = [
+            "kewatk3a" => $kewatk3a,
+            "kewatk9" => $kewatk9,
+            "info_kewatk1" => $info_kewatk1,
+            "lokasi" => $lokasi,
+
+        ];
+
+        return view('modul.aset_tak_ketara.kewatk9.info_index', $context);
+
+
+
     }
 
     public function update(Request $request, Kewatk9 $kewatk9)
     {
-
-        $kewatk9->agensi = $request->agensi;
-        $kewatk9->bahagian = $request->bahagian;
-        $kewatk9->pegawai_pemeriksa1 = $request->pegawai_pemeriksa1;
-        $kewatk9->pegawai_pemeriksa2 = $request->pegawai_pemeriksa2;
-        $kewatk9->pegawai_aset = $request->pegawai_aset;
-        $kewatk9->save();
-
-        $this->updateInfoKewatk9($request, $kewatk9->id);
-
-        return redirect('/kewatk9');
+        $kewatk9->update($request->all());
+        return redirect('/kewatk9/'.$kewatk9->id);
     }
 
     public function destroy(Kewatk9 $kewatk9)
@@ -83,39 +89,35 @@ class Kewatk9Controller extends Controller
     {
 
         foreach (range(0, count($request->no_siri_pendaftaran) - 1) as $i) {
-            $temp = (object) [];
+            $temp = new InfoKewatk9;
             $temp->no_siri_pendaftaran = $request->no_siri_pendaftaran[$i];
             $temp->lokasi_sebenar = $request->lokasi_sebenar[$i];
             $temp->status_harta = $request->status_harta[$i];
             $temp->catatan = $request->catatan[$i];
             $temp->no_rujukan_atk9 = $kewatk9_id;
+            $temp->save();
 
-            (new InfoKewatk9Controller)->store($temp);
         }
 
     }
 
-    public function updateInfoKewatk9($request, $kewatk9_id)
-    {
+    public function generatePdf(Request $request, Kewatk9 $kewatk9) {
 
-        foreach (range(0, count($request->no_siri_pendaftaran) - 1) as $i) {
-            try {
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk9', [$kewatk9]);
 
-                $temp = (object) [];
-                $temp->no_siri_pendaftaran = $request->no_siri_pendaftaran[$i];
-                $temp->lokasi_sebenar = $request->lokasi_sebenar[$i];
-                $temp->status_harta = $request->status_harta[$i];
-                $temp->catatan = $request->catatan[$i];
-                $temp->no_rujukan_atk9 = $kewatk9_id;
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
 
-                (new InfoKewatk9Controller)->update($temp, $request->id[$i]);
+      $context = [
+        "url" => $url,
+        "title" => "Kewatk9"
+      ];
 
-            } catch (Exception $e) {
+      return view('modul.borang_viewer_atk', $context);
 
-                (new InfoKewatk9Controller)->store($temp);
 
-            }
-        }
 
     }
+
+
 }

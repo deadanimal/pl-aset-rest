@@ -31,6 +31,7 @@
           </div>
         </div>
       </div>
+    <br>
     <div class="card-body pt-0">
       <label for="">Laporan Pemeriksaan Harta</label>
         <div class="input-group">

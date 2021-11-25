@@ -8,7 +8,7 @@
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
               <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                <li class="breadcrumb-item"><a href="">Kewatk13</a></li>
+                <li class="breadcrumb-item"><a href="/kewatk13">Kewatk13</a></li>
               </ol>
             </nav>
           </div>
@@ -92,7 +92,8 @@
               
             </br>
 
-
+            <div class="row">
+            <div class="col-4">
             <label for="">No Siri Pendaftaran</label>
             <div class="input-group">
               <select class="form-control mb-3" name="no_siri_pendaftaran">
@@ -102,33 +103,50 @@
                 @endforeach
               </select>
             </div>
+            </div>
 
+            <div class="col-4">
             <label for="">Tarikh</label>
             <div class="input-group">
               <input class="form-control mb-3" type="date" name="tarikh" value="">
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Jenis Penyelenggaraan</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="jenis_penyelenggaraan" value="">
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Butir-butir kerja</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="butir_kerja" value="">
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Syarikat/Jabatan Penyelenggara</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="syarikat_penyelenggara" value="">
             </div>
 
+            </div>
+
+            <div class="col-4">
             <label for="">Kos (RM)</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="kos" value="">
             </div>
 
+            </div>
+            </div>
+
             
             <div id="info_kewatk13_create"></div>
 
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div>
   </form>
@@ -150,6 +168,8 @@
           </br>
           <div class="card-body pt-0"> 
 
+          <div class="row">
+          <div class="col-4">
           <label for="">No Siri Pendaftaran</label>
             <div class="input-group">
               <select class="form-control mb-3" name="no_siri_pendaftaran">
@@ -159,32 +179,49 @@
                 @endforeach
               </select>
             </div>
+            </div>
 
+            <div class="col-4">
             <label for="">Tarikh</label>
             <div class="input-group">
               <input class="form-control mb-3" type="date" name="tarikh" value="">
             </div>
+            </div>
+
+          <div class="col-4">
             <label for="">Jenis Penyelenggaraan</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="jenis_penyelenggaraan" value="">
             </div>
+            </div>
+
+          <div class="col-4">
             <label for="">Butir-butir kerja</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="butir_kerja" value="">
             </div>
+            </div>
+
+          <div class="col-4">
             <label for="">Syarikat/Jabatan Penyelenggara</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="syarikat_penyelenggara" value="">
             </div>
 
+            </div>
+
+
+          <div class="col-4">
             <label for="">Kos (RM)</label>
             <div class="input-group">
               <input class="form-control mb-3" type="text" name="kos" value="">
             </div>
 
+            </div>
+            </div>
             
             
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div>
   </form>

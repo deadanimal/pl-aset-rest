@@ -120,6 +120,8 @@ class Kewatk14Controller extends Controller
         "kos_hbi" => $kos_hbi,
         "kuantiti_total" => $kos_total,
         "kos_total" => $kos_total,
+        "tahun" => $tahun,
+        "agensi" => "Perbadanan Labuan"
       ];
 
 

@@ -21,6 +21,58 @@
 
 <div class="container-fluid mt--6">
 <div id="show">
+    <form method="POST" action="/kewatk4/{{$kewatk4->id}}" enctype="multipart/form-data">
+      @csrf
+      @method('PUT')
+      <div class="card mt-4" id="basic-info">
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Tambah Harta Bukan Intelek</h2>
+               </div>
+             </div>
+           </div>
+          </br>
+          <div class="card-body pt-0">
+            <div class="row">
+
+            <div class="col-4">
+            <label for="">Agensi</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="agensi" value="{{$kewatk4->agensi}}" required>
+            </div>
+            </div>
+
+            <div class="col-4">
+            <label for="">Bahagian</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="bahagian" value="{{$kewatk4->bahagian}}" required>
+            </div>
+            </div>
+
+            <div class="col-4">
+            <label for="">Kategori</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="kategori" value="{{$kewatk4->kategori}}" required>
+            </div>
+            </div>
+
+            <div class="col-4">
+            <label for="">Sub Kategori</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="sub_kategori" value="{{$kewatk4->sub_kategori}}" required>
+            </div>
+
+            </div>
+            </div>
+
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
+          </div>
+      </div>
+
+    <div id="info_kewatk4_create"></div>
+  </form>
+
   <div class="card mt-4">
     <div class="card-header">
         <div class="row">
@@ -91,52 +143,87 @@
            </div>
 
           </br>
+
           <div class="card-body pt-0">
+          <div class="row">
+          <div class="col-4">
           <label for="">Jenis</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="jenis" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tajuk</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="tajuk" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">No Pesanan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="no_pesanan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tarikh Terima</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tarikh_terima" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Kuantiti</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="kuantiti" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Harga</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="harga" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tempoh Dari</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tempoh_dari" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tempoh Hingga</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tempoh_hingga" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Catatan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="catatan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Pegawai Penempatan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="pegawai_penempatan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <div class="input-group">
             <input class="form-control mb-3" type="hidden" name="kewatk4_id" value="{{$kewatk4_id}}">
           </div>
+          </div>
+          </div>
 
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div>
   </form>
@@ -160,51 +247,86 @@
 
           </br>
           <div class="card-body pt-0">
+          <div class="row">
+          <div class="col-4">
           <label for="">Jenis</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="jenis" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tajuk</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="tajuk" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">No Pesanan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="no_pesanan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tarikh Terima</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tarikh_terima" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Kuantiti</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="kuantiti" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Harga</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="harga" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tempoh Dari</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tempoh_dari" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tempoh Hingga</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tempoh_hingga" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Catatan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="catatan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Pegawai Penempatan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="pegawai_penempatan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <div class="input-group">
             <input class="form-control mb-3" type="hidden" name="kewatk4_id" value="{{$kewatk4_id}}">
           </div>
+          </div>
+          </div>
 
-          <button class="btn btn-primary" type="submit">Simpan</button>
+
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div> 
   </form>

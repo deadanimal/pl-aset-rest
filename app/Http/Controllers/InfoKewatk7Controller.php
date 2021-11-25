@@ -15,19 +15,11 @@ class InfoKewatk7Controller extends Controller
 
     public function store(Request $request)
     {
-      $info_kewatk7 = new InfoKewatk7;
-      $info_kewatk7->tarikh_dipinjam=$request->tarikh_dipinjam;
-      $info_kewatk7->tarikh_pulang=$request->tarikh_pulang;
-      $info_kewatk7->status="DERAF";
-      $info_kewatk7->tarikh_dipulangkan=$request->tarikh_dipulangkan;
-      $info_kewatk7->tarikh_diterima=$request->tarikh_diterima;
-      $info_kewatk7->catatan=$request->catatan;
-      $info_kewatk7->no_siri_pendaftaran=$request->no_siri_pendaftaran;
-      $info_kewatk7->no_permohonan_atk7=$request->no_permohonan_atk7;
-      $info_kewatk7 -> save();
+      $kewatk7 = InfoKewatk7::create($request->all());
+      $kewatk7->status="TIDAK LULUS";
+      $kewatk7->save();
 
-
-      return $info_kewatk7;
+      return redirect('/kewatk7/'.$request->no_permohonan_atk7);
 
       
     }
@@ -40,21 +32,8 @@ class InfoKewatk7Controller extends Controller
 
     public function update(Request $request, InfoKewatk7 $info_kewatk7)
     {
-      $info_kewatk7->tarikh_dipinjam=$request->tarikh_dipinjam;
-      $info_kewatk7->tarikh_pulang=$request->tarikh_pulang;
-      $info_kewatk7->status=$request->status;
-      $info_kewatk7->tarikh_dipulangkan=$request->tarikh_dipulangkan;
-      $info_kewatk7->tarikh_diterima=$request->tarikh_diterima;
-      $info_kewatk7->catatan=$request->catatan;
-      $info_kewatk7->no_siri_pendaftaran=$request->no_siri_pendaftaran;
-      $info_kewatk7->no_permohonan_atk7=$request->no_permohonan_atk7;
-
-      $info_kewatk7 -> save();
-
-
-      return $info_kewatk7;
-
-
+      $info_kewatk7->update($request->all());
+      return redirect('/kewatk7/'.$request->no_permohonan_atk7);
     }
 
     public function destroy(InfoKewatk7 $info_kewatk7)

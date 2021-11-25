@@ -57,16 +57,18 @@ public function index()
     public function generatePdf(Request $request, $tahun) {
       $info_kewatk10 = InfoKewatk10::where('tahun_semasa', $tahun)->first();
       $info_kewatk10->tarikh = date_format($info_kewatk10->updated_at,"Y/m/d"); 
-      $response = Http::post('http://127.0.0.1:8001/cetak/atk11', [$info_kewatk10]);
+
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk11', [$info_kewatk10]);
 
       $res = $response->getBody()->getContents();
       $url = "data:application/pdf;base64,".$res;
 
       $context = [
-        "url" => $url
+        "url" => $url,
+        "title" => "Kewatk11"
       ];
 
-      return view('modul.borang_viewer', $context);
+      return view('modul.borang_viewer_atk', $context);
 
 
     }
