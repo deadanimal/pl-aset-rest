@@ -28,9 +28,7 @@ class Kewps1Controller extends Controller
      */
     public function create()
     {
-        return view('modul.stor.kewps1.create', [
-            'infokewps1' => InfoKewps1::where('new', 1)->get(),
-        ]);
+        return view('modul.stor.kewps1.create');
     }
 
     /**
@@ -42,16 +40,28 @@ class Kewps1Controller extends Controller
     public function store(Request $request)
     {
         $kewps1 = kewps1::create($request->all());
-
-        $info = InfoKewps1::where('new', 1)->get();
-        if ($info) {
-            InfoKewps1::where('new', 1)->update([
-                'kewps1_id' => $kewps1->id,
-                'new' => 0,
-            ]);
-        }
+        $this->storeAset($request, $kewps1->id);
         return redirect('/kewps1');
-
+    }
+    public function storeAset($request, $kewps1_id)
+    {
+        if ($request->perihal_barang) {
+            foreach (range(0, count($request->perihal_barang) - 1) as $i) {
+                $jumlah_harga = (int) $request->harga_seunit * (int) $request->kuantiti_diterima;
+                InfoKewps1::create([
+                    'no_kod' => $request->no_kod[$i],
+                    'kewps1_id' => $kewps1_id,
+                    'perihal_barang' => $request->perihal_barang[$i],
+                    'unit_pengukuran' => $request->unit_pengukuran[$i],
+                    'kuantiti_dipesan' => $request->kuantiti_dipesan[$i],
+                    'kuantiti_do' => $request->kuantiti_do[$i],
+                    'kuantiti_diterima' => $request->kuantiti_diterima[$i],
+                    'harga_seunit' => $request->harga_seunit[$i],
+                    'jumlah_harga' => $jumlah_harga,
+                    'catatan' => $request->catatan[$i],
+                ]);
+            }
+        }
     }
 
     /**
@@ -93,16 +103,22 @@ class Kewps1Controller extends Controller
     public function update(Request $request, kewps1 $kewps1)
     {
 
-        kewps1::where('id', $kewps1->id)->update([
-            'nama_pembekal' => $request->nama_pembekal,
-            'alamat_pembekal' => $request->alamat_pembekal,
-            'jenis_penerimaan' => $request->jenis_penerimaan,
-            'nombor_rujukan_pk' => $request->no_rujukan_pk,
-            'tarikh_pk' => $request->tarikh_pk,
-            'nombor_do' => $request->no_rujukan_do,
-            'tarikh_do' => $request->tarikh_do,
-            'maklumat_pengangkutan' => $request->maklumat_pengangkutan,
-        ]);
+        $kewps1->update($request->all());
+
+        if ($request->info_id) {
+            foreach (range(0, count($request->info_id) - 1) as $i) {
+                InfoKewps1::where('id', $request->info_id[$i])->update([
+                    'perihal_barang' => $request->perihal_barang[$i],
+                    'unit_pengukuran' => $request->unit_pengukuran[$i],
+                    'kuantiti_dipesan' => $request->kuantiti_dipesan[$i],
+                    'kuantiti_do' => $request->kuantiti_do[$i],
+                    'kuantiti_diterima' => $request->kuantiti_diterima[$i],
+                    'harga_seunit' => $request->harga_seunit[$i],
+                    'jumlah_harga' => $request->jumlah_harga[$i],
+                    'catatan' => $request->catatan[$i],
+                ]);
+            }
+        }
 
         return redirect('/kewps1');
 
@@ -140,9 +156,10 @@ class Kewps1Controller extends Controller
 
         $context = [
             "url" => $url,
+            "title" => "kewps1",
         ];
 
-        return view('modul.borang_viewer', $context);
+        return view('modul.borang_viewer_ps', $context);
 
     }
 

@@ -1,4 +1,4 @@
-@extends('layouts.base') @section('content')
+@extends('layouts.base_stor') @section('content')
     <div class="container">
         <form method="POST" action="/kewps2" enctype="multipart/form-data">
             @csrf

@@ -27,7 +27,7 @@ class CreateKewps3asTable extends Migration
             $table->string('tingkat_stok')->nullable();
             $table->string('petak_stok')->nullable();
             $table->string('kod_lokasi_stok')->nullable();
-            $table->foreignId('staff_id')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
     }

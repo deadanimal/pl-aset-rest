@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.base_stor')
 @section('content')
 
     <h6>Penerimaan Stor</h6>

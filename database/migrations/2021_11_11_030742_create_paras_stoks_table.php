@@ -16,11 +16,10 @@ class CreateParasStoksTable extends Migration
         Schema::create('paras_stoks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kewps3a_id');
-            $table->date('tahun_paras_stok')->nullable();
+            $table->integer('tahun_paras_stok')->nullable();
             $table->integer('maksimum_stok')->nullable();
             $table->integer('menokok_stok')->nullable();
             $table->integer('minimum_stok')->nullable();
-
             $table->timestamps();
         });
     }
