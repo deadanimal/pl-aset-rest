@@ -33,13 +33,13 @@
                           <li class="nav-item">
                               <a href="/kewatk1" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK1 </span>
-                              <span class="sidenav-normal"> Penerimaan Aset </span>
+                              <span class="sidenav-normal"> KEW.ATK 1 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk2" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK2 </span>
-                              <span class="sidenav-normal"> Penolakan Aset </span>
+                              <span class="sidenav-normal"> KEW.ATK 2 </span>
                               </a>
                           </li>
                         </ul>
@@ -55,33 +55,33 @@
                           <li class="nav-item">
                               <a href="/kewatk3a" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK3(A) </span>
-                              <span class="sidenav-normal"> Daftar Harta Intelek </span>
+                              <span class="sidenav-normal"> KEW.ATK 3A </span>
                               </a>
                           </li>
 
                           <li class="nav-item">
                               <a href="/kewatk3b" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK3(B) </span>
-                              <span class="sidenav-normal"> Naik Taraf/Penambahan </span>
+                              <span class="sidenav-normal"> KEW.ATK 3B </span>
                               </a>
                           </li>
 
                           <li class="nav-item">
                               <a href="/kewatk4" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK4 </span>
-                              <span class="sidenav-normal"> Harta Bukan Intelek </span>
+                              <span class="sidenav-normal"> KEW.ATK 4 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk5" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK5 </span>
-                              <span class="sidenav-normal"> Senarai Harta Intelek </span>
+                              <span class="sidenav-normal"> KEW.ATK 5 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk6" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK6 </span>
-                              <span class="sidenav-normal"> Laporan Harta Intelek  </span>
+                              <span class="sidenav-normal"> KEW.ATK 6 </span>
                               </a>
                           </li>
 
@@ -98,26 +98,26 @@
                           <li class="nav-item">
                               <a href="/kewatk7" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK7 </span>
-                              <span class="sidenav-normal"> Pergerakan dan Pinjaman </span>
+                              <span class="sidenav-normal"> KEW.ATK 7 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk8" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK8 </span>
-                              <span class="sidenav-normal"> Aduan Kerosakan </span>
+                              <span class="sidenav-normal"> KEW.ATK 8 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk9" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK9 </span>
-                              <span class="sidenav-normal"> Pemeriksaan Harta Intelek </span>
+                              <span class="sidenav-normal"> KEW.ATK 9 </span>
                               </a>
                           </li>
 
                           <li class="nav-item">
                               <a href="/kewatk10" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK10 </span>
-                              <span class="sidenav-normal"> Laporan Pemeriksaan HI </span>
+                              <span class="sidenav-normal"> KEW.ATK 10/11 </span>
                               </a>
                           </li>
                         </ul>
@@ -133,19 +133,19 @@
                           <li class="nav-item">
                               <a href="/kewatk12" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK12 </span>
-                              <span class="sidenav-normal"> Penyelenggaraan Berjadual </span>
+                              <span class="sidenav-normal"> KEW.ATK 12 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk13" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK13 </span>
-                              <span class="sidenav-normal"> Rekod Penyelenggaraan </span>
+                              <span class="sidenav-normal"> KEW.ATK 13 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk14" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK14 </span>
-                              <span class="sidenav-normal"> Laporan Penyelenggaraan </span>
+                              <span class="sidenav-normal"> KEW.ATK 14 </span>
                               </a>
                           </li>
                         </ul>
@@ -161,13 +161,13 @@
                           <li class="nav-item">
                               <a href="/kewatk15" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK15 </span>
-                              <span class="sidenav-normal"> Pindahan Aset </span>
+                              <span class="sidenav-normal"> KEW.ATK 15 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk16" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK16 </span>
-                              <span class="sidenav-normal"> Laporan Pindahan </span>
+                              <span class="sidenav-normal"> KEW.ATK 16 </span>
                               </a>
                           </li>
                         </ul>
@@ -183,38 +183,38 @@
                           <li class="nav-item">
                               <a href="/kewatk17" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK17 </span>
-                              <span class="sidenav-normal"> Perakuan Penilaian Semula </span>
+                              <span class="sidenav-normal"> KEW.ATK 17 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk18" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK18 </span>
-                              <span class="sidenav-normal"> Borang Lantikan </span>
+                              <span class="sidenav-normal"> KEW.ATK 18 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk19" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK19 </span>
-                              <span class="sidenav-normal"> Pelupusan Harta Intelek </span>
+                              <span class="sidenav-normal"> KEW.ATK 19 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk20" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK20 </span>
-                              <span class="sidenav-normal"> Sijil Penyaksian Pemusnahan </span>
+                              <span class="sidenav-normal"> KEW.ATK 20 </span>
                               </a>
                           </li>
 
                           <li class="nav-item">
                               <a href="/kewatk21" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK21 </span>
-                              <span class="sidenav-normal"> Sijil Pelupusan HI </span>
+                              <span class="sidenav-normal"> KEW.ATK 21 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk22" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK22 </span>
-                              <span class="sidenav-normal"> Laporan Pelupusan HI </span>
+                              <span class="sidenav-normal"> KEW.ATK 22 </span>
                               </a>
                           </li>
                         </ul>
@@ -230,32 +230,32 @@
                           <li class="nav-item">
                               <a href="/kewatk23" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK23 </span>
-                              <span class="sidenav-normal"> Laporan Awal Kehilangan </span>
+                              <span class="sidenav-normal"> KEW.ATK 23 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk24" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK24 </span>
-                              <span class="sidenav-normal"> Borang Lantikan </span>
+                              <span class="sidenav-normal"> KEW.ATK 24 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk25" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK25 </span>
-                              <span class="sidenav-normal"> Laporan Akhir Kehilangan </span>
+                              <span class="sidenav-normal"> KEW.ATK 25 </span>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/kewatk26" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK26 </span>
-                              <span class="sidenav-normal"> Sijil Hapus Kira </span>
+                              <span class="sidenav-normal"> KEW.ATK 26 </span>
                               </a>
                           </li>
 
                           <li class="nav-item">
                               <a href="/kewatk27" class="nav-link">
                               <span class="sidenav-mini-icon"> ATK27 </span>
-                              <span class="sidenav-normal"> Laporan Hapus Kira </span>
+                              <span class="sidenav-normal"> KEW.ATK 27 </span>
                               </a>
                           </li>
                         </ul>
