@@ -62,15 +62,12 @@
   <!-- Main content -->
   <div class="main-content" id="panel">
 
-    @include('layouts.navigation')
-
     <!-- Page content -->
     @yield('content')
 
     
   </div>
 
-  @include('layouts.footer')
   
   <!-- Argon Scripts -->
   <!-- Core -->
