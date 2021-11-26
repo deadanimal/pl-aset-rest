@@ -15,6 +15,7 @@ class CreateInfoKewps1sTable extends Migration
     {
         Schema::create('info_kewps1s', function (Blueprint $table) {
             $table->id();
+            $table->string('no_kod');
             $table->foreignId('kewps1_id')->nullable();
             $table->string('perihal_barang');
             $table->string('unit_pengukuran')->nullable();
@@ -24,7 +25,6 @@ class CreateInfoKewps1sTable extends Migration
             $table->string('harga_seunit')->nullable();
             $table->string('jumlah_harga')->nullable();
             $table->string('catatan')->nullable();
-            $table->boolean('new');
             $table->timestamps();
         });
     }

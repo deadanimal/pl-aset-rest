@@ -9,9 +9,4 @@ class InfoKewps1 extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-
-    // public function kewps1()
-    // {
-    //     $this->belongsTo(kewps1::class);
-    // }
 }

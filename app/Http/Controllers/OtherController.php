@@ -31,7 +31,8 @@ class OtherController extends Controller
 
     public function stor_index()
     {
-        return view('modul.stor.index');
+        return redirect('kewps1');
+        // return view('modul.stor.index');
     }
 
 }
