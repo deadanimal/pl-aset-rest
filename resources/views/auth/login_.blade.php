@@ -1,8 +1,6 @@
 @extends('layouts.baseUser')
 @section('content')
 
-
-
 <div id="loginPage" class="pt-7 container-fluid d-flex justify-content-center" style="height: 100vh;">
     <div class="card card-frame" style="width: 60%; height: 70%; margin: auto;">
         <div class="card-body">

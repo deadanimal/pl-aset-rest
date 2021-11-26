@@ -21,14 +21,6 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-use App\Http\Controllers\InfoKewatk1Controller;
-use App\Http\Controllers\InfoKewatk2Controller;
-use App\Http\Controllers\InfoKewatk4Controller;
-use App\Http\Controllers\InfoKewatk6Controller;
-use App\Http\Controllers\InfoKewatk7Controller;
-use App\Http\Controllers\InfoKewatk9Controller;
-use App\Http\Controllers\InfoKewatk10Controller;
-use App\Http\Controllers\InfoKewatk15Controller;
 use App\Http\Controllers\InfoKewpa1Controller;
 use App\Http\Controllers\InfoKewpa8Controller;
 use App\Http\Controllers\InfoKewpa9Controller;
@@ -57,23 +49,6 @@ use App\Http\Controllers\InfoPlpkPa0206Controller;
 use App\Http\Controllers\InfoPlpkPa0207Controller;
 use App\Http\Controllers\InfoPlpkPa0208Controller;
 use App\Http\Controllers\InfoPlpkPa0209Controller;
-use App\Http\Controllers\Kewatk1Controller;
-use App\Http\Controllers\Kewatk2Controller;
-use App\Http\Controllers\Kewatk3aController;
-use App\Http\Controllers\Kewatk3bController;
-use App\Http\Controllers\Kewatk4Controller;
-use App\Http\Controllers\Kewatk5Controller;
-use App\Http\Controllers\Kewatk6Controller;
-use App\Http\Controllers\Kewatk7Controller;
-use App\Http\Controllers\Kewatk8Controller;
-use App\Http\Controllers\Kewatk9Controller;
-use App\Http\Controllers\Kewatk10Controller;
-use App\Http\Controllers\Kewatk11Controller;
-use App\Http\Controllers\Kewatk12Controller;
-use App\Http\Controllers\Kewatk13Controller;
-use App\Http\Controllers\Kewatk14Controller;
-use App\Http\Controllers\Kewatk15Controller;
-use App\Http\Controllers\Kewatk16Controller;
 use App\Http\Controllers\Kewpa1Controller;
 use App\Http\Controllers\Kewpa2Controller;
 use App\Http\Controllers\Kewpa3AController;
@@ -158,6 +133,47 @@ use App\Http\Controllers\PlpkPa0202Controller;
 use App\Http\Controllers\PlpkPa0203Controller;
 use App\Http\Controllers\PlpkPa0204Controller;
 use App\Http\Controllers\PlpkPa0205Controller;
+
+# atk controller
+use App\Http\Controllers\Kewatk1Controller;
+use App\Http\Controllers\Kewatk2Controller;
+use App\Http\Controllers\Kewatk3aController;
+use App\Http\Controllers\Kewatk3bController;
+use App\Http\Controllers\Kewatk4Controller;
+use App\Http\Controllers\Kewatk5Controller;
+use App\Http\Controllers\Kewatk6Controller;
+use App\Http\Controllers\Kewatk7Controller;
+use App\Http\Controllers\Kewatk8Controller;
+use App\Http\Controllers\Kewatk9Controller;
+
+use App\Http\Controllers\Kewatk10Controller;
+use App\Http\Controllers\Kewatk11Controller;
+use App\Http\Controllers\Kewatk12Controller;
+use App\Http\Controllers\Kewatk13Controller;
+use App\Http\Controllers\Kewatk14Controller;
+use App\Http\Controllers\Kewatk15Controller;
+use App\Http\Controllers\Kewatk16Controller;
+use App\Http\Controllers\Kewatk17Controller;
+use App\Http\Controllers\Kewatk18Controller;
+use App\Http\Controllers\Kewatk19Controller;
+use App\Http\Controllers\Kewatk20Controller;
+use App\Http\Controllers\Kewatk21Controller;
+use App\Http\Controllers\Kewatk22Controller;
+use App\Http\Controllers\Kewatk23Controller;
+use App\Http\Controllers\Kewatk24Controller;
+use App\Http\Controllers\Kewatk25Controller;
+use App\Http\Controllers\Kewatk26Controller;
+use App\Http\Controllers\Kewatk27Controller;
+
+use App\Http\Controllers\InfoKewatk1Controller;
+use App\Http\Controllers\InfoKewatk2Controller;
+use App\Http\Controllers\InfoKewatk4Controller;
+use App\Http\Controllers\InfoKewatk6Controller;
+use App\Http\Controllers\InfoKewatk7Controller;
+use App\Http\Controllers\InfoKewatk9Controller;
+use App\Http\Controllers\InfoKewatk10Controller;
+use App\Http\Controllers\InfoKewatk15Controller;
+use App\Http\Controllers\InfoKewatk19Controller;
 
 # umum controller
 use App\Http\Controllers\UserController;
@@ -246,31 +262,46 @@ Route::resource('pengumuman', PengumumanController::class);
 Route::resource('pengguna', UserController::class);
 
 # atk routes
-Route::resource('kewatk1', Kewatk1Controller::class);
-Route::resource('kewatk2', Kewatk2Controller::class);
-Route::resource('kewatk3a', Kewatk3aController::class);
-Route::resource('kewatk3b', Kewatk3bController::class);
-Route::resource('kewatk4', Kewatk4Controller::class);
-Route::resource('kewatk5', Kewatk5Controller::class);
-Route::resource('kewatk6', Kewatk6Controller::class);
-Route::resource('kewatk7', Kewatk7Controller::class);
-Route::resource('kewatk8', Kewatk8Controller::class);
-Route::resource('kewatk9', Kewatk9Controller::class);
-Route::resource('kewatk10', Kewatk10Controller::class);
-Route::resource('kewatk11', Kewatk11Controller::class);
-Route::resource('kewatk12', Kewatk12Controller::class);
-Route::resource('kewatk13', Kewatk13Controller::class);
-Route::resource('kewatk14', Kewatk14Controller::class);
-Route::resource('kewatk15', Kewatk15Controller::class);
-Route::resource('kewatk16', Kewatk16Controller::class);
-Route::resource('info_kewatk1', InfoKewatk1Controller::class);
-Route::resource('info_kewatk2', InfoKewatk2Controller::class);
-Route::resource('info_kewatk4', InfoKewatk4Controller::class);
-Route::resource('info_kewatk6', InfoKewatk6Controller::class);
-Route::resource('info_kewatk7', InfoKewatk7Controller::class);
-Route::resource('info_kewatk9', InfoKewatk9Controller::class);
-Route::resource('info_kewatk10', InfoKewatk10Controller::class);
-Route::resource('info_kewatk15', InfoKewatk15Controller::class);
+
+Route::resource('kewatk1',Kewatk1Controller::class);
+Route::resource('kewatk2',Kewatk2Controller::class);
+Route::resource('kewatk3a',Kewatk3aController::class);
+Route::resource('kewatk3b',Kewatk3bController::class);
+Route::resource('kewatk4',Kewatk4Controller::class);
+Route::resource('kewatk5',Kewatk5Controller::class);
+Route::resource('kewatk6',Kewatk6Controller::class);
+Route::resource('kewatk7',Kewatk7Controller::class);
+Route::resource('kewatk8',Kewatk8Controller::class);
+Route::resource('kewatk9',Kewatk9Controller::class);
+Route::resource('kewatk10',Kewatk10Controller::class);
+Route::resource('kewatk11',Kewatk11Controller::class);
+Route::resource('kewatk12',Kewatk12Controller::class);
+Route::resource('kewatk13',Kewatk13Controller::class);
+Route::resource('kewatk14',Kewatk14Controller::class);
+Route::resource('kewatk15',Kewatk15Controller::class);
+Route::resource('kewatk16',Kewatk16Controller::class);
+Route::resource('kewatk17',Kewatk17Controller::class);
+Route::resource('kewatk18',Kewatk18Controller::class);
+Route::resource('kewatk19',Kewatk19Controller::class);
+Route::resource('kewatk20',Kewatk20Controller::class);
+Route::resource('kewatk21',Kewatk21Controller::class);
+Route::resource('kewatk22',Kewatk22Controller::class);
+Route::resource('kewatk23',Kewatk23Controller::class);
+Route::resource('kewatk24',Kewatk24Controller::class);
+Route::resource('kewatk25',Kewatk25Controller::class);
+Route::resource('kewatk26',Kewatk26Controller::class);
+Route::resource('kewatk27',Kewatk27Controller::class);
+
+Route::resource('info_kewatk1',InfoKewatk1Controller::class);
+Route::resource('info_kewatk2',InfoKewatk2Controller::class);
+Route::resource('info_kewatk4',InfoKewatk4Controller::class);
+Route::resource('info_kewatk6',InfoKewatk6Controller::class);
+Route::resource('info_kewatk7',InfoKewatk7Controller::class);
+Route::resource('info_kewatk9',InfoKewatk9Controller::class);
+Route::resource('info_kewatk10',InfoKewatk10Controller::class);
+Route::resource('info_kewatk15',InfoKewatk15Controller::class);
+Route::resource('info_kewatk19',InfoKewatk19Controller::class);
+
 
 # stor routes
 Route::group(['middleware' => 'auth'], function () {
@@ -325,11 +356,13 @@ Route::get('umum', [OtherController::class, 'umum_index']);
 # kewatk1 utility
 Route::get('kewatk1pdf/{kewatk1}', [Kewatk1Controller::class, 'generatePdf']);
 Route::get('kewatk2pdf/{kewatk2}', [Kewatk2Controller::class, 'generatePdf']);
-Route::get('kewatk4pdf', [Kewatk4Controller::class, 'generatePdf']);
+Route::get('kewatk4pdf/{kewatk4}', [Kewatk4Controller::class, 'generatePdf']);
 Route::get('kewatk5pdf', [Kewatk5Controller::class, 'generatePdf']);
 Route::get('kewatk3apdf/{kewatk3}', [Kewatk3aController::class, 'generatePdf']);
 Route::get('kewatk3bpdf/{kewatk3}', [Kewatk3bController::class, 'generatePdf']);
 Route::get('kewatk7pdf/{kewatk7}', [Kewatk7Controller::class, 'generatePdf']);
+Route::get('kewatk8pdf/{kewatk8}', [Kewatk8Controller::class, 'generatePdf']);
+Route::get('kewatk9pdf/{kewatk9}', [Kewatk9Controller::class, 'generatePdf']);
 Route::get('kewatk10pdf/{tahun}', [Kewatk10Controller::class, 'generatePdf']);
 Route::get('kewatk11pdf/{tahun}', [Kewatk11Controller::class, 'generatePdf']);
 Route::get('kewatk12pdf', [Kewatk12Controller::class, 'generatePdf']);
@@ -337,6 +370,12 @@ Route::get('kewatk13pdf/{kewatk13}', [Kewatk13Controller::class, 'generatePdf'])
 Route::get('kewatk14pdf/{tahun}', [Kewatk14Controller::class, 'generatePdf']);
 Route::get('kewatk15pdf/{kewatk15}', [Kewatk15Controller::class, 'generatePdf']);
 Route::get('kewatk16pdf/{tahun}', [Kewatk16Controller::class, 'generatePdf']);
+Route::get('kewatk17pdf/{kewatk17}', [Kewatk17Controller::class, 'generatePdf']);
+Route::get('kewatk18pdf/{kewatk18}', [Kewatk18Controller::class, 'generatePdf']);
+Route::get('kewatk19pdf/{kewatk19}', [Kewatk19Controller::class, 'generatePdf']);
+Route::get('kewatk23pdf/{kewatk23}', [Kewatk23Controller::class, 'generatePdf']);
+Route::get('kewatk24pdf/{kewatk24}', [Kewatk24Controller::class, 'generatePdf']);
+Route::get('kewatk25pdf/{kewatk25}', [Kewatk25Controller::class, 'generatePdf']);
 
 # stor utility
 Route::get('/kewps1pdf/{kewps1}', [Kewps1Controller::class, 'generatePdf']);

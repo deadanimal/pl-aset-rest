@@ -1,35 +1,48 @@
-@extends('layouts.base') @section('content')
-<div id="show">
-
-  <div class="card mt-4">
-    <div class="card-header text-end" style="
-    background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-    ">
-      <div class="row">
-        <div class="col text-start">
-          <h6 class="text-white">KEWATK 3B</h6>
-        </div>
-        <div class="col text-end">
-          <button class="btn btn-sm btn-primary" id="tambah"><i class="fas fa-plus"></i></button>
-
+@extends('layouts.base_atk') @section('content')
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Perbadanan Labuan</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
+                <li class="breadcrumb-item"><a href="">Kewatk3b</a></li>
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
-    </br>
-    <div class="card-body pt-0">
+</div>
 
-      <table class="table" id="table">
+
+<div class="container-fluid mt--6">
+<div id="show">
+
+  <div class="card mt-4">
+    <div class="card-header">
+        <div class="row">
+          <div class="col">
+            <h2 class="mb-0">Naik Taraf Aset</h2>
+          </div>
+          <div class="text-end mr-2">
+            <button class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</button>
+          </div>
+        </div>
+      </div>
+
+    <div class="table-responsive py-4">
+
+      <table class="table table-custom-simplified table-flush" id="table">
         <thead class="thead-light">
           <tr>
+
+            <th scope="col">Bil</th>
             <th scope="col">Kos</th>
             <th scope="col">Nilai Semasa</th>
             <th scope="col">Tempoh Jaminan</th>
-            <th scope="col">Status</th>
-            <th scope="col">Tarikh Dipasang</th>
-            <th scope="col">Tarikh Dikeluarkan</th>
-            <th scope="col">Tarikh Dilupus Hapus</th>
-            <th scope="col">Catatan</th>
-            <th scope="col">Staff Id</th>
             <th scope="col">No Siri Pendaftaran</th>
             <th scope="col">Tindakan</th>
           </tr>
@@ -37,41 +50,25 @@
         <tbody>
           @foreach ($kewatk3b as $kewatk3b)
           <tr>
+
+            <td scope="col">{{$loop->index + 1}}</td>
             <td scope="col">{{$kewatk3b->kos}}</td>
             <td scope="col">{{$kewatk3b->nilai_semasa}}</td>
             <td scope="col">{{$kewatk3b->tempoh_jaminan}}</td>
-            <td scope="col">{{$kewatk3b->status}}</td>
-            <td scope="col">{{$kewatk3b->tarikh_dipasang}}</td>
-            <td scope="col">{{$kewatk3b->tarikh_dikeluarkan}}</td>
-            <td scope="col">{{$kewatk3b->tarikh_dilupus_hapus}}</td>
-            <td scope="col">{{$kewatk3b->catatan}}</td>
-            <td scope="col">{{$kewatk3b->staff_id}}</td>
             <td scope="col">{{$kewatk3b->no_siri_pendaftaran}}</td>
 
 
 
-            @if ($kewatk3b->status=="DRAFT") 
-              <td scope="col"><span class="badge bg-warning">{{$kewatk3b->status}}</span></th>
-            @elseif ($kewatk3b->status=="HANTAR") 
-              <td scope="col"><span class="badge bg-primary">{{$kewatk3b->status}}</span></th>
-            @elseif ($kewatk3b->status=="LULUS") 
-              <td scope="col"><span class="badge bg-success">{{$kewatk3b->status}}</span></th>
-            @elseif ($kewatk3b->status=="DITOLAK") 
-              <td scope="col"><span class="badge bg-danger">{{$kewatk3b->status}}</span></th>
-            @endif
-            
             <td scope="col">
               @if (Auth::user()->jawatan=="superadmin")
               <a href="/kewatk3b" onclick="updateStatus({{$kewatk3b}}, 'LULUS')"><i class="fas fa-check-circle"></i></a>
               <a href="/kewatk3b" onclick="updateStatus({{$kewatk3b}}, 'DITOLAK')"><i class="fas fa-times-circle"></i></a>
               <a href="/kewatk3bpdf/"><i class="fas fa-print"></i></a>
               @else
-              <a href="/kewatk3b" onclick="updateStatus({{$kewatk3b}}, 'HANTAR')"><i class="fas fa-arrow-up"></i></a>
               
               <!-- disable edit after submit -->              
               @if($kewatk3b->status=="HANTAR")
               @else
-              <a href="/kewatk3b/{{$kewatk3b->id}}"><i class="fas fa-file"></i></a>
               <a href="#" onclick="updateData({{$kewatk3b}})"><i class="fas fa-pen"></i></a>
               @endif
 
@@ -92,57 +89,103 @@
   <form method="POST" action="/kewatk3b" enctype="multipart/form-data">
       @csrf
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">KEWATK 3B</h6>
-          </div>
-          </br>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Tambah Naik Taraf Aset</h2>
+               </div>
+             </div>
+           </div>
+
+          <br>
           <div class="card-body pt-0">
+            <div class="row">
+            <div class="col-4">
             <label for="">Kos</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="kos" value="">
+              <input class="form-control mb-3" type="text" name="kos" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Nilai Semasa</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="nilai_semasa" value="">
+              <input class="form-control mb-3" type="text" name="nilai_semasa" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Tempoh Jaminan</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="tempoh_jaminan" value="">
+              <input class="form-control mb-3" type="text" name="tempoh_jaminan" value="" required>
             </div>
-            <label for="">Status</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="status" value="">
             </div>
+
+            <div class="col-4">
             <label for="">Tarikh Dipasang</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="tarikh_dipasang" value="">
+              <input class="form-control mb-3" type="date" name="tarikh_dipasang" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Tarikh Dikeluarkan</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="tarikh_dikeluarkan" value="">
+              <input class="form-control mb-3" type="date" name="tarikh_dikeluarkan" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Tarikh Dilupus Hapus</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="tarikh_dilupus_hapus" value="">
+              <input class="form-control mb-3" type="date" name="tarikh_dilupus_hapus" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Catatan</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="catatan" value="">
+              <input class="form-control mb-3" type="text" name="catatan" value="" required>
             </div>
-            <label for="">Staff Id</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="staff_id" value="">
             </div>
-            <label for="">No Siri Pendaftaran</label>
+
+            <div class="col-4">
+            <label for="">Status</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="no_siri_pendaftaran" value="">
+              <select class="form-control mb-3" name="status" required>
+
+                <option value="" selected disabled hidden>Pilih Status</option>
+                <option value="Asal">Asal</option>
+                <option value="Tambah">Tambah</option>
+                <option value="Naik Taraf">Naik Taraf</option>
+                <option value="Ganti">Ganti</option>
+              </select>
+
+            </div>
+            </div>
+
+
+            <div class="col-4">
+            <div class="input-group">
+              <label for="">No Siri Pendaftaran</label>
+              <div class="input-group">
+                <select class="form-control mb-3" name="no_siri_pendaftaran" required>
+                  <option value="" selected disabled hidden>Pilih No Siri</option>
+                  @foreach ($kewatk3a as $kew3)
+                  <option value="{{$kew3->no_siri_pendaftaran}}">{{$kew3->no_siri_pendaftaran}}</option>
+                  @endforeach
+                </select>
+              </div>
+
+
+            </div>
+
+            </div>
             </div>
             
             <div id="info_kewatk3b_create"></div>
 
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div>
   </form>
@@ -153,58 +196,100 @@
       @csrf
       @method('PUT')
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="          
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">KEWATK 3B</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Sunting Naik Taraf Aset</h2>
+               </div>
+             </div>
+           </div>
           </br>
-          <div class="card-body pt-0"> <label for="">Tindakan Diterima</label>
+          <div class="card-body pt-0"> 
+            <div class="row">
+            <div class="col-4">
             <label for="">Kos</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="kos" value="">
+              <input class="form-control mb-3" type="text" name="kos" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Nilai Semasa</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="nilai_semasa" value="">
+              <input class="form-control mb-3" type="text" name="nilai_semasa" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Tempoh Jaminan</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="tempoh_jaminan" value="">
+              <input class="form-control mb-3" type="text" name="tempoh_jaminan" value="" required>
             </div>
-            <label for="">Status</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="status" value="">
             </div>
+
+            <div class="col-4">
             <label for="">Tarikh Dipasang</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="tarikh_dipasang" value="">
+              <input class="form-control mb-3" type="date" name="tarikh_dipasang" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Tarikh Dikeluarkan</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="tarikh_dikeluarkan" value="">
+              <input class="form-control mb-3" type="date" name="tarikh_dikeluarkan" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Tarikh Dilupus Hapus</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="tarikh_dilupus_hapus" value="">
+              <input class="form-control mb-3" type="date" name="tarikh_dilupus_hapus" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Catatan</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="catatan" value="">
+              <input class="form-control mb-3" type="text" name="catatan" value="" required>
             </div>
-            <label for="">Staff Id</label>
+            </div>
+
+            <div class="col-4">
+            <label for="">Status</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="staff_id" value="">
+              <select class="form-control mb-3" name="status" required>
+
+                <option value="" selected disabled hidden>Pilih Status</option>
+                <option value="Asal">Asal</option>
+                <option value="Tambah">Tambah</option>
+                <option value="Naik Taraf">Naik Taraf</option>
+                <option value="Ganti">Ganti</option>
+              </select>
+
             </div>
+            </div>
+
+
+            <div class="col-4">
             <label for="">No Siri Pendaftaran</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="no_siri_pendaftaran" value="">
+              <select class="form-control mb-3" name="no_siri_pendaftaran" required>
+
+                <option value="" selected disabled hidden>Pilih No Siri</option>
+                @foreach ($kewatk3a as $kew3)
+                <option value="{{$kew3->no_siri_pendaftaran}}">{{$kew3->no_siri_pendaftaran}}</option>
+                @endforeach
+              </select>
             </div>
-            
-          <button class="btn btn-primary" type="submit">Simpan</button>
+
           </div>
+
       </div>
+
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
   </form>
+</div>
 </div>
 
 
@@ -227,31 +312,16 @@
 
       $("#show").hide();
 
-      $("#updateForm input[name=no_siri_pendaftaran]").val(obj.no_siri_pendaftaran);
-      $("#updateForm input[name=agensi]").val(obj.agensi);
-      $("#updateForm input[name=bahagian]").val(obj.bahagian);
-      $("#updateForm input[name=kod_nasional]").val(obj.kod_nasional);
-      $("#updateForm input[name=kategori]").val(obj.kategori);
-      $("#updateForm input[name=sub_kategori]").val(obj.sub_kategori);
-      $("#updateForm input[name=jenis]").val(obj.jenis);
-      $("#updateForm input[name=rajuk]").val(obj.rajuk);
-      $("#updateForm input[name=nombor_dalam_negara]").val(obj.nombor_dalam_negara);
-      $("#updateForm input[name=nombor_luar_negara]").val(obj.nombor_luar_negara);
-      $("#updateForm input[name=tarikh_lulus_luput_dalam]").val(obj.tarikh_lulus_luput_dalam);
-      $("#updateForm input[name=tarikh_lulus_luput_luar]").val(obj.tarikh_lulus_luput_luar);
-      $("#updateForm input[name=tarikh_permohonan_dalam]").val(obj.tarikh_permohonan_dalam);
-      $("#updateForm input[name=tarikh_permohonan_luar]").val(obj.tarikh_permohonan_luar);
-      $("#updateForm input[name=tarikh_cipta_dalam]").val(obj.tarikh_cipta_dalam);
-      $("#updateForm input[name=usia_guna]").val(obj.usia_guna);
-      $("#updateForm input[name=spesifikasi]").val(obj.spesifikasi);
-      $("#updateForm input[name=harga_perolehan_asal]").val(obj.harga_perolehan_asal);
-      $("#updateForm input[name=tarikh_dibeli]").val(obj.tarikh_dibeli);
-      $("#updateForm input[name=no_pesanan]").val(obj.no_pesanan);
+      $("#updateForm input[name=kos]").val(obj.kos);
+      $("#updateForm input[name=nilai_semasa]").val(obj.nilai_semasa);
       $("#updateForm input[name=tempoh_jaminan]").val(obj.tempoh_jaminan);
-      $("#updateForm input[name=nama_pembekal]").val(obj.nama_pembekal);
-      $("#updateForm input[name=alamat_pembekal]").val(obj.alamat_pembekal);
+      $("#updateForm input[name=tarikh_dipasang]").val(obj.tarikh_dipasang);
+      $("#updateForm input[name=tarikh_dikeluarkan]").val(obj.tarikh_dikeluarkan);
+      $("#updateForm input[name=tarikh_dilupus_hapus]").val(obj.tarikh_dilupus_hapus);
+      $("#updateForm input[name=catatan]").val(obj.catatan);
       $("#updateForm input[name=staff_id]").val(obj.staff_id);
-      $("#updateForm input[name=ketua_jabatan]").val(obj.ketua_jabatan);      
+      $("#updateForm select[name=no_siri_pendaftaran]").val(obj.no_siri_pendaftaran);      
+      $("#updateForm select[name=status]").val(obj.status);      
 
       $("#updateForm action").val("/kewatk3b/" + obj.id);      
       $("#updateForm").attr('action', "/kewatk3b/" + obj.id)
@@ -263,13 +333,11 @@
       $("#updateForm input[name=kos]").val(obj.kos);
       $("#updateForm input[name=nilai_semasa]").val(obj.nilai_semasa);
       $("#updateForm input[name=tempoh_jaminan]").val(obj.tempoh_jaminan);
-      $("#updateForm input[name=status]").val(obj.status);
       $("#updateForm input[name=tarikh_dipasang]").val(obj.tarikh_dipasang);
       $("#updateForm input[name=tarikh_dikeluarkan]").val(obj.tarikh_dikeluarkan);
       $("#updateForm input[name=tarikh_dilupus_hapus]").val(obj.tarikh_dilupus_hapus);
       $("#updateForm input[name=catatan]").val(obj.catatan);
-      $("#updateForm input[name=staff_id]").val(obj.staff_id);
-      $("#updateForm input[name=no_siri_pendaftaran]").val(obj.no_siri_pendaftaran);      
+      $("#updateForm select[name=no_siri_pendaftaran]").val(obj.no_siri_pendaftaran);      
 
       $("#updateForm action").val("/kewatk3b/" + obj.id);      
       $("#updateForm").attr('action', "/kewatk3b/" + obj.id)
@@ -329,28 +397,28 @@
             <div class="col">
               <label for="">Kuantiti Ditolak</label>
               <div class="input-group">
-                <input class="form-control mb-3" type="text" name="kuantiti_ditolak[]" value="">
+                <input class="form-control mb-3" type="text" name="kuantiti_ditolak[]" value="" required>
               </div>
             </div>
 
             <div class="col">
               <label for="">Kuantiti Kurang Lebih</label>
               <div class="input-group">
-                <input class="form-control mb-3" type="text" name="kuantiti_kurang_lebih[]" value="">
+                <input class="form-control mb-3" type="text" name="kuantiti_kurang_lebih[]" value="" required>
               </div>
             </div>
 
             <div class="col">
               <label for="">Sebab Penolakan</label>
               <div class="input-group">
-                <input class="form-control mb-3" type="text" name="sebab_penolakan[]" value="">
+                <input class="form-control mb-3" type="text" name="sebab_penolakan[]" value="" required>
               </div>
             </div>
 
             <div class="col">
               <label for="">Catatan</label>
               <div class="input-group">
-                <input class="form-control mb-3" type="text" name="catatan[]" value="">
+                <input class="form-control mb-3" type="text" name="catatan[]" value="" required>
               </div>
             </div>
 

@@ -69,6 +69,8 @@
 
     
   </div>
+
+  @include('layouts.footer')
   
   <!-- Argon Scripts -->
   <!-- Core -->

@@ -143,6 +143,7 @@
     $( "#tambah" ).click(function() {
       $("#show").hide();
       $("#create").show();
+      tambahAsetDipindah();
     });
 
 
@@ -176,7 +177,7 @@
             <label for="">No Siri Pendaftaran</label>
             <div class="input-group">
               <select class="form-control mb-3" name="no_siri_pendaftaran[]">
-              <option value="" selected disabled hidden>Pilih Aset</option>
+              <option value="" required selected disabled hidden>Pilih Aset</option>
               @foreach ($kewatk3a as $k3)
               <option value="{{$k3->no_siri_pendaftaran}}">{{$k3->no_siri_pendaftaran}}</option>
               @endforeach
@@ -187,7 +188,7 @@
           <div class="col">
             <label for="">Catatan</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="catatan[]" value="">
+              <input class="form-control mb-3" type="text" name="catatan[]" value="" required>
             </div>
           </div>
 
@@ -195,7 +196,7 @@
             <label for="">Jenis Pindahan</label>
             <div class="input-group">
               <select class="form-control mb-3" name="jenis_pindahan[]">
-              <option value="" selected disabled hidden>Pilih jenis pindahan</option>
+              <option value="" required selected disabled hidden>Pilih jenis pindahan</option>
               <option value="Terimaan">Terimaan</option>
               <option value="Pengeluaran">Pengeluaran</option>
             </select>

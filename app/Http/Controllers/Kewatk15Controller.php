@@ -89,10 +89,11 @@ return view('modul.aset_tak_ketara.kewatk15.edit', $context); }
       $url = "data:application/pdf;base64,".$res;
 
       $context = [
-        "url" => $url
+        "url" => $url,
+        "title" => "Kewatk15"
       ];
 
-      return view('modul.borang_viewer', $context);
+      return view('modul.borang_viewer_atk', $context);
 
 
     }
