@@ -287,7 +287,7 @@
                         <a class="nav-link" href="#navbar-kehilangan" data-toggle="collapse" role="button"
                             aria-expanded="true" aria-controls="navbar-dashboards">
 
-                            <i class="fas fa-door-open text-primary"></i>
+                            <i class="fas fa-file-excel text-primary"></i>
                             <span class="nav-link-text">Kehilangan</span>
                         </a>
                         <div class="collapse" id="navbar-kehilangan">

@@ -101,10 +101,10 @@ class Kewps32Controller extends Controller
     public function generatePdf(Kewps32 $kewps32)
     {
 
-        $kewps32->max = $kewps32->kewps3a->parasstok[0]->maksimum_stok;
+        $kewps32->max = 1;
 
         $kewps32->tarikh_peroleh = $kewps32->kewps3a->created_at->format('d/m/Y');
-        $kewps32->harga_peroleh = $kewps32->infokewps1->jumlah_harga;
+        $kewps32->harga_peroleh = $kewps32->infokewps1->harga_seunit;
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps32', [$kewps32]);
 
