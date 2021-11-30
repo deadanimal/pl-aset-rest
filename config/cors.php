@@ -23,12 +23,21 @@ return [
 
     'allowed_origins_patterns' => ['*'],
 
-    'allowed_headers' => ['*'],
 
     'exposed_headers' => ['*'],
 
     'max_age' => 0,
 
     'supports_credentials' => false,
+
+    'allowed_headers' => [
+        '*',
+        'Content-Type',
+        'X-Auth-Token',
+        'Origin',
+        'Authorization',
+        'Access-Control-Allow-Origin',
+    ],
+
 
 ];
