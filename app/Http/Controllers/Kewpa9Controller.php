@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kewpa9;
+use App\Models\InfoKewpa9;
 use Illuminate\Http\Request;
 
 class Kewpa9Controller extends Controller
@@ -14,19 +15,22 @@ class Kewpa9Controller extends Controller
 
     public function store(Request $request)
     {
-      
-      $kewpa9 = new Kewpa9;
-      $kewpa9 -> no_permohonan = $request->no_permohonan;
-      $kewpa9 -> pemohon_id = $request->pemohon_id;
-      $kewpa9 -> tujuan = $request->tujuan;
-      $kewpa9 -> tempat_digunakan = $request->tempat_digunakan;
-      $kewpa9 -> pengeluar_id = $request->pengeluar_id;
-      $kewpa9 -> pemulang_id = $request->pemulang_id;
-      $kewpa9 -> pelulus_id = $request->pelulus_id;
-      $kewpa9 -> penerima_id = $request->penerima_id;
-      $kewpa9 -> save();
+      // save main model
+      $kewpa9 = Kewpa9::create($request->all());
 
-      return $kewpa9;
+      // save info model
+      foreach($request->info_kewpa9 as $ik9) {
+        $info_kewpa9 = InfoKewpa9::create($ik9); 
+        $info_kewpa9->kewpa9_id = $kewpa9->id;
+        $info_kewpa9->save();
+      }
+
+      $data = [
+        "kewpa9" => $kewpa9,
+        "msg" => "kewpa9 and info_kewpa9 successfully created"
+      ];
+      
+      return $data;
     }
 
     public function show(Kewpa9 $kewpa9)
@@ -36,16 +40,20 @@ class Kewpa9Controller extends Controller
 
     public function update(Request $request, Kewpa9 $kewpa9)
     {
+      $kewpa9->update($request->all());
 
-      $kewpa9 -> no_permohonan = $request->no_permohonan;
-      $kewpa9 -> pemohon_id = $request->pemohon_id;
-      $kewpa9 -> tujuan = $request->tujuan;
-      $kewpa9 -> tempat_digunakan = $request->tempat_digunakan;
-      $kewpa9 -> pengeluar_id = $request->pengeluar_id;
-      $kewpa9 -> pemulang_id = $request->pemulang_id;
-      $kewpa9 -> pelulus_id = $request->pelulus_id;
-      $kewpa9 -> penerima_id = $request->penerima_id;
-      $kewpa9 -> save();
+      foreach($request->info_kewpa9 as $ik9) {
+        if (isset($ik9->id)) {
+          $temp = InfoKewpa9::where('id', $ik9)->first();
+          $temp->update($ik9);
+
+        } else {
+          $temp2 = InfoKewpa9::create($ik9);
+          $temp2->kewpa9_id = $kewpa9->id;
+          $temp2->save();
+        }
+
+      }
 
       return $kewpa9;
 

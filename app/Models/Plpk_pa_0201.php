@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Plpk_pa_0201 extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 }
