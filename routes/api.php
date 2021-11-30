@@ -8,8 +8,11 @@ use App\Http\Controllers\PlpkPa0201Controller;
 
 
 #KEWPA Controller 
+Route::middleware(['cors'])->group(function () {
+  
+  Route::apiResource('kewps8', Kewps8APIController::class);
+  Route::apiResource('kewpa9', Kewpa9Controller::class);
+  Route::apiResource('kewpa10a', Kewpa10Controller::class);
+  Route::apiResource('kewpa10b', PlpkPa0201Controller::class);
 
-Route::apiResource('kewps8', Kewps8APIController::class);
-Route::apiResource('kewpa9', Kewpa9Controller::class);
-Route::apiResource('kewpa10a', Kewpa10Controller::class);
-Route::apiResource('kewpa10b', PlpkPa0201Controller::class);
+});
