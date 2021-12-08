@@ -24,7 +24,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">??</h2>
+                            <h2 class="mb-0">Sijil Hapus Kira Aset</h2>
                         </div>
                     </div>
                 </div>

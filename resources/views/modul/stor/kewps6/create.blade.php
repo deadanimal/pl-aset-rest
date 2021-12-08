@@ -48,12 +48,13 @@
 
                         <div class="col-3">
                             <label for="">Agensi</label>
-                            <input class="form-control mb-3" type="text" name="agensi" value="Agensi Perbadanan Labuan">
+                            <input type="text" name="agensi" class="form-control mb-3" value="Perbadanan Labuan">
                         </div>
                         <div class="col-3">
                             <label for="">Kategori Stor</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="kategori_stor" value="">
+                                <input class="form-control mb-3" type="text" name="kategori_stor" value=""
+                                    id="k6_nama_stor">
                             </div>
                         </div>
                         <div class="col-3">
@@ -113,6 +114,23 @@
         </form>
     </div>
 
-
-
+    <script>
+        $("#k6_k3a_id").change(function() {
+            var k6_k3a_id = this.value;
+            $.ajax({
+                type: 'get',
+                url: '{!! URL::to('/kewps6_dinamic') !!}',
+                data: {
+                    'id': k6_k3a_id
+                },
+                success: function(data) {
+                    console.log(data.nama_stor);
+                    $("#k6_nama_stor").val(data.nama_stor);
+                },
+                error: function() {
+                    console.log('success');
+                },
+            });
+        });
+    </script>
 @endsection

@@ -362,6 +362,9 @@ Route::group(['middleware' => 'auth'], function () {
     //for selection
     Route::get('kewps2_dinamic', [Kewps2Controller::class, 'getDinamic']);
     Route::get('kewps3_dinamic', [Kewps3aController::class, 'getDinamic']);
+    Route::get('kewps13_dinamic', [Kewps13Controller::class, 'getDinamic']);
+    Route::get('kewps12_dinamic', [Kewps12Controller::class, 'getDinamic']);
+    Route::get('kewps6_dinamic', [Kewps6Controller::class, 'getDinamic']);
 });
 
 #ata Routes
@@ -457,4 +460,6 @@ Route::get('/jkrpataf69pdf/{jkrpataf69}', [Jkrpataf69Controller::class, 'generat
 Route::get('/jkrpataf610pdf/{jkrpataf610}', [Jkrpataf610Controller::class, 'generatePdf']);
 Route::get('/jkrpata92pdf/{jkrpata92}', [Jkrpata92Controller::class, 'generatePdf']);
 Route::get('/jkrpataf102pdf/{jkrpataf102}', [Jkrpataf102Controller::class, 'generatePdf']);
+Route::get('/jkrpataf104pdf/{jkrpataf104}', [Jkrpataf104Controller::class, 'generatePdf']);
+Route::get('/jkrpataf114pdf', [Jkrpataf114Controller::class, 'generatePdf']);
 Route::get('/jkrpataf612pdf/{jkrpataf612}', [Jkrpataf612Controller::class, 'generatePdf']);

@@ -32,17 +32,14 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
+
                         <div class="col-6 mt-3">
                             <label for="">Tahun</label>
-                            <select class="form-control mb-3" name="tahun">
-                                <option selected>Pilih</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                            </select>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="tahun" value="" id="k14_tahun"
+                                    autocomplete="off">
+                            </div>
                         </div>
-
                         <div class="col-6 mt-3">
                             <label for="">Baki Stok Akhir</label>
                             <div class="input-group">
@@ -133,5 +130,14 @@
         </form>
     </div>
 
+
+    <script>
+        $("#k14_tahun").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years",
+            autoclose: true
+        });
+    </script>
 
 @endsection

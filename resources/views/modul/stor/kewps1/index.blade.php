@@ -37,7 +37,8 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Nama Pembekal</th>
-                                <th scope="col">Maklumat Pengankutan</th>
+                                <th scope="col">Maklumat Pengangkutan</th>
+                                <th scope="col">No Kod Dalam Aset</th>
                                 <th scope="col">Jenis Penerimaan</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Tindakan</th>
@@ -47,8 +48,13 @@
                             @foreach ($kewps1 as $k1)
                                 <tr>
                                     <td scope="col">{{ $k1->nama_pembekal }}</td>
-                                    <td scope="col">{{ $k1->jenis_penerimaan }}</td>
                                     <td scope="col">{{ $k1->maklumat_pengangkutan }}</td>
+                                    <td scope="col">
+                                        @foreach ($k1->infokewps1 as $ik1)
+                                            {{ $ik1->no_kod }},
+                                        @endforeach
+                                    </td>
+                                    <td scope="col">{{ $k1->jenis_penerimaan }}</td>
 
                                     @if ($k1->status == 'DERAF')
                                         <td scope="col"><span class="badge bg-warning">{{ $k1->status }}</span></th>

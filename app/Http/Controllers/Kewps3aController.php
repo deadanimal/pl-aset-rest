@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfoKewps1;
+use App\Models\InfoKewps10;
 use App\Models\InfoKewps7;
 use App\Models\KeluaranStokSukuTahun;
 use App\Models\Kewps3a;
@@ -35,8 +36,25 @@ class Kewps3aController extends Controller
      */
     public function create()
     {
+        // function debug_to_console($data)
+        // {
+        //     $output = $data;
+        //     if (is_array($output))
+        //         $output = implode(',', $output);
+
+        //     echo "<script>console.log($output);</script>";
+        // }
+
+        $kewps3a = Kewps3a::all();
+
+        $k3a = [];
+        foreach ($kewps3a as $k3) {
+            $k3a[] = $k3->id;
+        }
+
         return view('modul.stor.kewps3a.create', [
             'infokewps1' => InfoKewps1::all(),
+            'k3a' => $k3a,
         ]);
     }
 

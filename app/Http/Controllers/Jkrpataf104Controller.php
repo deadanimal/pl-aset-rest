@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jkrpataf68;
 use App\Models\Jkrpataf104;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Jkrpataf104Controller extends Controller
 {
@@ -38,7 +39,6 @@ class Jkrpataf104Controller extends Controller
             'jkrpataf68' => Jkrpataf68::all(),
             'check' => $jkrpataf68_id,
         ]);
-
     }
 
     /**
@@ -66,7 +66,6 @@ class Jkrpataf104Controller extends Controller
             'jkrpataf68' => Jkrpataf68::all(),
             'jkrpataf104' => $jkrpataf104,
         ]);
-
     }
 
     /**
@@ -91,7 +90,6 @@ class Jkrpataf104Controller extends Controller
     {
         $jkrpataf104->update($request->all());
         return redirect('/jkrpataf104');
-
     }
 
     /**
@@ -104,6 +102,21 @@ class Jkrpataf104Controller extends Controller
     {
         $jkrpataf104->delete();
         return redirect('/jkrpataf104');
+    }
+    public function generatePdf(Jkrpataf104 $jkrpataf104)
+    {
 
+        $response = Http::post('https://libreoffice.prototype.com.my/cetak/ata104', [$jkrpataf104]);
+
+        $res = $response->getBody()->getContents();
+
+        $url = "data:application/pdf;base64," . $res;
+
+        $context = [
+            "url" => $url,
+            "title" => "jkrpataf104",
+        ];
+
+        return view('modul.borang_viewer_ata', $context);
     }
 }

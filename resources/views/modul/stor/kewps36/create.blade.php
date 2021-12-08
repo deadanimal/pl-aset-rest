@@ -34,13 +34,8 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="">Tahun</label>
-                            <select class="form-control mb-3" name="tahun">
-                                <option selected>Pilih</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                            </select>
+                            <input class="form-control mb-3" type="text" name="tahun" id="k36_tahun" autocomplete="off">
+
                         </div>
 
                         <input type="hidden" name="staff_id" value="{{ Auth::user()->id }}">
@@ -93,6 +88,15 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            $("#k36_tahun").datepicker({
+                format: "yyyy",
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            });
+        });
+
         function tambahAsetK36() {
             $("#info_kewps36").append(
                 `       

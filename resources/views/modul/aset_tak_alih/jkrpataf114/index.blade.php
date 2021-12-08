@@ -23,7 +23,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <h2 class="mb-0">??</h2>
+                        <h2 class="mb-0">Sijil Hapus Kira Aset</h2>
                     </div>
                     <div class="text-end mr-2">
                         <a href="/jkrpataf114/create"><button class="align-self-end btn btn-sm btn-primary"
@@ -55,8 +55,7 @@
                                 <td scope="col">
                                     <a class="btn-sm bg-white border-0" href="/jkrpataf114/{{ $p114->id }}"><i
                                             class="fas fa-pen"></i></a>
-                                    {{-- <a class="btn-sm bg-white border-0" href="/jkrpataf114pdf/{{ $p114->id }}"><i
-                                            class="fas fa-print"></i></a> --}}
+
                                     <form action="/jkrpataf114/{{ $p114->id }}" class="d-inline" method="POST">
                                         @method('delete')
                                         @csrf
@@ -68,6 +67,8 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <a class="btn btn-primary ml-3" href="/jkrpataf114pdf">Print<span class="fas fa-print"></span></a>
             </div>
         </div>
     </div>

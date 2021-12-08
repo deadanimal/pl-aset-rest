@@ -40,21 +40,27 @@
                         <div class="col-3 mt-3">
                             <label for="">Kementerian</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="kementerian"
-                                    value="{{ old('kementerian') }}">
+                                <input class="form-control" type="text" name="kementerian" value="Perbadanan Aset Labuan">
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Bahagian</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="bahagian" value="">
+                                <select name="bahagian" class="form-control">
+                                    <option selected>Pilih</option>
+                                    @foreach ($bahagian as $b)
+                                        <option value="{{ $b->nama_jabatan }}">{{ $b->singkatan }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Kategori Stor</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kategori_stor" value="">
-                            </div>
+                            <select name="kategori_stor" class="form-control">
+                                <option selected>Pilih</option>
+                                <option value="Stor Alat Ganti">Stor Alat Ganti</option>
+                                <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
+                            </select>
                         </div>
 
                         <input class="form-control" type="hidden" name="pegawai_verifikasi1"
@@ -97,37 +103,37 @@
                             <h3>Status Stok</h3>
                         </div>
                         <div class="col-2">
-                            <label for="">Usang</label>
+                            <label for="">(A) Usang</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusA[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Rosak</label>
+                            <label for="">(B) Rosak</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusB[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Tidak Aktif</label>
+                            <label for="">(C) Tidak Aktif</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusC[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Tidak Diperlukan</label>
+                            <label for="">(D) Tidak Diperlukan</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusD[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Luput Tempoh</label>
+                            <label for="">(E) Luput Tempoh</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusE[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Hilang</label>
+                            <label for="">(F) Hilang</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusF[]" value="">
                             </div>
@@ -157,9 +163,9 @@
         function tambahAset() {
             $("#aset_create").append(
                 `   <div class="col-12 mt-2">
-                        <h3 class="mt-4">Kuantiti Stok</h3>
-                    </div>
-                    <div class="col-4">
+                            <h3 class="mt-4">Kuantiti Stok</h3>
+                        </div>
+                        <div class="col-4">
                             <label for="">No Kod</label>
                             <select class="form-control mb-3" name="kewps3a_id[]">
                                 <option selected>Pilih</option>
@@ -179,44 +185,45 @@
                         <div class="col-4">
                             <label for="">Catatan</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="catatan[]" value="{{ old('catatan') }}">
+                                <input class="form-control mb-3" type="text" name="catatan[]"
+                                    value="{{ old('catatan') }}">
                             </div>
                         </div>
                         <div class="col-12">
                             <h3>Status Stok</h3>
                         </div>
                         <div class="col-2">
-                            <label for="">Usang</label>
+                            <label for="">(A) Usang</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusA[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Rosak</label>
+                            <label for="">(B) Rosak</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusB[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Tidak Aktif</label>
+                            <label for="">(C) Tidak Aktif</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusC[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Tidak Diperlukan</label>
+                            <label for="">(D) Tidak Diperlukan</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusD[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Luput Tempoh</label>
+                            <label for="">(E) Luput Tempoh</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusE[]" value="">
                             </div>
                         </div>
                         <div class="col-2">
-                            <label for="">Hilang</label>
+                            <label for="">(F) Hilang</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="statusF[]" value="">
                             </div>

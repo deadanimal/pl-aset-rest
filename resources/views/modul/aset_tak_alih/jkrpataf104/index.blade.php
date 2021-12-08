@@ -23,7 +23,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <h2 class="mb-0">??</h2>
+                        <h2 class="mb-0">Penentuan Pelupusan Aset</h2>
                     </div>
                     <div class="text-end mr-2">
                         <a href="/jkrpataf104/create"><button class="align-self-end btn btn-sm btn-primary"
@@ -55,8 +55,8 @@
                                 <td scope="col">
                                     <a class="btn-sm bg-white border-0" href="/jkrpataf104/{{ $p104->id }}"><i
                                             class="fas fa-pen"></i></a>
-                                    {{-- <a class="btn-sm bg-white border-0" href="/jkrpataf104pdf/{{ $p104->id }}"><i
-                                            class="fas fa-print"></i></a> --}}
+                                    <a class="btn-sm bg-white border-0" href="/jkrpataf104pdf/{{ $p104->id }}"><i
+                                            class="fas fa-print"></i></a>
                                     <form action="/jkrpataf104/{{ $p104->id }}" class="d-inline" method="POST">
                                         @method('delete')
                                         @csrf

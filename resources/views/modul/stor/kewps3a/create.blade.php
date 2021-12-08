@@ -38,7 +38,9 @@
                             <select class="form-control form-control-sm" name="id" id="k3_id">
                                 <option selected>Pilih</option>
                                 @foreach ($infokewps1 as $ik1)
-                                    <option value="{{ $ik1->no_kod }}">{{ $ik1->no_kod }}
+                                    @if (!in_array($ik1->no_kod, $k3a))
+                                        <option value="{{ $ik1->no_kod }}">{{ $ik1->no_kod }}
+                                    @endif
                                     </option>
                                 @endforeach
                             </select>
@@ -66,8 +68,16 @@
                         </div> --}}
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Unit Pengukuran</label>
-                            <input class="form-control form-control-sm" type="text" name="unit_pengukuran"
-                                id="k1_unit_pengukuran">
+                            <select class="form-control form-control-sm" name="unit_pengukuran" id="k1_unit_pengukuran">
+                                <option value="Unit">Unit</option>
+                                <option value="Kotak">Kotak</option>
+                                <option value="Rim">Rim</option>
+                                <option value="Butang">Butang</option>
+                                <option value="Buah">Buah</option>
+                                <option value="Bilah">Bilah</option>
+                                <option value="Paket">Paket</option>
+                                <option value="Keping">Keping</option>
+                            </select>
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Kumpulan</label>
