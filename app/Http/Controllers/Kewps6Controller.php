@@ -93,6 +93,9 @@ class Kewps6Controller extends Controller
         return redirect('/kewps6');
     }
 
+
+
+
     public function generatePdf(Kewps6 $kewps6)
     {
         $kewps6->data = $kewps6->all();
@@ -109,6 +112,5 @@ class Kewps6Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

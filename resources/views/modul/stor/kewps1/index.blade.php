@@ -62,6 +62,13 @@
                                         <td scope="col"><span class="badge bg-danger">{{ $k1->status }}</span></th>
                                     @endif
 
+                                    @if ($k1->status == 'HANTAR')
+                                        <td scope="col">
+                                            <a href="/kewps1pdf/{{ $k1->id }}"><span
+                                                    class="fas fa-print"></span></a>
+                                        </td>
+                                    @endif
+
                                     @if ($k1->status == 'DERAF')
                                         <td scope="col">
                                             @if (Auth::user()->jawatan == 'superadmin')
@@ -82,7 +89,7 @@
                                                     </form>
                                                 </a>
                                                 <a href="/kewps1/{{ $k1->id }}"><i class="fas fa-pen"></i></a>
-                                                <a href="/kewps1pdf/{{ $k1->id }}"><i class="fas fa-print"></i></a>
+                                                {{-- <a href="/kewps1pdf/{{ $k1->id }}"><i class="fas fa-print"></i></a> --}}
                                                 <a href="">
                                                     <form action="/kewps1/{{ $k1->id }}" class="d-inline"
                                                         method="POST">

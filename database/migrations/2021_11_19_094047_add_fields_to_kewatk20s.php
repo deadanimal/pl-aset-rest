@@ -14,17 +14,17 @@ class AddFieldsToKewatk20s extends Migration
     public function up()
     {
         Schema::table('kewatk20s', function (Blueprint $table) {
-            $table->string("agensi")->nullable();
-            $table->string("tajuk_harta")->nullable();
-            $table->string("kuantiti")->nullable();
-            $table->string("secara")->nullable();
-            $table->string("tarikh")->nullable();
-            $table->string("tempat")->nullable();
-            $table->date("created_date")->nullable();
-            $table->date("modified_date")->nullable();
-            $table->string("pegawai1")->nullable();
-            $table->string("pegawai2")->nullable();
-            $table->string("kewatk19_id")->nullable();
+            // $table->string("agensi")->nullable();
+            // $table->string("tajuk_harta")->nullable();
+            // $table->string("kuantiti")->nullable();
+            // $table->string("secara")->nullable();
+            // $table->string("tarikh")->nullable();
+            // $table->string("tempat")->nullable();
+            // $table->date("created_date")->nullable();
+            // $table->date("modified_date")->nullable();
+            // $table->string("pegawai1")->nullable();
+            // $table->string("pegawai2")->nullable();
+            // $table->string("kewatk19_id")->nullable();
 
         });
     }

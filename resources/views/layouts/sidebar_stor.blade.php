@@ -65,7 +65,7 @@
                                 <li class="nav-item">
                                     <a href="/kewps3b" class="nav-link">
                                         <span class="sidenav-mini-icon"> KPS3(B) </span>
-                                        <span class="sidenav-normal"> KEW.PS-1 (B)</span>
+                                        <span class="sidenav-normal"> KEW.PS-3 (B)</span>
                                     </a>
                                 </li>
 

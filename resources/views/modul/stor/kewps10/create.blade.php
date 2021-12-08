@@ -32,34 +32,28 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-12 mt-3">
+                        <div class="col-3 mt-3">
                             <label for="">Tahun</label>
-                            <select class="form-control mb-3" name="tahun">
-                                <option selected>Pilih</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                            </select>
+                            <input type="text" class="form-control mb-3" name="tahun" id="k10_tahun" autocomplete="off">
+
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-3 mt-3">
                             <label for="">Kementerian</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="kementerian"
                                     value="{{ old('kementerian') }}">
                             </div>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-3 mt-3">
                             <label for="">Bahagian</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="bahagian" value="{{ old('bahagian') }}">
+                                <input class="form-control" type="text" name="bahagian" value="">
                             </div>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-3 mt-3">
                             <label for="">Kategori Stor</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="kategori_stor"
-                                    value="{{ old('kategori_stor') }}">
+                                <input class="form-control" type="text" name="kategori_stor" value="">
                             </div>
                         </div>
 
@@ -151,6 +145,15 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            $("#k10_tahun").datepicker({
+                format: "yyyy",
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            });
+        });
+
         function tambahAset() {
             $("#aset_create").append(
                 `   <div class="col-12 mt-2">

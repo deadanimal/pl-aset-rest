@@ -30,7 +30,7 @@
                         <h2 class="mb-0">Penerimaan Aset</h2>
                     </div>
                     <div class="text-end mr-2">
-                        <button class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</button>
+                        <a href="/kewps2/create"><button class="align-self-end btn btn-sm btn-primary">Tambah</button></a>
                     </div>
                 </div>
             </div>

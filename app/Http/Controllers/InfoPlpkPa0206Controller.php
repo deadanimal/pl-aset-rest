@@ -21,7 +21,7 @@ class InfoPlpkPa0206Controller extends Controller
       $info_plpk_pa_0206->catitan=$request->catitan;
       $info_plpk_pa_0206->kewpa14_id=$request->kewpa14_id;
       $info_plpk_pa_0206->plpk06_id=$request->plpk06_id;
-      $info_plpk_pa_0206->save()
+      $info_plpk_pa_0206->save();
 
       return $info_plpk_pa_0206;
 
@@ -43,7 +43,7 @@ class InfoPlpkPa0206Controller extends Controller
       $info_plpk_pa_0206->plpk06_id=$request->plpk06_id;
 
 
-      $info_plpk_pa_0206->save()
+      $info_plpk_pa_0206->save();
 
       return $info_plpk_pa_0206;
 

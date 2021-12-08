@@ -26,8 +26,7 @@
                             <h2 class="mb-0">Senarai Daftar Stok</h2>
                         </div>
                         <div class="text-end mr-2">
-                            <a href="/kewps4/create"> <button
-                                    class="align-self-end btn btn-sm btn-primary">Tambah</button></a>
+
                         </div>
                     </div>
                 </div>
@@ -37,6 +36,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">No. Kad</th>
                                 <th scope="col">No. Kod</th>
                                 <th scope="col">Perihal Stok</th>
                                 <th scope="col">Nilai Baki Semasa (RM)</th>
@@ -49,8 +49,9 @@
                                 <tr>
                                     <td scope="col">{{ $loop->iteration }}</td>
                                     <td scope="col">{{ $k4->kewps3a_id }}</td>
+                                    <td scope="col">{{ $k4->kewps3a_id }}</td>
                                     <td scope="col">{{ $k4->kewps3a->perihal_stok }}</td>
-                                    <td scope="col">{{ $k4->nilai_baki_semasa }}</td>
+                                    <td scope="col">RM {{ $k4->nilai_baki_semasa }}</td>
                                     <td scope="col">{{ $k4->status_stok }}</td>
                                     <td scope="col">
                                         <a href="/kewps4/{{ $k4->id }}"><i class="fas fa-pen"></i></a>
