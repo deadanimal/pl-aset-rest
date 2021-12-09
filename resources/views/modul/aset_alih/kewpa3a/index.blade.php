@@ -104,7 +104,11 @@
                             <div class="col-4">
                                 <label for="">Jenis Aset</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="jenis_aset" value="" required>
+                                    <select class="form-control mb-3" name="jenis_aset" required>
+                                        <option value="" selected disabled hidden>Pilih Jenis Aset</option required>
+                                        <option value="Harta Modal">Harta Modal</option>
+                                        <option value="Aset Bernilai Rendah">Aset Bernilai Rendah</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-4">
