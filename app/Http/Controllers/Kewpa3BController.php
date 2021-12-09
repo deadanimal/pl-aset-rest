@@ -4,33 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kewpa3B;
+use App\Models\Kewpa3A;
+use App\Models\KodLokasi;
+use App\Models\KodJabatan;
+use App\Models\User;
 
 class Kewpa3BController extends Controller
 {
     public function index()
     {
-      return Kewpa3B::all();
+      $context = [
+        "kewpa3b" => Kewpa3B::all()
+      ];
+
+      return view('modul.aset_alih.kewpa3b.index', $context);
     }
 
     public function store(Request $request)
     {
       
-      $kewpa3b = new Kewpa3B;
+      $request['status'] = "DERAF";
+      Kewpa3B::create($request->all());
+      return redirect('/kewpa3b');
+    }
 
-      $kewpa3b -> kewpa4_id = $request-> kewpa4_id;
-      $kewpa3b -> kos = $request-> kos;
-      $kewpa3b -> tempoh_jaminan = $request-> tempoh_jaminan;
-      $kewpa3b -> status = $request-> status;
-      $kewpa3b -> tarikh_dipasang = $request-> tarikh_dipasang;
-      $kewpa3b -> tarikh_dikeluarkan = $request-> tarikh_dikeluarkan;
-      $kewpa3b -> tarikh_dilupus_hapus = $request-> tarikh_dilupus_hapus;
-      $kewpa3b -> catatan = $request-> catatan;
-      $kewpa3b -> pegawai_bertanggungjawab = $request-> pegawai_bertanggungjawab;
-      $kewpa3b -> no_siri_pendaftaran = $request-> no_siri_pendaftaran;
+    public function create() {
+      $context = [
+        "kewpa3b" => Kewpa3B::all(),
+        "pegawais" => User::all(),
+        "kewpa3a" => Kewpa3A::all(),
+      ];
 
-      $kewpa3b -> save();
+      return view('modul.aset_alih.kewpa3b.create', $context);
+    }
 
-      return $kewpa3b;
+    public function edit(Request $request, Kewpa3B $kewpa3b) {
+
+      $context = [
+        "kewpa3b" => $kewpa3b,
+        "pegawais" => User::all(),
+        "kewpa3a" => Kewpa3A::all(),
+      ];
+
+      return view('modul.aset_alih.kewpa3b.edit', $context);
+
+
+
     }
 
     public function show(Kewpa3B $kewpa3b)
@@ -40,22 +59,12 @@ class Kewpa3BController extends Controller
 
     public function update(Request $request, Kewpa3B $kewpa3b)
     {
-      $kewpa3b -> kewpa4_id = $request-> kewpa4_id;
-      $kewpa3b -> kos = $request-> kos;
-      $kewpa3b -> tempoh_jaminan = $request-> tempoh_jaminan;
-      $kewpa3b -> status = $request-> status;
-      $kewpa3b -> tarikh_dipasang = $request-> tarikh_dipasang;
-      $kewpa3b -> tarikh_dikeluarkan = $request-> tarikh_dikeluarkan;
-      $kewpa3b -> tarikh_dilupus_hapus = $request-> tarikh_dilupus_hapus;
-      $kewpa3b -> catatan = $request-> catatan;
-      $kewpa3b -> pegawai_bertanggungjawab = $request-> pegawai_bertanggungjawab;
-      $kewpa3b -> no_siri_pendaftaran = $request-> no_siri_pendaftaran;
 
-      $kewpa3b -> save();
+      $kewpa3b->update($request->all());
+      return redirect('/kewpa3b');
+      
 
 
-
-      return $kewpa3b;
 
     }
 

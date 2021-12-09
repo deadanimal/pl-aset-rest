@@ -15,15 +15,7 @@ class InfoKewpa1Controller extends Controller
 
     public function store(Request $request)
     {
-      $info_kewpa1 = new InfoKewpa1; 
-      $info_kewpa1 -> no_kod = $request -> no_kod;
-      $info_kewpa1 -> keterangan_aset_alih = $request -> keterangan_aset_alih;
-      $info_kewpa1 -> kuantiti_dipesan = $request -> kuantiti_dipesan;
-      $info_kewpa1 -> kuantiti_do = $request -> kuantiti_do;
-      $info_kewpa1 -> kuantiti_diterima = $request -> kuantiti_diterima;
-      $info_kewpa1 -> catatan = $request -> catatan;
-      $info_kewpa1 -> rujukan_kewpa1_id = $request -> rujukan_kewpa1_id;
-      $info_kewpa1 -> save();
+      InfoKewpa1::create($request->all());
 
       return redirect('/kewpa1/'.$request -> rujukan_kewpa1_id);
 
@@ -38,16 +30,8 @@ class InfoKewpa1Controller extends Controller
     public function update(Request $request, InfoKewpa1 $info_kewpa1)
     {
 
-      $info_kewpa1 -> no_kod = $request -> no_kod;
-      $info_kewpa1 -> keterangan_aset_alih = $request -> keterangan_aset_alih;
-      $info_kewpa1 -> kuantiti_dipesan = $request -> kuantiti_dipesan;
-      $info_kewpa1 -> kuantiti_do = $request -> kuantiti_do;
-      $info_kewpa1 -> kuantiti_diterima = $request -> kuantiti_diterima;
-      $info_kewpa1 -> catatan = $request -> catatan;
-      $info_kewpa1 -> rujukan_kewpa1_id = $request -> rujukan_kewpa1_id;
-      $info_kewpa1 -> save();
-
-      return redirect('/kewpa1/'.$request -> rujukan_kewpa1_id);
+      $info_kewpa1->update($request->all());
+      return redirect('/kewpa1/'.$info_kewpa1->rujukan_kewpa1_id);
 
     }
 

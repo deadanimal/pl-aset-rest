@@ -36,10 +36,7 @@ class KodJabatanController extends Controller
     public function update(Request $request, KodJabatan $jabatan)
     {
 
-      $jabatan->singkatan=$request->singkatan;
-      $jabatan->nama_jabatan=$request->nama_jabatan;
-      $jabatan->staff_id=$request->user()->name;      
-      $jabatan -> save();
+      $jabatan -> update($request->all());
 
 
       return redirect('/jabatan');

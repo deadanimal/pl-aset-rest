@@ -32,10 +32,10 @@
           <div class="row row-grid w-100">
 
             <div class="col-lg-2">
-              <div id="umum" class="bg-primary card hand card-lift--hover shadow border-0">
+              <div id="umum" class="bg-secondary card hand card-lift--hover shadow border-0">
                 <div class="card-body mx-auto">
                   <div class="text-center mb-4">
-                    <img src="/assets/img/budget.png" style="height:100px; filter:  brightness(0) invert(1);">
+                    <img src="/assets/img/gear.png" style="height:100px;">
                   </div>
                   <h3 class="text-uppercase text-center text-white">Umum</h3>
                   <br>
@@ -48,7 +48,7 @@
               <div id="aset_alih" class="bg-secondary card hand card-lift--hover shadow border-0">
                 <div class="card-body mx-auto">
                   <div class="text-center mb-4">
-                    <img src="/assets/img/car.png" style="height:100px">
+                    <img src="/assets/img/freight.png" style="height:100px">
                   </div>
                   <h3 class="text-uppercase text-center text-white">Aset Alih</h3>
                   <br>
@@ -58,10 +58,10 @@
               </div>
             </div>
             <div class="col-lg-2">
-              <div id="aset_tak_alih" class="card bg-primary hand card-lift--hover shadow border-0">
+              <div id="aset_tak_alih" class="card bg-secondary hand card-lift--hover shadow border-0">
                 <div class="card-body mx-auto">
                   <div class="text-center mb-4">
-                    <img src="/assets/img/budget.png" style="height:100px; filter:  brightness(0) invert(1);">
+                    <img src="/assets/img/factory.png" style="height:100px;">
                   </div>
                   <h3 class="text-uppercase text-center text-white">Aset Tak Alih</h3>
                   <div class="text-center">
@@ -74,7 +74,7 @@
               <div id="aset_tak_ketara" class="card bg-secondary hand card-lift--hover shadow border-0">
                 <div class="card-body mx-auto">
                   <div class="text-center mb-4">
-                    <img src="/assets/img/budget.png" style="height:100px">
+                    <img src="/assets/img/website.png" style="height:100px">
                   </div>
                   <h3 class="text-uppercase text-center text-white">Aset Tak Ketara</h3>
                   <div class="text-center">
@@ -84,10 +84,10 @@
             </div>
 
             <div class="col-lg-2">
-              <div id="stor" class="card bg-primary hand card-lift--hover shadow border-0">
+              <div id="stor" class="card bg-secondary hand card-lift--hover shadow border-0">
                 <div class="card-body mx-auto">
                   <div class="text-center mb-4">
-                    <img src="/assets/img/budget.png" style="height:100px; filter:  brightness(0) invert(1);">
+                    <img src="/assets/img/storage.png" style="height:100px;">
                   </div>
                   <h3 class="text-uppercase text-center text-white">Pengurusan Stor</h3>
                   <div class="text-center">
@@ -99,7 +99,7 @@
                 <div id="susut_nilai" class="card bg-secondary hand card-lift--hover shadow border-0">
                   <div class="card-body mx-auto">
                     <div class="text-center mb-4">
-                      <img src="/assets/img/budget.png" style="height:100px">
+                      <img src="/assets/img/salary.png" style="height:100px">
                     </div>
                     <h3 class="text-uppercase text-center text-white">Susut Nilai</h3>
                     <br>
@@ -118,11 +118,11 @@
 <script type="text/javascript">
 
   $("#umum").click(function() {
-    window.location.href="/umum"
+    window.location.href="/pengguna/"
   });
 
   $("#aset_alih").click(function() {
-    window.location.href=""
+    window.location.href="/kewpa1/"
   });
 
   $("#aset_tak_alih").click(function() {

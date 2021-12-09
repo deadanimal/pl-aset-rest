@@ -1,25 +1,44 @@
-@extends('layouts.base') @section('content')
-<div id="show">
-
-  <div class="card mt-4">
-    <div class="card-header text-end" style="
-    background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%) ">
-      <div class="row">
-        <div class="col text-start">
-          <h6 class="text-white">Kod Aset</h6>
-        </div>
-        <div class="col text-end">
-          <button class="btn btn-sm btn-primary" id="tambah"><i class="fas fa-plus"></i></button>
-
+@extends('layouts.base_umum') @section('content')
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Perbadanan Labuan</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
+                <li class="breadcrumb-item"><a href="/kod-aset">Kod Aset</a></li>
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
-    </br>
-    <div class="card-body pt-0">
+</div>
 
-      <table class="table" id="table">
+
+<div class="container-fluid mt--6">
+<div id="show">
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <div class="row">
+        <div class="col">
+          <h2 class="mb-0">Kod Aset</h2>
+        </div>
+        <div class="text-end mr-2">
+          <button class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</button>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive py-4">
+
+      <table class="table table-custom-simplified table-flush" id="table">
         <thead class="thead-light">
           <tr>
+
+            <th scope="col">Bil</th>
             <th scope="col">Singkatan</th>
             <th scope="col">Kod Asset</th>
             <th scope="col">Penerangan</th>
@@ -30,6 +49,8 @@
         <tbody>
           @foreach ($kod_aset as $kod_aset)
           <tr>
+
+            <td scope="col">{{$loop->index + 1}}</td>
             <td scope="col">{{$kod_aset->singkatan}}</td>
             <td scope="col">{{$kod_aset->kod_asset}}</td>
             <td scope="col">{{$kod_aset->penerangan}}</td>
@@ -52,56 +73,101 @@
   <form method="POST" action="/kod-aset" enctype="multipart/form-data">
       @csrf
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">Kod Aset</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Tambah Kod Aset</h2>
+               </div>
+             </div>
+           </div>
+
           </br>
           <div class="card-body pt-0">
+          <div class="row">
 
-          <label for="">Kod Lokasi</label>
+          <div class="col-4">
+          <label for="">Singkatan</label>
             <div class="input-group">
-            <input class="form-control mb-3" type="text" name="kod_lokasi" value="">
+            <input class="form-control mb-3" type="text" name="singkatan" value="">
           </div>
-          <label for="">Nama Lokasi</label>
+          </div>
+
+          <div class="col-4">
+          <label for="">Penerangan</label>
+            <div class="input-group">
+            <input class="form-control mb-3" type="text" name="penerangan" value="">
+          </div>
+          </div>
+
+
+          <div class="col-4">
+          <label for="">Kod Aset</label>
           <div class="input-group">
-            <input class="form-control mb-3" type="text" name="nama_lokasi" value="">
+            <input class="form-control mb-3" type="text" name="kod_asset" value="">
           </div>
+          </div>
+          </div>
+
+
             <div id="info_kod-aset_create"></div>
 
-          <a id="button_tambah" class="btn btn-primary text-white" onclick="tambahAsetUntukDitolak()">Tambah Aset Untuk Ditolak</a>
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
+
       </div>
   </form>
 </div>
 
 <div id="updateDiv" style="display: none;">
-  <form id="updateForm" method="POST" enctype="multipart/form-data">
+  <form id="updateForm" method="POST" action="/kod-aset" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="          
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">Kod Aset</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Tambah Kod Aset</h2>
+               </div>
+             </div>
+           </div>
+
           </br>
           <div class="card-body pt-0">
-            
-            <label for="">Kod Lokasi</label>
-              <div class="input-group">
-                <input class="form-control mb-3" type="text" name="kod_lokasi" value="">
-              </div>
-              <label for="">Nama Lokasi</label>
-              <div class="input-group">
-                <input class="form-control mb-3" type="text" name="nama_lokasi" value="">
-              </div>
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          <div class="row">
+
+          <div class="col-4">
+          <label for="">Singkatan</label>
+            <div class="input-group">
+            <input class="form-control mb-3" type="text" name="singkatan" value="">
+          </div>
+          </div>
+
+          <div class="col-4">
+          <label for="">Penerangan</label>
+            <div class="input-group">
+            <input class="form-control mb-3" type="text" name="penerangan" value="">
+          </div>
+          </div>
+
+
+          <div class="col-4">
+          <label for="">Kod Aset</label>
+          <div class="input-group">
+            <input class="form-control mb-3" type="text" name="kod_asset" value="">
+          </div>
+          </div>
+          </div>
+
+
+            <div id="info_kod-aset_create"></div>
+
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
+          </div>
+
           </div>
       </div>
   </form>
+</div>
 </div>
 
 

@@ -1,52 +1,69 @@
-@extends('layouts.base') @section('content') <div id="show">
-
-  <div class="card mt-4">
-    <div class="card-header text-end" style="
-    background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-    ">
-      <div class="row">
-        <div class="col text-start">
-          <h6 class="text-white">Pengumuman</h6>
-        </div>
-        <div class="col text-end">
-          <button class="btn btn-sm btn-primary" id="tambah"><i class="fas fa-plus"></i></button>
-
+@extends('layouts.base_umum') @section('content')
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Perbadanan Labuan</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
+                <li class="breadcrumb-item"><a href="/pengumuman">Pengumuman</a></li>
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
-    </br>
-    <div class="card-body pt-0">
+</div>
 
-      <table class="table" id="table">
+
+<div class="container-fluid mt--6">
+<div id="show">
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <div class="row">
+        <div class="col">
+          <h2 class="mb-0">Pengumuman</h2>
+        </div>
+        <div class="text-end mr-2">
+          <button class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</button>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive py-4">
+
+      <table class="table table-custom-simplified table-flush" id="table">
         <thead class="thead-light">
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Email </th>
-            <th scope="col">Prima Facie</th>
-            <th scope="col">Ditahan Kerja</th>
-            <th scope="col">Jawatan</th>
-            <th scope="col">Role</th>
+            <th scope="col">Bil</th>
+            <th scope="col">Tajuk</th>
+            <th scope="col">Info</th>
+            <th scope="col">Gambar</th>
             <th scope="col">Status</th>
-            <th scope="col">Jawatan</th>
+            <th scope="col">Tindakan</th>
 
           </tr>
         </thead>
         <tbody>
           @foreach ($pengumumans as $pengumuman)
           <tr>
-            <td scope="col">{{$pengumuman->name}}</td>
-            <td scope="col">{{$pengumuman->email }}</td>
-            <td scope="col">{{$pengumuman->prima_facie}}</td>
-            <td scope="col">{{$pengumuman->ditahan_kerja}}</td>
-            <td scope="col">{{$pengumuman->jawatan}}</td>
-            <td scope="col">{{$pengumuman->role}}</td>
-            <td scope="col">{{$pengumuman->status}}</td>
 
+            <td scope="col">{{$loop->index + 1}}</td>
+            <td scope="col">{{$pengumuman->tajuk}}</td>
+            <td scope="col">{{$pengumuman->info_pengumuman}}</td>
+            <td scope="col"><a class="btn btn-sm btn-primary" href="/storage/{{$pengumuman->gambar_pengumuman}}" target="_blank">Lihat</a></td>
+            @if ($pengumuman->status=="Aktif") 
+              <td scope="col"><span class="badge bg-success">Aktif</span></th>
+            @elseif ($pengumuman->status=="Tidak Aktif") 
+              <td scope="col"><span class="badge bg-warning">Tidak Aktif</span></th>
+            @endif
 
             <td scope="col">
               <a href="#" onclick="updateData({{$pengumuman}})"><i class="fas fa-pen"></i></a>
               <a href="/pengumuman" onclick="deleteData({{$pengumuman}})"><i class="fas fa-trash"></i></a>
-              </td>
+            </td>
 
           </tr>
           @endforeach
@@ -60,69 +77,55 @@
   <form method="POST" action="/pengumuman" enctype="multipart/form-data">
       @csrf
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">Pengumuman</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Tambah Pengumuman</h2>
+               </div>
+             </div>
+           </div>
+
           </br>
           <div class="card-body pt-0">
-            <label for="">Name</label>
+            <div class="row">
+
+            <div class="col-4">
+            <label for="">Tajuk</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="name" value="">
+              <input class="form-control mb-3" type="text" name="tajuk" value="" required>
             </div>
-            <label for="">Email </label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="email" value="">
-            </div>
-            <label for="">Prima Facie</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="prima_facie" value="">
             </div>
 
-            <label for="">Jawatan</label>
+            <div class="col-4">
+            <label for="">Info</label>
             <div class="input-group">
-              <select class="form-control mb-3" name="jawatan">
-                <option value=""></option>
-                <option value="operator">Operator</option>
-                <option value="high_management">High Management</option>
-              </select>
-
-
+              <input class="form-control mb-3" type="text" name="info_pengumuman" value="" required>
+            </div>
             </div>
 
-            <label for="">Ditahan Kerja</label>
+            <div class="col-4">
+            <label for="">Gambar</label>
             <div class="input-group">
-              <select class="form-control mb-3" name="ditahan_kerja">
-                <option value=""></option>
-                <option value="ya">Ya</option>
-                <option value="tidak">Tidak</option>
-              </select>
-
+              <input class="form-control mb-3" type="file" name="gambar_pengumuman" value="" required>
             </div>
-            <label for="">Role</label>
-            <div class="input-group">
-              <select class="form-control mb-3" name="role">
-                <option value=""></option>
-                <option value="superadmin">Superadmin</option>
-                <option value="pengumuman">Pengumuman</option>
-              </select>
-
             </div>
+
+            <div class="col-4">
             <label for="">Status </label>
             <div class="input-group">
-              <select class="form-control mb-3" name="ditahan_kerja">
-                <option value=""></option>
-                <option value="ya">Aktif</option>
-                <option value="tidak">Tidak aktif</option>
+              <select class="form-control mb-3" name="status" required>
+                <option value="" selected disabled hidden>Pilih Status</option>
+                <option value="Aktif">Aktif</option>
+                <option value="Tidak Aktif">Tidak Aktif</option>
               </select>
+            </div>
+            </div>
             </div>
           
 
             <div id="info_pengumuman_create"></div>
 
-          <a id="button_tambah" class="btn btn-primary text-white" onclick="tambahAsetUntukDitolak()">Tambah Aset Untuk Ditolak</a>
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div>
   </form>
@@ -133,67 +136,58 @@
       @csrf
       @method('PUT')
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="          
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">Pengumuman</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Sunting Pengguna</h2>
+               </div>
+             </div>
+           </div>
+
           </br>
           <div class="card-body pt-0">
             
-            <label for="">Name</label>
+            <div class="row">
+
+            <div class="col-4">
+            <label for="">Tajuk</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="name" value="">
+              <input class="form-control mb-3" type="text" name="tajuk" value="" required>
             </div>
-            <label for="">Email </label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="email" value="">
-            </div>
-            <label for="">Prima Facie</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="prima_facie" value="">
             </div>
 
-            <label for="">Jawatan</label>
+            <div class="col-4">
+            <label for="">Info</label>
             <div class="input-group">
-              <select class="form-control mb-3" name="jawatan">
-                <option value=""></option>
-                <option value="operator">Operator</option>
-                <option value="high_management">High Management</option>
-              </select>
+              <input class="form-control mb-3" type="text" name="info_pengumuman" value="" required>
+            </div>
             </div>
 
-            <label for="">Ditahan Kerja</label>
+            <div class="col-4">
+            <label for="">Gambar</label>
             <div class="input-group">
-              <select class="form-control mb-3" name="ditahan_kerja">
-                <option value=""></option>
-                <option value="ya">Ya</option>
-                <option value="tidak">Tidak</option>
-              </select>
-
+              <input class="form-control mb-3" type="file" name="gambar_pengumuman">
             </div>
-            <label for="">Role</label>
-            <div class="input-group">
-              <select class="form-control mb-3" name="role">
-                <option value=""></option>
-                <option value="superadmin">Superadmin</option>
-                <option value="pengumuman">Pengumuman</option>
-              </select>
-
             </div>
+
+            <div class="col-4">
             <label for="">Status </label>
             <div class="input-group">
-              <select class="form-control mb-3" name="ditahan_kerja">
-                <option value=""></option>
-                <option value="ya">Aktif</option>
-                <option value="tidak">Tidak aktif</option>
+              <select class="form-control mb-3" name="status" required>
+                <option value="" selected disabled hidden>Pilih Status</option>
+                <option value="Aktif">Aktif</option>
+                <option value="Tidak Aktif">Tidak Aktif</option>
               </select>
             </div>
+            </div>
+            </div>
           
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div>
   </form>
+</div>
 </div>
 
 
@@ -216,12 +210,8 @@
 
       $("#show").hide();
 
-      $("#updateForm select[name=jawatan]").val(obj.jawatan);
-      $("#updateForm input[name=name]").val(obj.name);
-      $("#updateForm input[name=email]").val(obj.email );
-      $("#updateForm input[name=prima_facie]").val(obj.prima_facie);
-      $("#updateForm select[name=ditahan_kerja]").val(obj.ditahan_kerja);
-      $("#updateForm select[name=role]").val(obj.role);
+      $("#updateForm input[name=tajuk]").val(obj.tajuk);
+      $("#updateForm input[name=info_pengumuman]").val(obj.info_pengumuman);
       $("#updateForm select[name=status ]").val(obj.status );
 
       $("#updateForm action").val("/pengumuman/" + obj.id);      

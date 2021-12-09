@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.base_umum')
 @section('content')
 
 <h6>Pengurusan Pengguna</h6>

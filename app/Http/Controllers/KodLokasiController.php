@@ -36,11 +36,7 @@ class KodLokasiController extends Controller
     public function update(Request $request, KodLokasi $lokasi)
     {
 
-      $lokasi->kod_lokasi=$request->kod_lokasi;
-      $lokasi->nama_lokasi=$request->nama_lokasi;
-      $lokasi->staff_id=$request->user()->id;
-      $lokasi -> save();
-
+      $lokasi->update($request->all());
 
       return redirect('/lokasi');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kewpa1;
+use App\Models\User;
 use App\Models\InfoKewpa1;
 
 class Kewpa1Controller extends Controller
@@ -22,20 +23,27 @@ class Kewpa1Controller extends Controller
     public function store(Request $request)
     {
       
-      $kewpa1 = new Kewpa1;
-      $kewpa1 -> nama_pembekal = $request->nama_pembekal;
-      $kewpa1 -> alamat_pembekal = $request->alamat_pembekal;
-      $kewpa1 -> jenis_penerimaan = $request->jenis_penerimaan;
-      $kewpa1 -> no_rujukan_pesanan = $request->no_rujukan_pesanan;
-      $kewpa1 -> no_rujukan_hantaran = $request->no_rujukan_hantaran;
-      $kewpa1 -> tarikh_nota_hantaran = $request->tarikh_nota_hantaran;
-      $kewpa1 -> tarikh_pesanan_kontrak = $request->tarikh_pesanan_kontrak;
-      $kewpa1 -> maklumat_pengangkutan = $request->maklumat_pengangkutan;
-      $kewpa1 -> pegawai_penerima = $request->pegawai_penerima;
-      $kewpa1 -> pegawai_teknikal = $request->pegawai_teknikal;
-      $kewpa1 -> save();
+      $kewpa1 = Kewpa1::create($request->all());
+      $kewpa1->status="DERAF";
+      $kewpa1->pegawai_penerima=$request->user()->id;
+      $kewpa1->save();
+
+      foreach (range(0, count($request->keterangan_aset_alih) - 1) as $i) {
+
+          $info_kewpa1 = new InfoKewpa1;
+          $info_kewpa1->keterangan_aset_alih=$request->keterangan_aset_alih[$i];
+          $info_kewpa1->kuantiti_dipesan=$request->kuantiti_dipesan[$i];
+          $info_kewpa1->kuantiti_do=$request->kuantiti_do[$i];
+          $info_kewpa1->kuantiti_diterima=$request->kuantiti_diterima[$i];
+          $info_kewpa1->catatan=$request->catatan[$i];
+          $info_kewpa1->no_kod=$request->no_kod[$i];
+          $info_kewpa1->rujukan_kewpa1_id=$kewpa1->id;      
+          $info_kewpa1->save();
+
+        }
 
       return redirect('/kewpa1');
+
 
     }
 
@@ -45,27 +53,19 @@ class Kewpa1Controller extends Controller
       $info_kewpa1 = InfoKewpa1::where('rujukan_kewpa1_id', $kewpa1->id)->get();
       $context = [
         "info_kewpa1" => $info_kewpa1,
-        "rujukan_kewpa1_id" => $kewpa1->id
+        "rujukan_kewpa1_id" => $kewpa1->id,
+        "kewpa1" => $kewpa1
+
       ];
-      return view('modul.aset_alih.info_kewpa1.index', $context);
+      return view('modul.aset_alih.kewpa1.info_kewpa1', $context);
     }
 
     public function update(Request $request, Kewpa1 $kewpa1)
     {
 
-      $kewpa1 -> nama_pembekal = $request->nama_pembekal;
-      $kewpa1 -> alamat_pembekal = $request->alamat_pembekal;
-      $kewpa1 -> jenis_penerimaan = $request->jenis_penerimaan;
-      $kewpa1 -> no_rujukan_pesanan = $request->no_rujukan_pesanan;
-      $kewpa1 -> no_rujukan_hantaran = $request->no_rujukan_hantaran;
-      $kewpa1 -> tarikh_nota_hantaran = $request->tarikh_nota_hantaran;
-      $kewpa1 -> tarikh_pesanan_kontrak = $request->tarikh_pesanan_kontrak;
-      $kewpa1 -> maklumat_pengangkutan = $request->maklumat_pengangkutan;
-      $kewpa1 -> pegawai_penerima = $request->pegawai_penerima;
-      $kewpa1 -> pegawai_teknikal = $request->pegawai_teknikal;
-      $kewpa1 -> save();
+      $kewpa1->update($request->all());
 
-      return redirect('/kewpa1');
+      return redirect('/kewpa1/'.$kewpa1->id);
 
     }
 
