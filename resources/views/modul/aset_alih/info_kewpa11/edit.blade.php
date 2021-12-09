@@ -19,7 +19,7 @@
 
     <div class="container-fluid mt--6">
         <div id="create">
-            <form method="POST" action="/info_kewpa11" enctype="multipart/form-data">
+            <form method="POST" action="/info_kewpa11/{{$info_kewpa11->id}}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card mt-4" id="basic-info">
@@ -37,28 +37,35 @@
                             <div class="col-4">
                                 <label for="">Lokasi Sebenar</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="lokasi_sebenar" value="" required>
+                                    <input class="form-control mb-3" type="text" name="lokasi_sebenar" value="{{$info_kewpa11->lokasi_sebenar}}" required>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <label for="">Status Aset</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="status_aset" value="" required>
+                                    <select class="form-control mb-3" name="status_aset" required>
+                                        <option value="{{$info_kewpa11->status_aset}}" required required selected disabled hidden>{{$info_kewpa11->status_aset}}
+                                        </option required>
+                                        <option value="Sedang Digunakan(A)">Sedang Digunakan(A)</option>
+                                        <option value="Tidak Digunakan(B)">Tidak Digunakan(A)</option>
+                                        <option value="Perlu Pembaikan(C)">Perlu Pembaikan(C)</option>
+                                        <option value="Sedang Diselenggara(E)">Sedang Diselenggara(E)</option>
+                                        <option value="Hilang(A)">Hilang(A)</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="col-4">
                                 <label for="">Catatan</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="catatan" value="" required>
+                                    <input class="form-control mb-3" type="text" name="catatan" value="{{$info_kewpa11->catatan}}" required>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <label for="">No Siri Pendaftaran</label>
                                 <div class="input-group">
                                     <select class="form-control mb-3" name="no_siri_pendaftaran" required>
-                                        <option value="" required required selected disabled hidden>Pilih No. Siri
-                                            Pendaftaran
+                                        <option value="{{$info_kewpa11->no_siri_pendaftaran}}" required required selected disabled hidden>{{$info_kewpa11->no_siri_pendaftaran}}
                                         </option required>
                                         @foreach ($kewpa3a as $kew3)
                                             <option value="{{ $kew3->no_siri_pendaftaran }}">
@@ -71,8 +78,6 @@
                         </div>
                         <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
                     </div>
-                    <input class="form-control mb-3" type="hidden" name="rujukan_kewpa11_id" value="{{ $kewpa11->id }}"
-                        required>
                 </div>
 
         </div>

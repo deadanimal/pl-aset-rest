@@ -82,6 +82,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-lg-2">
               <div id="susut_nilai" class="card bg-secondary hand card-lift--hover shadow border-0">
                 <div class="card-body mx-auto">
@@ -125,7 +126,7 @@
   });
 
   $("#aset_tak_alih").click(function() {
-    window.location.href="/"
+    window.location.href="/jkrpataf68"
   });
 
   $("#aset_tak_ketara").click(function() {

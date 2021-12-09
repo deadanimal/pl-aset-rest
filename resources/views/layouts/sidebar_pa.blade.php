@@ -116,6 +116,12 @@
                               </a>
                           </li>
                           <li class="nav-item">
+                            <a href="/kewpa12" class="nav-link">
+                            <span class="sidenav-mini-icon"> PA12 </span>
+                            <span class="sidenav-normal"> KEW.PA 12</span>
+                            </a>
+                        </li>
+                          <li class="nav-item">
                             <a href="/kewpa13" class="nav-link">
                             <span class="sidenav-mini-icon"> PA13 </span>
                             <span class="sidenav-normal"> KEW.PA 13 </span>
