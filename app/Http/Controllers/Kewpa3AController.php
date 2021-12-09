@@ -26,7 +26,7 @@ class Kewpa3AController extends Controller
 
     public function store(Request $request)
     {
-      $no_sekarang = sprintf("%'.05d\n", count(Kewpa3A::all()));
+      $no_sekarang = sprintf("%'.05d\n", count(Kewpa3A::all()) + 1);
       
       $tahun_ini = substr(date("Y"), -2);
       

@@ -124,7 +124,7 @@
   });
 
   $("#aset_tak_alih").click(function() {
-    window.location.href=""
+    window.location.href="/"
   });
 
   $("#aset_tak_ketara").click(function() {
