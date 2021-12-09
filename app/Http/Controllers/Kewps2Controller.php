@@ -49,15 +49,16 @@ class Kewps2Controller extends Controller
         $kewps2 = Kewps2::create($request->all());
         $this->storeInfoKewps2($request, $kewps2->id);
         return redirect('/kewps2');
-
     }
 
     public function storeInfoKewps2($request, $kewps2_id)
     {
         foreach (range(0, count($request->kuantiti_ditolak) - 1) as $i) {
+            $infokewps1 = InfoKewps1::where('id', $request->infokewps1_id[$i])->firstorfail();
+            $kurang_lebih = $infokewps1->kuantiti_diterima - $request->kuantiti_ditolak[$i];
             $temp = (object) [];
             $temp->kuantiti_ditolak = $request->kuantiti_ditolak[$i];
-            $temp->kuantiti_kurang_lebih = $request->kuantiti_kurang_lebih[$i];
+            $temp->kuantiti_kurang_lebih = $kurang_lebih;
             $temp->sebab_penolakan = $request->sebab_penolakan[$i];
             $temp->kewps2_id = $kewps2_id;
             $temp->infokewps1_id = $request->infokewps1_id[$i];
@@ -89,7 +90,6 @@ class Kewps2Controller extends Controller
      */
     public function edit(Kewps2 $kewps2)
     {
-
     }
 
     /**
@@ -124,6 +124,14 @@ class Kewps2Controller extends Controller
         return redirect('/kewps2');
     }
 
+    public function getDinamic(Request $request)
+    {
+        $data = InfoKewps1::select('id', 'no_kod')->where('kewps1_id', $request->id)->get();
+
+        return response()->json($data);
+    }
+
+
     public function generatePdf(Request $request, Kewps2 $kewps2)
     {
         $infoKewps2 = InfoKewps2::where('kewps2_id', $kewps2->id)->get();
@@ -144,6 +152,5 @@ class Kewps2Controller extends Controller
         ];
 
         return view('modul.borang_viewer', $context);
-
     }
 }

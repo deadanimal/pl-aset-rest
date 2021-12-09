@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoKewps1;
 use App\Models\InfoKewps35;
 use App\Models\InfoKewps36;
 use App\Models\Kewps3a;
 use App\Models\Kewps34;
 use App\Models\Kewps36;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewps36Controller extends Controller
 {
@@ -128,6 +130,18 @@ class Kewps36Controller extends Controller
 
     public function generatePdf(Kewps36 $kewps36)
     {
+        $hk_bilangan = 0;
+        foreach ($kewps36->infokewps36 as $i36) {
+            $kuantiti_asal = $i36->kewps3a->parasstok[0]->maksimum_stok;
+            $harga_seunit = InfoKewps1::where('no_kod', $i36->kewps3a_id)->first()->harga_seunit;
+
+            $kuantiti_k35[] = $i36->infokewps35->kuantiti;
+
+            $i36->nilai_asal = (int) $kuantiti_asal * (int) $harga_seunit;
+            $i36->nilai_semasa = ((int) $kuantiti_asal - (int) $i36->infokewps35->kuantiti) * (int) $harga_seunit;
+        }
+
+        $kewps36->bilangan_kes_surcaj = 1;
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps36', [$kewps36]);
 

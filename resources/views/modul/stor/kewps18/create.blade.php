@@ -34,13 +34,7 @@
                     <div class="row">
                         <div class="col-6 mt-3">
                             <label for="">Tahun</label>
-                            <select class="form-control mb-3" name="tahun">
-                                <option selected>Pilih</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                            </select>
+                            <input type="text" class="form-control" id="k18_tahun" value="">
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">Pindahan Stok</label>
@@ -60,5 +54,15 @@
         </form>
     </div>
 
+    <script>
+        $(document).ready(function() {
+            $("#k18_tahun").datepicker({
+                format: "yyyy",
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            });
+        });
+    </script>
 
 @endsection

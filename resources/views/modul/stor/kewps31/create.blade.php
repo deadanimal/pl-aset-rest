@@ -46,7 +46,7 @@
                             <label for="">Kementerian</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="text" name="kementerian_display"
-                                    value="Perbadanan Labuan" readonly>
+                                    value="Perbadanan Labuan">
                             </div>
                         </div>
 

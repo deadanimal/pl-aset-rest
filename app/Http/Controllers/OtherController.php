@@ -16,7 +16,7 @@ class OtherController extends Controller
 
     public function aset_tak_alih_index()
     {
-        return view('modul.aset_tak_alih.index');
+        return redirect('jkrpataf68');
     }
 
     public function aset_tak_ketara_index()
@@ -31,8 +31,7 @@ class OtherController extends Controller
 
     public function stor_index()
     {
-        return redirect('kewps1');
-        // return view('modul.stor.index');
+        return view('modul.stor.index');
     }
 
 }

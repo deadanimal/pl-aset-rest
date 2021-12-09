@@ -54,3 +54,4 @@ class PlpkPa0206Controller extends Controller
       return $plpk_pa_0206->delete();
     }
 
+  }

@@ -32,9 +32,9 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-6 mt-3">
                             <label for="">Kew.PS-10</label>
-                            <select class="form-control mb-3" name="kewps10_id">
+                            <select class="form-control mb-3" name="kewps10_id" id="k12_k10">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps10 as $k10)
                                     <option value="{{ $k10->id }}">{{ $k10->id }} -
@@ -43,27 +43,28 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-3">
                             <label for="">Kategori Stor</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kategori_stor"
-                                    value="{{ old('kategori_stor') }}">
-                            </div>
+                            <select name="kategori_stor" class="form-control" id="k12_kategori_stor">
+                                <option selected>Pilih</option>
+                                <option value="Stor Alat Ganti">Stor Alat Ganti</option>
+                                <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
+                            </select>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-4 mt-3">
                             <label for="">Jabatan</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="jabatan" value="{{ old('jabatan') }}">
+                                <input class="form-control" type="text" name="jabatan" value="" id="k12_jabatan">
                             </div>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-4 mt-3">
                             <label for="">Pelaksanaan Verifikasi</label>
                             <div class="input-group">
                                 <input class="form-control" type="number" step="0.01" name="pelaksanaan_verifikasi"
                                     value="{{ old('pelaksanaan_verifikasi') }}">
                             </div>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-4 mt-3">
                             <label for="">Prestasi Penilaian</label>
                             <div class="input-group">
                                 <input class="form-control" type="number" step="0.01" name="prestasi_penilaian"
@@ -82,5 +83,25 @@
         </form>
     </div>
 
-
+    <script>
+        $(document).ready(function() {
+            $("#k12_k10").change(function() {
+                var k12_k10 = this.value;
+                $.ajax({
+                    type: 'get',
+                    url: '{!! URL::to('/kewps12_dinamic') !!}',
+                    data: {
+                        'id': k12_k10
+                    },
+                    success: function(data) {
+                        $("#k12_jabatan").val(data.kementerian);
+                        $("#k12_kategori_stor").val(data.kategori_stor);
+                    },
+                    error: function() {
+                        console.log('success');
+                    },
+                });
+            });
+        });
+    </script>
 @endsection

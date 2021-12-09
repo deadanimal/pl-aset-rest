@@ -32,20 +32,17 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-3">
                             <label for="">Tahun</label>
-                            <select class="input-group" name="tahun">
-                                <option selected>Pilih Tahun</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                            </select>
+                            <input type="text" name="tahun" class="form-control" id="k11_tahun" autocomplete="off">
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-3">
                             <label for="">Nama Stor</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="nama_stor" value="">
-                            </div>
+                            <select name="nama_stor" class="form-control">
+                                <option selected>Pilih</option>
+                                <option value="Stor Alat Ganti">Stor Alat Ganti</option>
+                                <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
+                            </select>
                         </div>
                         <input class="form-control" type="hidden" name="pegawai_verifikasi1"
                             value="{{ Auth::user()->id }}">
@@ -777,4 +774,14 @@
     </div>
 
 
+    <script>
+        $(document).ready(function() {
+            $("#k11_tahun").datepicker({
+                format: "yyyy",
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            });
+        });
+    </script>
 @endsection

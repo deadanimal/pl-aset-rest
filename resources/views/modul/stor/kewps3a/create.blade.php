@@ -33,44 +33,66 @@
                 <div class="card-body pt-0">
                     <div class="row">
 
-                        {{-- <div class="col-12 mt-2">
-                            <label for="" class="col-form-label">No Kod</label>
-                            <select class="form-select" name="id">
+                        <div class="col-4 mt-2">
+                            <label for="" class="col-form-label col-form-label-sm">No Kod</label>
+                            <select class="form-control form-control-sm" name="id" id="k3_id">
                                 <option selected>Pilih</option>
                                 @foreach ($infokewps1 as $ik1)
-                                    <option value="{{ $ik1->id }}">{{ $ik1->id }} - {{ $ik1->perihal_barang }}
+                                    @if (!in_array($ik1->no_kod, $k3a))
+                                        <option value="{{ $ik1->no_kod }}">{{ $ik1->no_kod }}
+                                    @endif
                                     </option>
                                 @endforeach
                             </select>
-                        </div> --}}
+                        </div>
 
-                        <div class="col-12 mt-2">
+                        {{-- <div class="col-12 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">No Kod</label>
                             <input class="form-control form-control-sm" type="text" name="id">
-                        </div>
+                        </div> --}}
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Nama Stor</label>
-                            <input class="form-control form-control-sm" type="text" name="nama_stor">
+                            <select class="form-control form-control-sm" name="nama_stor">
+                                <option value="Stor Alat Ganti">Stor Alat Ganti</option>
+                                <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
+                            </select>
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Perihal Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="perihal_stok">
+                            <input class="form-control form-control-sm" type="text" name="perihal_stok"
+                                id="k1_perihal_stok">
                         </div>
-                        <div class="col-4 mt-2">
+                        {{-- <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">No Kad</label>
                             <input class="form-control form-control-sm" type="text" name="no_kad">
-                        </div>
+                        </div> --}}
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Unit Pengukuran</label>
-                            <input class="form-control form-control-sm" type="text" name="unit_pengukuran">
+                            <select class="form-control form-control-sm" name="unit_pengukuran" id="k1_unit_pengukuran">
+                                <option value="Unit">Unit</option>
+                                <option value="Kotak">Kotak</option>
+                                <option value="Rim">Rim</option>
+                                <option value="Butang">Butang</option>
+                                <option value="Buah">Buah</option>
+                                <option value="Bilah">Bilah</option>
+                                <option value="Paket">Paket</option>
+                                <option value="Keping">Keping</option>
+                            </select>
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Kumpulan</label>
-                            <input class="form-control form-control-sm" type="text" name="kumpulan">
+                            <select class="form-control form-control-sm" name="kumpulan">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                            </select>
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Pergerakan</label>
-                            <input class="form-control form-control-sm" type="text" name="pergerakan">
+                            <select class="form-control form-control-sm" name="pergerakan">
+                                <option value="Aktif">Aktif</option>
+                                <option value="Tak Aktif">Tak Aktif</option>
+                                <option value="Dibatalkan">Dibatalkan</option>
+                            </select>
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Gudang Stok</label>
@@ -104,22 +126,6 @@
                     </div>
                     <a class="btn btn-sm btn-primary text-white mt-3" onclick="tambahParasStok()">Tambah Paras
                         Stok</a>
-                    {{-- <div class="row mt-5" id="terimaan_stok_create">
-                        <div class="col-12">
-                            <h5>Terimaan Stok Suku Tahun</h5>
-                        </div>
-                    </div>
-                    <a class="btn btn-sm btn-primary text-white mt-3" onclick="tambahTerimaanStokSuku()">Tambah Stok
-                        Suku
-                        Tahun</a>
-                    <div class="row mt-5" id="keluaran_stok_create">
-                        <div class="col-12">
-                            <h5>Keluaran Stok Suku Tahunan</h5>
-                        </div>
-                    </div>
-                    <a class="btn btn-sm btn-primary text-white mt-3" onclick="tambahKeluaranStokSuku()">Tambah Keluaran
-                        Stok Suku Tahun
-                    </a> --}}
                     <div class="mt-5">
                         <button class="btn btn-primary" type="submit">Simpan</button>
                     </div>
@@ -129,6 +135,30 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            $("#k3_id").change(function() {
+                var infokps1_id = this.value;
+                $.ajax({
+                    type: 'get',
+                    url: '{!! URL::to('/kewps3_dinamic') !!}',
+                    data: {
+                        'id': infokps1_id
+                    },
+                    success: function(data) {
+
+                        $("#k1_perihal_stok").val(data.perihal_barang);
+                        $("#k1_unit_pengukuran").val(data.unit_pengukuran);
+
+                    },
+                    error: function() {
+                        console.log('success');
+                    },
+                });
+
+            });
+
+        });
+
         function tambahKeluaranStokSuku() {
             $("#keluaran_stok_create").append(
                 `
@@ -234,13 +264,7 @@
                 `     
                          <div class="col-3 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Tahun</label>
-                            <select class="form-control form-control-sm" name="tahun_paras_stok[]">
-                                <option selected>Pilih</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                            </select>
+                            <input type="text" class="datepicker form-control form-control-sm" name="tahun_paras_stok[]" autocomplete="off"/>
                         </div>
                         <div class="col-3 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Maksimum Stok</label>
@@ -255,7 +279,14 @@
                             <input class="form-control form-control-sm" type="number" name="minimum_stok[]">
                         </div>
                 `
-            )
+            );
+
+            $(".datepicker").datepicker({
+                format: "yyyy",
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            });
         }
     </script>
 @endsection

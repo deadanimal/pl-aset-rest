@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">kewps6</a></li>
+                                <li class="breadcrumb-item"><a href="">kewps5</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -35,9 +35,9 @@
                         <input class="form-control form-control-sm" type="hidden" name="user_id"
                             value="{{ Auth::user()->id }}">
 
-                        <div class="col-12">
+                        <div class="col-3 mt-3">
                             <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id">
+                            <select class="form-control" name="kewps3a_id">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
                                     <option value="{{ $k3->id }}">{{ $k3->id }} - {{ $k3->perihal_stok }}
@@ -46,34 +46,33 @@
                             </select>
                         </div>
 
-                        <div class="col-12 mt-3">
+                        <div class="col-3 mt-3">
                             <label for="">Jumlah beli tahun Lepas</label>
                             <input class="form-control" type="number" name="jumlah_beli_setahun_lepas"
                                 id="jbsatutahunlepas" value="">
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-3 mt-3">
                             <label for="">Jumlah beli dua tahun lepas</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="jumlah_beli_dua_tahun_lepas" value=""
-                                    id="jbduatahunlepas">
-                            </div>
+                            <input class="form-control" type="number" name="jumlah_beli_dua_tahun_lepas" value=""
+                                id="jbduatahunlepas">
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-3 mt-3">
                             <label for="">Purata Pembelian</label>
                             <div class="input-group">
                                 <input class="form-control" type="number" step="0.01" id="ck5purata"
                                     name="purata_pembelian" value="" readonly>
                             </div>
                         </div>
-                        {{-- <div class="col-12 mt-3">
+                        {{-- <div class="col-2 mt-3">
                             <label for="">Peratusan</label>
                             <div class="input-group">
                                 <input class="form-control" type="number" step="0.01" id="ck5peratusan" name="peratusan"
                                     value="" readonly>
+                                <span class="input-group-text">%</span>
                             </div>
                         </div> --}}
 
-                        <div class="col-3 mt-5">
+                        <div class="col-12 mt-5">
                             <button class="btn btn-primary" type="submit">Simpan</button>
                         </div>
                     </div>
@@ -108,6 +107,7 @@
                 var purata = (satu + dua) / 2;
                 var peratusan = (purata / (satu + dua)) * 100;
                 $('#ck5purata').val(purata);
+                // $('#ck5peratusan').val(peratusan);
             }
 
         });

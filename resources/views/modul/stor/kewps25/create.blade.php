@@ -33,10 +33,9 @@
                 <div class="card-body pt-0">
                     <div class="row">
                         <div class="col-4">
-                            <label for="">Pengerusi</label>
+                            <label for="">Nama Pengerusi</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="nama" value="{{ Auth::user()->name }}"
-                                    readonly>
+                                <input class="form-control mb-3" type="text" name="nama" value="">
                             </div>
                         </div>
                         <input type="hidden" name="pengerusi_id" value="{{ Auth::user()->id }}">

@@ -93,19 +93,18 @@
                   <div class="text-center">
                   </div>
                 </div>
-              </div>
             </div>
             <div class="col-lg-2">
-              <div id="stor" class="card bg-secondary hand card-lift--hover shadow border-0">
-                <div class="card-body mx-auto">
-                  <div class="text-center mb-4">
-                    <img src="/assets/img/salary.png" style="height:100px;">
-                  </div>
-                  <h3 class="text-uppercase text-center text-white">Pengurusan Stor</h3>
-                  <div class="text-center">
-                  </div>
+                <div id="susut_nilai" class="card bg-secondary hand card-lift--hover shadow border-0">
+                  <div class="card-body mx-auto">
+                    <div class="text-center mb-4">
+                      <img src="/assets/img/salary.png" style="height:100px">
+                    </div>
+                    <h3 class="text-uppercase text-center text-white">Susut Nilai</h3>
+                    <br>
+                    <div class="text-center">
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
       </div>
@@ -139,11 +138,5 @@
     window.location.href=""
   });
 
-
-
-
-
-
 </script>
-
 @endsection

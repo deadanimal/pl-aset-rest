@@ -49,10 +49,17 @@ class Kewps5Controller extends Controller
 
     public function calculatePurata()
     {
-        $purata = count(Kewps5::all());
-        $purata = (1 / $purata) * 100;
-        DB::table('kewps5s')->update(['peratusan' => $purata]);
-
+        $k5 = Kewps5::all();
+        $total_pp = 0;
+        foreach ($k5 as $k) {
+            $total_pp = $total_pp + $k->purata_pembelian;
+        }
+        if ($total_pp != 0) {
+            foreach ($k5 as $k) {
+                $purata = ($k->purata_pembelian / $total_pp) * 100;
+                Kewps5::where('id', $k->id)->update(['peratusan' => $purata]);
+            }
+        }
     }
     /**
      * Display the specified resource.
@@ -118,9 +125,9 @@ class Kewps5Controller extends Controller
 
         $context = [
             "url" => $url,
+            "title" => "kewps5",
         ];
 
-        return view('modul.borang_viewer', $context);
-
+        return view('modul.borang_viewer_ps', $context);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\InfoKewps16;
 use App\Models\Kewps3a;
 use App\Models\Kewps16;
+use App\Models\KodJabatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -31,8 +32,8 @@ class Kewps16Controller extends Controller
     {
         return view('modul.stor.kewps16.create', [
             'kewps3a' => Kewps3a::all(),
+            'bahagian' => KodJabatan::all(),
         ]);
-
     }
 
     /**
@@ -88,7 +89,6 @@ class Kewps16Controller extends Controller
      */
     public function edit(Kewps16 $kewps16)
     {
-
     }
 
     /**
@@ -118,7 +118,6 @@ class Kewps16Controller extends Controller
         }
 
         return redirect('/kewps16');
-
     }
 
     /**
@@ -153,7 +152,6 @@ class Kewps16Controller extends Controller
             $kewps16->serah_jumlah_perbezaan = (int) $kewps16->serah_jumlah_perbezaan + (int) $ik16->perbezaan_diserahkan;
             $kewps16->ambil_jumlah_fizikal = (int) $kewps16->ambil_jumlah_fizikal + (int) $ik16->kuantiti_fizikal_diambil;
             $kewps16->ambil_jumlah_perbezaan = (int) $kewps16->ambil_jumlah_perbezaan + (int) $ik16->perbezaan_diambil;
-
         }
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps16', [$kewps16]);
@@ -168,6 +166,5 @@ class Kewps16Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

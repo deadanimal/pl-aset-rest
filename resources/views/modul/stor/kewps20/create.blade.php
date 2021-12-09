@@ -41,10 +41,12 @@
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">Kategori Stor</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kategori_stor" value="Contoh Kategori"
-                                    readonly>
-                            </div>
+                            <select class="form-control" name="kategori_stor">
+                                <option selected>Pilih</option>
+                                <option value="Stor Alat Ganti">Stor Alat Ganti</option>
+                                <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
+                            </select>
+
                         </div>
 
                         <input type="hidden" name="kuasa_melulus" value="{{ Auth::user()->id }}">

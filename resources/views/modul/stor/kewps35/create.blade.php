@@ -96,12 +96,15 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-6">
+
+                         <div class="col-6">
                             <label for="">Kuantiti</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="kuantiti[]" value="">
+                                <input class="form-control mb-3" type="number" name="kuantiti[]" value="">
                             </div>
                         </div>
+
+                       
                 `
             )
         }

@@ -29,7 +29,7 @@ class Kewps12Controller extends Controller
     public function create()
     {
         return view('modul.stor.kewps12.create', [
-            'kewps11' => Kewps10::all(),
+            'kewps10' => Kewps10::all(),
         ]);
     }
 
@@ -83,7 +83,6 @@ class Kewps12Controller extends Controller
         $kewps12->update($request->all());
 
         return redirect('kewps12');
-
     }
 
     /**
@@ -97,6 +96,13 @@ class Kewps12Controller extends Controller
         $kewps12->delete();
         return redirect('kewps12');
     }
+
+    public function getDinamic(Request $request)
+    {
+        $kewps10 = Kewps10::where('id', $request->id)->first();
+        return response()->json($kewps10);
+    }
+
     public function generatePdf(Kewps12 $kewps12)
     {
 
@@ -113,6 +119,5 @@ class Kewps12Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

@@ -65,7 +65,7 @@
                                 <li class="nav-item">
                                     <a href="/kewps3b" class="nav-link">
                                         <span class="sidenav-mini-icon"> KPS3(B) </span>
-                                        <span class="sidenav-normal"> KEW.PS-1 (B)</span>
+                                        <span class="sidenav-normal"> KEW.PS-3 (B)</span>
                                     </a>
                                 </li>
 
@@ -287,7 +287,7 @@
                         <a class="nav-link" href="#navbar-kehilangan" data-toggle="collapse" role="button"
                             aria-expanded="true" aria-controls="navbar-dashboards">
 
-                            <i class="fas fa-door-open text-primary"></i>
+                            <i class="fas fa-file-excel text-primary"></i>
                             <span class="nav-link-text">Kehilangan</span>
                         </a>
                         <div class="collapse" id="navbar-kehilangan">
