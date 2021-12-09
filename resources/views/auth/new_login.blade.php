@@ -1,8 +1,12 @@
 @extends('layouts.base_login')
 @section('content')
 
-<div id="loginPage" style="height: 100vh;">
-<section class="vh-100" style="background-image: url('/assets/img/bg-labuan.jpg') !important;">
+<section style="background-image: url('/assets/img/bg-labuan.jpg') !important;
+  background-repeat: no-repeat;
+  background-size: stretch;
+  height: 100vh !important;
+  width: 100vw !important;
+  ">
   <div class="">
     <div class="row h-100">
       <div class="col-8">
@@ -25,7 +29,8 @@
 
         <div class="mt-6 ml-4">
           <h1 style="font-size: 50px; color: white;">Pengumuman<br>Terkini</h1>
-          <h3 style="color: white;">Data pengumuman</h3>
+          <h2 style="color: white;">{{$pengumuman->tajuk}}</h3>
+          <h3 style="color: white;">{{$pengumuman->info_pengumuman}}</h3>
         </div>
       </div>
       <div class="col-4 w-100">
@@ -79,5 +84,4 @@
     </div>
   </div>
 </section>
-<div>
 @stop
