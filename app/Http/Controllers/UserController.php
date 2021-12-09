@@ -22,17 +22,8 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-      $user = new User;
-      $user->name=$request->name;
-      $user->email=$request->email;
-      $user->jawatan=$request->jawatan;
-      $user->prima_facie=$request->prima_facie;
-      $user->ditahan_kerja=$request->ditahan_kerja;
-
-      // HARDCODED PASSWORD
-      //
-      $user->password=Hash::make("PabloEscobar");
-      $user -> save();
+      $request['password'] = Hash::make("PabloEscobar");
+      $user = User::create($request->all());
 
       return redirect('/pengguna');
 
@@ -44,16 +35,11 @@ class UserController extends Controller
       return $user;
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $user)
     {
+      $user = User::where('id', $user)->first();
 
-      $user->name=$request->name;
-      $user->email=$request->email;
-      $user->jawatan=$request->jawatan;
-      $user->prima_facie=$request->prima_facie;
-      $user->ditahan_kerja=$request->ditahan_kerja;
-      $user -> save();
-
+      $user->update($request->all());
       return redirect('/pengguna');
 
 

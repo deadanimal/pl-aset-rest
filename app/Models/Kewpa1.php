@@ -14,18 +14,12 @@ class Kewpa1 extends Model
     public $table = 'kewpa1s';
     use HasFactory;
 
-    public function info_kewpa1s() {
-      return $this->hasMany(InfoKewpa1::class);
-    }
+    protected $guarded = ['id'];
+    protected $with = ['info_kewpa1'];
 
-    public function kewpa2s() {
-      return $this->hasMany(Kewpa2::class);
+    public function info_kewpa1() {
+      return $this->hasMany(InfoKewpa1::class, 'rujukan_kewpa1_id');
     }
-
-    public function kewpa3as() {
-      return $this->hasMany(Kewpa3A::class);
-    }
-
 
 
     

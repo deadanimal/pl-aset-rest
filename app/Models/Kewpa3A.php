@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kewpa3A extends Model
 {
-    use HasFactory;
-    public function kewpa1() {
-      return $this->belongsTo(Kewpa1::class);
-    }
 
+    public $table = 'kewpa3as';
+    use HasFactory;
+
+    protected $guarded = ['id'];
+    
 }

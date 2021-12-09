@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class InfoKewpa2 extends Model
 {
     use HasFactory;
-    public function kewpa2s() {
-      return $this->belongsTo(kewpa2s::class);
-    }
+
+    protected $guarded = ['id'];
 
 }
