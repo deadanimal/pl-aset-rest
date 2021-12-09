@@ -16,9 +16,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Pipeline Network">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>
-    sPerbadanan Labuan - Pengurusan Aset & Stor  
+    Perbadanan Labuan - Pengurusan Aset & Stor  
   </title>
 
   <!-- Favicon -->
@@ -43,7 +44,8 @@
 
   <!-- JQuery -->
   <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+  <!-- Validate -->
 
   <!-- Moment JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>

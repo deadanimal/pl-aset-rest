@@ -133,16 +133,17 @@ class Kewatk13Controller extends Controller
       ->first();
 
 
-      $response = Http::post('http://127.0.0.1:8001/cetak/atk13', [$data]);
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk13', [$data]);
 
       $res = $response->getBody()->getContents();
       $url = "data:application/pdf;base64,".$res;
 
       $context = [
-        "url" => $url
+        "url" => $url,
+        "title" => "Kewatk13"
       ];
 
-      return view('modul.borang_viewer', $context);
+      return view('modul.borang_viewer_atk', $context);
 
 
     }

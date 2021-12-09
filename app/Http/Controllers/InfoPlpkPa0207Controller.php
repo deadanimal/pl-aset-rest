@@ -24,7 +24,7 @@ class InfoPlpkPa0207Controller extends Controller
       $info_plpk_pa_0207->punca_kerosakan=$request->punca_kerosakan;
       $info_plpk_pa_0207->kewpa14_id=$request->kewpa14_id;
       $info_plpk_pa_0207->plpk07_id=$request->plpk07_id;
-      $info_plpk_pa_0207->save()
+      $info_plpk_pa_0207->save();
 
       return $info_plpk_pa_0207;
 
@@ -47,7 +47,7 @@ class InfoPlpkPa0207Controller extends Controller
       $info_plpk_pa_0207->punca_kerosakan=$request->punca_kerosakan;
       $info_plpk_pa_0207->kewpa14_id=$request->kewpa14_id;
       $info_plpk_pa_0207->plpk07_id=$request->plpk07_id;
-      $info_plpk_pa_0207->save()
+      $info_plpk_pa_0207->save();
 
       return $info_plpk_pa_0207;
 

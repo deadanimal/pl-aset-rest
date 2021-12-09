@@ -14,7 +14,7 @@ class CreateKewps1sTable extends Migration
     public function up()
     {
         Schema::create('kewps1s', function (Blueprint $table) {
-            $table->id();
+            $table->id(); //no rujukan btb
             $table->string('nama_pembekal')->nullable();
             $table->string('alamat_pembekal')->nullable();
             $table->string('jenis_penerimaan')->nullable();

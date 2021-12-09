@@ -1,23 +1,39 @@
-@extends('layouts.base') @section('content') <div id="show">
-
-  <div class="card mt-4">
-    <div class="card-header text-end" style="
-    background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-    ">
-      <div class="row">
-        <div class="col text-start">
-          <h6 class="text-white">KEWATK 4</h6>
-        </div>
-        <div class="col text-end">
-          <button class="btn btn-sm btn-primary" id="tambah"><i class="fas fa-plus"></i></button>
-
+@extends('layouts.base_atk') @section('content') 
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Perbadanan Labuan</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
+                <li class="breadcrumb-item"><a href="">Kewatk4</a></li>
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
-    </br>
-    <div class="card-body pt-0">
+</div>
 
-      <table class="table" id="table">
+<div class="container-fluid mt--6">
+  <div id="show">
+  <div class="card mt-4">
+    <div class="card-header">
+        <div class="row">
+          <div class="col">
+            <h2 class="mb-0">Pendaftaran Harta Bukan Intelek</h2>
+          </div>
+          <div class="text-end mr-2">
+            <button class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</button>
+          </div>
+        </div>
+      </div>
+
+    <div class="table-responsive py-4">
+
+      <table class="table table-custom-simplified table-flush" id="table">
         <thead class="thead-light">
           <tr>
             <th scope="col">Agensi</th>
@@ -53,18 +69,17 @@
               @if (Auth::user()->jawatan=="superadmin")
               <a href="/kewatk4" onclick="updateStatus({{$k4}}, 'LULUS')"><i class="fas fa-check-circle"></i></a>
               <a href="/kewatk4" onclick="updateStatus({{$k4}}, 'DITOLAK')"><i class="fas fa-times-circle"></i></a>
-              <a href="/kewatk4pdf"><i class="fas fa-print"></i></a>
+              <a href="/kewatk4pdf/{{$k4->id}}"><i class="fas fa-print"></i></a>
               @else
               <a href="/kewatk4" onclick="updateStatus({{$k4}}, 'HANTAR')"><i class="fas fa-arrow-up"></i></a>
               
               <!-- disable edit after submit -->              
               @if($k4->status=="HANTAR")
               @else
-              <a href="/kewatk4/{{$k4->id}}"><i class="fas fa-file"></i></a>
-              <a href="#" onclick="updateData({{$k4}})"><i class="fas fa-pen"></i></a>
+              <a href="/kewatk4/{{$k4->id}}"><i class="fas fa-pen"></i></a>
               @endif
 
-              <a href="/kewatk4pdf"><i class="fas fa-print"></i></a>
+              <a href="/kewatk4pdf/{{$k4->id}}"><i class="fas fa-print"></i></a>
               <a href="/kewatk4" onclick="deleteData({{$k4}})"><i class="fas fa-trash"></i></a>
               @endif
               </td>
@@ -81,34 +96,51 @@
   <form method="POST" action="/kewatk4" enctype="multipart/form-data">
       @csrf
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">KEWATK 4</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Tambah Harta Bukan Intelek</h2>
+               </div>
+             </div>
+           </div>
           </br>
           <div class="card-body pt-0">
+            <div class="row">
+
+            <div class="col-4">
             <label for="">Agensi</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="agensi" value="">
+              <input class="form-control mb-3" type="text" name="agensi" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Bahagian</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="bahagian" value="">
+              <input class="form-control mb-3" type="text" name="bahagian" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Kategori</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="kategori" value="">
+              <input class="form-control mb-3" type="text" name="kategori" value="" required>
             </div>
+            </div>
+
+            <div class="col-4">
             <label for="">Sub Kategori</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="sub_kategori" value="">
+              <input class="form-control mb-3" type="text" name="sub_kategori" value="" required>
+            </div>
+
+            </div>
             </div>
             <!--
             <label for="">No Rujukan Kewatk4</label>
             <div class="input-group">
               <select onchange="getInfoKewatk4(this)" class="form-control mb-3" name="no_rujukan_atk1">
-                <option value=""></option>
+                <option value="" required></option>
                 @foreach ($kewatk4 as $kew4)
                 <option value="{{$kew4->id}}">Kewatk4 - No Rujukan: {{$kew4->id}}</option>
                 @endforeach
@@ -116,12 +148,13 @@
             </div>
             -->
 
-            <div id="info_kewatk4_create"></div>
 
-          <a id="button_tambah" class="btn btn-primary text-white" onclick="tambahInfoKewatk4()">Tambah Aset</a>
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          <a id="button_tambah" class="btn-sm btn btn-primary text-white" onclick="tambahInfoKewatk4()">Tambah Aset</a>
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div>
+
+    <div id="info_kewatk4_create"></div>
   </form>
 </div>
 
@@ -130,36 +163,37 @@
       @csrf
       @method('PUT')
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="          
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">KEWATK 4</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Sunting Harta Bukan Intelek</h2>
+               </div>
+             </div>
+           </div>
           </br>
           <div class="card-body pt-0"> 
             <label for="">Agensi</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="agensi" value="">
+              <input class="form-control mb-3" type="text" name="agensi" value="" required>
             </div>
             <label for="">Bahagian</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="bahagian" value="">
+              <input class="form-control mb-3" type="text" name="bahagian" value="" required>
             </div>
             <label for="">Kategori</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="kategori" value="">
+              <input class="form-control mb-3" type="text" name="kategori" value="" required>
             </div>
             <label for="">Sub Kategori</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="sub_kategori" value="">
+              <input class="form-control mb-3" type="text" name="sub_kategori" value="" required>
             </div>
-            <label for="">Staff Id</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="hidden" name="staff_id" value="">
+              <input class="form-control mb-3" type="hidden" name="staff_id" value="" required>
             </div>
 
             <div class="input-group">
-              <input class="form-control mb-3" type="hidden" name="status" value="">
+              <input class="form-control mb-3" type="hidden" name="status" value="" required>
             </div>
 
 
@@ -170,6 +204,7 @@
   </form>
 </div>
 
+</div>
 
 <script type="text/javascript">
     
@@ -183,6 +218,8 @@
     $( "#tambah" ).click(function() {
       $("#show").hide();
       $("#create").show();
+
+      tambahInfoKewatk4();
     });
 
     function updateData(obj) {
@@ -255,67 +292,90 @@
 
 
      $("#info_kewatk4_create").append(
-          `<div class="row">
+
+       `
+           <div class="card mt-4" id="basic-info">
+              <div class="card-header">
+                 <div class="row">
+                   <div class="col">
+                     <h2 class="mb-0">Tambah Harta Bukan Intelek</h2>
+                   </div>
+                  <div class="text-end mr-2">
+                    <a class="align-self-end btn btn-sm btn-primary text-white" onclick="$(this).closest('.card').remove()">Buang</a>
+                  </div>
+
+                 </div>
+               </div>
+
+              <div class="card-body pt-0">
+
+              <br>
+
+           <div class="row">
               
-            <div class="col">
+            <div class="col-4">
                 <label for="">Jenis</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="text" name="jenis[]" value="">
+                  <input class="form-control mb-3" type="text" name="jenis[]" value="" required>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <label for="">Tajuk</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="text" name="tajuk[]" value="">
+                  <input class="form-control mb-3" type="text" name="tajuk[]" value="" required>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <label for="">No Pesanan</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="text" name="no_pesanan[]" value="">
+                  <input class="form-control mb-3" type="text" name="no_pesanan[]" value="" required>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <label for="">Tarikh Terima</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="date" name="tarikh_terima[]" value="">
+                  <input class="form-control mb-3" type="date" name="tarikh_terima[]" value="" required>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <label for="">Kuantiti</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="text" name="kuantiti[]" value="">
+                  <input class="form-control mb-3" type="text" name="kuantiti[]" value="" required>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <label for="">Harga</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="text" name="harga[]" value="">
+                  <input class="form-control mb-3" type="text" name="harga[]" value="" required>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <label for="">Tempoh Dari</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="date" name="tempoh_dari[]" value="">
+                  <input class="form-control mb-3" type="date" name="tempoh_dari[]" value="" required>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <label for="">Tempoh Hingga</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="date" name="tempoh_hingga[]" value="">
+                  <input class="form-control mb-3" type="date" name="tempoh_hingga[]" value="" required>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <label for="">Catatan</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="text" name="catatan[]" value="">
+                  <input class="form-control mb-3" type="text" name="catatan[]" value="" required>
                 </div>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <label for="">Pegawai Penempatan</label>
                 <div class="input-group">
-                  <input class="form-control mb-3" type="text" name="pegawai_penempatan[]" value="">
+                  <input class="form-control mb-3" type="text" name="pegawai_penempatan[]" value="" required>
                 </div>
+              </div>
+
+              </div>
+              </div>
               </div>
          </div>`
 

@@ -14,18 +14,10 @@ class InfoKewatk1Controller extends Controller
 
     public function store(Request $request)
     {
-      $info_kewatk1 = new InfoKewatk1;
-      $info_kewatk1->keterangan_aset=$request->keterangan_aset;
-      $info_kewatk1->medium=$request->medium;
-      $info_kewatk1->kuantiti_dipesan=$request->kuantiti_dipesan;
-      $info_kewatk1->kuantiti_do=$request->kuantiti_do;
-      $info_kewatk1->kuantiti_diterima=$request->kuantiti_diterima;
-      $info_kewatk1->catatan=$request->catatan;
-      $info_kewatk1->no_rujukan=$request->rujukan_no;      
-      $info_kewatk1->no_kod=$request->no_kod;      
-      $info_kewatk1->save();
 
-      return redirect('/kewatk1/'.$request -> rujukan_no);
+      InfoKewatk1::create($request->all());
+
+      return redirect('/kewatk1/'.$request ->no_rujukan);
       
     }
 
@@ -36,17 +28,8 @@ class InfoKewatk1Controller extends Controller
 
     public function update(Request $request, InfoKewatk1 $info_kewatk1)
     {
-      $info_kewatk1->keterangan_aset=$request->keterangan_aset;
-      $info_kewatk1->medium=$request->medium;
-      $info_kewatk1->kuantiti_dipesan=$request->kuantiti_dipesan;
-      $info_kewatk1->kuantiti_do=$request->kuantiti_do;
-      $info_kewatk1->kuantiti_diterima=$request->kuantiti_diterima;
-      $info_kewatk1->catatan=$request->catatan;
-      $info_kewatk1->no_rujukan=$request->rujukan_no;      
-      $info_kewatk1->no_kod=$request->no_kod;      
-      $info_kewatk1->save();
-
-      return redirect('/kewatk1/'.$request -> rujukan_no);
+      $info_kewatk1->update($request->all());
+      return redirect('/kewatk1/'.$info_kewatk1->no_rujukan);
 
     }
 

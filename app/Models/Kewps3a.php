@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Kewps3a extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
-    protected $with = ['parasstok', 'terima', 'keluar'];
+    protected $guarded = [''];
+    protected $with = ['parasstok', 'terima', 'keluar', 'kewps1'];
+
+    public function kewps1()
+    {
+        return $this->belongsTo(InfoKewps1::class, 'id', 'no_kod');
+    }
 
     public function parasstok()
     {

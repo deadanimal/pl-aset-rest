@@ -16,7 +16,7 @@ class CreateKeluaranStokSukuTahunsTable extends Migration
         Schema::create('keluaran_stok_suku_tahuns', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kewps3a_id');
-            $table->date('tahun_keluar_stok')->nullable();
+            $table->integer('tahun_keluar_stok')->nullable();
             $table->integer('kuantiti_keluar_stok_pertama')->nullable();
             $table->string('nilai_kuantiti_keluar_pertama')->nullable();
             $table->integer('kuantiti_keluar_stok_kedua')->nullable();

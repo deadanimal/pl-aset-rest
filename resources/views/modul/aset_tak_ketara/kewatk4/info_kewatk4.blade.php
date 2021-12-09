@@ -1,23 +1,93 @@
-@extends('layouts.base') @section('content') <div id="show">
-  <div class="card mt-4">
-    <div class="card-header text-end" style="
-    background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-    ">
-      <div class="row">
-        <div class="col text-start">
-          <h6 class="text-white">INFO KEWATK 4</h6>
-        </div>
+@extends('layouts.base_atk') @section('content') 
 
-        <div class="col text-end">
-          <button class="btn btn-sm btn-primary" id="tambah"><i class="fas fa-plus"></i></button>
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Perbadanan Labuan</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
+                <li class="breadcrumb-item"><a href="">Info Kewatk4</a></li>
+              </ol>
+            </nav>
+          </div>
         </div>
-
       </div>
     </div>
-    </br>
-    <div class="card-body pt-0">
+</div>
 
-      <table class="table" id="table">
+
+<div class="container-fluid mt--6">
+<div id="show">
+    <form method="POST" action="/kewatk4/{{$kewatk4->id}}" enctype="multipart/form-data">
+      @csrf
+      @method('PUT')
+      <div class="card mt-4" id="basic-info">
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Tambah Harta Bukan Intelek</h2>
+               </div>
+             </div>
+           </div>
+          </br>
+          <div class="card-body pt-0">
+            <div class="row">
+
+            <div class="col-4">
+            <label for="">Agensi</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="agensi" value="{{$kewatk4->agensi}}" required>
+            </div>
+            </div>
+
+            <div class="col-4">
+            <label for="">Bahagian</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="bahagian" value="{{$kewatk4->bahagian}}" required>
+            </div>
+            </div>
+
+            <div class="col-4">
+            <label for="">Kategori</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="kategori" value="{{$kewatk4->kategori}}" required>
+            </div>
+            </div>
+
+            <div class="col-4">
+            <label for="">Sub Kategori</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="text" name="sub_kategori" value="{{$kewatk4->sub_kategori}}" required>
+            </div>
+
+            </div>
+            </div>
+
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
+          </div>
+      </div>
+
+    <div id="info_kewatk4_create"></div>
+  </form>
+
+  <div class="card mt-4">
+    <div class="card-header">
+        <div class="row">
+          <div class="col">
+            <h2 class="mb-0">Info Pendaftaran Harta Bukan Intelek</h2>
+          </div>
+          <div class="text-end mr-2">
+            <button class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</button>
+          </div>
+        </div>
+      </div>
+
+    <div class="table-responsive py-4">
+
+      <table class="table table-custom-simplified table-flush" id="table">
         <thead class="thead-light">
           <tr>
             <th scope="col">Jenis</th>
@@ -64,58 +134,96 @@
   <form method="POST" action="/info_kewatk4" enctype="multipart/form-data">
       @csrf
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-            <h6 class="text-white">INFO KEWATK 4</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Tambah Info</h2>
+               </div>
+             </div>
+           </div>
+
           </br>
+
           <div class="card-body pt-0">
+          <div class="row">
+          <div class="col-4">
           <label for="">Jenis</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="jenis" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tajuk</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="tajuk" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">No Pesanan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="no_pesanan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tarikh Terima</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tarikh_terima" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Kuantiti</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="kuantiti" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Harga</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="harga" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tempoh Dari</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tempoh_dari" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tempoh Hingga</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tempoh_hingga" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Catatan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="catatan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Pegawai Penempatan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="pegawai_penempatan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <div class="input-group">
             <input class="form-control mb-3" type="hidden" name="kewatk4_id" value="{{$kewatk4_id}}">
           </div>
+          </div>
+          </div>
 
-          <button class="btn btn-primary" type="submit">Simpan</button>
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div>
   </form>
@@ -129,61 +237,101 @@
       @csrf
       @method('PUT')
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="          
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">KEWATK 4</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Sunting Info</h2>
+               </div>
+             </div>
+           </div>
+
           </br>
           <div class="card-body pt-0">
+          <div class="row">
+          <div class="col-4">
           <label for="">Jenis</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="jenis" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tajuk</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="tajuk" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">No Pesanan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="no_pesanan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tarikh Terima</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tarikh_terima" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Kuantiti</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="kuantiti" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Harga</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="harga" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tempoh Dari</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tempoh_dari" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Tempoh Hingga</label>
           <div class="input-group">
             <input class="form-control mb-3" type="date" name="tempoh_hingga" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Catatan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="catatan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <label for="">Pegawai Penempatan</label>
           <div class="input-group">
             <input class="form-control mb-3" type="text" name="pegawai_penempatan" value="">
           </div>
+          </div>
+
+          <div class="col-4">
           <div class="input-group">
             <input class="form-control mb-3" type="hidden" name="kewatk4_id" value="{{$kewatk4_id}}">
           </div>
+          </div>
+          </div>
 
-          <button class="btn btn-primary" type="submit">Simpan</button>
+
+          <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div> 
   </form>
+</div>
+
 </div>
 
 

@@ -17,7 +17,7 @@ class InfoKewpa24Controller extends Controller
       
       $info_kewpa24 = new InfoKewpa24;
       $info_kewpa24->kuantiti=$request->kuantiti;
-      $info_kewpa24->harga simpanan=$request->harga simpanan;
+      $info_kewpa24->harga_simpanan=$request->harga_simpanan;
       $info_kewpa24->kewpa21_id=$request->kewpa21_id;
       $info_kewpa24->kewpa24_id=$request->kewpa24_id;
 
@@ -35,7 +35,7 @@ class InfoKewpa24Controller extends Controller
     {
 
       $info_kewpa24->kuantiti=$request->kuantiti;
-      $info_kewpa24->harga simpanan=$request->harga simpanan;
+      $info_kewpa24->harga_simpanan=$request->harga_simpanan;
       $info_kewpa24->kewpa21_id=$request->kewpa21_id;
       $info_kewpa24->kewpa24_id=$request->kewpa24_id;
 

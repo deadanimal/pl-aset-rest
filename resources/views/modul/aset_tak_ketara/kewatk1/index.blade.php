@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
 
 <div class="container-fluid mt--6">
@@ -52,10 +52,10 @@
             <tr>
               <td scope="col">{{$kewatk1->nama_pembekal}}</th>
               <td scope="col">{{$kewatk1->maklumat_pengangkutan}}</th>
-              <td scope="col">{{$kewatk1->pegawai_penerima}}</th>
-              <td scope="col">{{$kewatk1->pegawai_pakar}}</th>
+              <td scope="col">{{$kewatk1->pg_penerima->name}}</th>
+              <td scope="col">{{$kewatk1->pg_pakar->name}}</th>
   
-              @if ($kewatk1->status=="DRAFT") 
+              @if ($kewatk1->status=="DERAF") 
                 <td scope="col"><span class="badge bg-warning">{{$kewatk1->status}}</span></th>
               @elseif ($kewatk1->status=="HANTAR") 
                 <td scope="col"><span class="badge bg-primary">{{$kewatk1->status}}</span></th>
@@ -76,8 +76,7 @@
                 <!-- disable edit after submit -->              
                 @if($kewatk1->status=="HANTAR")
                 @else
-                <a href="/kewatk1/{{$kewatk1->id}}"><i class="fas fa-file"></i></a>
-                <a href="#" onclick="updateData({{$kewatk1}})"><i class="fas fa-pen"></i></a>
+                <a href="/kewatk1/{{$kewatk1->id}}" ><i class="fas fa-pen"></i></a>
                 @endif
   
                 <a href="/kewatk1pdf/{{$kewatk1->id}}"><i class="fas fa-print"></i></a>
@@ -94,62 +93,97 @@
   </div>
 <div>
 
+
 <div id="create" style="display: none;">
-  <form method="POST" action="/kewatk1" enctype="multipart/form-data">
+  <form id="create_form" method="POST" action="/kewatk1" enctype="multipart/form-data">
       @csrf
       <div class="card mt-4" id="basic-info">
           <div class="card-header">
              <div class="row">
                <div class="col">
-                 <h2 class="mb-0">Info Penerimaan Aset</h2>
+                 <h2 class="mb-0">Tambah Penerimaan Aset</h2>
                </div>
              </div>
            </div>
 
           </br>
           <div class="card-body pt-0">
-            <label for="">Nama Pembekal</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="nama_pembekal" value="">
+            <div class="row">
+              <div class="col-4">
+                <label for="">Nama Pembekal<span></span></label>
+                <div class="input-group">
+                  <input class="form-control mb-3" type="text" name="nama_pembekal" value="" required>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="">Alamat Pembekal</label>
+                <div class="input-group">
+                  <input class="form-control mb-3" type="text" name="alamat_pembekal" value="" required required>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="">Jenis Penerimaan</label>
+                <div class="input-group">
+                  <input class="form-control mb-3" type="text" name="jenis_penerimaan" value="" required>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="">No Pk</label>
+                <div class="input-group">
+                  <input class="form-control mb-3" type="text" name="no_pk" value="" required>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="">Tarikh Pk</label>
+                <div class="input-group">
+                  <input class="form-control mb-3" type="date" name="tarikh_pk" value="" required>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="">No Do</label>
+                <div class="input-group">
+                  <input class="form-control mb-3" type="text" name="no_do" value="" required>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="">Tarikh Do</label>
+                <div class="input-group">
+                  <input class="form-control mb-3" type="date" name="tarikh_do" value="" required>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="">Maklumat Pengangkutan</label>
+                <div class="input-group">
+                  <input class="form-control mb-3" type="text" name="maklumat_pengangkutan" value="" required>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="">Pegawai Pakar</label>
+                <div class="input-group">
+                  <select class="form-control mb-3" name="pegawai_pakar" required>
+                    <option value="" required selected disabled hidden>Pilih Pegawai</option>
+                    @foreach ($users as $user)
+                    <option value="{{$user->id}}">{{$user->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
             </div>
-            <label for="">Alamat Pembekal</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="alamat_pembekal" value="">
-            </div>
-            <label for="">Jenis Penerimaan</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="jenis_penerimaan" value="">
-            </div>
-            <label for="">No Pk</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="no_pk" value="">
-            </div>
-            <label for="">Tarikh Pk</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="date" name="tarikh_pk" value="">
-            </div>
-            <label for="">No Do</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="no_do" value="">
-            </div>
-            <label for="">Tarikh Do</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="date" name="tarikh_do" value="">
-            </div>
-            <label for="">Maklumat Pengangkutan</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="maklumat_pengangkutan" value="">
-            </div>
-            <label for="">Pegawai Pakar</label>
-            <div class="input-group">
-              <input class="form-control mb-3" type="text" name="pegawai_pakar" value="">
-            </div>
-            <hr> 
-            <h6>Info Kewatk 1</h6>
-            <hr> 
-          <button class="btn btn-primary" type="submit">Simpan</button>
+
+          <a class="btn-sm btn btn-primary text-white" onclick="tambahAsetPenerimaan()" >Tambah Aset</a>
+          <button id="create_submit" class="btn-sm btn btn-primary" type="submit">Simpan</button>
           </div>
       </div>
+
+      <div id="info_kewatk1_create"></div>
   </form>
 </div>
 
@@ -158,54 +192,68 @@
       @csrf
       @method('PUT')
       <div class="card mt-4" id="basic-info">
-          <div class="card-header" style="          
-          background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)
-          ">
-              <h6 class="text-white">KEWATK 1</h6>
-          </div>
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Sunting Info Penerimaan Aset</h2>
+               </div>
+             </div>
+           </div>
           </br>
           <div class="card-body pt-0">
             <label for="">Nama Pembekal</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="nama_pembekal" value="">
+              <input class="form-control mb-3" type="text" name="nama_pembekal" value="" required>
             </div>
             <label for="">Alamat Pembekal</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="alamat_pembekal" value="">
+              <input class="form-control mb-3" type="text" name="alamat_pembekal" value="" required>
             </div>
             <label for="">Jenis Penerimaan</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="jenis_penerimaan" value="">
+              <input class="form-control mb-3" type="text" name="jenis_penerimaan" value="" required>
             </div>
             <label for="">No Pk</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="no_pk" value="">
+              <input class="form-control mb-3" type="text" name="no_pk" value="" required>
             </div>
             <label for="">Tarikh Pk</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="date" name="tarikh_pk" value="">
+              <input class="form-control mb-3" type="date" name="tarikh_pk" value="" required>
             </div>
             <label for="">No Do</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="no_do" value="">
+              <input class="form-control mb-3" type="text" name="no_do" value="" required>
             </div>
             <label for="">Tarikh Do</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="date" name="tarikh_do" value="">
+              <input class="form-control mb-3" type="date" name="tarikh_do" value="" required>
             </div>
             <label for="">Maklumat Pengangkutan</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="maklumat_pengangkutan" value=""> 
+              <input class="form-control mb-3" type="text" name="maklumat_pengangkutan" value="" required> 
               </div>
              <label for="">Pegawai Penerima</label> <div class="input-group">
-              <input class="form-control mb-3" type="text" name="pegawai_penerima" value="" disabled>
+              <select class="form-control mb-3" name="pegawai_penerima" required>
+                <option value="" required selected disabled hidden>Pilih Pegawai</option>
+                @foreach ($users as $user)
+                <option value="{{$user->id}}">{{$user->nama}}</option>
+                @endforeach
+              </select>
+
             </div>
             <label for="">Pegawai Pakar</label>
             <div class="input-group">
-              <input class="form-control mb-3" type="text" name="pegawai_pakar" value="">
+              <select class="form-control mb-3" name="pegawai_pakar">
+                <option value="" required selected disabled hidden>Pilih Pegawai</option>
+                @foreach ($users as $user)
+                <option value="{{$user->id}}">{{$user->nama}}</option>
+                @endforeach
+              </select>
+
             </div>
             <div class="input-group">
-              <input class="form-control mb-3" type="hidden" name="status" value="">
+              <input class="form-control mb-3" type="hidden" name="status" value="" required>
             </div>
 
           <button class="btn btn-primary" type="submit">Simpan</button>
@@ -225,6 +273,12 @@
     $( "#tambah" ).click(function() {
       $("#show").hide();
       $("#create").show();
+      tambahAsetPenerimaan();
+    });
+
+
+    $(document).ready(function() {
+      $("#create_form").validate();
     });
 
     function updateData(obj) {
@@ -287,6 +341,82 @@
       });
     
     }
+
+    function tambahAsetPenerimaan() {
+
+      $("#info_kewatk1_create").append(
+
+        `
+          <div class="card mt-4" id="basic-info">
+          <div class="card-header">
+             <div class="row">
+               <div class="col">
+                 <h2 class="mb-0">Tambah Info Penerimaan</h2>
+               </div>
+              <div class="text-end mr-2">
+                <a class="align-self-end btn btn-sm btn-primary text-white" onclick="$(this).closest('.card').remove()">Buang</a>
+              </div>
+
+             </div>
+           </div>
+
+          <div class="card-body pt-0">
+
+          <br>
+          <div class="row">
+            <div class="col-4">
+              <label for="">Keterangan Aset</label>
+              <div class="input-group">
+                <input class="form-control mb-3" type="text" name="keterangan_aset[]" value="" required>
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="">Medium</label>
+              <div class="input-group">
+                <input class="form-control mb-3" type="text" name="medium[]" value="" required>
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="">Kuantiti Dipesan</label>
+              <div class="input-group">
+                <input class="form-control mb-3" type="text" name="kuantiti_dipesan[]" value="" required>
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="">Kuantiti Do</label>
+              <div class="input-group">
+                <input class="form-control mb-3" type="text" name="kuantiti_do[]" value="" required>
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="">Kuantiti Diterima</label>
+              <div class="input-group">
+                <input class="form-control mb-3" type="text" name="kuantiti_diterima[]" value="" required>
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="">Catatan</label>
+              <div class="input-group">
+                <input class="form-control mb-3" type="text" name="catatan[]" value="" required>
+              </div>
+            </div>
+            <div class="col-4">
+              <label for="">No Kod</label>
+              <div class="input-group">
+                <input class="form-control mb-3" type="text" name="no_kod[]" value="" required>
+              </div>
+            </div>    
+           </div>
+         </div>
+
+         </div>
+         </div>
+
+      `
+      );
+
+    }
+
 
     function deleteData(obj) {
       var id = obj.id;

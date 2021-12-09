@@ -1,4 +1,4 @@
-@extends('layouts.base') @section('content')
+@extends('layouts.base_stor') @section('content')
     <div class="container">
         <table class="table mt-4">
             <thead class="thead-light">

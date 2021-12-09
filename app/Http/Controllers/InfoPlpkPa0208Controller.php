@@ -19,7 +19,7 @@ class InfoPlpkPa0208Controller extends Controller
       $info_plpk_pa_0208->butiran_pembaikan=$request->butiran_pembaikan;
       $info_plpk_pa_0208->kewpa14_id=$request->kewpa14_id;
       $info_plpk_pa_0208->plpk08_id=$request->plpk08_id;
-      $info_plpk_pa_0208->save()
+      $info_plpk_pa_0208->save();
 
       return $info_plpk_pa_0208;
 
@@ -37,7 +37,7 @@ class InfoPlpkPa0208Controller extends Controller
       $info_plpk_pa_0208->butiran_pembaikan=$request->butiran_pembaikan;
       $info_plpk_pa_0208->kewpa14_id=$request->kewpa14_id;
       $info_plpk_pa_0208->plpk08_id=$request->plpk08_id;
-      $info_plpk_pa_0208->save()
+      $info_plpk_pa_0208->save();
 
       return $info_plpk_pa_0208;
 
