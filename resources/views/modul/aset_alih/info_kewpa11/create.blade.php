@@ -49,7 +49,15 @@
                             <div class="col-4">
                                 <label for="">Catatan</label>
                                 <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="catatan" value="" required>
+                                    <select class="form-control mb-3" name="status_aset" required>
+                                        <option value="" required required selected disabled hidden>Pilih Status Aset
+                                        </option required>
+                                        <option value="Sedang Digunakan(A)">Sedang Digunakan(A)</option>
+                                        <option value="Tidak Digunakan(B)">Tidak Digunakan(A)</option>
+                                        <option value="Perlu Pembaikan(C)">Perlu Pembaikan(C)</option>
+                                        <option value="Sedang Diselenggara(E)">Sedang Diselenggara(E)</option>
+                                        <option value="Hilang(A)">Hilang(A)</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-4">
