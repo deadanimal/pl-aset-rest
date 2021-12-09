@@ -16,7 +16,7 @@ class InfoKewpa26Controller extends Controller
     {
       
       $info_kewpa26 = new InfoKewpa26;
-      $info_kewpa26->kod petender=$request->kod petender;
+      $info_kewpa26->kod_petender=$request->kod_petender;
       $info_kewpa26->harga=$request->harga;
       $info_kewpa26->no_tender=$request->no_tender;
       $info_kewpa26->kewpa26_id=$request->kewpa26_id;
@@ -34,7 +34,7 @@ class InfoKewpa26Controller extends Controller
     public function update(Request $request, InfoKewpa26 $info_kewpa26)
     {
 
-      $info_kewpa26->kod petender=$request->kod petender;
+      $info_kewpa26->kod_petender=$request->kod_petender;
       $info_kewpa26->harga=$request->harga;
       $info_kewpa26->no_tender=$request->no_tender;
       $info_kewpa26->kewpa26_id=$request->kewpa26_id;

@@ -101,7 +101,8 @@ class Kewps34Controller extends Controller
     public function generatePdf(Kewps34 $kewps34)
     {
 
-        $kewps34->kuantiti = $kewps34->kewps32->kewps3a->parasstok[0]->maksimum_stok;
+        $kewps34->kuantiti = 1;
+
         $kewps34->tarikh_peroleh = $kewps34->kewps32->kewps3a->created_at->format('d/m/Y');
 
         $kewps34->harga_peroleh_asal = (int) $kewps34->kuantiti * (int) $kewps34->kewps32->infokewps1->harga_seunit;

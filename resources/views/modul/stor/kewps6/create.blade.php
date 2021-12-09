@@ -35,9 +35,9 @@
                         <input class="form-control form-control-sm" type="hidden" name="user_id"
                             value="{{ Auth::user()->id }}">
 
-                        <div class="col-12">
+                        <div class="col-3">
                             <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id">
+                            <select class="form-control mb-3" name="kewps3a_id" id="k6_k3a_id">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
                                     <option value="{{ $k3->id }}">{{ $k3->id }} - {{ $k3->perihal_stok }}
@@ -46,17 +46,18 @@
                             </select>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-3">
                             <label for="">Agensi</label>
-                            <input class="form-control mb-3" type="text" name="agensi" value="">
+                            <input type="text" name="agensi" class="form-control mb-3" value="Perbadanan Labuan">
                         </div>
-                        <div class="col-12">
+                        <div class="col-3">
                             <label for="">Kategori Stor</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="kategori_stor" value="">
+                                <input class="form-control mb-3" type="text" name="kategori_stor" value=""
+                                    id="k6_nama_stor">
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-3">
                             <label for="">Tarikh Luput</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="date" name="tarikh_luput" value="">
@@ -98,13 +99,13 @@
                                 <input class="form-control mb-3" type="number" name="baki_stok_1bulan" value="">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-12">
                             <label for="">Catatan</label>
                             <div class="input-group">
                                 <textarea class="form-control mb-3" type="text" name="catatan" value=""></textarea>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-12">
                             <button class="btn btn-primary" type="submit">Simpan</button>
                         </div>
                     </div>
@@ -112,4 +113,24 @@
             </div>
         </form>
     </div>
+
+    <script>
+        $("#k6_k3a_id").change(function() {
+            var k6_k3a_id = this.value;
+            $.ajax({
+                type: 'get',
+                url: '{!! URL::to('/kewps6_dinamic') !!}',
+                data: {
+                    'id': k6_k3a_id
+                },
+                success: function(data) {
+                    console.log(data.nama_stor);
+                    $("#k6_nama_stor").val(data.nama_stor);
+                },
+                error: function() {
+                    console.log('success');
+                },
+            });
+        });
+    </script>
 @endsection

@@ -19,7 +19,7 @@ class InfoPlpkPa0209Controller extends Controller
       $info_plpk_pa_0209->tarikh_diperiksa=$request->tarikh_diperiksa;
       $info_plpk_pa_0209->pemeriksa_id=$request->pemeriksa_id;
       $info_plpk_pa_0209->pengesah_id=$request->pengesah_id;
-      $info_plpk_pa_0209->save()
+      $info_plpk_pa_0209->save();
 
       return $info_plpk_pa_0209;
 
@@ -38,7 +38,7 @@ class InfoPlpkPa0209Controller extends Controller
       $info_plpk_pa_0209->pemeriksa_id=$request->pemeriksa_id;
       $info_plpk_pa_0209->pengesah_id=$request->pengesah_id;
 
-      $info_plpk_pa_0209->save()
+      $info_plpk_pa_0209->save();
 
       return $info_plpk_pa_0209;
 

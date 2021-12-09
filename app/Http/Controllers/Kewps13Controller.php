@@ -29,11 +29,13 @@ class Kewps13Controller extends Controller
      */
     public function create()
     {
+
+
+
         return view('modul.stor.kewps13.create', [
             'infokewps10' => InfoKewps10::all(),
             'kewps3a' => Kewps3a::all(),
         ]);
-
     }
 
     /**
@@ -47,30 +49,10 @@ class Kewps13Controller extends Controller
         $infokewps10 = InfoKewps10::where('id', $request->infokewps10_id)->first();
 
         $request['tahun'] = $infokewps10->kewps10->tahun;
-        $a = (int) $infokewps10->statusA;
-        $b = (int) $infokewps10->statusB;
-        $c = (int) $infokewps10->statusC;
-        $d = (int) $infokewps10->statusD;
-        $e = (int) $infokewps10->statusE;
-        $f = (int) $infokewps10->statusF;
-        $request['jumlah_stok_A'] = $a;
-        $request['jumlah_stok_B'] = $b;
-        $request['jumlah_stok_C'] = $c;
-        $request['jumlah_stok_D'] = $d;
-        $request['jumlah_stok_E'] = $e;
-        $request['jumlah_stok_F'] = $f;
-
-        $jumlah = $a + $b + $c + $e + $f;
-        $request['jumlah_kesuluruhan'] = $jumlah;
-
-        $verifikasi = (int) $infokewps10->kuantiti_fizikal_stok;
-
-        $request['peratusan_diverifikasi'] = ($verifikasi / $jumlah) * 100;
 
         Kewps13::create($request->all());
 
         return redirect('/kewps13');
-
     }
 
     /**
@@ -86,7 +68,6 @@ class Kewps13Controller extends Controller
             'kewps3a' => Kewps3a::all(),
             'kewps13' => $kewps13,
         ]);
-
     }
 
     /**
@@ -125,6 +106,20 @@ class Kewps13Controller extends Controller
         $kewps13->delete();
         return redirect('/kewps13');
     }
+
+    public function getDinamic(Request $request)
+    {
+        $infokewps10 = InfoKewps10::where('id', $request->id)->first();
+
+        foreach ($infokewps10->kewps3a->parasstok as $paras) {
+            if ($paras->tahun_paras_stok == $infokewps10->kewps10->tahun) {
+                $infokewps10['stok_semasa'] = $paras->maksimum_stok;
+            }
+        }
+
+        return response()->json($infokewps10);
+    }
+
     public function generatePdf(Kewps13 $kewps13)
     {
 
@@ -144,6 +139,5 @@ class Kewps13Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

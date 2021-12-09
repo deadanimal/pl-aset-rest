@@ -37,8 +37,9 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Kementerian Jabatan</th>
-                            <th scope="col">Kategori Stor</th>
+                            <th scope="col">Kementerian/Jabatan</th>
+                            <th scope="col">Tahun</th>
+                            <th scope="col">Stok Tidak Diverifikasi</th>
                             <th scope="col">Peratusan Diverifikasi</th>
                             <th scope="col">Tindakan</th>
                         </tr>
@@ -48,8 +49,9 @@
                             <tr>
                                 <td scope="col">{{ $loop->iteration }}</td>
                                 <td scope="col">{{ $k13->infokewps10->kewps10->kementerian }}</td>
-                                <td scope="col">{{ $k13->infokewps10->kewps10->kategori_stor }}</td>
-                                <td scope="col">{{ $k13->peratusan_diverifikasi }}</td>
+                                <td scope="col">{{ $k13->tahun }}</td>
+                                <td scope="col">{{ $k13->stok_tidak_diverifikasi }}</td>
+                                <td scope="col">{{ $k13->peratusan_diverifikasi }}%</td>
                                 <td scope="col">
                                     <a href="/kewps13/{{ $k13->id }}"><i class="fas fa-pen"></i></a>
                                     <a href="">

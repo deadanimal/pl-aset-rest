@@ -35,7 +35,7 @@
                         <div class="col-12 mt-3">
                             <label for="">Agensi</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="agensi" value="Perbadanan Labuan" readonly>
+                                <input class="form-control" type="text" name="agensi" value="Perbadanan Labuan">
                             </div>
                         </div>
                         <div class="col-4 mt-3">

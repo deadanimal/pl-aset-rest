@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfoKewps1;
+use App\Models\InfoKewps10;
 use App\Models\InfoKewps7;
 use App\Models\KeluaranStokSukuTahun;
 use App\Models\Kewps3a;
+use App\Models\Kewps4;
 use App\Models\ParasStok;
 use App\Models\TerimaanStokSukuTahun;
 use function PHPUnit\Framework\isEmpty;
@@ -34,8 +36,25 @@ class Kewps3aController extends Controller
      */
     public function create()
     {
+        // function debug_to_console($data)
+        // {
+        //     $output = $data;
+        //     if (is_array($output))
+        //         $output = implode(',', $output);
+
+        //     echo "<script>console.log($output);</script>";
+        // }
+
+        $kewps3a = Kewps3a::all();
+
+        $k3a = [];
+        foreach ($kewps3a as $k3) {
+            $k3a[] = $k3->id;
+        }
+
         return view('modul.stor.kewps3a.create', [
             'infokewps1' => InfoKewps1::all(),
+            'k3a' => $k3a,
         ]);
     }
 
@@ -48,7 +67,7 @@ class Kewps3aController extends Controller
     public function store(Request $request)
     {
 
-        $request->staff_id = Auth::user()->id;
+        $request['staff_id'] = Auth::user()->id;
 
         //Terimaan
         $infokewps1 = InfoKewps1::where('no_kod', $request->id)->get();
@@ -60,8 +79,9 @@ class Kewps3aController extends Controller
 
             $kewps3a = Kewps3a::create($request->all());
 
+
+
             $harga_seunit = $infokewps1->first()->harga_seunit;
-            $tahun_paras = date('Y', strtotime($infokewps1->first()->created_at));
             $kuantiti1 = 0;
             $kuantiti2 = 0;
             $kuantiti3 = 0;
@@ -94,7 +114,6 @@ class Kewps3aController extends Controller
                 if ($this->checkSuku($tarikh, $tahun, $mula4, $tamat4)) {
                     $kuantiti4 = $kuantiti4 + (int) $ik1->kuantiti_diterima;
                 }
-
             }
 
             TerimaanStokSukuTahun::create([
@@ -138,7 +157,6 @@ class Kewps3aController extends Controller
                 if ($this->checkSuku($tarikh, $tahun, $mula4, $tamat4)) {
                     $kuantiti4 = $kuantiti4 + (int) $ik7->kuantiti_dikeluarkan;
                 }
-
             }
 
             KeluaranStokSukuTahun::create([
@@ -162,9 +180,20 @@ class Kewps3aController extends Controller
                         'menokok_stok' => $request->menokok_stok[$i],
                         'minimum_stok' => $request->minimum_stok[$i],
                     ]);
+
+
+                    $tahun_semasa = date('Y', strtotime(now()));
+                    if ($request->tahun_paras_stok[$i] == $tahun_semasa) {
+                        $nilai_baki_semasa = $request->maksimum_stok[$i] * $harga_seunit;
+                        Kewps4::create([
+                            'nilai_baki_semasa' => $nilai_baki_semasa,
+                            'status_stok' => $request->pergerakan,
+                            'kewps3a_id' => $kewps3a->id,
+                            'user_id' => $request->staff_id
+                        ]);
+                    }
                 }
             }
-
         } else {
             dd("No Kod Belum Diterima");
         }
@@ -180,7 +209,6 @@ class Kewps3aController extends Controller
         } else {
             return false;
         }
-
     }
     public function checkSuku2($tarikh)
     {
@@ -196,7 +224,6 @@ class Kewps3aController extends Controller
         } else {
             return false;
         }
-
     }
     public function checkSuku4($paymentDate)
     {
@@ -213,7 +240,6 @@ class Kewps3aController extends Controller
         } else {
             return false;
         }
-
     }
 
     /**
@@ -295,6 +321,7 @@ class Kewps3aController extends Controller
             }
         }
 
+
         return redirect('/kewps3a');
     }
 
@@ -306,13 +333,22 @@ class Kewps3aController extends Controller
      */
     public function destroy(Kewps3a $kewps3a)
     {
-        Kewps3a::where('id', $kewps3a->id)->delete();
         ParasStok::where('kewps3a_id', $kewps3a->id)->delete();
         TerimaanStokSukuTahun::where('kewps3a_id', $kewps3a->id)->delete();
         KeluaranStokSukuTahun::where('kewps3a_id', $kewps3a->id)->delete();
+        Kewps4::where('kewps3a_id', $kewps3a->id)->delete();
+        Kewps3a::where('id', $kewps3a->id)->delete();
 
         return redirect('/kewps3a');
     }
+
+    public function getDinamic(Request $request)
+    {
+        $data = InfoKewps1::where('no_kod', $request->id)->first();
+
+        return response()->json($data);
+    }
+
 
     public function generatePdf(Kewps3a $kewps3a)
     {
@@ -337,7 +373,5 @@ class Kewps3aController extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
-
 }

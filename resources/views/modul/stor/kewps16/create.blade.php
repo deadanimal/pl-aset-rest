@@ -32,26 +32,27 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-3">
                             <label for="">Kementerian</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="agensi" value="Perbadanan Labuan" readonly>
-                            </div>
+                            <input class="form-control" type="text" name="agensi" value="Perbadanan Aset Labuan">
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-3">
                             <label for="">Bahagian</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="bahagian" value="A" readonly>
-                            </div>
+                            <select name="bahagian" class="form-control">
+                                <option selected>Pilih</option>
+                                @foreach ($bahagian as $b)
+                                    <option value="{{ $b->nama_jabatan }}">{{ $b->singkatan }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-3">
                             <label for="">Ulasan</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="ulasan" value="">
                             </div>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-3">
                             <label for="">Tindakan</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="tindakan" value="">

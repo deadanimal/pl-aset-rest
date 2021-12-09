@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InfoKewps35;
 use App\Models\Kewps3a;
+use App\Models\Kewps32;
 use App\Models\Kewps35;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -48,7 +49,7 @@ class Kewps35Controller extends Controller
             InfoKewps35::create([
                 'kewps35_id' => $kewps35->id,
                 'kewps3a_id' => $request->kewps3a_id[$i],
-                'kuantiti' => $request->kuantiti[$i],
+                'kuantiti' => count(Kewps32::where('kewps3a_id', $request->kewps3a_id[$i])->get()),
             ]);
         }
         return redirect('/kewps35');

@@ -77,7 +77,12 @@
                         <div class="col-6">
                             <label for="">Nama Jabatan</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="nama_jabatan" value="">
+                                <select name="nama_jabatan" class="form-control mb-3">
+                                    <option selected>Pilih</option>
+                                    @foreach ($jabatan as $j)
+                                        <option value="{{ $j->nama_jabatan }}">{{ $j->singkatan }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <input type="hidden" name="staff_id" value="{{ Auth::user()->id }}">

@@ -35,8 +35,7 @@
                         <div class="col-12">
                             <label for="">Pengerusi</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="kementerian" value="Perbadanan Labuan"
-                                    readonly>
+                                <input class="form-control mb-3" type="text" name="kementerian" value="Perbadanan Labuan">
                             </div>
                         </div>
                         <div class="col-3">

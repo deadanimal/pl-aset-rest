@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\InfoKewps27;
 use App\Models\Kewps26;
 use App\Models\Kewps27;
+use App\Models\KodJabatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -20,7 +21,6 @@ class Kewps27Controller extends Controller
         return view('modul.stor.kewps27.index', [
             'kewps27' => Kewps27::all(),
         ]);
-
     }
 
     /**
@@ -32,8 +32,8 @@ class Kewps27Controller extends Controller
     {
         return view('modul.stor.kewps27.create', [
             'kewps26' => Kewps26::all(),
+            'jabatan' => KodJabatan::all()
         ]);
-
     }
 
     /**
@@ -70,7 +70,6 @@ class Kewps27Controller extends Controller
             'kewps27' => $kewps27,
             'kewps26' => Kewps26::all(),
         ]);
-
     }
 
     /**
@@ -143,6 +142,5 @@ class Kewps27Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

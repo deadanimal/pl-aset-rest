@@ -55,6 +55,9 @@
     <!-- Datepicker -->
     <link rel="stylesheet" href="/assets/vendor/bootstrap-datetimepicker/sass/bootstrap-datetimepicker-build.css">
     <script src="/assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/assets/css/custom-style.css" type="text/css">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kewps3a;
 use App\Models\Kewps6;
+use App\Models\KodJabatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -28,7 +29,9 @@ class Kewps6Controller extends Controller
      */
     public function create()
     {
-        return view('modul.stor.kewps6.create', ['kewps3a' => Kewps3a::all()]);
+        return view('modul.stor.kewps6.create', [
+            'kewps3a' => Kewps3a::all(),
+        ]);
     }
 
     /**
@@ -93,6 +96,14 @@ class Kewps6Controller extends Controller
         return redirect('/kewps6');
     }
 
+
+    public function getDinamic(Request $request)
+    {
+        $kewps3a = Kewps3a::where('id', $request->id)->first();
+        return response()->json($kewps3a);
+    }
+
+
     public function generatePdf(Kewps6 $kewps6)
     {
         $kewps6->data = $kewps6->all();
@@ -109,6 +120,5 @@ class Kewps6Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

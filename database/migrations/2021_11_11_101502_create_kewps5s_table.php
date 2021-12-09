@@ -18,7 +18,7 @@ class CreateKewps5sTable extends Migration
             $table->string('jumlah_beli_setahun_lepas');
             $table->string('jumlah_beli_dua_tahun_lepas');
             $table->string('purata_pembelian');
-            $table->float('peratusan');
+            $table->float('peratusan')->nullable();
             $table->foreignId('kewps3a_id');
             $table->string('user_id');
             $table->timestamps();
