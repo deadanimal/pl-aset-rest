@@ -137,32 +137,6 @@
   $("#susut_nilai").click(function() {
     window.location.href=""
   });
->>>>>>> bc12c79ff9545adf2ed091b03eafd495b726fc06
 
-        <script type="text/javascript">
-            $("#umum").click(function() {
-                window.location.href = "/umum"
-            });
-
-            $("#aset_alih").click(function() {
-                window.location.href = ""
-            });
-
-            $("#aset_tak_alih").click(function() {
-                window.location.href = "/jkrpataf68/"
-            });
-
-            $("#aset_tak_ketara").click(function() {
-                window.location.href = "/kewatk1/"
-            });
-
-            $("#stor").click(function() {
-                window.location.href = "/kewps1/"
-            });
-
-            $("#susut_nilai").click(function() {
-                window.location.href = ""
-            });
-        </script>
-
-    @endsection
+</script>
+@endsection
