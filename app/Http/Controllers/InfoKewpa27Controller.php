@@ -7,48 +7,20 @@ use Illuminate\Http\Request;
 
 class InfoKewpa27Controller extends Controller
 {
-    public function index()
-    {
-      return InfoKewpa8::all();
-    }
 
-    public function store(Request $request)
-    {
-      
-      $info_kewpa8 = new InfoKewpa8;
-      $info_kewpa27->kuantiti=$request->kuantiti;
-      $info_kewpa27->harga_simpanan=$request->harga_simpanan;
-      $info_kewpa27->no_sebut_harga=$request->no_sebut_harga;
-      $info_kewpa27->kewpa21_id=$request->kewpa21_id;
-      $info_kewpa8 -> save();
-
-      return $info_kewpa8;
-    }
-
-    public function show(InfoKewpa8 $info_kewpa8)
-    {
-      return $info_kewpa8;
-    }
-
-    public function update(Request $request, InfoKewpa8 $info_kewpa8)
-    {
-
-      $info_kewpa27->kuantiti=$request->kuantiti;
-      $info_kewpa27->harga_simpanan=$request->harga_simpanan;
-      $info_kewpa27->no_sebut_harga=$request->no_sebut_harga;
-      $info_kewpa27->kewpa21_id=$request->kewpa21_id;
-
-      $info_kewpa8 -> save();
-
-      return $info_kewpa8;
-
-    }
-
-    public function destroy(InfoKewpa8 $info_kewpa8)
-    {
-      return $info_kewpa8->delete();
-    }
-
-
-
+  public function store(Request $request)
+  {
+    InfoKewpa27::create($request->all());
+    return redirect('/kewpa27/' . $request->kewpa27_id);
+  }
+  public function update(Request $request, InfoKewpa27 $info_kewpa27)
+  {
+    $info_kewpa27->update($request->all());
+    return redirect('/kewpa27/' . $info_kewpa27->kewpa27_id);
+  }
+  public function destroy(InfoKewpa27 $info_kewpa27)
+  {
+    $info_kewpa27->delete();
+    return redirect('/kewpa27/' . $info_kewpa27->kewpa27_id);
+  }
 }

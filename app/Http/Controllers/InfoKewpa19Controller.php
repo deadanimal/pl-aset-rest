@@ -7,50 +7,35 @@ use Illuminate\Http\Request;
 
 class InfoKewpa19Controller extends Controller
 {
-    public function index()
-    {
-      return InfoKewpa19::all();
-    }
+  public function index()
+  {
+    return InfoKewpa19::all();
+  }
 
-    public function store(Request $request)
-    {
-      
-      $table->string("butiran_penambahbaikan")->nullable();
-      $table->string("laporan_pemeriksaan")->nullable();
-      $table->string("no_siri_pendaftaran")->nullable();
-      $table->string("kewpa19_id")->nullable();
+  public function store(Request $request)
+  {
 
+    InfoKewpa19::create($request->all());
 
-      $info_kewpa19 -> save();
+    return redirect('/kewpa19/' . $request->kewpa19_id);
+  }
 
-      return $info_kewpa19;
-    }
+  public function show(InfoKewpa19 $info_kewpa19)
+  {
+    return $info_kewpa19;
+  }
 
-    public function show(InfoKewpa19 $info_kewpa19)
-    {
-      return $info_kewpa19;
-    }
+  public function update(Request $request, InfoKewpa19 $info_kewpa19)
+  {
 
-    public function update(Request $request, InfoKewpa19 $info_kewpa19)
-    {
+    $info_kewpa19->update($request->all());
+    return redirect('/kewpa19/' . $info_kewpa19->kewpa19_id);
+  }
 
-      $table->string("butiran_penambahbaikan")->nullable();
-      $table->string("laporan_pemeriksaan")->nullable();
-      $table->string("no_siri_pendaftaran")->nullable();
-      $table->string("kewpa19_id")->nullable();
+  public function destroy(InfoKewpa19 $info_kewpa19)
+  {
+    $info_kewpa19->delete();
 
-
-      $info_kewpa19 -> save();
-
-      return $info_kewpa19;
-
-    }
-
-    public function destroy(InfoKewpa19 $info_kewpa19)
-    {
-      return $info_kewpa19->delete();
-    }
-
-
-
+    return redirect('/kewpa19/' . $info_kewpa19->kewpa19_id);
+  }
 }

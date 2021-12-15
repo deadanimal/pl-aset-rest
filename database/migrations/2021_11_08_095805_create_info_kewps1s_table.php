@@ -20,7 +20,7 @@ class CreateInfoKewps1sTable extends Migration
             $table->string('perihal_barang');
             $table->string('unit_pengukuran')->nullable();
             $table->integer('kuantiti_dipesan')->nullable();
-            $table->integer('kuantiti_do')->nullable();
+            $table->string('kuantiti_do')->nullable();
             $table->integer('kuantiti_diterima')->nullable();
             $table->string('harga_seunit')->nullable();
             $table->string('jumlah_harga')->nullable();

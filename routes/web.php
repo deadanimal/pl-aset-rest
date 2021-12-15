@@ -171,6 +171,7 @@ use App\Http\Controllers\KodAsetController;
 use App\Http\Controllers\KodJabatanController;
 use App\Http\Controllers\KodLokasiController;
 use App\Http\Controllers\OtherController;
+use App\Http\Controllers\ParasStokController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\Plpkpa0102Controller;
 use App\Http\Controllers\PlpkPa0201Controller;
@@ -182,6 +183,7 @@ use App\Http\Controllers\PlpkPa0205Controller;
 # umum controller
 use App\Http\Controllers\UserController;
 use App\Models\DataAsetKhusus;
+use App\Models\ParasStok;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -325,11 +327,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('kewps2', Kewps2Controller::class);
     Route::resource('infokewps2', InfoKewps2Controller::class);
     Route::resource('kewps3a', Kewps3aController::class);
+    Route::resource('/parasstok', ParasStokController::class);
     Route::resource('kewps3b', Kewps3bController::class);
     Route::resource('kewps4', Kewps4Controller::class);
     Route::resource('kewps5', Kewps5Controller::class);
     Route::resource('kewps6', Kewps6Controller::class);
-
     Route::resource('kewps7', Kewps7Controller::class);
     Route::resource('kewps8', Kewps8Controller::class);
     Route::resource('kewps9', Kewps9Controller::class);
@@ -465,3 +467,9 @@ Route::get('/jkrpataf102pdf/{jkrpataf102}', [Jkrpataf102Controller::class, 'gene
 Route::get('/jkrpataf104pdf/{jkrpataf104}', [Jkrpataf104Controller::class, 'generatePdf']);
 Route::get('/jkrpataf114pdf', [Jkrpataf114Controller::class, 'generatePdf']);
 Route::get('/jkrpataf612pdf/{jkrpataf612}', [Jkrpataf612Controller::class, 'generatePdf']);
+
+
+//kewpa utility
+Route::get('/kewpa17pdf/{kewpa17}', [Kewpa17Controller::class, 'generatePDF']);
+Route::get('/kewpa18pdf/{kewpa18}', [Kewpa18Controller::class, 'generatePDF']);
+Route::get('/kewpa18pdf/{kewpa19}', [Kewpa19Controller::class, 'generatePDF']);
