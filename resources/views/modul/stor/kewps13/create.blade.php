@@ -131,7 +131,7 @@
                 var infok10_id = this.value;
                 $.ajax({
                     type: 'get',
-                    url: '{!! URL::to('/kewps13_dinamic') !!}',
+                    url: '/kewps13_dinamic',
                     data: {
                         'id': infok10_id
                     },

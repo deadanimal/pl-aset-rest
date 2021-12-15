@@ -7,51 +7,24 @@ use Illuminate\Http\Request;
 
 class InfoKewpa25Controller extends Controller
 {
-    public function index()
-    {
-      return InfoKewpa25::all();
-    }
+  public function store(Request $request)
+  {
+    InfoKewpa25::create($request->all());
 
-    public function store(Request $request)
-    {
-      
-      $info_kewpa25 = new InfoKewpa25;
-      $info_kewpa25->kuantiti=$request->kuantiti;
-      $info_kewpa25->harga_tawaran=$request->harga_tawaran;
-      $info_kewpa25->deposit_tender=$request->deposit_tender;
-      $info_kewpa25->no_tender=$request->no_tender;
-      $info_kewpa25->kewpa25_id=$request->kewpa25_id;
+    return redirect('/kewpa25/' . $request->kewpa25_id);
+  }
 
-      $info_kewpa25 -> save();
+  public function update(Request $request, InfoKewpa25 $info_kewpa25)
+  {
 
-      return $info_kewpa25;
-    }
+    $info_kewpa25->update($request->all());
 
-    public function show(InfoKewpa25 $info_kewpa25)
-    {
-      return $info_kewpa25;
-    }
+    return redirect('/kewpa25/' . $info_kewpa25->kewpa25_id);
+  }
 
-    public function update(Request $request, InfoKewpa25 $info_kewpa25)
-    {
-
-      $info_kewpa25->kuantiti=$request->kuantiti;
-      $info_kewpa25->harga_tawaran=$request->harga_tawaran;
-      $info_kewpa25->deposit_tender=$request->deposit_tender;
-      $info_kewpa25->no_tender=$request->no_tender;
-      $info_kewpa25->kewpa25_id=$request->kewpa25_id;
-
-      $info_kewpa25 -> save();
-
-      return $info_kewpa25;
-
-    }
-
-    public function destroy(InfoKewpa25 $info_kewpa25)
-    {
-      return $info_kewpa25->delete();
-    }
-
-
-
+  public function destroy(InfoKewpa25 $info_kewpa25)
+  {
+    $info_kewpa25->delete();
+    return redirect('/kewpa25/' . $info_kewpa25->kewpa25_id);
+  }
 }

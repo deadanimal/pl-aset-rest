@@ -33,7 +33,6 @@ class Kewps17Controller extends Controller
         return view('modul.stor.kewps17.create', [
             'kewps3a' => Kewps3a::all(),
         ]);
-
     }
 
     /**
@@ -70,7 +69,6 @@ class Kewps17Controller extends Controller
             'kewps17' => $kewps17,
             'kewps3a' => Kewps3a::all(),
         ]);
-
     }
 
     /**
@@ -142,6 +140,5 @@ class Kewps17Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

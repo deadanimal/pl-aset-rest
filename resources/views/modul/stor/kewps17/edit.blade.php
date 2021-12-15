@@ -56,8 +56,7 @@
                                     </option>
                                     @foreach ($kewps3a as $k3)
                                         @if ($k3->id != $ik17->kewps3a_id)
-                                            <option value="{{ $k3->id }}">{{ $k3->id }} -
-                                                {{ $k3->perihal_stok }}
+                                            <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                             </option>
                                         @endif
                                     @endforeach

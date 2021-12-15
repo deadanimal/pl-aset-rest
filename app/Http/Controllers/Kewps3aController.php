@@ -6,6 +6,7 @@ use App\Models\InfoKewps1;
 use App\Models\InfoKewps10;
 use App\Models\InfoKewps7;
 use App\Models\KeluaranStokSukuTahun;
+use App\Models\kewps1;
 use App\Models\Kewps3a;
 use App\Models\Kewps4;
 use App\Models\ParasStok;
@@ -34,6 +35,8 @@ class Kewps3aController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function create()
     {
         // function debug_to_console($data)
@@ -69,134 +72,129 @@ class Kewps3aController extends Controller
 
         $request['staff_id'] = Auth::user()->id;
 
+        $kewps3a = Kewps3a::create($request->all());
+
         //Terimaan
-        $infokewps1 = InfoKewps1::where('no_kod', $request->id)->get();
+        $infokewps1 = InfoKewps1::where('no_kod', $kewps3a->no_kad)->get();
 
         ///Keluaran
-        $infokewps7 = InfoKewps7::where('kewps3a_id', $request->id)->get();
-
-        if (!$infokewps1->isEmpty()) {
-
-            $kewps3a = Kewps3a::create($request->all());
+        $infokewps7 = InfoKewps7::where('kewps3a_id', $kewps3a->id)->get();
 
 
+        $harga_seunit = $infokewps1->first()->harga_seunit;
+        $kuantiti1 = 0;
+        $kuantiti2 = 0;
+        $kuantiti3 = 0;
+        $kuantiti4 = 0;
 
-            $harga_seunit = $infokewps1->first()->harga_seunit;
-            $kuantiti1 = 0;
-            $kuantiti2 = 0;
-            $kuantiti3 = 0;
-            $kuantiti4 = 0;
+        $tarikh = date('Y-m-d');
 
-            $tarikh = date('Y-m-d');
+        foreach ($infokewps1 as $ik1) {
 
-            foreach ($infokewps1 as $ik1) {
+            $tarikh = date('Y-m-d', strtotime($ik1->created_at));
+            $tahun = date('Y', strtotime($tarikh));
+            $mula1 = date('Y-m-d', strtotime($tahun . "-1-1"));
+            $tamat1 = date('Y-m-d', strtotime($tahun . "-3-31"));
+            $mula2 = date('Y-m-d', strtotime($tahun . "-4-1"));
+            $tamat2 = date('Y-m-d', strtotime($tahun . "-6-31"));
+            $mula3 = date('Y-m-d', strtotime($tahun . "-7-1"));
+            $tamat3 = date('Y-m-d', strtotime($tahun . "-9-31"));
+            $mula4 = date('Y-m-d', strtotime($tahun . "-10-1"));
+            $tamat4 = date('Y-m-d', strtotime($tahun . "-12-31"));
 
-                $tarikh = date('Y-m-d', strtotime($ik1->created_at));
-                $tahun = date('Y', strtotime($tarikh));
-                $mula1 = date('Y-m-d', strtotime($tahun . "-1-1"));
-                $tamat1 = date('Y-m-d', strtotime($tahun . "-3-31"));
-                $mula2 = date('Y-m-d', strtotime($tahun . "-4-1"));
-                $tamat2 = date('Y-m-d', strtotime($tahun . "-6-31"));
-                $mula3 = date('Y-m-d', strtotime($tahun . "-7-1"));
-                $tamat3 = date('Y-m-d', strtotime($tahun . "-9-31"));
-                $mula4 = date('Y-m-d', strtotime($tahun . "-10-1"));
-                $tamat4 = date('Y-m-d', strtotime($tahun . "-12-31"));
-
-                if ($this->checkSuku($tarikh, $tahun, $mula1, $tamat1)) {
-                    $kuantiti1 = $kuantiti1 + (int) $ik1->kuantiti_diterima;
-                }
-                if ($this->checkSuku($tarikh, $tahun, $mula2, $tamat2)) {
-                    $kuantiti2 = $kuantiti2 + (int) $ik1->kuantiti_diterima;
-                }
-                if ($this->checkSuku($tarikh, $tahun, $mula3, $tamat3)) {
-                    $kuantiti3 = $kuantiti3 + (int) $ik1->kuantiti_diterima;
-                }
-                if ($this->checkSuku($tarikh, $tahun, $mula4, $tamat4)) {
-                    $kuantiti4 = $kuantiti4 + (int) $ik1->kuantiti_diterima;
-                }
+            if ($this->checkSuku($tarikh, $tahun, $mula1, $tamat1)) {
+                $kuantiti1 = $kuantiti1 + (int) $ik1->kuantiti_diterima;
             }
-
-            TerimaanStokSukuTahun::create([
-                'kewps3a_id' => $kewps3a->id,
-                'tahun_terima_stok' => $kewps3a->created_at->format('Y'),
-                'kuantiti_terima_stok_pertama' => $kuantiti1,
-                'nilai_terima_stok_pertama' => (int) $kuantiti1 * (int) $harga_seunit,
-                'kuantiti_terima_stok_kedua' => $kuantiti2,
-                'nilai_terima_stok_kedua' => (int) $kuantiti2 * (int) $harga_seunit,
-                'kuantiti_terima_stok_ketiga' => $kuantiti3,
-                'nilai_terima_stok_ketiga' => (int) $kuantiti3 * (int) $harga_seunit,
-                'kuantiti_terima_stok_keempat' => $kuantiti4,
-                'nilai_terima_stok_keempat' => (int) $kuantiti4 * (int) $harga_seunit,
-            ]);
-
-            $kuantiti1 = 0;
-            $kuantiti2 = 0;
-            $kuantiti3 = 0;
-            $kuantiti4 = 0;
-            foreach ($infokewps7 as $ik7) {
-                $tarikh = date('Y-m-d', strtotime($ik7->created_at));
-                $tahun = date('Y', strtotime($tarikh));
-                $mula1 = date('Y-m-d', strtotime($tahun . "-1-1"));
-                $tamat1 = date('Y-m-d', strtotime($tahun . "-3-31"));
-                $mula2 = date('Y-m-d', strtotime($tahun . "-4-1"));
-                $tamat2 = date('Y-m-d', strtotime($tahun . "-6-31"));
-                $mula3 = date('Y-m-d', strtotime($tahun . "-7-1"));
-                $tamat3 = date('Y-m-d', strtotime($tahun . "-9-31"));
-                $mula4 = date('Y-m-d', strtotime($tahun . "-10-1"));
-                $tamat4 = date('Y-m-d', strtotime($tahun . "-12-31"));
-
-                if ($this->checkSuku($tarikh, $tahun, $mula1, $tamat1)) {
-                    $kuantiti1 = $kuantiti1 + (int) $ik7->kuantiti_dikeluarkan;
-                }
-                if ($this->checkSuku($tarikh, $tahun, $mula2, $tamat2)) {
-                    $kuantiti2 = $kuantiti2 + (int) $ik7->kuantiti_dikeluarkan;
-                }
-                if ($this->checkSuku($tarikh, $tahun, $mula3, $tamat3)) {
-                    $kuantiti3 = $kuantiti3 + (int) $ik7->kuantiti_dikeluarkan;
-                }
-                if ($this->checkSuku($tarikh, $tahun, $mula4, $tamat4)) {
-                    $kuantiti4 = $kuantiti4 + (int) $ik7->kuantiti_dikeluarkan;
-                }
+            if ($this->checkSuku($tarikh, $tahun, $mula2, $tamat2)) {
+                $kuantiti2 = $kuantiti2 + (int) $ik1->kuantiti_diterima;
             }
-
-            KeluaranStokSukuTahun::create([
-                'kewps3a_id' => $kewps3a->id,
-                'tahun_keluar_stok' => $kewps3a->created_at->format('Y'),
-                'kuantiti_keluar_stok_pertama' => $kuantiti1,
-                'nilai_kuantiti_keluar_pertama' => (int) $kuantiti1 * (int) $harga_seunit,
-                'kuantiti_keluar_stok_kedua' => $kuantiti2,
-                'nilai_kuantiti_keluar_kedua' => (int) $kuantiti2 * (int) $harga_seunit,
-                'kuantiti_keluar_stok_ketiga' => $kuantiti3,
-                'nilai_kuantiti_keluar_ketiga' => (int) $kuantiti3 * (int) $harga_seunit,
-                'kuantiti_keluar_stok_keempat' => $kuantiti4,
-                'nilai_kuantiti_keluar_keempat' => (int) $kuantiti4 * (int) $harga_seunit,
-            ]);
-            if ($request->tahun_paras_stok) {
-                foreach (range(0, count($request->tahun_paras_stok) - 1) as $i) {
-                    ParasStok::create([
-                        'kewps3a_id' => $kewps3a->id,
-                        'tahun_paras_stok' => $request->tahun_paras_stok[$i],
-                        'maksimum_stok' => $request->maksimum_stok[$i],
-                        'menokok_stok' => $request->menokok_stok[$i],
-                        'minimum_stok' => $request->minimum_stok[$i],
-                    ]);
-
-
-                    $tahun_semasa = date('Y', strtotime(now()));
-                    if ($request->tahun_paras_stok[$i] == $tahun_semasa) {
-                        $nilai_baki_semasa = $request->maksimum_stok[$i] * $harga_seunit;
-                        Kewps4::create([
-                            'nilai_baki_semasa' => $nilai_baki_semasa,
-                            'status_stok' => $request->pergerakan,
-                            'kewps3a_id' => $kewps3a->id,
-                            'user_id' => $request->staff_id
-                        ]);
-                    }
-                }
+            if ($this->checkSuku($tarikh, $tahun, $mula3, $tamat3)) {
+                $kuantiti3 = $kuantiti3 + (int) $ik1->kuantiti_diterima;
             }
-        } else {
-            dd("No Kod Belum Diterima");
+            if ($this->checkSuku($tarikh, $tahun, $mula4, $tamat4)) {
+                $kuantiti4 = $kuantiti4 + (int) $ik1->kuantiti_diterima;
+            }
         }
+
+        TerimaanStokSukuTahun::create([
+            'kewps3a_id' => $kewps3a->id,
+            'tahun_terima_stok' => $kewps3a->created_at->format('Y'),
+            'kuantiti_terima_stok_pertama' => $kuantiti1,
+            'nilai_terima_stok_pertama' => (int) $kuantiti1 * (int) $harga_seunit,
+            'kuantiti_terima_stok_kedua' => $kuantiti2,
+            'nilai_terima_stok_kedua' => (int) $kuantiti2 * (int) $harga_seunit,
+            'kuantiti_terima_stok_ketiga' => $kuantiti3,
+            'nilai_terima_stok_ketiga' => (int) $kuantiti3 * (int) $harga_seunit,
+            'kuantiti_terima_stok_keempat' => $kuantiti4,
+            'nilai_terima_stok_keempat' => (int) $kuantiti4 * (int) $harga_seunit,
+        ]);
+
+        $kuantiti1 = 0;
+        $kuantiti2 = 0;
+        $kuantiti3 = 0;
+        $kuantiti4 = 0;
+        foreach ($infokewps7 as $ik7) {
+            $tarikh = date('Y-m-d', strtotime($ik7->created_at));
+            $tahun = date('Y', strtotime($tarikh));
+            $mula1 = date('Y-m-d', strtotime($tahun . "-1-1"));
+            $tamat1 = date('Y-m-d', strtotime($tahun . "-3-31"));
+            $mula2 = date('Y-m-d', strtotime($tahun . "-4-1"));
+            $tamat2 = date('Y-m-d', strtotime($tahun . "-6-31"));
+            $mula3 = date('Y-m-d', strtotime($tahun . "-7-1"));
+            $tamat3 = date('Y-m-d', strtotime($tahun . "-9-31"));
+            $mula4 = date('Y-m-d', strtotime($tahun . "-10-1"));
+            $tamat4 = date('Y-m-d', strtotime($tahun . "-12-31"));
+
+            if ($this->checkSuku($tarikh, $tahun, $mula1, $tamat1)) {
+                $kuantiti1 = $kuantiti1 + (int) $ik7->kuantiti_dikeluarkan;
+            }
+            if ($this->checkSuku($tarikh, $tahun, $mula2, $tamat2)) {
+                $kuantiti2 = $kuantiti2 + (int) $ik7->kuantiti_dikeluarkan;
+            }
+            if ($this->checkSuku($tarikh, $tahun, $mula3, $tamat3)) {
+                $kuantiti3 = $kuantiti3 + (int) $ik7->kuantiti_dikeluarkan;
+            }
+            if ($this->checkSuku($tarikh, $tahun, $mula4, $tamat4)) {
+                $kuantiti4 = $kuantiti4 + (int) $ik7->kuantiti_dikeluarkan;
+            }
+        }
+
+        KeluaranStokSukuTahun::create([
+            'kewps3a_id' => $kewps3a->id,
+            'tahun_keluar_stok' => $kewps3a->created_at->format('Y'),
+            'kuantiti_keluar_stok_pertama' => $kuantiti1,
+            'nilai_kuantiti_keluar_pertama' => (int) $kuantiti1 * (int) $harga_seunit,
+            'kuantiti_keluar_stok_kedua' => $kuantiti2,
+            'nilai_kuantiti_keluar_kedua' => (int) $kuantiti2 * (int) $harga_seunit,
+            'kuantiti_keluar_stok_ketiga' => $kuantiti3,
+            'nilai_kuantiti_keluar_ketiga' => (int) $kuantiti3 * (int) $harga_seunit,
+            'kuantiti_keluar_stok_keempat' => $kuantiti4,
+            'nilai_kuantiti_keluar_keempat' => (int) $kuantiti4 * (int) $harga_seunit,
+        ]);
+        if ($request->tahun_paras_stok) {
+            foreach (range(0, count($request->tahun_paras_stok) - 1) as $i) {
+                ParasStok::create([
+                    'kewps3a_id' => $kewps3a->id,
+                    'tahun_paras_stok' => $request->tahun_paras_stok[$i],
+                    'maksimum_stok' => $request->maksimum_stok[$i],
+                    'menokok_stok' => $request->menokok_stok[$i],
+                    'minimum_stok' => $request->minimum_stok[$i],
+                ]);
+
+
+                $tahun_semasa = date('Y', strtotime(now()));
+                if ($request->tahun_paras_stok[$i] == $tahun_semasa) {
+                    $nilai_baki_semasa = $request->maksimum_stok[$i] * $harga_seunit;
+                    Kewps4::create([
+                        'nilai_baki_semasa' => $nilai_baki_semasa,
+                        'status_stok' => $request->pergerakan,
+                        'kewps3a_id' => $kewps3a->id,
+                        'user_id' => $request->staff_id
+                    ]);
+                }
+            }
+        }
+
 
         return redirect('/kewps3a');
     }
@@ -255,6 +253,7 @@ class Kewps3aController extends Controller
             'parasStok' => ParasStok::where('kewps3a_id', $kewps3a->id)->get(),
             'terimaan' => TerimaanStokSukuTahun::where('kewps3a_id', $kewps3a->id)->get(),
             'keluaran' => KeluaranStokSukuTahun::where('kewps3a_id', $kewps3a->id)->get(),
+            'infokewps1' => InfoKewps1::all()
         ]);
     }
 

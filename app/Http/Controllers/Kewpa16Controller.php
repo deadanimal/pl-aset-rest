@@ -7,41 +7,40 @@ use Illuminate\Http\Request;
 
 class Kewpa16Controller extends Controller
 {
-    public function index()
-    {
-      return Kewpa16::all();
-    }
+  public function index()
+  {
+    return Kewpa16::all();
+  }
 
-    public function store(Request $request)
-    {
-      
-      $kewpa16 = new Kewpa16;
-      $kewpa16->tahun=$request->tahun;
-      $kewpa16->ketua_jabatan=$request->ketua_jabatan;
+  public function store(Request $request)
+  {
 
-      $kewpa16 -> save();
+    $kewpa16 = new Kewpa16;
+    $kewpa16->tahun = $request->tahun;
+    $kewpa16->ketua_jabatan = $request->ketua_jabatan;
 
-      return $kewpa16;
-    }
+    $kewpa16->save();
 
-    public function show(Kewpa16 $kewpa16)
-    {
-      return $kewpa16;
-    }
+    return $kewpa16;
+  }
 
-    public function update(Request $request, Kewpa16 $kewpa16)
-    {
+  public function show(Kewpa16 $kewpa16)
+  {
+    return $kewpa16;
+  }
 
-      $kewpa16->tahun=$request->tahun;
-      $kewpa16->ketua_jabatan=$request->ketua_jabatan;
-      $kewpa15 -> save();
+  public function update(Request $request, Kewpa16 $kewpa16)
+  {
 
-      return $kewpa16;
+    $kewpa16->tahun = $request->tahun;
+    $kewpa16->ketua_jabatan = $request->ketua_jabatan;
+    $kewpa16->save();
 
-    }
+    return $kewpa16;
+  }
 
-    public function destroy(Kewpa16 $kewpa16)
-    {
-      return $kewpa16->delete();
-    }
+  public function destroy(Kewpa16 $kewpa16)
+  {
+    return $kewpa16->delete();
+  }
 }

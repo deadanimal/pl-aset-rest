@@ -7,51 +7,42 @@ use Illuminate\Http\Request;
 
 class Kewpa22Controller extends Controller
 {
-    public function index()
-    {
-      return Kewpa22::all();
-    }
+  public function index()
+  {
+    return view('modul.aset_alih.kewpa22.index', [
+      'kewpa22' => Kewpa22::all(),
+    ]);
+  }
 
-    public function store(Request $request)
-    {
-      
-      $kewpa22 = new Kewpa22;
-      $kewpa22->agensi=$request->agensi;
-      $kewpa22->secara=$request->secara;
-      $kewpa22->kuantiti=$request->kuantiti;
-      $kewpa22->tarikh=$request->tarikh;
-      $kewpa22->tempat=$request->tempat;
-      $kewpa22->pegawai_saksi1=$request->pegawai_saksi1;
-      $kewpa22->pegawai_saksi2=$request->pegawai_saksi2;
+  public function store(Request $request)
+  {
+    Kewpa22::create($request->all());
+    return redirect('/kewpa22');
+  }
 
-      $kewpa22 -> save();
+  public function create()
+  {
+    return view('modul.aset_alih.kewpa22.create');
+  }
 
-      return $kewpa22;
-    }
+  public function show(Kewpa22 $kewpa22)
+  {
+    return view('modul.aset_alih.kewpa22.edit', [
+      'kewpa22' => $kewpa22,
+    ]);
+  }
 
-    public function show(Kewpa22 $kewpa22)
-    {
-      return $kewpa22;
-    }
+  public function update(Request $request, Kewpa22 $kewpa22)
+  {
 
-    public function update(Request $request, Kewpa22 $kewpa22)
-    {
+    $kewpa22->update($request->all());
 
-      $kewpa22->agensi=$request->agensi;
-      $kewpa22->secara=$request->secara;
-      $kewpa22->kuantiti=$request->kuantiti;
-      $kewpa22->tarikh=$request->tarikh;
-      $kewpa22->tempat=$request->tempat;
-      $kewpa22->pegawai_saksi1=$request->pegawai_saksi1;
-      $kewpa22->pegawai_saksi2=$request->pegawai_saksi2;
-      $kewpa15 -> save();
+    return redirect('/kewpa22');
+  }
 
-      return $kewpa22;
-
-    }
-
-    public function destroy(Kewpa22 $kewpa22)
-    {
-      return $kewpa22->delete();
-    }
+  public function destroy(Kewpa22 $kewpa22)
+  {
+    $kewpa22->delete();
+    return redirect('/kewpa22');
+  }
 }
