@@ -3,28 +3,70 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kewpa11;
+use App\Models\InfoKewpa11;
+use App\Models\KodJabatan;
+use App\Models\Kewpa3A;
 use Illuminate\Http\Request;
 
 class Kewpa11Controller extends Controller
 {
     public function index()
     {
-      return Kewpa11::all();
+      $context = [
+        "kewpa11" => Kewpa11::all(),
+      ];
+
+      return view('modul.aset_alih.kewpa11.index', $context);
+
     }
 
     public function store(Request $request)
     {
       
-      $kewpa11 = new Kewpa11;
-      $kewpa11->agensi=$request->agensi;
-      $kewpa11->bahagian=$request->bahagian;
-      $kewpa11->pegawai_pemeriksa1=$request->pegawai_pemeriksa1;
-      $kewpa11->pegawai_pemeriksa2=$request->pegawai_pemeriksa2;
+      $request['status'] = "DERAF";
+      $kewpa11 = Kewpa11::create($request->all());
+      $kewpa11->save();
 
-      $kewpa11 -> save();
+      foreach (range(0, count($request->no_siri_pendaftaran) - 1) as $i) {
 
-      return $kewpa11;
+          $info_kewpa11 = new InfoKewpa11;
+          $info_kewpa11->lokasi_sebenar=$request->lokasi_sebenar[$i];
+          $info_kewpa11->status_aset=$request->status_aset[$i];
+          $info_kewpa11->catatan=$request->catatan[$i];
+          $info_kewpa11->no_siri_pendaftaran=$request->no_siri_pendaftaran[$i];
+          $info_kewpa11->rujukan_kewpa11_id=$kewpa11->id;      
+          $info_kewpa11->save();
+
+        }
+
+      return redirect('/kewpa11');
     }
+
+    public function create(Request $request) {
+      $context = [
+        "jabatan" => KodJabatan::all(),
+        "kewpa3a" => Kewpa3A::all(),
+      ];
+
+      return view('modul.aset_alih.kewpa11.create', $context);
+    }
+
+    public function edit(Request $request, Kewpa11 $kewpa11) {
+
+      $context = [
+        "jabatan" => KodJabatan::all(),
+        "kewpa3a" => Kewpa3A::all(),
+        "kewpa11" => $kewpa11
+      ];
+
+      \Session::put('kewpa11', $kewpa11);
+
+      return view('modul.aset_alih.kewpa11.edit', $context);
+
+    }
+
+
+
 
     public function show(Kewpa11 $kewpa11)
     {
@@ -34,15 +76,10 @@ class Kewpa11Controller extends Controller
     public function update(Request $request, Kewpa11 $kewpa11)
     {
 
-      $kewpa11->agensi=$request->agensi;
-      $kewpa11->bahagian=$request->bahagian;
-      $kewpa11->pegawai_pemeriksa1=$request->pegawai_pemeriksa1;
-      $kewpa11->pegawai_pemeriksa2=$request->pegawai_pemeriksa2;
 
-      $kewpa11 -> save();
+      $kewpa11->update($request->all());
 
-      return $kewpa11;
-
+      return redirect('/kewpa11/'.$kewpa11->id.'/edit');
     }
 
     public function destroy(Kewpa11 $kewpa11)

@@ -80,17 +80,6 @@
                               <span class="sidenav-normal"> KEW.PA 6 </span>
                               </a>
                           </li>
-
-                        </ul>
-                    </div>
-
-                    <a class="nav-link" href="#navbar-pinjaman" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
-
-                        <i class="fas fa-search-minus text-primary"></i>
-                        <span class="nav-link-text">Pinjaman/Pemeriksaan</span>
-                    </a>
-                    <div class="collapse" id="navbar-pinjaman">
-                        <ul class="nav nav-sm flex-column">
                           <li class="nav-item">
                               <a href="/kewpa7" class="nav-link">
                               <span class="sidenav-mini-icon"> PA7 </span>
@@ -103,19 +92,41 @@
                               <span class="sidenav-normal"> KEW.PA 8 </span>
                               </a>
                           </li>
+
+                        </ul>
+                    </div>
+
+                    <a class="nav-link" href="#navbar-pinjaman" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
+                        <i class="fas fa-search-minus text-primary"></i>
+                        <span class="nav-link-text">Pemeriksaan</span>
+                    </a>
+                    <div class="collapse" id="navbar-pinjaman">
+                        <ul class="nav nav-sm flex-column">
                           <li class="nav-item">
-                              <a href="/kewatk9" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK9 </span>
-                              <span class="sidenav-normal"> KEW.ATK 9 </span>
+                              <a href="/kewpa9" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA9 </span>
+                              <span class="sidenav-normal"> KEW.PA 9 </span>
                               </a>
                           </li>
 
                           <li class="nav-item">
-                              <a href="/kewatk10" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK10 </span>
-                              <span class="sidenav-normal"> KEW.ATK 10/11 </span>
+                              <a href="/kewpa11" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA11 </span>
+                              <span class="sidenav-normal"> KEW.PA 11 </span>
                               </a>
                           </li>
+                          <li class="nav-item">
+                            <a href="/kewpa12" class="nav-link">
+                            <span class="sidenav-mini-icon"> PA12 </span>
+                            <span class="sidenav-normal"> KEW.PA 12</span>
+                            </a>
+                        </li>
+                          <li class="nav-item">
+                            <a href="/kewpa13" class="nav-link">
+                            <span class="sidenav-mini-icon"> PA13 </span>
+                            <span class="sidenav-normal"> KEW.PA 13 </span>
+                            </a>
+                        </li>
                         </ul>
                     </div>
 
@@ -127,21 +138,21 @@
                     <div class="collapse" id="navbar-penyelenggaraan">
                         <ul class="nav nav-sm flex-column">
                           <li class="nav-item">
-                              <a href="/kewatk12" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK12 </span>
-                              <span class="sidenav-normal"> KEW.ATK 12 </span>
+                              <a href="/kewpa12" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA12 </span>
+                              <span class="sidenav-normal"> KEW.PA 12 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk13" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK13 </span>
-                              <span class="sidenav-normal"> KEW.ATK 13 </span>
+                              <a href="/kewpa13" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA13 </span>
+                              <span class="sidenav-normal"> KEW.PA 13 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk14" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK14 </span>
-                              <span class="sidenav-normal"> KEW.ATK 14 </span>
+                              <a href="/kewpa14" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA14 </span>
+                              <span class="sidenav-normal"> KEW.PA 14 </span>
                               </a>
                           </li>
                         </ul>
@@ -155,15 +166,15 @@
                     <div class="collapse" id="navbar-pindahan">
                         <ul class="nav nav-sm flex-column">
                           <li class="nav-item">
-                              <a href="/kewatk15" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK15 </span>
-                              <span class="sidenav-normal"> KEW.ATK 15 </span>
+                              <a href="/kewpa15" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA15 </span>
+                              <span class="sidenav-normal"> KEW.PA 15 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk16" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK16 </span>
-                              <span class="sidenav-normal"> KEW.ATK 16 </span>
+                              <a href="/kewpa16" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA16 </span>
+                              <span class="sidenav-normal"> KEW.PA 16 </span>
                               </a>
                           </li>
                         </ul>
@@ -177,40 +188,40 @@
                     <div class="collapse" id="navbar-pelupusan">
                         <ul class="nav nav-sm flex-column">
                           <li class="nav-item">
-                              <a href="/kewatk17" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK17 </span>
-                              <span class="sidenav-normal"> KEW.ATK 17 </span>
+                              <a href="/kewpa17" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA17 </span>
+                              <span class="sidenav-normal"> KEW.PA 17 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk18" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK18 </span>
-                              <span class="sidenav-normal"> KEW.ATK 18 </span>
+                              <a href="/kewpa18" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA18 </span>
+                              <span class="sidenav-normal"> KEW.PA 18 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk19" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK19 </span>
-                              <span class="sidenav-normal"> KEW.ATK 19 </span>
+                              <a href="/kewpa19" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA19 </span>
+                              <span class="sidenav-normal"> KEW.PA 19 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk20" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK20 </span>
-                              <span class="sidenav-normal"> KEW.ATK 20 </span>
+                              <a href="/kewpa20" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA20 </span>
+                              <span class="sidenav-normal"> KEW.PA 20 </span>
                               </a>
                           </li>
 
                           <li class="nav-item">
-                              <a href="/kewatk21" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK21 </span>
-                              <span class="sidenav-normal"> KEW.ATK 21 </span>
+                              <a href="/kewpa21" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA21 </span>
+                              <span class="sidenav-normal"> KEW.PA 21 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk22" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK22 </span>
-                              <span class="sidenav-normal"> KEW.ATK 22 </span>
+                              <a href="/kewpa22" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA22 </span>
+                              <span class="sidenav-normal"> KEW.PA 22 </span>
                               </a>
                           </li>
                         </ul>
@@ -224,34 +235,34 @@
                     <div class="collapse" id="navbar-kehilangan">
                         <ul class="nav nav-sm flex-column">
                           <li class="nav-item">
-                              <a href="/kewatk23" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK23 </span>
-                              <span class="sidenav-normal"> KEW.ATK 23 </span>
+                              <a href="/kewpa23" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA23 </span>
+                              <span class="sidenav-normal"> KEW.PA 23 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk24" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK24 </span>
-                              <span class="sidenav-normal"> KEW.ATK 24 </span>
+                              <a href="/kewpa24" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA24 </span>
+                              <span class="sidenav-normal"> KEW.PA 24 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk25" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK25 </span>
-                              <span class="sidenav-normal"> KEW.ATK 25 </span>
+                              <a href="/kewpa25" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA25 </span>
+                              <span class="sidenav-normal"> KEW.PA 25 </span>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/kewatk26" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK26 </span>
-                              <span class="sidenav-normal"> KEW.ATK 26 </span>
+                              <a href="/kewpa26" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA26 </span>
+                              <span class="sidenav-normal"> KEW.PA 26 </span>
                               </a>
                           </li>
 
                           <li class="nav-item">
-                              <a href="/kewatk27" class="nav-link">
-                              <span class="sidenav-mini-icon"> ATK27 </span>
-                              <span class="sidenav-normal"> KEW.ATK 27 </span>
+                              <a href="/kewpa27" class="nav-link">
+                              <span class="sidenav-mini-icon"> PA27 </span>
+                              <span class="sidenav-normal"> KEW.PA 27 </span>
                               </a>
                           </li>
                         </ul>

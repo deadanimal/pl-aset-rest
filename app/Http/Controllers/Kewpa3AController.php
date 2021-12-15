@@ -25,21 +25,22 @@ class Kewpa3AController extends Controller
 
   public function store(Request $request)
   {
-    $no_sekarang = sprintf("%'.05d\n", count(Kewpa3A::all()));
+      $no_sekarang = sprintf("%'.05d\n", count(Kewpa3A::all()) + 1);
+      
+      $tahun_ini = substr(date("Y"), -2);
+      
+      $no_siri_pendaftaran = array("PL", "KPES", "PA", "HI", $tahun_ini, $no_sekarang);
+      $no_siri_pendaftaran = implode(" /",$no_siri_pendaftaran);
+      $no_siri_pendaftaran = trim(preg_replace('/\s\s+/', ' ', $no_siri_pendaftaran));
 
-    $tahun_ini = substr(date("Y"), -2);
 
-    $no_siri_pendaftaran = array("PL", "KPES", "PA", "HI", $tahun_ini, $no_sekarang);
-    $no_siri_pendaftaran = implode(" /", $no_siri_pendaftaran);
-    $no_siri_pendaftaran = trim(preg_replace('/\s\s+/', ' ', $no_siri_pendaftaran));
+      $request['no_siri_pendaftaran'] = $no_siri_pendaftaran;
+      $request['status'] = "DERAF";
 
+      Kewpa3A::create($request->all());
 
-    $request['no_siri_pendaftaran'] = $no_siri_pendaftaran;
-    $request['status'] = "DERAF";
+      return redirect('/kewpa3a');
 
-    Kewpa3A::create($request->all());
-
-    return redirect('/kewpa3a');
   }
 
   public function show(Kewpa3A $kewpa3a)

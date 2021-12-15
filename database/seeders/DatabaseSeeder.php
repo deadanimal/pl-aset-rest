@@ -16,8 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        $this->call(KodJabatanSeeder::class);
-
         User::create([
             'id' => 1,
             'name' => 'amirul',
@@ -27,5 +25,11 @@ class DatabaseSeeder extends Seeder
             'ditahan_kerja' => 1,
             'password' => '$2y$10$jx6D85edI.tsup.5eJq74.0q4HEPXQg71SxCV0NPtmWmrPgehoE82', //12345678
         ]);
+        
+        $this->call([
+            PengumumanSeeder::class,
+        ]);
+
+
     }
 }
