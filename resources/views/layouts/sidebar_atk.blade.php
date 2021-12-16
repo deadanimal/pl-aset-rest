@@ -2,7 +2,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header  d-flex  align-items-center">
-            <a class="navbar-brand">
+            <a class="navbar-brand" href="/modul">
                 <img src="/assets/img/logo-labuan.png" class="mt-6 ml-4 navbar-brand-img" style="
                 max-height: 5rem;">
             </a>
