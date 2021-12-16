@@ -3,50 +3,80 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kewpa19;
+use App\Models\Kewpa3A;
+use App\Models\InfoKewpa19;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa19Controller extends Controller
 {
-    public function index()
-    {
-      return Kewpa19::all();
+  public function index()
+  {
+    return view('modul.aset_alih.kewpa19.index', [
+      'kewpa19' => Kewpa19::all(),
+    ]);
+  }
+
+  public function store(Request $request)
+  {
+    $request['pegawai_pemeriksa1'] = Auth::user()->id;
+    $kewpa19 = Kewpa19::create($request->all());
+    for ($i = 0; $i < count($request->no_siri_pendaftaran); $i++) {
+      InfoKewpa19::create([
+        'butiran_penambahbaikan' => $request->butiran_penambahbaikan[$i],
+        'laporan_pemeriksaan' => $request->laporan_pemeriksaan[$i],
+        'no_siri_pendaftaran' => $request->no_siri_pendaftaran[$i],
+        'kewpa19_id' => $kewpa19->id,
+      ]);
     }
+    return redirect('/kewpa19');
+  }
 
-    public function store(Request $request)
-    {
-      
-      $kewpa19 = new Kewpa19;
-      $kewpa19->agensi=$request->agensi;
-      $kewpa19->alamat=$request->alamat;
-      $kewpa19->pegawai_pemeriksa1=$request->pegawai_pemeriksa1;
-      $kewpa19->pegawai_pemeriksa2=$request->pegawai_pemeriksa2;
+  public function create()
+  {
+    return view('modul.aset_alih.kewpa19.create', [
+      'kewpa3a' => Kewpa3A::all(),
+    ]);
+  }
 
-      $kewpa19 -> save();
+  public function show(Kewpa19 $kewpa19)
+  {
+    return view('modul.aset_alih.kewpa19.edit', [
+      'kewpa3a' => Kewpa3A::all(),
+      'kewpa19' => $kewpa19,
+    ]);
+  }
 
-      return $kewpa19;
-    }
+  public function update(Request $request, Kewpa19 $kewpa19)
+  {
+    $kewpa19->update($request->all());
+    return redirect('/kewpa19');
+  }
 
-    public function show(Kewpa19 $kewpa19)
-    {
-      return $kewpa19;
-    }
+  public function destroy(Kewpa19 $kewpa19)
+  {
+    InfoKewpa19::where('kewpa19_id', $kewpa19->id)->delete();
+    $kewpa19->delete();
 
-    public function update(Request $request, Kewpa19 $kewpa19)
-    {
+    return redirect('/kewpa19');
+  }
 
-      $kewpa19->agensi=$request->agensi;
-      $kewpa19->alamat=$request->alamat;
-      $kewpa19->pegawai_pemeriksa1=$request->pegawai_pemeriksa1;
-      $kewpa19->pegawai_pemeriksa2=$request->pegawai_pemeriksa2;
+  public function generatePdf(Kewpa19 $kewpa19)
+  {
 
-      $kewpa15 -> save();
 
-      return $kewpa19;
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/pa19', [$kewpa19]);
 
-    }
+    $res = $response->getBody()->getContents();
 
-    public function destroy(Kewpa19 $kewpa19)
-    {
-      return $kewpa19->delete();
-    }
+    $url = "data:application/pdf;base64," . $res;
+
+    $context = [
+      "url" => $url,
+      "title" => "kewpa19",
+    ];
+
+    return view('modul.borang_viewer_pa', $context);
+  }
 }

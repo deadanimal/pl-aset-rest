@@ -2,47 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoKewpa29;
+use App\Models\Kewpa27;
 use App\Models\Kewpa29;
 use Illuminate\Http\Request;
 
 class Kewpa29Controller extends Controller
 {
-    public function index()
-    {
-      return Kewpa29::all();
+  public function index()
+  {
+    return view('modul.aset_alih.kewpa29.index', [
+      'kewpa29' => Kewpa29::all()
+    ]);
+  }
+
+  public function store(Request $request)
+  {
+    $kewpa29 = Kewpa29::create($request->all());
+
+    for ($i = 0; $i < count($request->kewpa27_id); $i++) {
+      InfoKewpa29::create([
+        'kod_penyebut' => $request->kod_penyebut[$i],
+        'harga' => $request->harga[$i],
+        'no_sebut_harga' => $request->kewpa27_id[$i],
+        'kewpa29_id' => $kewpa29->id
+      ]);
     }
 
-    public function store(Request $request)
-    {
-      
-      $kewpa29 = new Kewpa29;
-      $kewpa29->pengerusi=$request->pengerusi;
-      $kewpa29->ahli1=$request->ahli1;
-      $kewpa29->ahli2=$request->ahli2;
-      $kewpa29 -> save();
+    return redirect('/kewpa29');
+  }
+  public function create()
+  {
+    return view('modul.aset_alih.kewpa29.create', [
+      'kewpa27' => Kewpa27::all()
+    ]);
+  }
 
-      return $kewpa29;
-    }
+  public function show(Kewpa29 $kewpa29)
+  {
+    return view('modul.aset_alih.kewpa29.edit', [
+      'kewpa27' => Kewpa27::all(),
+      'kewpa29' => $kewpa29
+    ]);
+  }
 
-    public function show(Kewpa29 $kewpa29)
-    {
-      return $kewpa29;
-    }
+  public function update(Request $request, Kewpa29 $kewpa29)
+  {
+    $kewpa29->update($request->all());
+    return redirect('/kewpa29');
+  }
 
-    public function update(Request $request, Kewpa29 $kewpa29)
-    {
+  public function destroy(Kewpa29 $kewpa29)
+  {
+    InfoKewpa29::where('kewpa29_id', $kewpa29->id)->delete();
+    $kewpa29->delete();
 
-      $kewpa29->pengerusi=$request->pengerusi;
-      $kewpa29->ahli1=$request->ahli1;
-      $kewpa29->ahli2=$request->ahli2;
-      $kewpa29 -> save();
-
-      return $kewpa29;
-
-    }
-
-    public function destroy(Kewpa29 $kewpa29)
-    {
-      return $kewpa29->delete();
-    }
+    return redirect('/kewpa29');
+  }
 }

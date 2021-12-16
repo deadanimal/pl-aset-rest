@@ -89,7 +89,7 @@
                 var k12_k10 = this.value;
                 $.ajax({
                     type: 'get',
-                    url: '{!! URL::to('/kewps12_dinamic') !!}',
+                    url: '/kewps12_dinamic',
                     data: {
                         'id': k12_k10
                     },

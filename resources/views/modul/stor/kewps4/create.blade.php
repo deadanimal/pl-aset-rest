@@ -17,7 +17,7 @@
                             <select class="form-select" name="kewps3a_id">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
-                                    <option value="{{ $k3->id }}">{{ $k3->id }}</option>
+                                    <option value="{{ $k3->id }}">{{ $k3->no_kad }}</option>
                                 @endforeach
                             </select>
                         </div>

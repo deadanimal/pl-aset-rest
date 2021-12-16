@@ -49,7 +49,7 @@
                             <select class="form-control mb-4" name="kewps1_id" id="kewps2_select">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps1 as $k1)
-                                    <option value="{{ $k1->id }}">{{ $k1->id }} - {{ $k1->nama_pembekal }}
+                                    <option value="{{ $k1->id }}">{{ $k1->id }}
                                     </option>
                                 @endforeach
                             </select>
@@ -106,7 +106,7 @@
             var op = " ";
             $.ajax({
                 type: 'get',
-                url: '{!! URL::to('/kewps2_dinamic') !!}',
+                url: '/kewps2_dinamic',
                 data: {
                     'id': kps1_id
                 },
@@ -129,7 +129,7 @@
             var op = " ";
             $.ajax({
                 type: 'get',
-                url: '{!! URL::to('/kewps2_dinamic') !!}',
+                url: "/kewps2_dinamic",
                 data: {
                     'id': kps1_id
                 },

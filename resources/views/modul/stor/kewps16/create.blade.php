@@ -71,7 +71,7 @@
                             <select class="form-control mb-3" name="kewps3a_id[]">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
-                                    <option value="{{ $k3->id }}">{{ $k3->id }} - {{ $k3->perihal_stok }}
+                                    <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                     </option>
                                 @endforeach
                             </select>
@@ -113,7 +113,7 @@
                             <select class="form-control mb-3" name="kewps3a_id[]">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
-                                    <option value="{{ $k3->id }}">{{ $k3->id }} - {{ $k3->perihal_stok }}
+                                    <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                     </option>
                                 @endforeach
                             </select>

@@ -11,21 +11,20 @@ use Exception;
 
 class Kewpa3AController extends Controller
 {
-    public function index()
-    {
-      $context = [
-        "kewpa3a" => Kewpa3A::all(),
-        "kewpa1" => Kewpa1::all(),
-        "lokasi" => KodLokasi::all(),
-        "jabatan" => KodJabatan::all()
-      ]; 
+  public function index()
+  {
+    $context = [
+      "kewpa3a" => Kewpa3A::all(),
+      "kewpa1" => Kewpa1::all(),
+      "lokasi" => KodLokasi::all(),
+      "jabatan" => KodJabatan::all()
+    ];
 
-      return view('modul.aset_alih.kewpa3a.index', $context);
+    return view('modul.aset_alih.kewpa3a.index', $context);
+  }
 
-    }
-
-    public function store(Request $request)
-    {
+  public function store(Request $request)
+  {
       $no_sekarang = sprintf("%'.05d\n", count(Kewpa3A::all()) + 1);
       
       $tahun_ini = substr(date("Y"), -2);
@@ -42,42 +41,36 @@ class Kewpa3AController extends Controller
 
       return redirect('/kewpa3a');
 
-    }
+  }
 
-    public function show(Kewpa3A $kewpa3a)
-    {
-      $kewpa3as->update($request->all());
-      return redirect('/kewpa3a');
+  public function show(Kewpa3A $kewpa3a)
+  {
+    // $kewpa3as->update($request->all());
+    return redirect('/kewpa3a');
+  }
 
-    }
+  public function edit(Request $request, Kewpa3A $kewpa3a)
+  {
+    $context = [
+      "kewpa3a" => $kewpa3a,
+      "kewpa1" => Kewpa1::all(),
+      "lokasi" => KodLokasi::all(),
+      "jabatan" => KodJabatan::all()
 
-    public function edit(Request $request, Kewpa3A $kewpa3a)
-    {
-      $context = [
-        "kewpa3a" => $kewpa3a,
-        "kewpa1" => Kewpa1::all(),
-        "lokasi" => KodLokasi::all(),
-        "jabatan" => KodJabatan::all()
-
-      ]; 
-      return view('modul.aset_alih.kewpa3a.create', $context);
-
-    }
+    ];
+    return view('modul.aset_alih.kewpa3a.create', $context);
+  }
 
 
 
-    public function update(Request $request, Kewpa3A $kewpa3a)
-    {
-      $kewpa3a->update($request->all());
-      return redirect('/kewpa3a');
+  public function update(Request $request, Kewpa3A $kewpa3a)
+  {
+    $kewpa3a->update($request->all());
+    return redirect('/kewpa3a');
+  }
 
-
-    }
-
-    public function destroy(Kewpa3A $kewpa3a)
-    {
-      return $kewpa3a->delete();
-    }
-
-
+  public function destroy(Kewpa3A $kewpa3a)
+  {
+    return $kewpa3a->delete();
+  }
 }

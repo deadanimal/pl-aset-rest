@@ -40,7 +40,7 @@
                             <select class="form-control mb-3" name="kewps3a_id" id="k6_k3a_id">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
-                                    <option value="{{ $k3->id }}">{{ $k3->id }} - {{ $k3->perihal_stok }}
+                                    <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                     </option>
                                 @endforeach
                             </select>
@@ -119,7 +119,7 @@
             var k6_k3a_id = this.value;
             $.ajax({
                 type: 'get',
-                url: '{!! URL::to('/kewps6_dinamic') !!}',
+                url: '/kewps6_dinamic',
                 data: {
                     'id': k6_k3a_id
                 },
