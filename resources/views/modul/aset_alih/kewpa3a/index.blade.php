@@ -118,6 +118,22 @@
                                 </div>
                             </div>
                             <div class="col-4">
+                                <label for="">Status Selenggara</label>
+                                <div class="input-group">
+                                    <select class="form-control mb-3" name="status_selenggara" required>
+                                        <option value="" selected disabled hidden>Pilih Status</option>
+                                        <option value="Perlu">Perlu</option>
+                                        <option value="Tidak Perlu">Tidak Perlu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Tempoh Selenggara</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="tempoh_selenggara" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
                                 <label for="">Bahagian</label>
                                 <div class="input-group">
                                     <select class="form-control mb-3" name="bahagian" required>
@@ -384,6 +400,23 @@
                             <label for="">Agensi</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="text" name="agensi" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Status Selenggara</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="text" name="status_selenggara" value="" required>
+                                <select class="form-control mb-3" name="status_selenggara" required>
+                                    <option value="" selected disabled hidden>Pilih Status</option>
+                                    <option value="Perlu">Perlu</option>
+                                    <option value="Tidak Perlu">Tidak Perlu</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Tempoh Selenggara</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="text" name="tempoh_selenggara" value="" required>
                             </div>
                         </div>
                         <div class="col-4">

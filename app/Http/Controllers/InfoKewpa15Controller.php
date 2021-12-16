@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfoKewpa15;
+use App\Models\Kewpa3A;
 use Illuminate\Http\Request;
 
 class InfoKewpa15Controller extends Controller
@@ -14,19 +15,9 @@ class InfoKewpa15Controller extends Controller
 
     public function store(Request $request)
     {
-      
-      $info_kewpa15 = new InfoKewpa15;
-      $info_kewpa15->tarikh=$request->tarikh;
-      $info_kewpa15->jenis_penyelenggaraan=$request->jenis_penyelenggaraan;
-      $info_kewpa15->butir_kerja=$request->butir_kerja;
-      $info_kewpa15->nama_syarikat=$request->nama_syarikat;
-      $info_kewpa15->kos=$request->kos;
-      $info_kewpa15->pegawai_pengesah=$request->pegawai_pengesah;
-      $info_kewpa15->no_siri_pendaftaran=$request->no_siri_pendaftaran;
-      $info_kewpa15->kewpa15_id=$request->kewpa15_id;
-      $info_kewpa15 -> save();
-
-      return $info_kewpa15;
+      InfoKewpa15::create($request->all());
+      return redirect('/kewpa15/'.$request->kewpa15_id.'/edit');
+ 
     }
 
     public function show(InfoKewpa15 $info_kewpa15)
@@ -34,20 +25,35 @@ class InfoKewpa15Controller extends Controller
       return $info_kewpa15;
     }
 
+    public function create() {
+
+      $context = [
+        "kewpa15" => \Session::get('kewpa15'),
+        "kewpa3a" => Kewpa3A::all(),
+      ];
+      return view('modul.aset_alih.info_kewpa15.create', $context);
+
+    }
+
+
+    public function edit(InfoKewpa15 $info_kewpa15)
+    {
+      $context = [
+        "info_kewpa15" => $info_kewpa15,
+        "kewpa3a" => Kewpa3A::all(),
+      ];
+
+      return view('modul.aset_alih.info_kewpa15.edit', $context);
+
+    }
+
+
+
+
     public function update(Request $request, InfoKewpa15 $info_kewpa15)
     {
-
-      $info_kewpa15->tarikh=$request->tarikh;
-      $info_kewpa15->jenis_penyelenggaraan=$request->jenis_penyelenggaraan;
-      $info_kewpa15->butir_kerja=$request->butir_kerja;
-      $info_kewpa15->nama_syarikat=$request->nama_syarikat;
-      $info_kewpa15->kos=$request->kos;
-      $info_kewpa15->pegawai_pengesah=$request->pegawai_pengesah;
-      $info_kewpa15->no_siri_pendaftaran=$request->no_siri_pendaftaran;
-      $info_kewpa15->kewpa15_id=$request->kewpa15_id;
-      $info_kewpa15 -> save();
-
-      return $info_kewpa15;
+      $info_kewpa15->update($request->all());
+      return redirect('/kewpa15/'.$info_kewpa15->kewpa15_id.'/edit');
 
     }
 

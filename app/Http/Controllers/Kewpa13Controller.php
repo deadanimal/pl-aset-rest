@@ -9,7 +9,12 @@ class Kewpa13Controller extends Controller
 {
     public function index()
     {
-      return Kewpa13::all();
+      $context = [
+        "kewpa13" => Kewpa13::all(),
+      ];
+
+      return view('modul.aset_alih.kewpa13.index', $context);
+
     }
 
     public function store(Request $request)
