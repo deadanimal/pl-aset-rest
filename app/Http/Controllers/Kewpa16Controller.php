@@ -9,7 +9,7 @@ class Kewpa16Controller extends Controller
 {
     public function index()
     {
-      return Kewpa16::all();
+      return view('modul.aset_alih.kewpa16.index');
     }
 
     public function store(Request $request)

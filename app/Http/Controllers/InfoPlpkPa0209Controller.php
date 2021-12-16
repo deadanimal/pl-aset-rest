@@ -14,16 +14,9 @@ class InfoPlpkPa0209Controller extends Controller
 
     public function store(Request $request)
     {
-
-      $info_plpk_pa_0209 = new InfoPlpk_pa_0209;
-      $info_plpk_pa_0209->tarikh_diperiksa=$request->tarikh_diperiksa;
-      $info_plpk_pa_0209->pemeriksa_id=$request->pemeriksa_id;
-      $info_plpk_pa_0209->pengesah_id=$request->pengesah_id;
-      $info_plpk_pa_0209->save();
-
-      return $info_plpk_pa_0209;
-
-      
+      InfoPlpk_pa_0209::create($request->all());
+      return redirect('/plpk_pa_0209/'.$request->plpk_pa_0209_id.'/edit');
+ 
     }
 
     public function show(InfoPlpk_pa_0209 $info_plpk_pa_0209)
@@ -31,16 +24,35 @@ class InfoPlpkPa0209Controller extends Controller
       return $info_plpk_pa_0209;
     }
 
+    public function create() {
+
+      $context = [
+        "plpk_pa_0209" => \Session::get('plpk_pa_0209'),
+        "kewpa14" => Kewpa3A::all(),
+      ];
+      return view('modul.aset_alih.info_plpk0209.create', $context);
+
+    }
+
+
+    public function edit(InfoPlpk_pa_0209 $info_plpk_pa_0209)
+    {
+      $context = [
+        "info_plpk_pa_0209" => $info_plpk_pa_0209,
+        "kewpa14" => Kewpa3A::all(),
+      ];
+
+      return view('modul.aset_alih.info_plpk0209.edit', $context);
+
+    }
+
+
+
+
     public function update(Request $request, InfoPlpk_pa_0209 $info_plpk_pa_0209)
     {
-
-      $info_plpk_pa_0209->tarikh_diperiksa=$request->tarikh_diperiksa;
-      $info_plpk_pa_0209->pemeriksa_id=$request->pemeriksa_id;
-      $info_plpk_pa_0209->pengesah_id=$request->pengesah_id;
-
-      $info_plpk_pa_0209->save();
-
-      return $info_plpk_pa_0209;
+      $info_plpk_pa_0209->update($request->all());
+      return redirect('/plpk_pa_0209/'.$info_plpk_pa_0209->plpk_pa_0209_id.'/edit');
 
     }
 
@@ -48,4 +60,7 @@ class InfoPlpkPa0209Controller extends Controller
     {
       return $info_plpk_pa_0209->delete();
     }
+
+
+
 }

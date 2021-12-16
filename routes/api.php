@@ -3,7 +3,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Kewps8APIController;
 use App\Http\Controllers\Kewpa9APIController;
-use App\Http\Controllers\Kewpa10Controller;
+use App\Http\Controllers\Kewpa10APIController;
 use App\Http\Controllers\PlpkPa0201Controller;
 
 

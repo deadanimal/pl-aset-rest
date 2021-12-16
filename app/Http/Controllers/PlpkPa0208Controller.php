@@ -9,30 +9,31 @@ class PlpkPa0208Controller extends Controller
 {
     public function index()
     {
-      return Plpk_pa_0208::all();
+      $context = [
+        "plpk_pa_0208" => Plpk_pa_0208::all(),
+      ];
+
+      return view('modul.aset_alih.plpk0208.index', $context);
     }
 
     public function store(Request $request)
     {
+      
+      $request['status'] = "DERAF";
+      $plpkpa0208 = Plpk_pa_0208::create($request->all());
+      $plpkpa0208->save();
 
-      $plpk_pa_0208 = new Plpk_pa_0208;
-      $plpk_pa_0208->jenis_kegunaan=$request->jenis_kegunaan;
-      $plpk_pa_0208->nama_pembekal=$request->nama_pembekal;
-      $plpk_pa_0208->kos=$request->kos;
-      $plpk_pa_0208->no_pesanan_tempatan=$request->no_pesanan_tempatan;
-      $plpk_pa_0208->tarikh_mula=$request->tarikh_mula;
-      $plpk_pa_0208->tarikh_siap=$request->tarikh_siap;
-      $plpk_pa_0208->tarikh=$request->tarikh;
-      $plpk_pa_0208->created_date=$request->created_date;
-      $plpk_pa_0208->modified_date=$request->modified_date;
-      $plpk_pa_0208->pengadu_id=$request->pengadu_id;
-      $plpk_pa_0208->pemeriksa_id=$request->pemeriksa_id;
-      $plpk_pa_0208->save();
+      foreach (range(0, count($request->kewpa14_id) - 1) as $i) {
 
+          $info_plpkpa0208 = new InfoPlpk_pa_0208;
+          $info_plpkpa0208->butiran_kerosakan=$request->butiran_kerosakan[$i];
+          $info_plpkpa0208->tindakan=$request->tindakan[$i];
+          $info_plpkpa0208->kewpa14_id=$request->kewpa14_id[$i];
+          $info_plpkpa0208->plpk_pa_0208_id=$plpkpa0208->id;
+          $info_plpkpa0208->save();
+        }
 
-      return $plpk_pa_0208;
-
-
+      return redirect('/plpk_pa_0208');
 
     }
 
@@ -41,28 +42,40 @@ class PlpkPa0208Controller extends Controller
       return $plpk_pa_0208;
     }
 
+    public function create(Plpk_pa_0208 $plpk_pa_0208)
+    {
+      $context = [
+        "kewpa14" => Kewpa3A::all(),
+      ];
+      return view('modul.aset_alih.plpk0208.create', $context);
+
+    }
+
+    public function edit(Plpk_pa_0208 $plpk_pa_0208)
+    {
+      $context = [
+        "kewpa14" => Kewpa3A::all(),
+        "plpk_pa_0208" => $plpk_pa_0208
+      ];
+
+      \Session::put('plpk_pa_0208', $plpk_pa_0208);
+
+      return view('modul.aset_alih.plpk0208.edit', $context);
+
+    }
+
+
     public function update(Request $request, Plpk_pa_0208 $plpk_pa_0208)
     {
-
-      $plpk_pa_0208->jenis_kegunaan=$request->jenis_kegunaan;
-      $plpk_pa_0208->nama_pembekal=$request->nama_pembekal;
-      $plpk_pa_0208->kos=$request->kos;
-      $plpk_pa_0208->no_pesanan_tempatan=$request->no_pesanan_tempatan;
-      $plpk_pa_0208->tarikh_mula=$request->tarikh_mula;
-      $plpk_pa_0208->tarikh_siap=$request->tarikh_siap;
-      $plpk_pa_0208->tarikh=$request->tarikh;
-      $plpk_pa_0208->created_date=$request->created_date;
-      $plpk_pa_0208->modified_date=$request->modified_date;
-      $plpk_pa_0208->pengadu_id=$request->pengadu_id;
-      $plpk_pa_0208->pemeriksa_id=$request->pemeriksa_id;
-      $plpk_pa_0208->save();
-
-      return $plpk_pa_0208;
-
+      $plpk_pa_0208->update($request->all());
+      return redirect('/plpk_pa_0208/'.$plpk_pa_0208->id."/edit/");
     }
 
     public function destroy(Plpk_pa_0208 $plpk_pa_0208)
     {
       return $plpk_pa_0208->delete();
     }
+
+
+
 }
