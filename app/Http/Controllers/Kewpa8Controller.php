@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kewpa8;
+use App\Models\Kewpa3A;
 use Illuminate\Http\Request;
 
 class Kewpa8Controller extends Controller
 {
     public function index()
     {
-      return Kewpa8::all();
+      $context = [
+        "filter" => "off",
+      ];
+      return view('modul.aset_alih.kewpa8.index', $context);
+
     }
 
     public function store(Request $request)
@@ -30,16 +35,15 @@ class Kewpa8Controller extends Controller
       return $kewpa8;
     }
 
-    public function update(Request $request, Kewpa8 $kewpa8)
+    public function update(Request $request, $unused)
     {
-      $kewpa8 -> kewpa8_id = $request->kewpa8_id;
-      $kewpa8 -> tahun = $request->tahun;
-      $kewpa8 -> staff_id = $request->staff_id;
-      $kewpa8 -> save();
 
-      return $kewpa8;
+      $context = [
+        "filter" => "on",
+        "kewpa8" => $kewpa8
+      ];
 
-
+      return view('modul.aset_alih.kewpa8.index', $context);
     }
 
     public function destroy(Kewpa8 $kewpa8)
