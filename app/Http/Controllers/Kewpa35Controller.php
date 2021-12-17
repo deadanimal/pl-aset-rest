@@ -2,69 +2,66 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kewpa33;
 use App\Models\Kewpa35;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa35Controller extends Controller
 {
-    public function index()
-    {
-      return Kewpa35::all();
-    }
+  public function index()
+  {
+    return view('modul.aset_alih.kewpa35.index', [
+      'kewpa35' => Kewpa35::all()
+    ]);
+  }
 
-    public function store(Request $request)
-    {
-      
-      $kewpa35 = new Kewpa35;
-      $kewpa35->laporan_hasil=$request->laporan_hasil;
-      $kewpa35->arahan_tatacara=$request->arahan_tatacara;
-      $kewpa35->langkah_mencegah=$request->langkah_mencegah;
-      $kewpa35->rumusan_siasatan=$request->rumusan_siasatan;
-      $kewpa35->syor=$request->syor;
-      $kewpa35->justifikasi=$request->justifikasi;
-      $kewpa35->ulasan_pegawai=$request->ulasan_pegawai;
-      $kewpa35->syor_pegawai=$request->syor_pegawai;
-      $kewpa35->pegawai_menjaga=$request->pegawai_menjaga;
-      $kewpa35->pegawai_penyelia=$request->pegawai_penyelia;
-      $kewpa35->pegawai_bertanggungjawab=$request->pegawai_bertanggungjawab;
-      $kewpa35->pengerusi=$request->pengerusi;
-      $kewpa35->ahli=$request->ahli;
-      $kewpa35->pegawai_pengawal=$request->pegawai_pengawal;
-      $kewpa35 -> save();
+  public function store(Request $request)
+  {
+    Kewpa35::create($request->all());
 
-      return $kewpa35;
-    }
+    return redirect('/kewpa35');
+  }
 
-    public function show(Kewpa35 $kewpa35)
-    {
-      return $kewpa35;
-    }
+  public function create()
+  {
+    return view('modul.aset_alih.kewpa35.create', [
+      'kewpa33' => Kewpa33::all()
+    ]);
+  }
 
-    public function update(Request $request, Kewpa35 $kewpa35)
-    {
+  public function show(Kewpa35 $kewpa35)
+  {
+    return view('modul.aset_alih.kewpa35.edit', [
+      'kewpa33' => Kewpa33::all(),
+      'kewpa35' => $kewpa35
+    ]);
+  }
 
-      $kewpa35->laporan_hasil=$request->laporan_hasil;
-      $kewpa35->arahan_tatacara=$request->arahan_tatacara;
-      $kewpa35->langkah_mencegah=$request->langkah_mencegah;
-      $kewpa35->rumusan_siasatan=$request->rumusan_siasatan;
-      $kewpa35->syor=$request->syor;
-      $kewpa35->justifikasi=$request->justifikasi;
-      $kewpa35->ulasan_pegawai=$request->ulasan_pegawai;
-      $kewpa35->syor_pegawai=$request->syor_pegawai;
-      $kewpa35->pegawai_menjaga=$request->pegawai_menjaga;
-      $kewpa35->pegawai_penyelia=$request->pegawai_penyelia;
-      $kewpa35->pegawai_bertanggungjawab=$request->pegawai_bertanggungjawab;
-      $kewpa35->pengerusi=$request->pengerusi;
-      $kewpa35->ahli=$request->ahli;
-      $kewpa35->pegawai_pengawal=$request->pegawai_pengawal;
-      $kewpa35 -> save();
+  public function update(Request $request, Kewpa35 $kewpa35)
+  {
+    $kewpa35->update($request->all());
+    return redirect('/kewpa35');
+  }
 
-      return $kewpa35;
+  public function destroy(Kewpa35 $kewpa35)
+  {
+    $kewpa35->delete();
+    return redirect('/kewpa35');
+  }
+  public function generatePdf(Kewpa35 $kewpa35)
+  {
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa35', [$kewpa35]);
 
-    }
+    $res = $response->getBody()->getContents();
 
-    public function destroy(Kewpa35 $kewpa35)
-    {
-      return $kewpa35->delete();
-    }
+    $url = "data:application/pdf;base64," . $res;
+
+    $context = [
+      "url" => $url,
+      "title" => "kewpa35",
+    ];
+
+    return view('modul.borang_viewer_pa', $context);
+  }
 }

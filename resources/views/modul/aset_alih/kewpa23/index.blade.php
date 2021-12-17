@@ -57,8 +57,12 @@
                                 <td scope="col">
                                     <a href="/kewpa23/{{ $k23->id }}"><i class="fas fa-pen"></i></a>
                                     <a href="/kewpa23pdf/{{ $k23->id }}"><i class="fas fa-print"></i></a>
-                                    <a href="/kewpa23" onclick="deleteData({{ $k23 }})"><i
-                                            class="fas fa-trash"></i></a>
+                                    <form action="/kewpa23/{{ $k23->id }}" method="post" class="d-inline-flex"
+                                        id="delkewpa23">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="javascript:$('#delkewpa23').submit();"><i class="fas fa-trash"></i></a>
+                                    </form>
                                 </td>
 
                             </tr>
@@ -69,20 +73,6 @@
         </div>
     </div>
 
-    <script>
-        function deleteData(obj) {
-            var id = obj.id;
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "/kewpa23/" + id,
-                type: "DELETE",
-                success: function() {
-                    location.replace = "/kewpa23";
-                }
-            });
-        }
-    </script>
+
 
 @endsection

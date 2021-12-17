@@ -20,7 +20,7 @@ class CreateKewps1sTable extends Migration
             $table->string('jenis_penerimaan')->nullable();
             $table->string('nombor_rujukan_pk')->nullable();
             $table->date('tarikh_pk')->nullable();
-            $table->bigInteger('nombor_do')->nullable();
+            $table->string('nombor_do')->nullable();
             $table->date('tarikh_do')->nullable();
             $table->string('maklumat_pengangkutan')->nullable();
             $table->string('status')->default('DERAF');

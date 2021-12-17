@@ -471,4 +471,22 @@ Route::get('/jkrpataf612pdf/{jkrpataf612}', [Jkrpataf612Controller::class, 'gene
 //kewpa utility
 Route::get('/kewpa17pdf/{kewpa17}', [Kewpa17Controller::class, 'generatePDF']);
 Route::get('/kewpa18pdf/{kewpa18}', [Kewpa18Controller::class, 'generatePDF']);
-Route::get('/kewpa18pdf/{kewpa19}', [Kewpa19Controller::class, 'generatePDF']);
+Route::get('/kewpa19pdf/{kewpa19}', [Kewpa19Controller::class, 'generatePDF']);
+Route::get('/kewpa20pdf/{kewpa20}', [Kewpa20Controller::class, 'generatePDF']);
+Route::get('/kewpa21pdf/{kewpa21}', [Kewpa21Controller::class, 'generatePDF']);
+Route::get('/kewpa22pdf/{kewpa22}', [Kewpa22Controller::class, 'generatePDF']);
+Route::get('/kewpa23pdf/{kewpa23}', [Kewpa23Controller::class, 'generatePDF']);
+Route::get('/kewpa24pdf/{kewpa24}', [Kewpa24Controller::class, 'generatePDF']);
+Route::get('/kewpa25pdf/{kewpa25}', [Kewpa25Controller::class, 'generatePDF']);
+Route::get('/kewpa26pdf/{kewpa26}', [Kewpa26Controller::class, 'generatePDF']);
+Route::get('/kewpa27pdf/{kewpa27}', [Kewpa27Controller::class, 'generatePDF']);
+Route::get('/kewpa28pdf/{kewpa28}', [Kewpa28Controller::class, 'generatePDF']);
+Route::get('/kewpa29pdf/{kewpa29}', [Kewpa29Controller::class, 'generatePDF']);
+Route::get('/kewpa30pdf/{kewpa30}', [Kewpa30Controller::class, 'generatePDF']);
+Route::get('/kewpa31pdf', [Kewpa31Controller::class, 'generatePDF']);
+Route::get('/kewpa32pdf/{kewpa32}', [Kewpa32Controller::class, 'generatePDF']);
+Route::get('/kewpa33pdf/{kewpa33}', [Kewpa33Controller::class, 'generatePDF']);
+Route::get('/kewpa34pdf/{kewpa34}', [Kewpa34Controller::class, 'generatePDF']);
+Route::get('/kewpa35pdf/{kewpa35}', [Kewpa35Controller::class, 'generatePDF']);
+Route::get('/kewpa36pdf/{kewpa36}', [Kewpa36Controller::class, 'generatePDF']);
+Route::get('/kewpa37pdf/{kewpa37}', [Kewpa37Controller::class, 'generatePDF']);

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class InfoKewpa37 extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 }

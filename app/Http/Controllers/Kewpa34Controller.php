@@ -2,53 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kewpa33;
 use App\Models\Kewpa34;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa34Controller extends Controller
 {
-    public function index()
-    {
-      return Kewpa34::all();
-    }
+  public function index()
+  {
+    return view('modul.aset_alih.kewpa34.index', [
+      'kewpa34' => Kewpa34::all()
+    ]);
+  }
 
-    public function store(Request $request)
-    {
-      
-      $kewpa34 = new Kewpa34;
-      $kewpa34->tarikh=$request->tarikh;
-      $kewpa34->tarikh_tamat=$request->tarikh_tamat;
-      $kewpa34->pegawai_dilantik=$request->pegawai_dilantik;
-      $kewpa34->kewpa33_id=$request->kewpa33_id;
-      $kewpa34->pegawai_pengawal=$request->pegawai_pengawal;
+  public function store(Request $request)
+  {
+    Kewpa34::create($request->all());
+    return redirect('/kewpa34');
+  }
 
-      $kewpa34 -> save();
+  public function create()
+  {
+    return view('modul.aset_alih.kewpa34.create', [
+      'kewpa33' => Kewpa33::all()
+    ]);
+  }
 
-      return $kewpa34;
-    }
+  public function show(Kewpa34 $kewpa34)
+  {
+    return view('modul.aset_alih.kewpa34.edit', [
+      'kewpa33' => Kewpa33::all(),
+      'kewpa34' => $kewpa34
+    ]);
+  }
 
-    public function show(Kewpa34 $kewpa34)
-    {
-      return $kewpa34;
-    }
+  public function update(Request $request, Kewpa34 $kewpa34)
+  {
+    $kewpa34->update($request->all());
+    return redirect('/kewpa34');
+  }
 
-    public function update(Request $request, Kewpa34 $kewpa34)
-    {
+  public function destroy(Kewpa34 $kewpa34)
+  {
+    $kewpa34->delete();
+    return redirect('/kewpa34');
+  }
 
-      $kewpa34->tarikh=$request->tarikh;
-      $kewpa34->tarikh_tamat=$request->tarikh_tamat;
-      $kewpa34->pegawai_dilantik=$request->pegawai_dilantik;
-      $kewpa34->kewpa33_id=$request->kewpa33_id;
-      $kewpa34->pegawai_pengawal=$request->pegawai_pengawal;
+  public function generatePdf(Kewpa34 $kewpa34)
+  {
 
-      $kewpa34 -> save();
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa34', [$kewpa34]);
 
-      return $kewpa34;
+    $res = $response->getBody()->getContents();
 
-    }
+    $url = "data:application/pdf;base64," . $res;
 
-    public function destroy(Kewpa34 $kewpa34)
-    {
-      return $kewpa34->delete();
-    }
+    $context = [
+      "url" => $url,
+      "title" => "kewpa34",
+    ];
+
+    return view('modul.borang_viewer_pa', $context);
+  }
 }
