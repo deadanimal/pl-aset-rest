@@ -19,7 +19,8 @@
 
     <div class="container-fluid mt--6">
         <div id="updateDiv">
-            <form id="updateForm" action="/plpk_pa_0208/{{ $plpk_pa_0208->id }}" method="POST" enctype="multipart/form-data">
+            <form id="updateForm" action="/plpk_pa_0208/{{ $plpk_pa_0208->id }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card mt-4" id="basic-info">
@@ -35,18 +36,47 @@
                     <div class="card-body pt-0">
                         <div class="row">
                             <div class="col-4">
-                                <label for="">Bacaan Odometer</label>
+                                <label for="">Jenis Kegunaan</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="bacaan_odometer" value="{{ $plpk_pa_0208->bacaan_odometer}}" required>
+                                    <input class="form-control mb-3" type="text" name="jenis_kegunaan"
+                                        value="{{ $plpk_pa_0208->jenis_kegunaan }}" required>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <label for="">Pemandu</label>
+                                <label for="">Nama Pembekal</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="pemandu" value="{{ $plpk_pa_0208->pemandu}}" required>
+                                    <input class="form-control mb-3" type="text" name="nama_pembekal"
+                                        value="{{ $plpk_pa_0208->nama_pembekal }}" required>
                                 </div>
                             </div>
-
+                            <div class="col-4">
+                                <label for="">Kos</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kos"
+                                        value="{{ $plpk_pa_0208->kos }}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">No Pesanan Tempatan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="no_pesanan_tempatan"
+                                        value="{{ $plpk_pa_0208->no_pesanan_tempatan }}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Tarikh Mula</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="date" name="tarikh_mula"
+                                        value="{{ $plpk_pa_0208->tarikh_mula }}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Tarikh Siap</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="date" name="tarikh_siap"
+                                        value="{{ $plpk_pa_0208->tarikh_siap }}" required>
+                                </div>
+                            </div>
                         </div>
                         <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
                     </div>
@@ -61,7 +91,8 @@
                         <h2 class="mb-0">Info PLPK PA 0208</h2>
                     </div>
                     <div class="text-end mr-2">
-                        <a href="/info_plpk_pa_0208/create" class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</a>
+                        <a href="/info_plpk_pa_0208/create" class="align-self-end btn btn-sm btn-primary"
+                            id="tambah">Tambah</a>
                     </div>
                 </div>
             </div>
@@ -73,8 +104,7 @@
                         <tr>
 
                             <th scope="col">Bil</th>
-                            <th scope="col">Butiran Kerosakan</th>
-                            <th scope="col">Tindakan Diambil</th>
+                            <th scope="col">Butiran Pembaikan</th>
                             <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
@@ -83,12 +113,11 @@
                             <tr>
 
                                 <td scope="col">{{ $loop->index + 1 }}</td>
-                                <td scope="col">{{ $kp11->butiran_kerosakan }}</td>
-                                <td scope="col">{{ $kp11->tindakan }}</td>
+                                <td scope="col">{{ $kp11->butiran_pembaikan }}</td>
                                 <td scope="col">
                                     <a href="/info_plpk_pa_0208/{{ $kp11->id }}/edit"><i class="fas fa-pen"></i></a>
 
-                                    <a href="" onclick="deleteData({{$kp11}})"><i class="fas fa-trash"></i></a>
+                                    <a href="" onclick="deleteData({{ $kp11 }})"><i class="fas fa-trash"></i></a>
                                 </td>
 
                             </tr>
@@ -108,8 +137,7 @@
                 },
                 url: "/info_plpk_pa_0208/" + id,
                 type: "DELETE",
-                success: function() {
-                }
+                success: function() {}
             })
         }
     </script>

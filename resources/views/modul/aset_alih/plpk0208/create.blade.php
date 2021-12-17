@@ -34,32 +34,54 @@
                     <div class="card-body pt-0">
                         <div class="row">
                             <div class="col-4">
-                                <label for="">Bacaan Odometer</label>
+                                <label for="">Jenis Kegunaan</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="bacaan_odometer" value="" required>
+                                    <input class="form-control mb-3" type="text" name="jenis_kegunaan" value="" required>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <label for="">Pemandu</label>
+                                <label for="">Nama Pembekal</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="pemandu" value="" required>
+                                    <input class="form-control mb-3" type="text" name="nama_pembekal" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kos</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kos" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">No Pesanan Tempatan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="no_pesanan_tempatan" value=""
+                                        required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Tarikh Mula</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="date" name="tarikh_mula" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Tarikh Siap</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="date" name="tarikh_siap" value="" required>
                                 </div>
                             </div>
 
-
                         </div>
+                            <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
+                            <a class="btn btn-sm btn-primary text-white" onclick="tambahInfo()">Tambah Info</a>
 
-                        <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
-                        <a class="btn btn-sm btn-primary text-white" onclick="tambahInfo()">Tambah Info</a>
+
+
                     </div>
-
-
-
                 </div>
                 <div id="info_plpk_pa_0208_create"></div>
+            </form>
         </div>
-        </form>
-    </div>
 
     </div>
 
@@ -67,10 +89,10 @@
     <script type="text/javascript">
         $(document).ready(function() {
             initiateDatatable();
-            
+
         })
 
-        document.addEventListener("DOMContentLoaded", function(){
+        document.addEventListener("DOMContentLoaded", function() {
             tambahInfo();
         });
 
@@ -110,19 +132,14 @@
 
                 <br>
                 <div class="row">
-                <div class="col-4">
-                    <label for="">Butiran Kerosakan</label>
+                <div class="col">
+                    <label for="">Butiran Pembaikan</label>
                     <div class="input-group">
-                    <input class="form-control mb-3" type="text" name="butiran_kerosakan[]" value="" required>
+                    <input class="form-control mb-3" type="text" name="butiran_pembaikan[]" value="" required>
                     </div>
                 </div>
-                <div class="col-4">
-                    <label for="">Tindakan</label>
-                    <div class="input-group">
-                    <input class="form-control mb-3" type="text" name="tindakan[]" value="" required>
-                    </div>
-                </div>
-                <div class="col-4">
+               
+                <div class="col">
                                 <label for="">No Rujukan KEWPA 14</label>
                                 <div class="input-group">
                                     <select class="form-control mb-3" name="kewpa14_id[]" required>

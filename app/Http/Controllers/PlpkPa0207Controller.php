@@ -23,13 +23,20 @@ class PlpkPa0207Controller extends Controller
     {
       
       $request['status'] = "DERAF";
+      $request['penerima'] = $request->user()->id;
       $plpkpa0207 = Plpk_pa_0207::create($request->all());
       $plpkpa0207->save();
 
       foreach (range(0, count($request->kewpa14_id) - 1) as $i) {
 
           $info_plpkpa0207 = new InfoPlpk_pa_0207;
-          $info_plpkpa0207->butiran_kerosakan=$request->butiran_kerosakan[$i];
+          $info_plpkpa0207->saiz=$request->saiz[$i];
+
+          $info_plpkpa0207->tayar_bocor=$request->tayar_bocor[$i];
+          $info_plpkpa0207->kuantiti_tayar=$request->kuantiti_tayar[$i];
+          $info_plpkpa0207->kuantiti_tiub=$request->kuantiti_tiub[$i];
+          $info_plpkpa0207->kuantiti_pelapik=$request->kuantiti_pelapik[$i];
+          $info_plpkpa0207->punca_kerosakan=$request->punca_kerosakan[$i];
           $info_plpkpa0207->kewpa14_id=$request->kewpa14_id[$i];
           $info_plpkpa0207->plpk07_id=$plpkpa0207->id;
           $info_plpkpa0207->save();

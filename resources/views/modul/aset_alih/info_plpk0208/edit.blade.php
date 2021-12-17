@@ -34,24 +34,18 @@
                     <br>
                     <div class="card-body pt-0">
                         <div class="row">
-                            <div class="col-4">
-                                <label for="">Butiran Kerosakan</label>
+                            <div class="col">
+                                <label for="">Butiran Pembaikan</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="butiran_kerosakan" value="{{$info_plpk_pa_0208->butiran_kerosakan}}"
+                                    <input class="form-control mb-3" type="text" name="butiran_pembaikan" value="{{$info_plpk_pa_0208->butiran_pembaikan}}"
                                         required>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <label for="">Tindakan</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="tindakan" value="{{$info_plpk_pa_0208->tindakan}}" required>
-                                </div>
-                            </div>
-                            <div class="col-4">
+                            <div class="col">
                                 <label for="">No Rujukan KEWPA 14</label>
                                 <div class="input-group">
                                     <select class="form-control mb-3" name="kewpa14_id" required>
-                                        <option value="{{$info_plpk_pa_0208->kewpa14_id}}" required required selected disabled hidden>{{$info_plpk_pa_0208->kewpa14_id}}
+                                        <option value="{{$info_plpk_pa_0208->kewpa14_id}}" required required selected disabled hidden>No Rujukan {{$info_plpk_pa_0208->kewpa14_id}}
                                         </option required>
                                         @foreach ($kewpa14 as $kew14)
                                             <option value="{{ $kew14->id }}">

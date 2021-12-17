@@ -31,26 +31,21 @@
                     </div>
 
                     <br>
-                    
+
 
                     <div class="card-body pt-0">
 
                         <br>
                         <div class="row">
-                            <div class="col-4">
-                                <label for="">Butiran Kerosakan</label>
+                            <div class="col">
+                                <label for="">Butiran Pembaikan</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="butiran_kerosakan" value=""
+                                    <input class="form-control mb-3" type="text" name="butiran_pembaikan" value=""
                                         required>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <label for="">Tindakan</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="tindakan" value="" required>
-                                </div>
-                            </div>
-                            <div class="col-4">
+
+                            <div class="col">
                                 <label for="">No Rujukan KEWPA 14</label>
                                 <div class="input-group">
                                     <select class="form-control mb-3" name="kewpa14_id" required>
@@ -68,8 +63,8 @@
                         </div>
                         <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
                     </div>
-                    <input class="form-control mb-3" type="hidden" name="plpk_pa_0208_id"
-                        value="{{ $plpk_pa_0208->id }}" required>
+                    <input class="form-control mb-3" type="hidden" name="plpk08_id" value="{{ $plpk_pa_0208->id }}"
+                        required>
                 </div>
 
         </div>
