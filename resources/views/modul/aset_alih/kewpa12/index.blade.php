@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="/kewpa12">kewpa12</a></li>
+                                <li class="breadcrumb-item"><a href="/kewpa12">kewpa12/13</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -24,7 +24,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">Laporan Pemeriksaan</h2>
+                            <h2 class="mb-0">Laporan dan Sijil Pemeriksaan</h2>
                         </div>
                         {{-- <div class="text-end mr-2">
                             <a href="/kewpa12pdf" class="align-self-end btn btn-sm btn-primary" id="cetak">Cetak</a>
@@ -50,6 +50,7 @@
 
                             <br>
                             <button type="submit" class="btn btn-sm btn-primary text-white">Jana Laporan</a>
+                            <button type="submit" class="btn btn-sm btn-primary text-white">Jana Sijil</a>
                         </form>
                     </div>
             </div>
@@ -61,14 +62,18 @@
     <script type="text/javascript">
         $(document).ready(function() {
             initiateDatatable();
+            
+
+
+        })
+
+        document.addEventListener("DOMContentLoaded", function(){
             $("#tahun_kewpa12").datepicker({
             format: " yyyy", // Notice the Extra space at the beginning
             viewMode: "years",
             minViewMode: "years"
         });
-
-
-        })
+        });
 
 
         function deleteData(obj) {

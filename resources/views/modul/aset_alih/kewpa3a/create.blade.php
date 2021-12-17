@@ -48,17 +48,33 @@
                                         value="{{ $kewpa3a->agensi }}" required>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <label for="">Bahagian</label>
-                                <div class="input-group">
-                                    <select class="form-control mb-3" name="bahagian" required>
-                                        <option value="{{ $kewpa3a->bahagian }}" selected disabled hidden>
-                                            {{ $kewpa3a->bahagian }}</option required>
-                                        @foreach ($jabatan as $jbtn)
-                                            <option value="{{ $jbtn->nama_jabatan }}">{{ $jbtn->nama_jabatan }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+
+                        </div>
+                        <div class="col-4">
+                            <label for="">Status Selenggara</label>
+                            <div class="input-group">
+                                <select class="form-control mb-3" name="status_selenggara" required>
+                                    <option value="{{$kewpa3a->status_selenggara}}" selected disabled hidden>{{$kewpa3a->status_selenggara}}</option>
+                                    <option value="Perlu">Perlu</option>
+                                    <option value="Tidak Perlu">Tidak Perlu</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Tempoh Selenggara</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="text" name="tempoh_selenggara" value="{{$kewpa3a->tempoh_selenggara}}" required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Bahagian</label>
+                            <div class="input-group">
+                                <select class="form-control mb-3" name="bahagian" required>
+                                    <option value="{{$kewpa3a->bahagian}}" selected disabled hidden>{{$kewpa3a->bahagian}}</option required>
+                                    @foreach ($jabatan as $jbtn)
+                                    <option value="{{$jbtn->nama_jabatan}}">{{$jbtn->nama_jabatan}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-4">
                                 <label for="">Kod Nasional</label>
