@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Kewps3a extends Model
 {
     use HasFactory;
-    protected $guarded = [''];
+
+    protected $guarded = ['id'];
     protected $with = ['parasstok', 'terima', 'keluar', 'kewps1'];
 
     public function kewps1()

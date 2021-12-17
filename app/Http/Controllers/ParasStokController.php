@@ -35,7 +35,8 @@ class ParasStokController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ParasStok::create($request->all());
+        return redirect('/kewps3a/' . $request->kewps3a_id);
     }
 
     /**
@@ -67,9 +68,10 @@ class ParasStokController extends Controller
      * @param  \App\Models\ParasStok  $parasStok
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ParasStok $parasStok)
+    public function update(Request $request, ParasStok $parasstok)
     {
-        //
+        $parasstok->update($request->all());
+        return redirect('/kewps3a/' . $parasstok->kewps3a_id);
     }
 
     /**
@@ -78,8 +80,9 @@ class ParasStokController extends Controller
      * @param  \App\Models\ParasStok  $parasStok
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ParasStok $parasStok)
+    public function destroy(ParasStok $parasstok)
     {
-        //
+        $parasstok->delete();
+        return redirect('/kewps3a/' . $parasstok->kewps3a_id);
     }
 }

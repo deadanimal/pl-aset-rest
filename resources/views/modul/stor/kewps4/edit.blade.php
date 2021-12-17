@@ -20,7 +20,7 @@
                                 <option selected value="{{ $kewps4->kewps3a_id }}">{{ $kewps4->kewps3a_id }}</option>
                                 @foreach ($kewps3a as $k3)
                                     @if ($k3->id != $kewps4->kewps3a_id)
-                                        <option value="{{ $k3->id }}">{{ $k3->id }}</option>
+                                        <option value="{{ $k3->id }}">{{ $k3->no_kad }}</option>
                                     @endif
                                 @endforeach
                             </select>

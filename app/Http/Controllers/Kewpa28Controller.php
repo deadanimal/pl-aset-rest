@@ -2,57 +2,63 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoKewpa28;
+use App\Models\Kewpa27;
 use App\Models\Kewpa28;
 use Illuminate\Http\Request;
 
 class Kewpa28Controller extends Controller
 {
-    public function index()
-    {
-      return Kewpa28::all();
+  public function index()
+  {
+    return view('modul.aset_alih.kewpa28.index', [
+      'kewpa28' => Kewpa28::all()
+    ]);
+  }
+
+  public function store(Request $request)
+  {
+
+    $kewpa28 = Kewpa28::create($request->all());
+
+    for ($i = 0; $i < count($request->kewpa27_id); $i++) {
+      InfoKewpa28::create([
+        'kuantiti' => $request->kuantiti[$i],
+        'harga_tawaran' => $request->harga_tawaran[$i],
+        'deposit_harga' => $request->deposit_harga[$i],
+        'kewpa27_id' => $request->kewpa27_id[$i],
+        'kewpa28_id' => $kewpa28->id,
+      ]);
     }
 
-    public function store(Request $request)
-    {
-      
-      $kewpa28 = new Kewpa28;
-      $kewpa28->nama=$request->nama;
-      $kewpa28->no_pengenalan=$request->no_pengenalan;
-      $kewpa28->agensi=$request->agensi;
-      $kewpa28->alamat_agensi=$request->alamat_agensi;
-      $kewpa28->deposit=$request->deposit;
-      $kewpa28->no_bank=$request->no_bank;
-      $kewpa28->nama_agensi=$request->nama_agensi;
-      $kewpa28->staff_id=$request->staff_id;
-      $kewpa28 -> save();
+    return redirect('/kewpa28');
+  }
 
-      return $kewpa28;
-    }
+  public function create()
+  {
+    return view('modul.aset_alih.kewpa28.create', [
+      'kewpa27' => Kewpa27::all()
+    ]);
+  }
 
-    public function show(Kewpa28 $kewpa28)
-    {
-      return $kewpa28;
-    }
+  public function show(Kewpa28 $kewpa28)
+  {
+    return view('modul.aset_alih.kewpa28.edit', [
+      'kewpa27' => Kewpa27::all(),
+      'kewpa28' => $kewpa28,
+    ]);
+  }
 
-    public function update(Request $request, Kewpa28 $kewpa28)
-    {
+  public function update(Request $request, Kewpa28 $kewpa28)
+  {
+    $kewpa28->update($request->all());
+    return redirect('/kewpa28');
+  }
 
-      $kewpa28->nama=$request->nama;
-      $kewpa28->no_pengenalan=$request->no_pengenalan;
-      $kewpa28->agensi=$request->agensi;
-      $kewpa28->alamat_agensi=$request->alamat_agensi;
-      $kewpa28->deposit=$request->deposit;
-      $kewpa28->no_bank=$request->no_bank;
-      $kewpa28->nama_agensi=$request->nama_agensi;
-      $kewpa28->staff_id=$request->staff_id;
-      $kewpa28 -> save();
-
-      return $kewpa28;
-
-    }
-
-    public function destroy(Kewpa28 $kewpa28)
-    {
-      return $kewpa28->delete();
-    }
+  public function destroy(Kewpa28 $kewpa28)
+  {
+    InfoKewpa28::where('kewpa28_id', $kewpa28->id)->delete();
+    $kewpa28->delete();
+    return redirect('/kewpa28');
+  }
 }

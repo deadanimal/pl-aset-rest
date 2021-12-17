@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
             PengumumanSeeder::class,
         ]);
 
+
     }
 }

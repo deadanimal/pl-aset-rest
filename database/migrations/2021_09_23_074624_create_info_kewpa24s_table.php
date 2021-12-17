@@ -17,7 +17,7 @@ class CreateInfoKewpa24sTable extends Migration
             $table->id();
 
             $table->string("kuantiti")->nullable();
-            $table->string("harga simpanan")->nullable();
+            $table->string("harga_simpanan")->nullable();
             $table->string("kewpa21_id")->nullable();
             $table->string("kewpa24_id")->nullable();
             $table->timestamps();

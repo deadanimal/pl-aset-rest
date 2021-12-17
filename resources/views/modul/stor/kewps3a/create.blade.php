@@ -35,7 +35,7 @@
 
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">No Kod</label>
-                            <select class="form-control form-control-sm" name="id" id="k3_id">
+                            <select class="form-control form-control-sm" name="no_kad" id="3a_no_kad">
                                 <option selected>Pilih</option>
                                 @foreach ($infokewps1 as $ik1)
                                     @if (!in_array($ik1->no_kod, $k3a))
@@ -45,11 +45,6 @@
                                 @endforeach
                             </select>
                         </div>
-
-                        {{-- <div class="col-12 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">No Kod</label>
-                            <input class="form-control form-control-sm" type="text" name="id">
-                        </div> --}}
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Nama Stor</label>
                             <select class="form-control form-control-sm" name="nama_stor">
@@ -62,10 +57,7 @@
                             <input class="form-control form-control-sm" type="text" name="perihal_stok"
                                 id="k1_perihal_stok">
                         </div>
-                        {{-- <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">No Kad</label>
-                            <input class="form-control form-control-sm" type="text" name="no_kad">
-                        </div> --}}
+
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Unit Pengukuran</label>
                             <select class="form-control form-control-sm" name="unit_pengukuran" id="k1_unit_pengukuran">
@@ -136,11 +128,11 @@
 
     <script>
         $(document).ready(function() {
-            $("#k3_id").change(function() {
+            $("#3a_no_kad").change(function() {
                 var infokps1_id = this.value;
                 $.ajax({
                     type: 'get',
-                    url: '{!! URL::to('/kewps3_dinamic') !!}',
+                    url: '/kewps3_dinamic',
                     data: {
                         'id': infokps1_id
                     },

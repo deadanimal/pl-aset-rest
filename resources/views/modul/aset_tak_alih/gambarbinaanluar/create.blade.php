@@ -65,15 +65,13 @@
                         <div class="col-6 mt-3">
                             <label for="">Gambar Hadapan</label>
                             <div class="input-group">
-                                <input style="height: 38px;" class="form-control" type="file" name="gambar_hadapan1"
-                                    value="">
+                                <input class="form-control" type="file" name="gambar_hadapan1" value="">
                             </div>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">Gambar Belakang</label>
                             <div class="input-group">
-                                <input style="height: 38px;" class="form-control" type="file" name="gambar_belakang1"
-                                    value="">
+                                <input class="form-control" type="file" name="gambar_belakang1" value="">
                             </div>
                         </div>
                         <input type="hidden" name="staff_id" value="{{ Auth::user()->id }}">

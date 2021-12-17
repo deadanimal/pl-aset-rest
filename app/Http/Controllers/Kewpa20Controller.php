@@ -7,48 +7,45 @@ use Illuminate\Http\Request;
 
 class Kewpa20Controller extends Controller
 {
-    public function index()
-    {
-      return Kewpa20::all();
-    }
+  public function index()
+  {
+    return view('modul.aset_alih.kewpa20.index', [
+      'kewpa20' => Kewpa20::all(),
+    ]);
+  }
 
-    public function store(Request $request)
-    {
-      
-      $kewpa20 = new Kewpa20;
-      $kewpa20->tarikh=$request->tarikh;
-      $kewpa20->tempoh=$request->tempoh;
-      $kewpa20->tarikh_mula=$request->tarikh_mula;
-      $kewpa20->tarikh_tamat=$request->tarikh_tamat;
-      $kewpa20->pegawai_dilantik=$request->pegawai_dilantik;
-      $kewpa20->ketua_jabatan=$request->ketua_jabatan;
-      $kewpa20 -> save();
+  public function store(Request $request)
+  {
 
-      return $kewpa20;
-    }
+    Kewpa20::create($request->all());
 
-    public function show(Kewpa20 $kewpa20)
-    {
-      return $kewpa20;
-    }
+    return redirect('/kewpa20');
+  }
 
-    public function update(Request $request, Kewpa20 $kewpa20)
-    {
+  public function create()
+  {
+    return view('modul.aset_alih.kewpa20.create');
+  }
 
-      $kewpa20->tarikh=$request->tarikh;
-      $kewpa20->tempoh=$request->tempoh;
-      $kewpa20->tarikh_mula=$request->tarikh_mula;
-      $kewpa20->tarikh_tamat=$request->tarikh_tamat;
-      $kewpa20->pegawai_dilantik=$request->pegawai_dilantik;
-      $kewpa20->ketua_jabatan=$request->ketua_jabatan;
-      $kewpa20 -> save();
+  public function show(Kewpa20 $kewpa20)
+  {
+    return view('modul.aset_alih.kewpa20.edit', [
+      'kewpa20' => $kewpa20,
+    ]);
+  }
 
-      return $kewpa20;
+  public function update(Request $request, Kewpa20 $kewpa20)
+  {
 
-    }
+    $kewpa20->update($request->all());
 
-    public function destroy(Kewpa20 $kewpa20)
-    {
-      return $kewpa20->delete();
-    }
+    return redirect('/kewpa20');
+  }
+
+  public function destroy(Kewpa20 $kewpa20)
+  {
+    $kewpa20->delete();
+
+    return redirect('/kewpa20');
+  }
 }

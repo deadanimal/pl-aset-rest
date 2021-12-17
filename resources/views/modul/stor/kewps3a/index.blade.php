@@ -46,7 +46,7 @@
                         <tbody>
                             @foreach ($kewps3a as $k3a)
                                 <tr>
-                                    <td scope="col">{{ $k3a->id }}</td>
+                                    <td scope="col">{{ $k3a->no_kad }}</td>
                                     <td scope="col">{{ $k3a->nama_stor }}</td>
                                     <td scope="col">{{ $k3a->perihal_stok }}</td>
                                     <td scope="col">

@@ -2,59 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoKewpa24;
+use App\Models\Kewpa21;
 use App\Models\Kewpa24;
 use Illuminate\Http\Request;
 
 class Kewpa24Controller extends Controller
 {
-    public function index()
-    {
-      return Kewpa24::all();
+  public function index()
+  {
+    return view('modul.aset_alih.kewpa24.index', [
+      'kewpa24' => Kewpa24::all(),
+    ]);
+  }
+
+  public function store(Request $request)
+  {
+    $kewpa24 = Kewpa24::create($request->all());
+
+    for ($i = 0; $i < count($request->kewpa21_id); $i++) {
+      InfoKewpa24::create([
+        'kuantiti' => $request->kuantiti[$i],
+        'harga_simpanan' => $request->harga_simpanan[$i],
+        'kewpa21_id' => $request->kewpa21_id[$i],
+        'kewpa24_id' => $kewpa24->id,
+      ]);
     }
 
-    public function store(Request $request)
-    {
-      
-      $kewpa24 = new Kewpa24;
-      $kewpa24->tarikh_mula=$request->tarikh_mula;
-      $kewpa24->tarikh_tamat=$request->tarikh_tamat;
-      $kewpa24->jam_mula=$request->jam_mula;
-      $kewpa24->jam_tamat=$request->jam_tamat;
-      $kewpa24->tempat=$request->tempat;
-      $kewpa24->tarikh_tutup=$request->tarikh_tutup;
-      $kewpa24->alamat=$request->alamat;
-      $kewpa24->agensi=$request->agensi;
-      $kewpa24->staff_id=$request->staff_id;
-      $kewpa24 -> save();
+    return redirect('/kewpa24');
+  }
 
-      return $kewpa24;
-    }
+  public function create()
+  {
+    return view('modul.aset_alih.kewpa24.create', [
+      'kewpa21' => Kewpa21::all(),
+    ]);
+  }
 
-    public function show(Kewpa24 $kewpa24)
-    {
-      return $kewpa24;
-    }
+  public function show(Kewpa24 $kewpa24)
+  {
+    return view('modul.aset_alih.kewpa24.edit', [
+      'kewpa21' => Kewpa21::all(),
+      'kewpa24' => $kewpa24
+    ]);
+  }
 
-    public function update(Request $request, Kewpa24 $kewpa24)
-    {
+  public function update(Request $request, Kewpa24 $kewpa24)
+  {
 
-      $kewpa24->tarikh_mula=$request->tarikh_mula;
-      $kewpa24->tarikh_tamat=$request->tarikh_tamat;
-      $kewpa24->jam_mula=$request->jam_mula;
-      $kewpa24->jam_tamat=$request->jam_tamat;
-      $kewpa24->tempat=$request->tempat;
-      $kewpa24->tarikh_tutup=$request->tarikh_tutup;
-      $kewpa24->alamat=$request->alamat;
-      $kewpa24->agensi=$request->agensi;
-      $kewpa24->staff_id=$request->staff_id;
-      $kewpa15 -> save();
+    $kewpa24->update($request->all());
+    return redirect('/kewpa24');
+  }
 
-      return $kewpa24;
-
-    }
-
-    public function destroy(Kewpa24 $kewpa24)
-    {
-      return $kewpa24->delete();
-    }
+  public function destroy(Kewpa24 $kewpa24)
+  {
+    InfoKewpa24::where('kewpa24_id', $kewpa24->id)->delete();
+    $kewpa24->delete();
+  }
 }
