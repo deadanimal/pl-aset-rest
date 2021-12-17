@@ -3,32 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plpk_pa_0205;
+use App\Models\Kewpa3A;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PlpkPa0205Controller extends Controller
 {
     public function index()
     {
-      return Plpk_pa_0205::all();
+      $context = [
+        "plpk_pa_0205" => Plpk_pa_0205::all(),
+      ];
+
+      return view('modul.aset_alih.plpk0205.index', $context);
     }
 
     public function store(Request $request)
     {
 
-      $plpk_pa_0205 = new Plpk_pa_0205;
+      $request['status'] = "DERAF";
+      $plpkpa0205 = Plpk_pa_0205::create($request->all());
+      $plpkpa0205->save();
 
-      $info_plpk_pa_0205->pemandu=$request->pemandu;
-      $info_plpk_pa_0205->kewpal14_id=$request->kewpal14_id;
-      $info_plpk_pa_0205->pengarah=$request->pengarah;
-      $info_plpk_pa_0205->created_date=$request->created_date;
-      $info_plpk_pa_0205->modified_date=$request->modified_date;      
-      $plpk_pa_0205->save();
-
-
-
-      return $plpk_pa_0205;
-
-
+      return redirect('/plpk_pa_0205');
 
     }
 
@@ -37,22 +34,41 @@ class PlpkPa0205Controller extends Controller
       return $plpk_pa_0205;
     }
 
+    public function create(Plpk_pa_0205 $plpk_pa_0205)
+    {
+      $context = [
+        "kewpa14" => Kewpa3A::all(),
+        "users" => User::all(),
+      ];
+      return view('modul.aset_alih.plpk0205.create', $context);
+
+    }
+
+    public function edit(Plpk_pa_0205 $plpk_pa_0205)
+    {
+      $context = [
+        "kewpa14" => Kewpa3A::all(),
+        "plpk_pa_0205" => $plpk_pa_0205,
+        "users" => User::all(),
+      ];
+
+
+      return view('modul.aset_alih.plpk0205.edit', $context);
+
+    }
+
+
     public function update(Request $request, Plpk_pa_0205 $plpk_pa_0205)
     {
-
-      $info_plpk_pa_0205->pemandu=$request->pemandu;
-      $info_plpk_pa_0205->kewpal14_id=$request->kewpal14_id;
-      $info_plpk_pa_0205->pengarah=$request->pengarah;
-      $info_plpk_pa_0205->created_date=$request->created_date;
-      $info_plpk_pa_0205->modified_date=$request->modified_date;      
-      $plpk_pa_0205->save();
-
-      return $plpk_pa_0205;
-
+      $plpk_pa_0205->update($request->all());
+      return redirect('/plpk_pa_0205/'.$plpk_pa_0205->id."/edit/");
     }
 
     public function destroy(Plpk_pa_0205 $plpk_pa_0205)
     {
       return $plpk_pa_0205->delete();
     }
+
+
+
 }
