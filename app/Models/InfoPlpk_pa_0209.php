@@ -9,5 +9,7 @@ class InfoPlpk_pa_0209 extends Model
 {
     use HasFactory;
 
+    public $table = 'plpk_pa_0209s';
+
     protected $guarded = ['id'];
 }

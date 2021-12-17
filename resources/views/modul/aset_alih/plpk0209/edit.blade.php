@@ -33,21 +33,6 @@
 
                     <br>
                     <div class="card-body pt-0">
-                        <div class="row">
-                            <div class="col-4">
-                                <label for="">Bacaan Odometer</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="bacaan_odometer" value="{{ $plpk_pa_0209->bacaan_odometer}}" required>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <label for="">Pemandu</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="pemandu" value="{{ $plpk_pa_0209->pemandu}}" required>
-                                </div>
-                            </div>
-
-                        </div>
                         <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
                     </div>
             </form>
@@ -73,8 +58,7 @@
                         <tr>
 
                             <th scope="col">Bil</th>
-                            <th scope="col">Butiran Kerosakan</th>
-                            <th scope="col">Tindakan Diambil</th>
+                            <th scope="col">Perihal Kerosakan</th>
                             <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
@@ -83,8 +67,7 @@
                             <tr>
 
                                 <td scope="col">{{ $loop->index + 1 }}</td>
-                                <td scope="col">{{ $kp11->butiran_kerosakan }}</td>
-                                <td scope="col">{{ $kp11->tindakan }}</td>
+                                <td scope="col">{{ $kp11->perihal_kerosakan }}</td>
                                 <td scope="col">
                                     <a href="/info_plpk_pa_0209/{{ $kp11->id }}/edit"><i class="fas fa-pen"></i></a>
 

@@ -35,23 +35,46 @@
                     <div class="card-body pt-0">
                         <div class="row">
                             <div class="col-4">
-                                <label for="">Butiran Kerosakan</label>
+                                <label for="">Saiz</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="butiran_kerosakan" value="{{$info_plpk_pa_0207->butiran_kerosakan}}"
-                                        required>
+                                    <input class="form-control mb-3" type="text" name="saiz" value="{{$info_plpk_pa_0207->saiz}}" required>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <label for="">Tindakan</label>
+                                <label for="">Tayar Bocor</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="tindakan" value="{{$info_plpk_pa_0207->tindakan}}" required>
+                                    <input class="form-control mb-3" type="text" name="tayar_bocor" value="{{$info_plpk_pa_0207->tayar_bocor}}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti Tayar</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kuantiti_tayar" value="{{$info_plpk_pa_0207->kuantiti_tayar}}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti Tiub</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kuantiti_tiub" value="{{$info_plpk_pa_0207->kuantiti_tiub}}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti Pelapik</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kuantiti_pelapik" value="{{$info_plpk_pa_0207->kuantiti_pelapik}}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Punca Kerosakan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="punca_kerosakan" value="{{$info_plpk_pa_0207->punca_kerosakan}}" required>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <label for="">No Rujukan KEWPA 14</label>
                                 <div class="input-group">
                                     <select class="form-control mb-3" name="kewpa14_id" required>
-                                        <option value="{{$info_plpk_pa_0207->kewpa14_id}}" required required selected disabled hidden>{{$info_plpk_pa_0207->kewpa14_id}}
+                                        <option value="{{$info_plpk_pa_0207->kewpa14_id}}" required required selected disabled hidden>No. Rujukan {{$info_plpk_pa_0207->kewpa14_id}}
                                         </option required>
                                         @foreach ($kewpa14 as $kew14)
                                             <option value="{{ $kew14->id }}">
@@ -63,7 +86,6 @@
                             </div>
                         </div>
                         <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
-                    </div>
                 </div>
 
         </div>

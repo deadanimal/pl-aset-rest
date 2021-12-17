@@ -40,9 +40,33 @@
                                 </div>
                             </div>
                             <div class="col-4">
-                                <label for="">Pemandu</label>
+                                <label for="">Tarikh Diperlukan</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="pemandu" value="" required>
+                                    <input class="form-control mb-3" type="date" name="tarikh_diperlukan" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kedudukan Tayar</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kedudukan_tayar" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Nama Pembekal</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="nama_pembekal" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Jenis</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="jenis" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Unit Bengkel</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="unit_bengkel" value="" required>
                                 </div>
                             </div>
 
@@ -67,10 +91,10 @@
     <script type="text/javascript">
         $(document).ready(function() {
             initiateDatatable();
-            
+
         })
 
-        document.addEventListener("DOMContentLoaded", function(){
+        document.addEventListener("DOMContentLoaded", function() {
             tambahInfo();
         });
 
@@ -111,15 +135,38 @@
                 <br>
                 <div class="row">
                 <div class="col-4">
-                    <label for="">Butiran Kerosakan</label>
+                    <label for="">Saiz</label>
                     <div class="input-group">
-                    <input class="form-control mb-3" type="text" name="butiran_kerosakan[]" value="" required>
+                    <input class="form-control mb-3" type="text" name="saiz[]" value="" required>
                     </div>
                 </div>
                 <div class="col-4">
-                    <label for="">Tindakan</label>
+                    <label for="">Tayar Bocor</label>
                     <div class="input-group">
-                    <input class="form-control mb-3" type="text" name="tindakan[]" value="" required>
+                    <input class="form-control mb-3" type="text" name="tayar_bocor[]" value="" required>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="">Kuantiti Tayar</label>
+                    <div class="input-group">
+                    <input class="form-control mb-3" type="text" name="kuantiti_tayar[]" value="" required>
+                    </div>
+                </div><div class="col-4">
+                    <label for="">Kuantiti Tiub</label>
+                    <div class="input-group">
+                    <input class="form-control mb-3" type="text" name="kuantiti_tiub[]" value="" required>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="">Kuantiti Pelapik</label>
+                    <div class="input-group">
+                    <input class="form-control mb-3" type="text" name="kuantiti_pelapik[]" value="" required>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label for="">Punca Kerosakan</label>
+                    <div class="input-group">
+                    <input class="form-control mb-3" type="text" name="punca_kerosakan[]" value="" required>
                     </div>
                 </div>
                 <div class="col-4">

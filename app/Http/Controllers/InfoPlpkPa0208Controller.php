@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\InfoPlpk_pa_0208;
 use Illuminate\Http\Request;
+use App\Models\Kewpa3A;
+use App\Models\User;
 
 class InfoPlpkPa0208Controller extends Controller
 {
@@ -15,7 +17,7 @@ class InfoPlpkPa0208Controller extends Controller
     public function store(Request $request)
     {
       InfoPlpk_pa_0208::create($request->all());
-      return redirect('/plpk_pa_0208/'.$request->plpk_pa_0208_id.'/edit');
+      return redirect('/plpk_pa_0208/'.$request->plpk08_id.'/edit');
  
     }
 
@@ -52,7 +54,7 @@ class InfoPlpkPa0208Controller extends Controller
     public function update(Request $request, InfoPlpk_pa_0208 $info_plpk_pa_0208)
     {
       $info_plpk_pa_0208->update($request->all());
-      return redirect('/plpk_pa_0208/'.$info_plpk_pa_0208->plpk_pa_0208_id.'/edit');
+      return redirect('/plpk_pa_0208/'.$info_plpk_pa_0208->plpk08_id.'/edit');
 
     }
 

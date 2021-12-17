@@ -37,13 +37,37 @@
                             <div class="col-4">
                                 <label for="">Bacaan Odometer</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="bacaan_odometer" value="{{ $plpk_pa_0207->bacaan_odometer}}" required>
+                                    <input class="form-control mb-3" type="text" name="bacaan_odometer" value="{{ $plpk_pa_0207->bacaan_odometer }}" required>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <label for="">Pemandu</label>
+                                <label for="">Tarikh Diperlukan</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="pemandu" value="{{ $plpk_pa_0207->pemandu}}" required>
+                                    <input class="form-control mb-3" type="date" name="tarikh_diperlukan" value="{{ $plpk_pa_0207->tarikh_diperlukan }}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kedudukan Tayar</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kedudukan_tayar" value="{{ $plpk_pa_0207->kedudukan_tayar }}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Nama Pembekal</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="nama_pembekal" value="{{ $plpk_pa_0207->nama_pembekal }}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Jenis</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="jenis" value="{{ $plpk_pa_0207->jenis }}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Unit Bengkel</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="unit_bengkel" value="{{ $plpk_pa_0207->unit_bengkel }}" required>
                                 </div>
                             </div>
 
@@ -73,8 +97,10 @@
                         <tr>
 
                             <th scope="col">Bil</th>
-                            <th scope="col">Butiran Kerosakan</th>
-                            <th scope="col">Tindakan Diambil</th>
+                            <th scope="col">Saiz</th>
+                            <th scope="col">Kuantiti Tayar</th>
+                            <th scope="col">Kuantiti Tiub</th>
+                            <th scope="col">Punca Kerosakan</th>
                             <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
@@ -83,8 +109,10 @@
                             <tr>
 
                                 <td scope="col">{{ $loop->index + 1 }}</td>
-                                <td scope="col">{{ $kp11->butiran_kerosakan }}</td>
-                                <td scope="col">{{ $kp11->tindakan }}</td>
+                                <td scope="col">{{ $kp11->saiz }}</td>
+                                <td scope="col">{{ $kp11->kuantiti_tayar }}</td>
+                                <td scope="col">{{ $kp11->kuantiti_tiub }}</td>
+                                <td scope="col">{{ $kp11->punca_kerosakan }}</td>
                                 <td scope="col">
                                     <a href="/info_plpk_pa_0207/{{ $kp11->id }}/edit"><i class="fas fa-pen"></i></a>
 

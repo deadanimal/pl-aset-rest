@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plpk_pa_0209;
+use App\Models\Kewpa3A;
+use App\Models\InfoPlpk_pa_0209;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PlpkPa0209Controller extends Controller
@@ -26,10 +29,9 @@ class PlpkPa0209Controller extends Controller
       foreach (range(0, count($request->kewpa14_id) - 1) as $i) {
 
           $info_plpkpa0209 = new InfoPlpk_pa_0209;
-          $info_plpkpa0209->butiran_kerosakan=$request->butiran_kerosakan[$i];
-          $info_plpkpa0209->tindakan=$request->tindakan[$i];
+          $info_plpkpa0209->perihal_kerosakan=$request->perihal_kerosakan[$i];
           $info_plpkpa0209->kewpa14_id=$request->kewpa14_id[$i];
-          $info_plpkpa0209->plpk_pa_0209_id=$plpkpa0209->id;
+          $info_plpkpa0209->plpk09_id=$plpkpa0209->id;
           $info_plpkpa0209->save();
         }
 
@@ -46,6 +48,7 @@ class PlpkPa0209Controller extends Controller
     {
       $context = [
         "kewpa14" => Kewpa3A::all(),
+        "users" => User::all(),
       ];
       return view('modul.aset_alih.plpk0209.create', $context);
 
@@ -55,7 +58,8 @@ class PlpkPa0209Controller extends Controller
     {
       $context = [
         "kewpa14" => Kewpa3A::all(),
-        "plpk_pa_0209" => $plpk_pa_0209
+        "plpk_pa_0209" => $plpk_pa_0209,
+        "users" => User::all(),
       ];
 
       \Session::put('plpk_pa_0209', $plpk_pa_0209);

@@ -38,8 +38,11 @@
           <thead class="thead-light">
             <tr>
               <th scope="col">Bil</th>
-              <th scope="col">Pemandu</th>
-              <th scope="col">Bacaan Odometer</th>
+              <th scope="col">Jenis Kegunaan</th>
+              <th scope="col">Nama Pembekal</th>
+              <th scope="col">Kos</th>
+              <th scope="col">Tarikh Mula</th>
+              <th scope="col">Tarikh Siap</th>
               <th scope="col">Status</th>
               <th scope="col">Tindakan</th>
             </tr>
@@ -48,8 +51,11 @@
             @foreach ($plpk_pa_0208 as $plpk_pa_0208)
             <tr>
               <td scope="col">{{$loop->index + 1}}</td>
-              <td scope="col">{{$plpk_pa_0208->pemandu}}</td>
-              <td scope="col">{{$plpk_pa_0208->bacaan_odometer}}</td>
+              <td scope="col">{{$plpk_pa_0208->jenis_kegunaan}}</td>
+              <td scope="col">{{$plpk_pa_0208->nama_pembekal}}</td>
+              <td scope="col">{{$plpk_pa_0208->kos}}</td>
+              <td scope="col">{{$plpk_pa_0208->tarikh_mula}}</td>
+              <td scope="col">{{$plpk_pa_0208->tarikh_siap}}</td>
 
               @if ($plpk_pa_0208->status=="DERAF")
               <td scope="col"><span class="badge bg-warning">{{$plpk_pa_0208->status}}</span></th>

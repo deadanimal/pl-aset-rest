@@ -31,23 +31,46 @@
                     </div>
 
                     <br>
-                    
+
 
                     <div class="card-body pt-0">
 
                         <br>
                         <div class="row">
                             <div class="col-4">
-                                <label for="">Butiran Kerosakan</label>
+                                <label for="">Saiz</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="butiran_kerosakan" value=""
-                                        required>
+                                    <input class="form-control mb-3" type="text" name="saiz" value="" required>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <label for="">Tindakan</label>
+                                <label for="">Tayar Bocor</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="tindakan" value="" required>
+                                    <input class="form-control mb-3" type="text" name="tayar_bocor" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti Tayar</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kuantiti_tayar" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti Tiub</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kuantiti_tiub" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti Pelapik</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kuantiti_pelapik" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Punca Kerosakan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="punca_kerosakan" value="" required>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -68,8 +91,8 @@
                         </div>
                         <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
                     </div>
-                    <input class="form-control mb-3" type="hidden" name="plpk_pa_0207_id"
-                        value="{{ $plpk_pa_0207->id }}" required>
+                    <input class="form-control mb-3" type="hidden" name="plpk07_id" value="{{ $plpk_pa_0207->id }}"
+                        required>
                 </div>
 
         </div>

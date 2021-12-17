@@ -32,23 +32,6 @@
 
                     <br>
                     <div class="card-body pt-0">
-                        <div class="row">
-                            <div class="col-4">
-                                <label for="">Bacaan Odometer</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="bacaan_odometer" value="" required>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <label for="">Pemandu</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="pemandu" value="" required>
-                                </div>
-                            </div>
-
-
-                        </div>
-
                         <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
                         <a class="btn btn-sm btn-primary text-white" onclick="tambahInfo()">Tambah Info</a>
                     </div>
@@ -110,19 +93,13 @@
 
                 <br>
                 <div class="row">
-                <div class="col-4">
-                    <label for="">Butiran Kerosakan</label>
+                <div class="col">
+                    <label for="">Perihal Kerosakan</label>
                     <div class="input-group">
-                    <input class="form-control mb-3" type="text" name="butiran_kerosakan[]" value="" required>
+                    <input class="form-control mb-3" type="text" name="perihal_kerosakan[]" value="" required>
                     </div>
                 </div>
-                <div class="col-4">
-                    <label for="">Tindakan</label>
-                    <div class="input-group">
-                    <input class="form-control mb-3" type="text" name="tindakan[]" value="" required>
-                    </div>
-                </div>
-                <div class="col-4">
+                <div class="col">
                                 <label for="">No Rujukan KEWPA 14</label>
                                 <div class="input-group">
                                     <select class="form-control mb-3" name="kewpa14_id[]" required>
