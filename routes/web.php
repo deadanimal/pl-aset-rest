@@ -49,6 +49,7 @@ use App\Http\Controllers\InfoKewpa37Controller;
 use App\Http\Controllers\InfoKewps1Controller;
 use App\Http\Controllers\InfoKewps2Controller;
 use App\Http\Controllers\InfoPlpkPa0202Controller;
+use App\Http\Controllers\InfoPlpkPa0203Controller;
 use App\Http\Controllers\InfoPlpkPa0204Controller;
 use App\Http\Controllers\InfoPlpkPa0206Controller;
 use App\Http\Controllers\InfoPlpkPa0207Controller;
@@ -179,6 +180,10 @@ use App\Http\Controllers\PlpkPa0202Controller;
 use App\Http\Controllers\PlpkPa0203Controller;
 use App\Http\Controllers\PlpkPa0204Controller;
 use App\Http\Controllers\PlpkPa0205Controller;
+use App\Http\Controllers\PlpkPa0206Controller;
+use App\Http\Controllers\PlpkPa0207Controller;
+use App\Http\Controllers\PlpkPa0208Controller;
+use App\Http\Controllers\PlpkPa0209Controller;
 
 # umum controller
 use App\Http\Controllers\UserController;
@@ -212,12 +217,17 @@ Route::resource('kewpa8', Kewpa8Controller::class);
 Route::resource('kewpa9', Kewpa9Controller::class);
 Route::resource('info_kewpa9', InfoKewpa9Controller::class);
 Route::resource('kewpa10', Kewpa10Controller::class);
+
+# plpk routes
 Route::resource('plpk_pa_0201', PlpkPa0201Controller::class);
 Route::resource('plpk_pa_0202', PlpkPa0202Controller::class);
+Route::resource('info_plpk_pa_0202', InfoPlpkPa0202Controller::class);
+
 Route::resource('info_plpk_pa_0202', InfoPlpkPa0202Controller::class);
 Route::resource('plpk_pa_0203', PlpkPa0203Controller::class);
 Route::resource('plpk_pa_0204', PlpkPa0204Controller::class);
 Route::resource('info_plpk_pa_0204', InfoPlpkPa0204Controller::class);
+Route::resource('info_plpk_pa_0203', InfoPlpkPa0203Controller::class);
 Route::resource('plpk_pa_0205', PlpkPa0205Controller::class);
 Route::resource('plpk_pa_0206', PlpkPa0206Controller::class);
 Route::resource('info_plpk_pa_0206', InfoPlpkPa0206Controller::class);
@@ -227,6 +237,7 @@ Route::resource('plpk_pa_0208', PlpkPa0208Controller::class);
 Route::resource('info_plpk_pa_0208', InfoPlpkPa0208Controller::class);
 Route::resource('info_plpk_pa_0209', InfoPlpkPa0209Controller::class);
 Route::resource('plpk_pa_0209', PlpkPa0209Controller::class);
+
 Route::resource('kewpa11', Kewpa11Controller::class);
 Route::resource('info_kewpa11', InfoKewpa11Controller::class);
 Route::resource('kewpa12', Kewpa12Controller::class);

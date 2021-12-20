@@ -2,8 +2,8 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header  d-flex  align-items-center">
-            <a class="navbar-brand">
-                <img src="/assets/img/logo-labuan.png" class="mt-6 ml-4 navbar-brand-img" style="
+            <a class="navbar-brand" href="/modul">
+                <img src="/assets/img/logo-labuan.png" href="" class="mt-6 ml-4 navbar-brand-img" style="
                 max-height: 5rem;">
             </a>
             <div class=" ml-auto mt-auto">
