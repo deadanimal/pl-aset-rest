@@ -6,6 +6,7 @@ use App\Models\Kewpa9;
 use App\Models\Kewpa3A;
 use App\Models\InfoKewpa9;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa9Controller extends Controller
 {
@@ -21,6 +22,7 @@ class Kewpa9Controller extends Controller
     public function store(Request $request)
     {
       $request['status'] = "DERAF";
+      $request['pemohon_id'] = $request->user()->id;
       $kewpa9 = Kewpa9::create($request->all());
       $kewpa9->save();
 
@@ -81,5 +83,25 @@ class Kewpa9Controller extends Controller
     {
       return $kewpa9->delete();
     }
+
+    public function generatePdf(Kewpa9 $kewpa9) {
+
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa9', [$kewpa9]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa9",
+      ];
+
+      return view('modul.borang_viewer_pa', $context);
+
+
+
+    }
+
+
 
 }

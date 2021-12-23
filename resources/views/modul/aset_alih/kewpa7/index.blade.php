@@ -27,7 +27,9 @@
                             <h2 class="mb-0">Senarai Aset Alih</h2>
                         </div>
                         <div class="text-end mr-2">
+                            @if ($filter == 'on')
                             <a href="/kewpa7pdf" class="align-self-end btn btn-sm btn-primary" id="cetak">Cetak</a>
+                            @endif
                         </div>
                     </div>
                 </div>

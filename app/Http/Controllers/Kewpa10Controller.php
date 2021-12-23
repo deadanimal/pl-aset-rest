@@ -6,6 +6,7 @@ use App\Models\Kewpa10;
 use App\Models\Kewpa3A;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa10Controller extends Controller
 {
@@ -70,4 +71,23 @@ class Kewpa10Controller extends Controller
       $kewpa10 = Kewpa10::where('id', $kewpa10)->first();
       return $kewpa10->delete();
     }
+
+    public function generatePdf(Kewpa10 $kewpa10) {
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa10', [$kewpa10]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa10",
+      ];
+
+      return view('modul.borang_viewer_pa', $context);
+
+
+
+    }
+
+
 }

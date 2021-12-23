@@ -7,6 +7,7 @@ use App\Models\InfoKewpa11;
 use App\Models\KodJabatan;
 use App\Models\Kewpa3A;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa11Controller extends Controller
 {
@@ -86,4 +87,23 @@ class Kewpa11Controller extends Controller
     {
       return $kewpa11->delete();
     }
+
+    public function generatePdf(Kewpa11 $kewpa11) {
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa11', [$kewpa11]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa11",
+      ];
+
+      return view('modul.borang_viewer_pa', $context);
+
+
+
+    }
+
+
 }

@@ -8,7 +8,7 @@
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-              <li class="breadcrumb-item"><a href="/kewpa14">kewpa1</a></li>
+              <li class="breadcrumb-item"><a href="/kewpa14">kewpa14</a></li>
             </ol>
           </nav>
         </div>
@@ -27,7 +27,7 @@
             <h2 class="mb-0">Senarai Aset Alih Perlu Penyelenggaraan</h2>
           </div>
           <div class="text-end mr-2">
-            <a href="/kewpa11pdf" class="align-self-end btn btn-sm btn-primary" id="tambah">Cetak</a>
+            <a href="/kewpa14pdf" class="align-self-end btn btn-sm btn-primary" id="tambah">Cetak</a>
           </div>
         </div>
       </div>

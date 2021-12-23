@@ -28,6 +28,9 @@
           </div>
           <div class="text-end mr-2">
             <a href="/kewpa3b/create" class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</a>
+            <a href="/kewpa3bpdf" class="align-self-end btn btn-sm btn-primary" id="tambah">Cetak</a>
+                {{-- <a href="/kewpa3bpdf/{{$kewpa3b->id}}"><i class="fas fa-print"></i></a> --}}
+
           </div>
         </div>
       </div>
@@ -68,7 +71,7 @@
 
               <td scope="col">
                 <a href="/kewpa3b/{{$kewpa3b->id}}/edit"><i class="fas fa-pen"></i></a>
-                <a href="/kewpa3bpdf/{{$kewpa3b->id}}"><i class="fas fa-print"></i></a>
+                {{-- <a href="/kewpa3bpdf/{{$kewpa3b->id}}"><i class="fas fa-print"></i></a> --}}
                 <a href="/kewpa3b" onclick="deleteData({{$kewpa3b}})"><i class="fas fa-trash"></i></a>
               </td>
 

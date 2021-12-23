@@ -57,15 +57,15 @@
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="/kewpa3a" class="nav-link">
-                                        <span class="sidenav-mini-icon"> PA3(A) </span>
-                                        <span class="sidenav-normal"> KEW.PA 3A </span>
+                                        <span class="sidenav-mini-icon"> PA3/4(A) </span>
+                                        <span class="sidenav-normal"> KEW.PA 3A/4A </span>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a href="/kewpa3b" class="nav-link">
-                                        <span class="sidenav-mini-icon"> PA3B) </span>
-                                        <span class="sidenav-normal"> KEW.PA 3B </span>
+                                        <span class="sidenav-mini-icon"> PA3/4(B) </span>
+                                        <span class="sidenav-normal"> KEW.PA 3B/4B </span>
                                     </a>
                                 </li>
 

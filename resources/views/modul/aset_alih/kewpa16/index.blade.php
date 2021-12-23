@@ -35,14 +35,24 @@
                     <div class="card-body pt-0">
 
                         <br>
-                        <form method="POST" action="/kewpa16/1">
+                        <form method="POST" action="/kewpa16">
                             @csrf
-                            @method('PUT')
                             <div class="row">
                                 <div class="col-6">
                                     <label for="">Pilih Tahun: </label>
                                     <div class="input-group">
-                                        <input type="text" name="tahun" id="tahun_kewpa16" class="form-control">
+                                        <input name="tahun" id="tahun_kewpa16" class="form-control" placeholder="Pilih Tahun" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label for="">Pilih Jabatan: </label>
+                                    <div class="input-group">
+                                        <select class="form-control mb-3" name="jabatan" required>
+                                            <option value="" selected disabled hidden>Pilih Jabatan</option> required>
+                                            @foreach ($kod_jabatans as $jabatan)
+                                            <option value="{{$jabatan->nama_jabatan}}">{{$jabatan->nama_jabatan}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 

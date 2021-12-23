@@ -12,4 +12,11 @@ class InfoKewpa2 extends Model
 
     protected $guarded = ['id'];
 
+    protected $with = ['info_kewpa1'];
+
+    public function info_kewpa1() {
+      return $this->belongsTo(InfoKewpa1::class, 'info_kewpa1_id');
+    }
+
+
 }

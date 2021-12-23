@@ -47,10 +47,10 @@
                                         <option value="{{$info_kewpa11->status_aset}}" required required selected disabled hidden>{{$info_kewpa11->status_aset}}
                                         </option required>
                                         <option value="Sedang Digunakan(A)">Sedang Digunakan(A)</option>
-                                        <option value="Tidak Digunakan(B)">Tidak Digunakan(A)</option>
+                                        <option value="Tidak Digunakan(B)">Tidak Digunakan(B)</option>
                                         <option value="Perlu Pembaikan(C)">Perlu Pembaikan(C)</option>
-                                        <option value="Sedang Diselenggara(E)">Sedang Diselenggara(E)</option>
-                                        <option value="Hilang(A)">Hilang(A)</option>
+                                        <option value="Sedang Diselenggara(D)">Sedang Diselenggara(D)</option>
+                                        <option value="Hilang(W)">Hilang(E)</option>
                                     </select>
                                 </div>
                             </div>

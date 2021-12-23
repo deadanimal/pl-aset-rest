@@ -139,7 +139,7 @@
                                     <select class="form-control mb-3" name="bahagian" required>
                                         <option value="" selected hidden>Pilih Jabatan</option required>
                                         @foreach ($jabatan as $jbtn)
-                                            <option value="{{ $jbtn->id }}">{{ $jbtn->nama_jabatan }}</option>
+                                            <option value="{{ $jbtn->nama_jabatan }}">{{ $jbtn->nama_jabatan }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -215,7 +215,7 @@
                             <div class="col-4">
                                 <label for="">Harga Perolehan Asal</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="harga_perolehan_asal" value=""
+                                    <input class="form-control mb-3" type="number" name="harga_perolehan_asal" value=""
                                         required>
                                 </div>
                             </div>
@@ -301,13 +301,19 @@
                             <div class="col-4">
                                 <label for="">Nilai Semasa</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="nilai_semasa" value="" required>
+                                    <input class="form-control mb-3" type="number" name="nilai_semasa" value="" required>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <label for="">Perkara</label>
                                 <div class="input-group">
                                     <input class="form-control mb-3" type="text" name="perkara" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Cara Diperolehi</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="cara_aset_diperolehi" value="" required>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -320,7 +326,7 @@
                             <div class="col-4">
                                 <label for="">Rujukan Kewpa 1</label>
                                 <div class="input-group">
-                                    <select onchange="getInfoKewatk1(this)" class="form-control mb-3" name="no_pesanan">
+                                    <select onchange="getInfoKewatk1(this)" class="form-control mb-3" name="rujukan_kewpa1_id">
                                         <option value="" required required selected disabled hidden>Pilih No. Pesanan
                                         </option required>
                                         @foreach ($kewpa1 as $kew1)
@@ -424,7 +430,7 @@
                             <select class="form-control mb-3" name="bahagian" required>
                                 <option value="" selected disabled hidden>Pilih Bahagian</option required>
                                 @foreach ($jabatan as $jbtn)
-                                    <option value="{{ $jbtn->id }}">{{ $jbtn->nama_jabatan }}</option>
+                                    <option value="{{ $jbtn->nama_jabatan }}">{{ $jbtn->nama_jabatan }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -498,7 +504,7 @@
                         <div class="col-4">
                             <label for="">Harga Perolehan Asal</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="harga_perolehan_asal" value="" required>
+                                <input class="form-control mb-3" type="number" name="harga_perolehan_asal" value="" required>
                             </div>
                         </div>
                         <div class="col-4">
@@ -579,13 +585,19 @@
                         <div class="col-4">
                             <label for="">Nilai Semasa</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="nilai_semasa" value="" required>
+                                <input class="form-control mb-3" type="number" name="nilai_semasa" value="" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Perkara</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="text" name="perkara" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Cara Diperolehi</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="text" name="cara_aset_diperolehi" value="" required>
                             </div>
                         </div>
                         <div class="col-4">

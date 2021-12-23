@@ -43,25 +43,23 @@
                                 <div class="col-6">
                                     <label for="">Pilih Tahun: </label>
                                     <div class="input-group">
-                                        <input type="text" name="tahun" id="tahun_kewpa8" class="form-control">
+                                        <input type="text" name="tahun" id="tahun_kewpa8" class="form-control" required>
                                     </div>
                                 </div>
 
-                                {{-- <div class="col-6">
-                                    <label for="">Pilih Lokasi: </label>
+                                <div class="col-6">
+                                    <label for="">Pilih Jabatan: </label>
                                     <div class="input-group">
-                                        <select class="form-control mb-3" name="lokasi" required>
-                                            <option value="" selected disabled hidden>Pilih Lokasi</option required>
-                                            @foreach ($lokasi as $lok)
-                                                <option value="{{ $lok->nama_lokasi }}">{{ $lok->nama_lokasi }}</option>
+                                        <select class="form-control mb-3" name="jabatan" required>
+                                            <option value="" selected disabled hidden>Pilih Jabatan</option> required>
+                                            @foreach ($kod_jabatans as $jabatan)
+                                            <option value="{{$jabatan->nama_jabatan}}">{{$jabatan->nama_jabatan}}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
-
-                            <br>
-                            <button type="submit" class="btn btn-sm btn-primary text-white">Cari</a>
+                            <button type="submit" class="btn btn-sm btn-primary text-white">Jana Laporan</a>
                         </form>
                     </div>
 

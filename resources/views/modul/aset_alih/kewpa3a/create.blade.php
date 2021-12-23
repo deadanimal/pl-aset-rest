@@ -142,7 +142,7 @@
                         <div class="col-4">
                             <label for="">Harga Perolehan Asal</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="harga_perolehan_asal" value="{{$kewpa3a->harga_perolehan_asal}}" required>
+                                <input class="form-control mb-3" type="number" name="harga_perolehan_asal" value="{{$kewpa3a->harga_perolehan_asal}}" required>
                             </div>
                         </div>
                         <div class="col-4">
@@ -223,13 +223,19 @@
                         <div class="col-4">
                             <label for="">Nilai Semasa</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="nilai_semasa" value="{{$kewpa3a->nilai_semasa}}" required>
+                                <input class="form-control mb-3" type="number" name="nilai_semasa" value="{{$kewpa3a->nilai_semasa}}" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Perkara</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="text" name="perkara" value="{{$kewpa3a->perkara}}" required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Cara Diperolehi</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="text" name="cara_aset_diperolehi" value="{{$kewpa3a->cara_aset_diperolehi}}" required>
                             </div>
                         </div>
                         <div class="col-4">
