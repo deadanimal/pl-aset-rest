@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Kewpa14;
 use App\Models\Kewpa3A;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
 
 class Kewpa14Controller extends Controller
 {
@@ -43,4 +45,27 @@ class Kewpa14Controller extends Controller
     {
       return $kewpa14->delete();
     }
+
+    public function generatePdf() {
+
+      $context = [
+        "kewpa14" => Kewpa3A::where('status_selenggara', 'Perlu' )->get()
+      ];
+      
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa14', [$context]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa14",
+      ];
+
+      return view('modul.borang_viewer_pa', $context);
+
+
+
+    }
+
 }

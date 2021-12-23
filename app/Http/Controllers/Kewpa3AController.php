@@ -7,6 +7,7 @@ use App\Models\Kewpa3A;
 use App\Models\KodLokasi;
 use App\Models\KodJabatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Exception;
 
 class Kewpa3AController extends Controller
@@ -72,4 +73,22 @@ class Kewpa3AController extends Controller
   {
     return $kewpa3a->delete();
   }
+
+  public function generatePdf(Kewpa3A $kewpa3A) {
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa3A', [$kewpa3A]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa3 (A)",
+      ];
+
+      return view('modul.borang_viewer_pa', $context);
+
+
+
+    }
+
 }

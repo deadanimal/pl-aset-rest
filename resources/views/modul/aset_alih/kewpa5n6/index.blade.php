@@ -8,7 +8,7 @@
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
               <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-              <li class="breadcrumb-item"><a href="/kewpa5n6/create">kewpa5 & 6</a></li>
+              <li class="breadcrumb-item"><a href="">{{$title}}</a></li>
             </ol>
           </nav>
         </div>
@@ -39,7 +39,6 @@
               <th scope="col">Bil</th>
               <th scope="col">No Siri Pendaftaran</th>
               <th scope="col">Cara Aset Diperolehi</th>
-              <th scope="col">Status Aset</th>
               <th scope="col">Jumlah Nilai Semasa</th>
               <th scope="col">Jumlah Perolehan</th>
             </tr>
@@ -50,9 +49,8 @@
               <td scope="col">{{$loop->index + 1}}</td>
               <td scope="col">{{$kewpa5n6->no_siri_pendaftaran}}</td>
               <td scope="col">{{$kewpa5n6->cara_aset_diperolehi}}</td>
-              <td scope="col">{{$kewpa5n6->status_aset}}</td>
-              <td scope="col">{{$kewpa5n6->jumlah_nilai_semasa}}</td>
-              <td scope="col">{{$kewpa5n6->jumlah_perolehan}}</td>
+              <td scope="col">{{$kewpa5n6->nilai_semasa}}</td>
+              <td scope="col">{{$kewpa5n6->harga_perolehan_asal}}</td>
             </tr>
             @endforeach
           </tbody>

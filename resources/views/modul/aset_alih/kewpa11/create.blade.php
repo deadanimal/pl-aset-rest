@@ -128,10 +128,10 @@
                                         <option value="" required required selected disabled hidden>Pilih Status Aset
                                         </option required>
                                         <option value="Sedang Digunakan(A)">Sedang Digunakan(A)</option>
-                                        <option value="Tidak Digunakan(B)">Tidak Digunakan(A)</option>
+                                        <option value="Tidak Digunakan(B)">Tidak Digunakan(B)</option>
                                         <option value="Perlu Pembaikan(C)">Perlu Pembaikan(C)</option>
-                                        <option value="Sedang Diselenggara(E)">Sedang Diselenggara(E)</option>
-                                        <option value="Hilang(A)">Hilang(A)</option>
+                                        <option value="Sedang Diselenggara(E)">Sedang Diselenggara(D)</option>
+                                        <option value="Hilang(A)">Hilang(E)</option>
                                     </select>
                     </div>
                 </div>

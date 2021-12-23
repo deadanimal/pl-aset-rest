@@ -16,7 +16,7 @@ class InfoKewpa11Controller extends Controller
     public function store(Request $request)
     {
       InfoKewpa11::create($request->all());
-      return redirect('/kewpa11/'.$request->kewpa11_id.'/edit');
+      return redirect('/kewpa11/'.$request->rujukan_kewpa11_id.'/edit');
  
     }
 
@@ -31,6 +31,7 @@ class InfoKewpa11Controller extends Controller
         "kewpa11" => \Session::get('kewpa11'),
         "kewpa3a" => Kewpa3A::all(),
       ];
+      
       return view('modul.aset_alih.info_kewpa11.create', $context);
 
     }

@@ -486,6 +486,21 @@ Route::get('/jkrpataf612pdf/{jkrpataf612}', [Jkrpataf612Controller::class, 'gene
 
 
 //kewpa utility
+//branch israa
+Route::get('/kewpa1pdf/{kewpa1}', [Kewpa1Controller::class, 'generatePDF']);
+Route::get('/kewpa2pdf/{kewpa2}', [Kewpa2Controller::class, 'generatePDF']);
+Route::get('/kewpa3apdf/{kewpa3A}', [Kewpa3AController::class, 'generatePDF']);
+Route::get('/kewpa3bpdf', [Kewpa3BController::class, 'generatePDF']);
+Route::get('/kewpa5n6pdf', [Kewpa5n6Controller::class, 'generatePDF']);
+Route::get('/kewpa8pdf/', [Kewpa8Controller::class, 'generatePDF']);
+Route::get('/kewpa7pdf/', [Kewpa7Controller::class, 'generatePDF']);
+Route::get('/kewpa9pdf/{kewpa9}', [Kewpa9Controller::class, 'generatePDF']);
+Route::get('/kewpa11pdf/{kewpa11}', [Kewpa11Controller::class, 'generatePDF']);
+Route::get('/kewpa10pdf/{kewpa10}', [Kewpa10Controller::class, 'generatePDF']);
+Route::get('/kewpa14pdf/', [Kewpa14Controller::class, 'generatePDF']);
+Route::get('/kewpa15pdf/{kewpa15}', [Kewpa15Controller::class, 'generatePDF']);
+
+//branch am
 Route::get('/kewpa17pdf/{kewpa17}', [Kewpa17Controller::class, 'generatePDF']);
 Route::get('/kewpa18pdf/{kewpa18}', [Kewpa18Controller::class, 'generatePDF']);
 Route::get('/kewpa19pdf/{kewpa19}', [Kewpa19Controller::class, 'generatePDF']);

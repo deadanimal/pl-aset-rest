@@ -8,6 +8,8 @@ use App\Models\Kewpa3A;
 use App\Models\KodJabatan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
 
 class Kewpa15Controller extends Controller
 {
@@ -86,4 +88,22 @@ class Kewpa15Controller extends Controller
     {
       return $kewpa15->delete();
     }
+
+    public function generatePdf(Kewpa15 $kewpa15) {
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa15', [$kewpa15]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa15",
+      ];
+
+      return view('modul.borang_viewer_pa', $context);
+
+
+
+    }
+
 }

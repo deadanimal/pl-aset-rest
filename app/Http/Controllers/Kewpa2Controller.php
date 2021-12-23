@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kewpa2;
 use App\Models\InfoKewpa2;
 use App\Models\Kewpa1;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa2Controller extends Controller
 {
@@ -74,6 +75,24 @@ class Kewpa2Controller extends Controller
     {
       return $kewpa2->delete();
     }
+
+    public function generatePdf(Kewpa2 $kewpa2) {
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa2', [$kewpa2]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa2",
+      ];
+
+      return view('modul.borang_viewer_pa', $context);
+
+
+
+    }
+
 
 
 }

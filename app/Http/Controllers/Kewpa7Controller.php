@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Kewpa7;
+use Illuminate\Http\Request; use App\Models\Kewpa7;
 use App\Models\Kewpa3A;
 use App\Models\KodJabatan;
 use App\Models\KodLokasi;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa7Controller extends Controller
 {
@@ -51,6 +51,10 @@ class Kewpa7Controller extends Controller
 
     public function update(Request $request, $kewpa7)
     {
+
+      \Session::put('lokasi', $request->lokasi);
+      \Session::put('bahagian', $request->bahagian);
+
       $context = [
         "lokasi" => KodLokasi::all(),
         "jabatan" => KodJabatan::all(),
@@ -66,5 +70,30 @@ class Kewpa7Controller extends Controller
     {
       return $kewpa7->delete();
     }
+    public function generatePdf() {
+      $lokasi = \Session::get('lokasi');
+      $bahagian = \Session::get('bahagian');
+
+      $context = (object)[];
+      $context->lokasi = $lokasi;
+      $context->bahagian = $bahagian;
+      $context->kewpa7 = Kewpa3A::where('lokasi_penempatan', $lokasi)->where('bahagian', $bahagian)->get();
+
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa7', [$context]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa7",
+      ];
+
+      return view('modul.borang_viewer_pa', $context);
+
+
+
+    }
+
 
 }

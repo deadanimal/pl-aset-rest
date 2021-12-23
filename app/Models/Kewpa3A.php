@@ -13,7 +13,12 @@ class Kewpa3A extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $with = ['infokewpa1'];
+
+    protected $with = ['kewpa1', 'info_kewpa1'];
+
+    public function kewpa1() {
+      return $this->belongsTo(Kewpa1::class, 'rujukan_kewpa1_id', 'id');
+    }
 
     public function infokewpa1()
     {
