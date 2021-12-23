@@ -49,7 +49,7 @@
                                 <tr>
                                     <td scope="col">{{ $loop->iteration }}</td>
                                     <td scope="col">{{ $k3b->tarikh }}</td>
-                                    <td scope="col">{{ $k3b->no_transaksi }}</td>
+                                    <td scope="col">{{ $k3b->kewps3a->no_kad }}</td>
                                     <td scope="col">{{ $k3b->terima_keluar }}</td>
                                     <td scope="col">
                                         <a href="/kewps3b/{{ $k3b->id }}"><i class="fas fa-pen"></i></a>
@@ -67,11 +67,8 @@
                             @endforeach
                         </tbody>
                     </table>
-
-                    <a class="btn btn-primary mt-5" href="/kewps3bpdf">
+                    <a class="btn btn-primary mt-3 ml-4" href="/kewps3bpdf">
                         Print <span class=" fas fa-print"></span></a>
-
-
                 </div>
             </div>
         </div>

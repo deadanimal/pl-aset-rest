@@ -22,7 +22,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <h2 class="mb-0">Penilaian Prestasi Pengurusan</h2>
+                        <h2 class="mb-0">BORANG PENILAIAN PRESTASI PENGURUSAN STOR</h2>
                     </div>
                     <div class="text-end mr-2">
                         <a href="/kewps11/create"><button class="align-self-end btn btn-sm btn-primary"

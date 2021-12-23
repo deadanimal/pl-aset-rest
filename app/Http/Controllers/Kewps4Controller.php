@@ -110,9 +110,9 @@ class Kewps4Controller extends Controller
 
         $context = [
             "url" => $url,
+            "title" => "kewps4",
         ];
 
-        return view('modul.borang_viewer', $context);
-
+        return view('modul.borang_viewer_ps', $context);
     }
 }

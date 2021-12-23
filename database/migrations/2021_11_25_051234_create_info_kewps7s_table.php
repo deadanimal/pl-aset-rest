@@ -16,13 +16,13 @@ class CreateInfoKewps7sTable extends Migration
         Schema::create('info_kewps7s', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kewps3a_id');
-            $table->string('catatan_pemohon');
-            $table->integer('kuantiti_dimohon');
-            $table->integer('kuantiti_diluluskan');
-            $table->string('catatan_pelulus');
-            $table->integer('kuantiti_dikeluarkan');
-            $table->string('pembungkusan');
-            $table->integer('kuantiti_diterima');
+            $table->string('catatan_pemohon')->nullable();
+            $table->integer('kuantiti_dimohon')->nullable();
+            $table->integer('kuantiti_diluluskan')->nullable();
+            $table->string('catatan_pelulus')->nullable();
+            $table->integer('kuantiti_dikeluarkan')->nullable();
+            $table->string('pembungkusan')->nullable();
+            $table->integer('kuantiti_diterima')->nullable();
             $table->foreignId('kewps7_id');
             $table->timestamps();
         });

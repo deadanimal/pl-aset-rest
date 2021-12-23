@@ -46,7 +46,9 @@ use App\Http\Controllers\InfoKewpa29Controller;
 use App\Http\Controllers\InfoKewpa32Controller;
 use App\Http\Controllers\InfoKewpa36Controller;
 use App\Http\Controllers\InfoKewpa37Controller;
+use App\Http\Controllers\InfoKewps10Controller;
 use App\Http\Controllers\InfoKewps1Controller;
+use App\Http\Controllers\InfoKewps20Controller;
 use App\Http\Controllers\InfoKewps2Controller;
 use App\Http\Controllers\InfoPlpkPa0202Controller;
 use App\Http\Controllers\InfoPlpkPa0203Controller;
@@ -334,7 +336,7 @@ Route::resource('info_kewatk19', InfoKewatk19Controller::class);
 # stor routes
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('kewps1', Kewps1Controller::class);
-    Route::resource('infokewps1', InfoKewps1Controller::class);
+    Route::resource('info_kewps1', InfoKewps1Controller::class);
     Route::resource('kewps2', Kewps2Controller::class);
     Route::resource('infokewps2', InfoKewps2Controller::class);
     Route::resource('kewps3a', Kewps3aController::class);
@@ -347,6 +349,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('kewps8', Kewps8Controller::class);
     Route::resource('kewps9', Kewps9Controller::class);
     Route::resource('kewps10', Kewps10Controller::class);
+    Route::resource('infokewps10', InfoKewps10Controller::class);
     Route::resource('kewps11', Kewps11Controller::class);
     Route::resource('kewps12', Kewps12Controller::class);
     Route::resource('kewps13', Kewps13Controller::class);
@@ -357,6 +360,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('kewps18', Kewps18Controller::class);
     Route::resource('kewps19', Kewps19Controller::class);
     Route::resource('kewps20', Kewps20Controller::class);
+    Route::resource('infokewps20', InfoKewps20Controller::class);
     Route::resource('kewps21', Kewps21Controller::class);
     Route::resource('kewps22', Kewps22Controller::class);
     Route::resource('kewps23', Kewps23Controller::class);
@@ -454,6 +458,7 @@ Route::get('/kewps18pdf/{kewps18}', [Kewps18Controller::class, 'generatePdf']);
 Route::get('/kewps19pdf/{kewps19}', [Kewps19Controller::class, 'generatePdf']);
 Route::get('/kewps20pdf/{kewps20}', [Kewps20Controller::class, 'generatePdf']);
 Route::get('/kewps21pdf/{kewps21}', [Kewps21Controller::class, 'generatePdf']);
+Route::get('/kewps22pdf/{kewps22}', [Kewps22Controller::class, 'generatePdf']);
 Route::get('/kewps23pdf/{kewps23}', [Kewps23Controller::class, 'generatePdf']);
 Route::get('/kewps24pdf/{kewps24}', [Kewps24Controller::class, 'generatePdf']);
 Route::get('/kewps25pdf/{kewps25}', [Kewps25Controller::class, 'generatePdf']);

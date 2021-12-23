@@ -23,7 +23,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <h2 class="mb-0">Borang Permohonan Stok (Antara Stor)</h2>
+                        <h2 class="mb-0">Borang Permohonan Stok (Individu Kepada Stor)</h2>
                     </div>
                     <div class="text-end mr-2">
                         <a href="/kewps8/create"><button class="align-self-end btn btn-sm btn-primary"

@@ -32,9 +32,8 @@ class Kewps20Controller extends Controller
     {
         return view('modul.stor.kewps20.create', [
             'kewps3a' => Kewps3a::all(),
-            'kaedah' => DB::table('kaedah_pelupusan')->get(),
+            'kaedah' => DB::table('kaedah_pelupusans')->get(),
         ]);
-
     }
 
     /**
@@ -73,7 +72,7 @@ class Kewps20Controller extends Controller
         return view('modul.stor.kewps20.edit', [
             'kewps20' => $kewps20,
             'kewps3a' => Kewps3a::all(),
-            'kaedah' => DB::table('kaedah_pelupusan')->get(),
+            'kaedah' => DB::table('kaedah_pelupusans')->get(),
         ]);
     }
 
@@ -99,20 +98,18 @@ class Kewps20Controller extends Controller
     {
         $kewps20->update($request->all());
 
-        if ($request->kewps20->infokewps20) {
-            foreach (range(0, count($request->info20_id) - 1) as $i) {
-                InfoKewps20::where('id', $request->info20_id[$i])->update([
-                    'kewps3a_id' => $request->kewps3a_id[$i],
-                    'kuantiti' => $request->kuantiti[$i],
-                    'keadaan_stok' => $request->keadaan_stok[$i],
-                    'kaedah_pelupusan' => $request->kaedah_pelupusan[$i],
-                    'justifikasi' => $request->justifikasi[$i],
-                    'keputusan' => $request->keputusan[$i],
-                ]);
-
-            }
-
-        }
+        // if ($request->kewps20->infokewps20) {
+        //     foreach (range(0, count($request->info20_id) - 1) as $i) {
+        //         InfoKewps20::where('id', $request->info20_id[$i])->update([
+        //             'kewps3a_id' => $request->kewps3a_id[$i],
+        //             'kuantiti' => $request->kuantiti[$i],
+        //             'keadaan_stok' => $request->keadaan_stok[$i],
+        //             'kaedah_pelupusan' => $request->kaedah_pelupusan[$i],
+        //             'justifikasi' => $request->justifikasi[$i],
+        //             'keputusan' => $request->keputusan[$i],
+        //         ]);
+        //     }
+        // }
         return redirect('/kewps20');
     }
 
@@ -128,7 +125,6 @@ class Kewps20Controller extends Controller
         $kewps20->delete();
 
         return redirect('/kewps20');
-
     }
 
     public function generatePdf(Kewps20 $kewps20)
@@ -167,6 +163,5 @@ class Kewps20Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

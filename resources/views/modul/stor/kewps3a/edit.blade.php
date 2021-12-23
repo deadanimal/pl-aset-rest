@@ -265,7 +265,7 @@
                 </div>
                 @foreach ($keluaran as $k)
                     <div class="col-12 mt-4">
-                        <h6>Terimaan {{ $loop->iteration }}</h6>
+                        <h6>Keluaran {{ $loop->iteration }}</h6>
                     </div>
                     <div class="col-4 mt-2">
                         <label for="" class="col-form-label col-form-label-sm">Tahun</label>

@@ -27,7 +27,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <h2 class="mb-0">Penerimaan Aset</h2>
+                        <h2 class="mb-0">BORANG PENOLAKAN BARANG-BARANG (BPB)</h2>
                     </div>
                     <div class="text-end mr-2">
                         <a href="/kewps2/create"><button class="align-self-end btn btn-sm btn-primary">Tambah</button></a>
@@ -66,31 +66,29 @@
                                     <td scope="col"><span class="badge bg-danger">{{ $k2->kewps1->status }}</span></th>
                                 @endif
 
-                                @if ($k2->kewps1->status == 'DERAF')
-                                    <td scope="col">
-                                        @if (Auth::user()->jawatan == 'superadmin')
-                                            <a href="/kewps2" onclick="updateStatus({{ $k2 }}, 'LULUS')"><i
-                                                    class="fas fa-check-circle"></i></a>
-                                            <a href="/kewps2" onclick="updateStatus({{ $k2 }}, 'DITOLAK')"><i
-                                                    class="fas fa-times-circle"></i></a>
-                                            <a href="" onclick="cetakPdf()"><i class="fas fa-print"></i></a>
+                                <td scope="col">
+                                    @if (Auth::user()->jawatan == 'superadmin')
+                                        <a href="/kewps2" onclick="updateStatus({{ $k2 }}, 'LULUS')"><i
+                                                class="fas fa-check-circle"></i></a>
+                                        <a href="/kewps2" onclick="updateStatus({{ $k2 }}, 'DITOLAK')"><i
+                                                class="fas fa-times-circle"></i></a>
+                                        <a href="" onclick="cetakPdf()"><i class="fas fa-print"></i></a>
 
-                                        @else
+                                    @else
 
-                                            <a href="/kewps2/{{ $k2->id }}"><i class="fas fa-pen"></i></a>
-                                            <a href="/kewps2pdf/{{ $k2->id }}"><i class="fas fa-print"></i></a>
-                                            <a href="">
-                                                <form action="/kewps2/{{ $k2->id }}" class="d-inline"
-                                                    method="POST">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                            class=" fas fa-trash"></i></button>
-                                                </form>
-                                            </a>
-                                        @endif
-                                    </td>
-                                @endif
+                                        <a href="/kewps2/{{ $k2->id }}"><i class="fas fa-pen"></i></a>
+                                        <a href="/kewps2pdf/{{ $k2->id }}"><i class="fas fa-print"></i></a>
+                                        <a href="">
+                                            <form action="/kewps2/{{ $k2->id }}" class="d-inline"
+                                                method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn-sm bg-white border-0" type="submit"> <i
+                                                        class=" fas fa-trash"></i></button>
+                                            </form>
+                                        </a>
+                                    @endif
+                                </td>
 
                             </tr>
                         @endforeach

@@ -14,7 +14,7 @@ class Kewps3a extends Model
 
     public function kewps1()
     {
-        return $this->belongsTo(InfoKewps1::class, 'id', 'no_kod');
+        return $this->belongsTo(InfoKewps1::class, 'no_kad', 'no_kod');
     }
 
     public function parasstok()

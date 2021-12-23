@@ -9,4 +9,9 @@ class ParasStok extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function kewps3a()
+    {
+        return $this->belongsTo(Kewps3a::class);
+    }
 }

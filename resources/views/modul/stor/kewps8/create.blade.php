@@ -24,7 +24,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">Permohonan Stok</h2>
+                            <h2 class="mb-0">Permohonan Stok (Individu Kepada Stor)</h2>
                         </div>
                     </div>
                 </div>
@@ -35,15 +35,7 @@
 
                         <input class="form-control mb-3" type="hidden" name="pemohon_id" value="{{ Auth::user()->id }}">
                         <input class="form-control mb-3" type="hidden" name="status" value="DIPOHON">
-                        <div class="col-12">
-                            <label for="">Kuantiti Dipohon</label>
-                            <input class="form-control mb-3" type="number" name="kuantiti_dimohon" value="">
-                        </div>
-                        <div class="col-12">
-                            <label for="">Catatan Pemohon</label>
-                            <input class="form-control mb-3" type="text" name="catatan_pemohon" value="">
-                        </div>
-                        <div class="col-12">
+                        <div class="col-4">
                             <label for="">No Kod</label>
                             <select class="form-control mb-3" name="kewps3a_id">
                                 <option selected>Pilih</option>
@@ -52,6 +44,14 @@
                                     </option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Kuantiti Dipohon</label>
+                            <input class="form-control mb-3" type="number" name="kuantiti_dimohon" value="">
+                        </div>
+                        <div class="col-4">
+                            <label for="">Catatan Pemohon</label>
+                            <input class="form-control mb-3" type="text" name="catatan_pemohon" value="">
                         </div>
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit">Simpan</button>
