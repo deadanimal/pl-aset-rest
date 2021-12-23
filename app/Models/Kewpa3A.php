@@ -14,11 +14,14 @@ class Kewpa3A extends Model
 
     protected $guarded = ['id'];
 
-    protected $with = ['kewpa1'];
+    protected $with = ['kewpa1', 'info_kewpa1'];
 
     public function kewpa1() {
       return $this->belongsTo(Kewpa1::class, 'rujukan_kewpa1_id', 'id');
     }
 
-    
+    public function infokewpa1()
+    {
+        return $this->belongsTo(InfoKewpa1::class, 'rujukan_kewpa1_id');
+    }
 }

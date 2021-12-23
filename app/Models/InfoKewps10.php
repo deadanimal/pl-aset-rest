@@ -9,7 +9,7 @@ class InfoKewps10 extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['kewps3a', 'kewps10'];
+    protected $with = ['kewps3a'];
 
     public function kewps3a()
     {
@@ -19,5 +19,4 @@ class InfoKewps10 extends Model
     {
         return $this->belongsTo(Kewps10::class);
     }
-
 }

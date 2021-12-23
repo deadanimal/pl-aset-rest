@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kewpa21;
+use App\Models\InfoKewpa21;
 use App\Models\Kewpa23;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa23Controller extends Controller
 {
@@ -24,13 +25,13 @@ class Kewpa23Controller extends Controller
   public function create()
   {
     return view('modul.aset_alih.kewpa23.create', [
-      'kewpa21' => Kewpa21::all()
+      'infokewpa21' => InfoKewpa21::all()
     ]);
   }
   public function show(Kewpa23 $kewpa23)
   {
     return view('modul.aset_alih.kewpa23.edit', [
-      'kewpa21' => Kewpa21::all(),
+      'infokewpa21' => InfoKewpa21::all(),
       'kewpa23' => $kewpa23
     ]);
   }
@@ -46,5 +47,22 @@ class Kewpa23Controller extends Controller
   {
     $kewpa23->delete();
     return redirect('/kewpa23');
+  }
+
+  public function generatePdf(Kewpa23 $kewpa23)
+  {
+
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa23', [$kewpa23]);
+
+    $res = $response->getBody()->getContents();
+
+    $url = "data:application/pdf;base64," . $res;
+
+    $context = [
+      "url" => $url,
+      "title" => "kewpa23",
+    ];
+
+    return view('modul.borang_viewer_pa', $context);
   }
 }

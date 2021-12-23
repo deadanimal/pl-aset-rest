@@ -98,10 +98,12 @@
                             </div>
                             <div class="col-4">
                                 <label for="">Kaedah Pelupusan</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kaedah_pelupusan"
-                                        value="{{ $ik21->kaedah_pelupusan }}" required>
-                                </div>
+                                <select name="kaedah_pelupusan" class="form-control mb-3" required>
+                                    @foreach ($kaedah_pelupusan as $kp)
+                                        <option {{ $kp->value == $ik21->kaedah_pelupusan ? 'selected' : '' }}
+                                            value="{{ $kp->value }}">{{ $kp->text }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-4">
                                 <label for="">Justifikasi</label>
@@ -173,9 +175,12 @@
                             </div>
                             <div class="col-4">
                                 <label for="">Kaedah Pelupusan</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kaedah_pelupusan" value="" required>
-                                </div>
+                                <select name="kaedah_pelupusan" class="form-control mb-3" required>
+                                    <option selected>Pilih</option>
+                                    @foreach ($kaedah_pelupusan as $kp)
+                                        <option value="{{ $kp->value }}">{{ $kp->text }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-4">
                                 <label for="">Justifikasi</label>

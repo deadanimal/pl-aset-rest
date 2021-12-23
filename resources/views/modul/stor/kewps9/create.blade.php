@@ -32,9 +32,9 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-12">
-                            <label for="">No Permohonan</label>
-                            <select class="form-control mb-3" name="kewps7_id">
+                        <div class="col-3">
+                            <label for="">ID Info Kewps7</label>
+                            <select class="form-control mb-3" name="infokewps7_id">
                                 <option selected>Pilih</option>
                                 @foreach ($infokewps7 as $k7)
                                     <option value="{{ $k7->id }}">{{ $k7->id }}
@@ -42,15 +42,15 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-12">
+                        <div class="col-3">
                             <label for="">Kuantiti Dibungkus</label>
                             <input class="form-control mb-3" type="number" name="kuantiti_dibungkus" value="">
                         </div>
-                        <div class="col-12">
+                        <div class="col-3">
                             <label for="">Maklumat Pembungkusan</label>
                             <input class="form-control mb-3" type="text" name="maklumat_bungkusan" value="">
                         </div>
-                        <div class="col-12">
+                        <div class="col-3">
                             <label for="">Maklumat Penghantaran</label>
                             <input class="form-control mb-3" type="text" name="maklumat_penghantaran" value="">
                         </div>

@@ -15,7 +15,7 @@ class CreateKewpa31sTable extends Migration
     {
         Schema::create('kewpa31s', function (Blueprint $table) {
             $table->id();
-
+            $table->integer("kuantiti")->nullable();
             $table->string("harga_simpanan")->nullable();
             $table->string("deposit")->nullable();
             $table->date("date_created")->nullable();

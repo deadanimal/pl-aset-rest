@@ -70,7 +70,8 @@
                                 <select name="no_siri_pendaftaran[]" class="form-control mb-3" required>
                                     <option selected>Pilih</option>
                                     @foreach ($kewpa3a as $k3a)
-                                        <option value="{{ $k3a->id }}">{{ $k3a->id }}</option>
+                                        <option value="{{ $k3a->no_siri_pendaftaran }}">{{ $k3a->no_siri_pendaftaran }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -124,7 +125,7 @@
                                 <select name="no_siri_pendaftaran[]" class="form-control mb-3" required>
                                     <option selected>Pilih</option>
                                     @foreach ($kewpa3a as $k3a)
-                                        <option value="{{ $k3a->id }}">{{ $k3a->id }}</option>
+                                        <option value="{{ $k3a->no_siri_pendaftaran }}">{{ $k3a->no_siri_pendaftaran }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -62,11 +62,7 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="pemohon_id" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="status" value="DERAF">
-                        <input type="hidden" name="pelulus_id" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="penerima_id" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="pengeluar_id" value="{{ Auth::user()->id }}">
+
                     </div>
 
                     <div class="row" id="info_kewps7">

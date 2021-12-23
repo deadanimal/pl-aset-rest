@@ -31,7 +31,6 @@ class Kewps21Controller extends Controller
         return view('modul.stor.kewps21.create', [
             'kewps20' => InfoKewps20::all(),
         ]);
-
     }
 
     /**
@@ -57,7 +56,6 @@ class Kewps21Controller extends Controller
         return view('modul.stor.kewps21.edit', [
             'kewps21' => $kewps21,
         ]);
-
     }
 
     /**
@@ -82,7 +80,6 @@ class Kewps21Controller extends Controller
     {
         $kewps21->update($request->all());
         return redirect('/kewps21');
-
     }
 
     /**
@@ -100,6 +97,8 @@ class Kewps21Controller extends Controller
     {
         $kewps21->kementerian = $kewps21->infokewps20->kewps20->kementerian;
 
+        $kewps21['kaedah_pelupusan'] = $kewps21->infokewps20->kaedahPelupusans->text;
+
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps21', [$kewps21]);
 
         $res = $response->getBody()->getContents();
@@ -112,6 +111,5 @@ class Kewps21Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

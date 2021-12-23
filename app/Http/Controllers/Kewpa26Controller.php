@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InfoKewpa26;
 use App\Models\Kewpa24;
 use App\Models\Kewpa26;
+use App\Models\InfoKewpa26;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa26Controller extends Controller
 {
@@ -57,5 +58,22 @@ class Kewpa26Controller extends Controller
     InfoKewpa26::where('kewpa26_id', $kewpa26->id)->delete();
     $kewpa26->delete();
     return redirect('/kewpa26');
+  }
+
+  public function generatePdf(Kewpa26 $kewpa26)
+  {
+
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa26', [$kewpa26]);
+
+    $res = $response->getBody()->getContents();
+
+    $url = "data:application/pdf;base64," . $res;
+
+    $context = [
+      "url" => $url,
+      "title" => "kewpa26",
+    ];
+
+    return view('modul.borang_viewer_pa', $context);
   }
 }

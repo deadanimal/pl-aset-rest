@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kewpa20;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa20Controller extends Controller
 {
@@ -47,5 +48,22 @@ class Kewpa20Controller extends Controller
     $kewpa20->delete();
 
     return redirect('/kewpa20');
+  }
+
+  public function generatePdf(Kewpa20 $kewpa20)
+  {
+
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa20', [$kewpa20]);
+
+    $res = $response->getBody()->getContents();
+
+    $url = "data:application/pdf;base64," . $res;
+
+    $context = [
+      "url" => $url,
+      "title" => "kewpa20",
+    ];
+
+    return view('modul.borang_viewer_pa', $context);
   }
 }

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InfoKewpa25;
+use App\Models\InfoKewpa24;
 use App\Models\Kewpa24;
 use App\Models\Kewpa25;
+use App\Models\InfoKewpa25;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewpa25Controller extends Controller
 {
@@ -35,13 +37,13 @@ class Kewpa25Controller extends Controller
   public function create()
   {
     return view('modul.aset_alih.kewpa25.create', [
-      'kewpa24' => Kewpa24::all()
+      'kewpa24' => InfoKewpa24::all()
     ]);
   }
   public function show(Kewpa25 $kewpa25)
   {
     return view('modul.aset_alih.kewpa25.edit', [
-      'kewpa24' => Kewpa24::all(),
+      'kewpa24' => InfoKewpa24::all(),
       'kewpa25' => $kewpa25
     ]);
   }
@@ -59,5 +61,21 @@ class Kewpa25Controller extends Controller
     InfoKewpa25::where('kewpa25_id', $kewpa25->id)->delete();
     $kewpa25->delete();
     return redirect('/kewpa25');
+  }
+  public function generatePdf(Kewpa25 $kewpa25)
+  {
+
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa25', [$kewpa25]);
+
+    $res = $response->getBody()->getContents();
+
+    $url = "data:application/pdf;base64," . $res;
+
+    $context = [
+      "url" => $url,
+      "title" => "kewpa25",
+    ];
+
+    return view('modul.borang_viewer_pa', $context);
   }
 }

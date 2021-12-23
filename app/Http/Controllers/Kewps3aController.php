@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfoKewps1;
-use App\Models\InfoKewps10;
 use App\Models\InfoKewps7;
 use App\Models\KeluaranStokSukuTahun;
-use App\Models\kewps1;
 use App\Models\Kewps3a;
 use App\Models\Kewps4;
 use App\Models\ParasStok;
 use App\Models\TerimaanStokSukuTahun;
-use function PHPUnit\Framework\isEmpty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -52,7 +49,7 @@ class Kewps3aController extends Controller
 
         $k3a = [];
         foreach ($kewps3a as $k3) {
-            $k3a[] = $k3->id;
+            $k3a[] = $k3->no_kad;
         }
 
         return view('modul.stor.kewps3a.create', [
@@ -182,16 +179,16 @@ class Kewps3aController extends Controller
                 ]);
 
 
-                $tahun_semasa = date('Y', strtotime(now()));
-                if ($request->tahun_paras_stok[$i] == $tahun_semasa) {
-                    $nilai_baki_semasa = $request->maksimum_stok[$i] * $harga_seunit;
-                    Kewps4::create([
-                        'nilai_baki_semasa' => $nilai_baki_semasa,
-                        'status_stok' => $request->pergerakan,
-                        'kewps3a_id' => $kewps3a->id,
-                        'user_id' => $request->staff_id
-                    ]);
-                }
+                // $tahun_semasa = date('Y', strtotime(now()));
+                // if ($request->tahun_paras_stok[$i] == $tahun_semasa) {
+                $nilai_baki_semasa = $request->maksimum_stok[$i] * $harga_seunit;
+                Kewps4::create([
+                    'nilai_baki_semasa' => $nilai_baki_semasa,
+                    'status_stok' => $request->pergerakan,
+                    'kewps3a_id' => $kewps3a->id,
+                    'user_id' => $request->staff_id
+                ]);
+                // }
             }
         }
 

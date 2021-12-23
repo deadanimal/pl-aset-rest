@@ -31,7 +31,6 @@ class GambarblokController extends Controller
         return view('modul.aset_tak_alih.gambarblok.create', [
             'blokbangunan' => SenaraiBlokBangunan::all(),
         ]);
-
     }
 
     /**
@@ -42,6 +41,7 @@ class GambarblokController extends Controller
      */
     public function store(Request $request)
     {
+        ddd($request);
         $request['gambar_hadapan'] = $request->file('gambar_hadapan1')->store('gambar-blok');
         $request['gambar_belakang'] = $request->file('gambar_belakang1')->store('gambar-blok');
         Gambarblok::create($request->all());
@@ -61,7 +61,6 @@ class GambarblokController extends Controller
             'blokbangunan' => SenaraiBlokBangunan::all(),
             'gambarblok' => $gambarblok,
         ]);
-
     }
 
     /**
@@ -98,7 +97,6 @@ class GambarblokController extends Controller
         }
         $gambarblok->update($request->all());
         return redirect('/gambarblok');
-
     }
 
     /**
@@ -113,6 +111,5 @@ class GambarblokController extends Controller
         Storage::delete($gambarblok->gambar_hadapan);
         $gambarblok->delete();
         return redirect('/gambarblok');
-
     }
 }

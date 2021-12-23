@@ -65,8 +65,23 @@ class Kewpa19Controller extends Controller
   public function generatePdf(Kewpa19 $kewpa19)
   {
 
+    $infoid = $kewpa19->infokewpa19->first()->no_siri_pendaftaran;
 
-    $response = Http::post('https://libreoffice.prototype.com.my/cetak/pa19', [$kewpa19]);
+    $kewpa3a = Kewpa3A::where('no_siri_pendaftaran', $infoid)->first();
+
+    $kewpa19['kod_nasional'] = $kewpa3a->kod_nasional;
+    $kewpa19['status_aset'] = $kewpa3a->status_aset;
+    $kewpa19['jenis'] = $kewpa3a->jenis;
+    $kewpa19['no_kenderaan'] = $kewpa3a->no_pendaftaraan_kenderaan;
+    $kewpa19['no_chasis'] = $kewpa3a->no_chasis;
+    $kewpa19['no_enjin'] = $kewpa3a->no_enjin;
+    $kewpa19['nilai_semasa'] = $kewpa3a->nilai_semasa;
+    $kewpa19['tarikh_perolehan'] = $kewpa3a->tarikh_perolehan;
+    $kewpa19['harga_perolehan_asal'] = $kewpa3a->harga_perolehan_asal;
+    $kewpa19['usia_guna'] = $kewpa3a->usia_guna;
+
+
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa19', [$kewpa19]);
 
     $res = $response->getBody()->getContents();
 

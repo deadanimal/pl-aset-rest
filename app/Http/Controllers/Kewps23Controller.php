@@ -132,6 +132,5 @@ class Kewps23Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

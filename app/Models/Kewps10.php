@@ -9,7 +9,7 @@ class Kewps10 extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    // protected $with = ['infokewps10'];
+    protected $with = ['infokewps10'];
 
     public function infokewps10()
     {

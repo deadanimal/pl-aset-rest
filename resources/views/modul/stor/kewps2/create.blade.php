@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">kewps1</a></li>
+                                <li class="breadcrumb-item"><a href="">kewps2</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -24,7 +24,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">Penentuan Kumpulan Stok</h2>
+                            <h2 class="mb-0">BORANG PENOLAKAN BARANG-BARANG (BPB)</h2>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,30 @@
                         </div>
                     </div>
 
-                    <div id="info_kewps2_create" class="row"></div>
+                    <div id="info_kewps2_create" class="row">
+                        <div class="col-4">
+                            <label for="">Aset</label>
+                            <div class="input-group">
+                                <select class="form-control infok1 mb-4" name="infokewps1_id[]" id="k2_infok1">
+                                    <option selected>Pilih</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Kuantiti Ditolak</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="text" name="kuantiti_ditolak[]" value="">
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <label for="">Sebab penolakan</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="text" name="sebab_penolakan[]" value="">
+                            </div>
+                        </div>
+                    </div>
 
                     <a id="button_aset_diperiksa" class="btn btn-sm btn-primary text-white"
                         onclick="tambahAsetDiperiksa()">Tambah Aset</a>

@@ -2,84 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kewps3a;
 use App\Models\InfoKewps10;
 use Illuminate\Http\Request;
 
 class InfoKewps10Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $kewps3a = Kewps3a::where('id', $request->kewps3a_id)->first();
+        $kuantiti_stok = $kewps3a->parasstok->first()->maksimum_stok;
+        $kuantiti_perbezaan = (int) $kuantiti_stok - (int) $request->kuantiti_fizikal_stok;
+
+        $request['kuantiti_perbezaan'] = $kuantiti_perbezaan;
+        InfoKewps10::create($request->all());
+
+        return redirect('/kewps10/' . $request->kewps10_id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\InfoKewps10  $infoKewps10
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InfoKewps10 $infoKewps10)
+
+    public function update(Request $request, InfoKewps10 $infokewps10)
     {
-        //
+        $kewps3a = Kewps3a::where('id', $request->kewps3a_id)->first();
+        $kuantiti_stok = $kewps3a->parasstok->first()->maksimum_stok;
+        $kuantiti_perbezaan = (int) $kuantiti_stok - (int) $request->kuantiti_fizikal_stok;
+
+        $request['kuantiti_perbezaan'] = $kuantiti_perbezaan;
+        $infokewps10->update($request->all());
+        return redirect('/kewps10/' . $infokewps10->kewps10_id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\InfoKewps10  $infoKewps10
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InfoKewps10 $infoKewps10)
+    public function destroy(InfoKewps10 $infokewps10)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\InfoKewps10  $infoKewps10
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InfoKewps10 $infoKewps10)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\InfoKewps10  $infoKewps10
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InfoKewps10 $infoKewps10)
-    {
-        //
+        $infokewps10->delete();
+        return redirect('/kewps10/' . $infokewps10->kewps10_id);
     }
 }
