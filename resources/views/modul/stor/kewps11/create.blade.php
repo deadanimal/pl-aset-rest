@@ -24,7 +24,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">Verifikasi Stor</h2>
+                            <h2 class="mb-0">BORANG PENILAIAN PRESTASI PENGURUSAN STOR</h2>
                         </div>
                     </div>
                 </div>

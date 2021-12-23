@@ -36,8 +36,8 @@
                     <table class="table table-custom-simplified table-flush" id="table">
                         <thead class="thead-light">
                             <tr>
+                                <th scope="col">ID Kewps1</th>
                                 <th scope="col">Nama Pembekal</th>
-                                <th scope="col">Maklumat Pengangkutan</th>
                                 <th scope="col">No Kod Dalam Aset</th>
                                 <th scope="col">Jenis Penerimaan</th>
                                 <th scope="col">Status</th>
@@ -47,11 +47,11 @@
                         <tbody>
                             @foreach ($kewps1 as $k1)
                                 <tr>
+                                    <td scope="col">{{ $k1->id }}</td>
                                     <td scope="col">{{ $k1->nama_pembekal }}</td>
-                                    <td scope="col">{{ $k1->maklumat_pengangkutan }}</td>
                                     <td scope="col">
                                         @foreach ($k1->infokewps1 as $ik1)
-                                            {{ $ik1->no_kod }},
+                                            {{ $ik1->no_kod }},<br>
                                         @endforeach
                                     </td>
                                     <td scope="col">{{ $k1->jenis_penerimaan }}</td>
@@ -96,15 +96,13 @@
                                                 </a>
                                                 <a href="/kewps1/{{ $k1->id }}"><i class="fas fa-pen"></i></a>
                                                 {{-- <a href="/kewps1pdf/{{ $k1->id }}"><i class="fas fa-print"></i></a> --}}
-                                                <a href="">
-                                                    <form action="/kewps1/{{ $k1->id }}" class="d-inline"
-                                                        method="POST">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                                class=" fas fa-trash"></i></button>
-                                                    </form>
-                                                </a>
+                                                <form action="/kewps1/{{ $k1->id }}" class="d-inline"
+                                                    method="POST">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn-sm bg-white border-0" type="submit"> <i
+                                                            class=" fas fa-trash"></i></button>
+                                                </form>
                                             @endif
                                         </td>
                                     @endif

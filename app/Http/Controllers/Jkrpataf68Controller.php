@@ -39,6 +39,10 @@ class Jkrpataf68Controller extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd(asset('aset_alih/gambarpremis/rBcK2nMUMkIPIkMOoVOpzd0YpBOIXrh5NYsbWUTN.png'));
+
+        $jkrpataf68['gambar_premis'] = $request->file('gambar_premis')->store('aset_alih/gambarpremis');
         $jkrpataf68 = Jkrpataf68::create($request->all());
         foreach (range(0, count($request->pemilikan_tarikh) - 1) as $i) {
             DataTanah::create([
@@ -138,6 +142,5 @@ class Jkrpataf68Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ata', $context);
-
     }
 }

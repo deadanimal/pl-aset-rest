@@ -1,73 +1,145 @@
 @extends('layouts.base_stor') @section('content')
-    <div class="container">
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">Perbadanan Labuan</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
+                                <li class="breadcrumb-item"><a href="">Kew.ps-3(B)</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="container-fluid mt--6">
         <form method="POST" action="/kewps3b/{{ $kewps3b->id }}">
             @method('put')
             @csrf
-            <div class="card mt-4" id="basic-info">
-                <div class="card-header"
-                    style="background-color: #2a2a72; background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%)                                                                                                                                                               ">
-                    <h6 class="text-white">KEW.PS-3 (B)</h6>
+            <div class="card mt-4">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            <h2>Daftar Stok Bagian B (Kewps3B)</h2>
+                        </div>
+                    </div>
                 </div>
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Tarikh</label>
-                            <input class="form-control form-control-sm" type="date" name="tarikh"
-                                value="{{ $kewps3b->tarikh }}">
+                        <div class="col-4">
+                            <label for="">No Kod </label>
+                            <select name="no_transaksi" class="form-control mb-3" id="k3b_nokod" required>
+                                @foreach ($kewps3a as $k3a)
+                                    <option {{ $k3a->id == $kewps3b->id ? 'selected' : '' }} value="{{ $k3a->id }}">
+                                        {{ $k3a->no_kad }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">No Transaksi</label>
-                            <input class="form-control form-control-sm" type="text" name="no_transaksi"
-                                value="{{ $kewps3b->no_transaksi }}">
+                        <div class="col-4">
+                            <label for="">Tarikh Transaksi</label>
+                            <input class="form-control mb-3" type="date" name="tarikh" value="{{ $kewps3b->tarikh }}"
+                                required>
                         </div>
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Terima Daripada / Keluar Kepada</label>
-                            <input class="form-control form-control-sm" type="text" name="terima_keluar"
-                                value="{{ $kewps3b->terima_keluar }}">
+                        <div class="col-4">
+                            <label for="">Terima Daripada / Keluar Kepada</label>
+                            <input class="form-control mb-3" type="text" name="terima_keluar"
+                                value="{{ $kewps3b->terima_keluar }}" required>
                         </div>
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Diterima</label>
-                            <input class="form-control form-control-sm" type="number" name="kuantiti_terima"
-                                value="{{ $kewps3b->kuantiti_terima }}">
+                        <div class="col-4">
+                            <label for="">Kuantiti Diterima</label>
+                            <input class="form-control mb-3" type="number" name="kuantiti_terima" id="k3b_kuantiti_diterima"
+                                value="{{ $kewps3b->kuantiti_terima }}" required>
                         </div>
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Harga Seunit Terima</label>
-                            <input class="form-control form-control-sm" type="text" name="harga_seunit_terima"
-                                value="{{ $kewps3b->harga_seunit_terima }}">
+                        <div class="col-4">
+                            <label for="">Harga Seunit Terima</label>
+                            <input class="form-control mb-3" type="text" name="harga_seunit_terima"
+                                id="k3b_harga_seunit_terima" value="{{ $kewps3b->harga_seunit_terima }}" required>
                         </div>
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Jumlah Harga Terima</label>
-                            <input class="form-control form-control-sm" type="text" name="jumlah_harga_terima"
-                                value="{{ $kewps3b->jumlah_harga_terima }}">
+                        <div class="col-4">
+                            <label for="">Jumlah Harga Terima</label>
+                            <input class="form-control mb-3" type="text" name="jumlah_harga_terima"
+                                id="k3b_jumlah_harga_terima" value="{{ $kewps3b->jumlah_harga_terima }}" required>
                         </div>
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Keluar</label>
-                            <input class="form-control form-control-sm" type="number" name="kuantiti_keluar"
-                                value="{{ $kewps3b->kuantiti_keluar }}">
+                        <div class="col-3">
+                            <label for="">Kuantiti Keluar</label>
+                            <input class="form-control mb-3" type="number" name="kuantiti_keluar" id="k3b_kuantiti_keluar"
+                                value="{{ $kewps3b->kuantiti_keluar }}" required>
                         </div>
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Harga Jumlah Keluar</label>
-                            <input class="form-control form-control-sm" type="text" name="harga_jumlah_keluar"
-                                value="{{ $kewps3b->harga_jumlah_keluar }}">
+                        <div class="col-3">
+                            <label for="">Harga Jumlah Keluar</label>
+                            <input class="form-control mb-3" type="text" name="harga_jumlah_keluar"
+                                id="k3b_harga_jumlah_keluar" value="{{ $kewps3b->harga_jumlah_keluar }}" required>
                         </div>
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Baki</label>
-                            <input class="form-control form-control-sm" type="number" name="kuantiti_baki"
-                                value="{{ $kewps3b->kuantiti_baki }}">
+                        <div class="col-3">
+                            <label for="">Kuantiti Baki</label>
+                            <input class="form-control mb-3" type="number" name="kuantiti_baki" id="k3b_kuantiti_baki"
+                                value="{{ $kewps3b->kuantiti_baki }}" required>
                         </div>
-                        <div class="col-6 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Jumlah Harga Baki</label>
-                            <input class="form-control form-control-sm" type="text" name="jumlah_harga_baki"
-                                value="{{ $kewps3b->jumlah_harga_baki }}">
+                        <div class="col-3">
+                            <label for="">Jumlah Harga Baki</label>
+                            <input class="form-control mb-3" type="text" name="jumlah_harga_baki" id="k3b_jumlah_harga_baki"
+                                value="{{ $kewps3b->jumlah_harga_baki }}" required>
                         </div>
-
-                        <button class="btn btn-primary mt-5" type="submit">Simpan</button>
-
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Simpan</button>
+                        </div>
                     </div>
         </form>
     </div>
+    <script>
+        $(document).ready(function() {
+            $("#k3b_nokod").change(function() {
+                var val = this.value;
+                var a = @json($kewps3a->toArray());
+                a.forEach(b => {
+                    if (b.id == val) {
+                        $("#k3b_kuantiti_diterima").val(b.kewps1.kuantiti_diterima);
+                        $("#k3b_harga_seunit_terima").val(b.kewps1.harga_seunit);
+                        $("#k3b_jumlah_harga_terima").val(b.kewps1.jumlah_harga);
+                    }
+                });
+            });
 
+
+            //setup before functions
+            var typingTimer; //timer identifier
+            var doneTypingInterval = 500; //time in ms, 5 second for example
+            var $input = $('#k3b_kuantiti_keluar');
+
+            //on keyup, start the countdown
+            $input.on('keyup', function() {
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
+            //on keydown, clear the countdown 
+            $input.on('keydown', function() {
+                clearTimeout(typingTimer);
+            });
+
+            //user is "finished typing," do something
+            function doneTyping() {
+                //do something
+                var kk = $('#k3b_kuantiti_keluar').val();
+                var seunit = $("#k3b_harga_seunit_terima").val();
+                var jkk = kk * seunit;
+                $("#k3b_harga_jumlah_keluar").val(jkk);
+
+                var kt = $("#k3b_kuantiti_diterima").val();
+                var kb = kt - kk;
+                $("#k3b_kuantiti_baki").val(kb);
+
+                var jkb = kb * seunit;
+                $("#k3b_jumlah_harga_baki").val(jkb);
+            }
+
+        });
+    </script>
 
 @endsection

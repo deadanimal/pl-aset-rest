@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Kewpa37 extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+    protected $with = ['infokewpa37'];
+
+    public function infokewpa37()
+    {
+        return $this->hasMany(InfoKewpa37::class);
+    }
 }

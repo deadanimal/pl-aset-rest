@@ -35,9 +35,9 @@
                         <div class="col-6">
                             <label for="">ID Kewpa21</label>
                             <select name="kewpa21_id" class="form-control">
-                                @foreach ($kewpa21 as $k21)
-                                    <option {{ $k21->id == $kewpa23->kewpa21_id ? 'selected' : '' }}
-                                        value="{{ $k21->id }}">{{ $k21->id }}</option>
+                                @foreach ($infokewpa21 as $k21)
+                                    <option {{ $ik21->id == $kewpa23->kewpa21_id ? 'selected' : '' }}
+                                        value="{{ $ik21->id }}">{{ $ik21->id }}</option>
                                 @endforeach
                             </select>
                         </div>

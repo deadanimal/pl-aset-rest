@@ -2,30 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kewps4;
 use App\Models\ParasStok;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ParasStokController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +19,22 @@ class ParasStokController extends Controller
      */
     public function store(Request $request)
     {
-        ParasStok::create($request->all());
+
+
+        $ps = ParasStok::create($request->all());
+
+        if ($ps) {
+            $harga_seunit = $ps->kewps3a->kewps1->harga_seunit;
+
+            $nilai_baki_semasa = $request->maksimum_stok * $harga_seunit;
+            Kewps4::create([
+                'nilai_baki_semasa' => $nilai_baki_semasa,
+                'status_stok' => $ps->kewps3a->pergerakan,
+                'kewps3a_id' => $request->kewps3a_id,
+                'user_id' => Auth::user()->id
+            ]);
+        }
+
         return redirect('/kewps3a/' . $request->kewps3a_id);
     }
 

@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-6">
                         <label for="">Agensi</label>
-                        <input class="form-control mb-3" type="date" name="agensi" value="Perbadanan Aset Labuan" required>
+                        <input class="form-control mb-3" type="text" name="agensi" value="Perbadanan Aset Labuan" required>
                     </div>
                     <div class="col-6">
                         <label for="">Secara</label>

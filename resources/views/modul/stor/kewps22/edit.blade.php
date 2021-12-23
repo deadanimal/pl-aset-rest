@@ -33,21 +33,30 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-4 mt-3">
+                        <div class="col-3 mt-3">
+                            <label for="">ID InfoKewps20</label>
+                            <select name="kewps20_id" class="form-control">
+                                @foreach ($kewps20 as $k20)
+                                    <option {{ $k20->id == $kewps22->kewps20_id ? 'selected' : '' }}
+                                        value="{{ $k20->id }}">{{ $k20->id }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-3 mt-3">
                             <label for="">No Resit</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="no_resit"
                                     value="{{ $kewps22->no_resit }}">
                             </div>
                         </div>
-                        <div class="col-4 mt-3">
+                        <div class="col-3 mt-3">
                             <label for="">Hasil Perbelanjaan</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="hasil_perbelanjaan"
                                     value="{{ $kewps22->hasil_perbelanjaan }}">
                             </div>
                         </div>
-                        <div class="col-4 mt-3">
+                        <div class="col-3 mt-3">
                             <label for="">Penerima Syarikat</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="penerima_syarikat"

@@ -31,6 +31,7 @@ class Jkrpataf612Controller extends Controller
      */
     public function create()
     {
+        $jkrpataf68_id[] = "";
         $jkrpataf612 = Jkrpataf612::all();
         foreach ($jkrpataf612 as $i) {
             $jkrpataf68_id[] = $i->jkrpataf68_id;
@@ -40,7 +41,6 @@ class Jkrpataf612Controller extends Controller
             'jkrpataf68' => Jkrpataf68::all(),
             'check' => $jkrpataf68_id,
         ]);
-
     }
 
     /**
@@ -93,7 +93,6 @@ class Jkrpataf612Controller extends Controller
         }
 
         return redirect('/jkrpataf612');
-
     }
 
     /**
@@ -110,7 +109,6 @@ class Jkrpataf612Controller extends Controller
             'jkrpataf612' => $jkrpataf612,
 
         ]);
-
     }
 
     /**
@@ -162,7 +160,6 @@ class Jkrpataf612Controller extends Controller
         }
 
         return redirect('/jkrpataf612');
-
     }
 
     /**
@@ -188,7 +185,7 @@ class Jkrpataf612Controller extends Controller
             $bb['tarikh'] = $jkrpataf612->blokbangunan[0]->created_at->toDateString();
 
             $bb['aras'] = count($bb->dataasetkhusus->maklumataras);
-// dd($bb->gambarblok)
+            // dd($bb->gambarblok)
             foreach ($bb->dataasetkhusus->kontraktor as $k) {
                 if ($k->kontraktor_utama_bangunan == 1) {
                     $bb['kontraktor_utama'] = $k->nama_kontraktor_bangunan;
@@ -201,7 +198,6 @@ class Jkrpataf612Controller extends Controller
                     $bb['bidang_perunding'] = $p->bidang_kerja_perunding_bangunan;
                 }
             }
-
         }
         foreach ($jkrpataf612->binaanluar as $bl) {
             $bl['tarikh'] = $jkrpataf612->binaanluar[0]->created_at->toDateString();
@@ -236,6 +232,5 @@ class Jkrpataf612Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ata', $context);
-
     }
 }

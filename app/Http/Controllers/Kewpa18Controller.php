@@ -97,7 +97,7 @@ class Kewpa18Controller extends Controller
       $kewpa18->j6 = $kewpa18->j6 + $ik18->jumlah_nilai_semasa_pengeluaran;
     }
 
-    $response = Http::post('https://libreoffice.prototype.com.my/cetak/pa18', [$kewpa18]);
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa18', [$kewpa18]);
 
     $res = $response->getBody()->getContents();
 

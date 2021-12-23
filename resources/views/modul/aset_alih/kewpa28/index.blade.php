@@ -62,11 +62,11 @@
                                 <td scope="col">
                                     <a href="/kewpa28/{{ $k28->id }}"><i class="fas fa-pen"></i></a>
                                     <a href="/kewpa28pdf/{{ $k28->id }}"><i class="fas fa-print"></i></a>
-                                    <form action="/kewpa28/{{ $k28->id }}" method="post" class="d-inline-flex">
+                                    <form action="/kewpa28/{{ $k28->id }}" method="post" class="d-inline-flex"
+                                        id="delkewpa28">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-white" style="border: none"><a href=""><i
-                                                    class="fas fa-trash"></a></i></button>
+                                        <a href="javascript:$('#delkewpa28').submit();"><i class="fas fa-trash"></i></a>
                                     </form>
                                 </td>
 

@@ -31,7 +31,6 @@ class Kewps32Controller extends Controller
         return view('modul.stor.kewps32.create', [
             'kewps3a' => Kewps3a::all(),
         ]);
-
     }
 
     /**
@@ -59,7 +58,6 @@ class Kewps32Controller extends Controller
             'kewps32' => $kewps32,
             'kewps3a' => Kewps3a::all(),
         ]);
-
     }
 
     /**
@@ -104,7 +102,7 @@ class Kewps32Controller extends Controller
         $kewps32->max = 1;
 
         $kewps32->tarikh_peroleh = $kewps32->kewps3a->created_at->format('d/m/Y');
-        $kewps32->harga_peroleh = $kewps32->infokewps1->harga_seunit;
+        $kewps32->harga_peroleh = $kewps32->kewps3a->kewps1->harga_seunit;
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps32', [$kewps32]);
 
@@ -118,7 +116,5 @@ class Kewps32Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
-
 }

@@ -15,7 +15,6 @@ class CreateKewpa33sTable extends Migration
     {
         Schema::create('kewpa33s', function (Blueprint $table) {
             $table->id();
-
             $table->string("tempat_kehilangan")->nullable();
             $table->string("tarikh_kehilangan")->nullable();
             $table->string("cara_kehilangan")->nullable();
@@ -30,6 +29,7 @@ class CreateKewpa33sTable extends Migration
             $table->date("date_modified")->nullable();
             $table->string("pegawai_terakhir")->nullable();
             $table->string("ketua_jabatan")->nullable();
+            $table->foreignId("kewpa3a_id");
             $table->timestamps();
         });
     }

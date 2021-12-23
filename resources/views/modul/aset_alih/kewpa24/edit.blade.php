@@ -118,9 +118,9 @@
                                 <label for="">ID Borang Pelupusan</label>
                                 <div class="input-group">
                                     <select name="kewpa21_id" class="form-control mb-3" required>
-                                        @foreach ($kewpa21 as $k21)
-                                            <option {{ $k21->id == $kewpa24->kewpa21_id ? 'selected' : '' }}
-                                                value="{{ $k21->id }}">{{ $k21->id }}</option>
+                                        @foreach ($infokewpa21 as $ik21)
+                                            <option {{ $ik21->id == $kewpa24->kewpa21_id ? 'selected' : '' }}
+                                                value="{{ $ik21->id }}">{{ $ik21->id }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -174,8 +174,8 @@
                                 <div class="input-group">
                                     <select name="kewpa21_id" class="form-control mb-3" required>
                                         <option selected>Pilih</option>
-                                        @foreach ($kewpa21 as $k21)
-                                            <option value="{{ $k21->id }}">{{ $k21->id }}</option>
+                                        @foreach ($infokewpa21 as $ik21)
+                                            <option value="{{ $ik21->id }}">{{ $ik21->id }}</option>
                                         @endforeach
                                     </select>
                                 </div>
