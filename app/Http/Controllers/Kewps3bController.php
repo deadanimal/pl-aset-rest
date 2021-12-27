@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kewps3a;
 use App\Models\kewps3b;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -27,7 +28,9 @@ class Kewps3bController extends Controller
      */
     public function create()
     {
-        return view('modul.stor.kewps3b.create');
+        return view('modul.stor.kewps3b.create', [
+            'kewps3a' => Kewps3a::all()
+        ]);
     }
 
     /**
@@ -38,6 +41,8 @@ class Kewps3bController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request['terima_keluar'] = $request->terima . '/' . $request->terima_keluar;
 
         kewps3b::create($request->all());
 
@@ -54,6 +59,7 @@ class Kewps3bController extends Controller
     {
         return view('modul.stor.kewps3b.edit', [
             'kewps3b' => $kewps3b,
+            'kewps3a' => Kewps3a::all()
         ]);
     }
 
@@ -107,9 +113,9 @@ class Kewps3bController extends Controller
 
         $context = [
             "url" => $url,
+            "title" => "Kewps3b",
         ];
 
-        return view('modul.borang_viewer', $context);
-
+        return view('modul.borang_viewer_ps', $context);
     }
 }

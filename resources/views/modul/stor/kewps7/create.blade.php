@@ -58,84 +58,33 @@
                         </div>
 
                         <input type="hidden" name="pemohon_id" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="status" value="DERAF">
-                        <input type="hidden" name="pelulus_id" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="penerima_id" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="pengeluar_id" value="{{ Auth::user()->id }}">
-                    </div>
+                        <input type="hidden" name="status" value="DIPOHON">
 
-                    <div class="row" id="info_kewps7">
-                        <div class="col-12 mt-2 mb-2">
-                            <h3 class="mt-4">Aset</h3>
+                        <div class="col-12 mt-5">
+                            <a class="btn btn-sm btn-primary text-white" onclick="tambahAsetK7()">Tambah Aset</a>
+                            <button class="btn btn-primary btn-sm ml-2" type="submit">Simpan</button>
                         </div>
-                        <div class="col-12 mt-3">
-                            <label for="">No Kod</label>
-                            <select class="form-control" name="kewps3a_id[]">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps3a as $k3a)
-                                    <option value="{{ $k3a->id }}">{{ $k3a->id }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-3 mt-3">
-                            <label for="">Catatan Pemohon</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="catatan_pemohon[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-3 mt-3">
-                            <label for="">Kuantiti Dimohon</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="kuantiti_dimohon[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-3 mt-3">
-                            <label for="">Kuantiti Diluluskan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="kuantiti_diluluskan[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-3 mt-3">
-                            <label for="">Catatan Pelulus</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="catatan_pelulus[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Kuantiti Dikeluarkan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="kuantiti_dikeluarkan[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Pembungkusan</label>
-                            <select class="form-control" name="pembungkusan[]">
-                                <option selected value="Tidak Perlu">Tidak Perlu</option>
-                                <option value="Perlu">Perlu</option>
-                            </select>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Kuantiti Diterima</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="kuantiti_diterima[]" value="">
-                            </div>
-                        </div>
+
                     </div>
-                    <div class="mt-2">
-                        <a class="btn btn-sm btn-primary text-white" onclick="tambahAsetK7()">Tambah Aset</a>
-                    </div>
-                    <button class="btn btn-primary mt-5" type="submit">Simpan</button>
                 </div>
             </div>
-        </form>
-    </div>
 
-    <script>
-        function tambahAsetK7() {
-            $("#info_kewps7").append(
-                `       
-                        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="mt-4">Info Kewps7</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row" id="info_kewps7">
+                        <div class="col-12">
+                            <h3>Aset 1</h3>
+                            <input type="hidden" value="1" id="iteration">
+                        </div>
+                        <div class="col-4">
                             <label for="">No Kod</label>
                             <select class="form-control" name="kewps3a_id[]">
                                 <option selected>Pilih</option>
@@ -145,51 +94,65 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-3 mt-3">
+                        <div class="col-4">
                             <label for="">Catatan Pemohon</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="catatan_pemohon[]" value="">
                             </div>
                         </div>
-                        <div class="col-3 mt-3">
+                        <div class="col-4">
                             <label for="">Kuantiti Dimohon</label>
                             <div class="input-group">
                                 <input class="form-control" type="number" name="kuantiti_dimohon[]" value="">
                             </div>
                         </div>
-                        <div class="col-3 mt-3">
-                            <label for="">Kuantiti Diluluskan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="kuantiti_diluluskan[]" value="">
-                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function tambahAsetK7() {
+
+
+            var iteration = $("#iteration").val();
+            iteration++;
+            $("#iteration").val(iteration);
+
+            $("#info_kewps7").append(
+                `       <div class="col-12 mt-5">
+                            <h3>Aset ` + iteration + `</h3>
                         </div>
-                        <div class="col-3 mt-3">
-                            <label for="">Catatan Pelulus</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="catatan_pelulus[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Kuantiti Dikeluarkan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="kuantiti_dikeluarkan[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Pembungkusan</label>
-                            <select class="form-control" name="pembungkusan[]">
-                                <option selected value="Tidak Perlu">Tidak Perlu</option>
-                                <option value="Perlu">Perlu</option>
+                        <div class="col-4">
+                            <label for="">No Kod</label>
+                            <select class="form-control" name="kewps3a_id[]">
+                                <option selected>Pilih</option>
+                                @foreach ($kewps3a as $k3a)
+                                    <option value="{{ $k3a->id }}">{{ $k3a->no_kad }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Kuantiti Diterima</label>
+                        <div class="col-4">
+                            <label for="">Catatan Pemohon</label>
                             <div class="input-group">
-                                <input class="form-control" type="number" name="kuantiti_diterima[]" value="">
+                                <input class="form-control" type="text" name="catatan_pemohon[]" value="">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Kuantiti Dimohon</label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" name="kuantiti_dimohon[]" value="">
                             </div>
                         </div>
                 `
             )
+
+            $("html, body").animate({
+                scrollTop: $(document).height() - $(window).height()
+            });
         }
     </script>
 @endsection

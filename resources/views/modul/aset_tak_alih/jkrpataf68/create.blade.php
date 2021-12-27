@@ -18,7 +18,7 @@
     </div>
 
     <div class="container-fluid mt--6">
-        <form method="POST" action="/jkrpataf68">
+        <form method="POST" action="/jkrpataf68" enctype="multipart/form-data">
             @csrf
             <div class="card mt-4">
                 <div class="card-header">
@@ -185,7 +185,7 @@
                         <div class="col-4 mt-3">
                             <label for="">Gambar Premis</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="gambar_premis" value="">
+                                <input class="form-control" type="file" name="gambar_premis" value="">
                             </div>
                         </div>
                         <div class="col-4 mt-3">

@@ -49,7 +49,7 @@
                         @foreach ($kewps32 as $k32)
                             <tr>
                                 <td scope="col">{{ $k32->id }}</td>
-                                <td scope="col">{{ $k32->kewps3a_id }}</td>
+                                <td scope="col">{{ $k32->kewps3a->no_kad }}</td>
                                 <td scope="col">{{ $k32->tempat_kehilangan }}</td>
                                 <td scope="col">{{ $k32->tarikh_kehilangan }}</td>
                                 <td scope="col">{{ $k32->cara_kehilangan }}</td>

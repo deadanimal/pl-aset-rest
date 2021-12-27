@@ -58,7 +58,7 @@ class Kewpa17Controller extends Controller
   public function generatePdf(Kewpa17 $kewpa17)
   {
 
-    $response = Http::post('https://libreoffice.prototype.com.my/cetak/pa17', [$kewpa17]);
+    $response = Http::post('https://libreoffice.prototype.com.my/cetak/kpa17', [$kewpa17]);
 
     $res = $response->getBody()->getContents();
 

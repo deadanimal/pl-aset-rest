@@ -40,6 +40,7 @@
                             <th scope="col">Nama Stor Pemesan</th>
                             <th scope="col">Nama Stor Pengeluar</th>
                             <th scope="col">Bilangan Aset</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
@@ -50,17 +51,39 @@
                                 <td scope="col">{{ $k7->nama_stor_pemesan }}</td>
                                 <td scope="col">{{ $k7->nama_stor_pengeluar }}</td>
                                 <td scope="col">{{ count($k7->infokewps7) }}</td>
+                                @if ($k7->status == 'DIPOHON')
+                                    <td scope="col"><span class="badge bg-warning">{{ $k7->status }}</span></th>
+                                    @elseif ($k7->status=="DITERIMA")
+                                    <td scope="col"><span class="badge bg-primary">{{ $k7->status }}</span></th>
+                                    @elseif ($k7->status=="DILULUS")
+                                    <td scope="col"><span class="badge bg-success">{{ $k7->status }}</span></th>
+                                    @elseif ($k7->status=="DITOLAK")
+                                    <td scope="col"><span class="badge bg-danger">{{ $k7->status }}</span></th>
+                                @endif
                                 <td scope="col">
-                                    <a href="/kewps7/{{ $k7->id }}"><i class="fas fa-pen"></i></a>
-                                    <a href="/kewps7pdf/{{ $k7->id }}"><i class="fas fa-print"></i></a>
-                                    <a href="">
-                                        <form action="/kewps7/{{ $k7->id }}" class="d-inline" method="POST">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                    class=" fas fa-trash"></i></button>
-                                        </form>
-                                    </a>
+                                    @if ($k7->status == 'DIPOHON')
+                                        <a href="/kewps7/{{ $k7->id }}/edit"><i class="fas fa-check-circle"></i></a>
+                                        <a href="#"><i class="fas fa-times-circle"></i></a>
+                                    @endif
+
+                                    @if ($k7->status == 'DILULUS')
+                                        <a href="/kewps7/{{ $k7->id }}/edit"><i class="fas fa-check-circle"></i></a>
+                                        <a href="#"><i class="fas fa-times-circle"></i></a>
+                                    @endif
+
+                                    @if ($k7->status == 'DITERIMA')
+                                        <a href="/kewps7/{{ $k7->id }}"><i class="fas fa-pen"></i></a>
+                                        <a href="/kewps7pdf/{{ $k7->id }}"><i class="fas fa-print"></i></a>
+                                        <a href="">
+                                            <form action="/kewps7/{{ $k7->id }}" class="d-inline"
+                                                method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn-sm bg-white border-0" type="submit"> <i
+                                                        class=" fas fa-trash"></i></button>
+                                            </form>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

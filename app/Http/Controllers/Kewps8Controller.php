@@ -100,6 +100,7 @@ class Kewps8Controller extends Controller
     {
         $kewps8->data = Kewps8::all();
 
+
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps8', [$kewps8]);
 
         $res = $response->getBody()->getContents();
@@ -112,6 +113,5 @@ class Kewps8Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
 }

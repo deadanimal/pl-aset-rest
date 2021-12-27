@@ -33,11 +33,11 @@
                 <div class="card-body pt-0">
                     <div class="row">
                         <div class="col-4 mt-3">
-                            <label for="">Pelupusan Stok</label>
+                            <label for="">Pelupusan Stok (Kewps20)</label>
                             <select class="form-control" name="infokewps20_id">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps20 as $k20)
-                                    <option value="{{ $k20->id }}">{{ $k20->id }} - {{ $k20->kuantiti }}
+                                    <option value="{{ $k20->id }}">{{ $k20->id }}
                                     </option>
                                 @endforeach
                             </select>

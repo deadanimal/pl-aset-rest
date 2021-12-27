@@ -37,9 +37,8 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">Kewps20 ID</th>
-                            <th scope="col">Nama Pemeriksa1</th>
-                            <th scope="col">Nama Pemeriksa2</th>
-                            <th scope="col">Kuasa Melulus</th>
+                            <th scope="col">Kementerian</th>
+                            <th scope="col">Kategori Stor</th>
                             <th scope="col">Bilangan Info</th>
                             <th scope="col">Tindakan</th>
                         </tr>
@@ -48,9 +47,8 @@
                         @foreach ($kewps20 as $k20)
                             <tr>
                                 <td scope="col">{{ $k20->id }}</td>
-                                <td scope="col">{{ Auth::user()->nama }}</td>
-                                <td scope="col">{{ Auth::user()->nama }}</td>
-                                <td scope="col">{{ $k20->kuasa_melulus }}</td>
+                                <td scope="col">{{ $k20->kementerian }}</td>
+                                <td scope="col">{{ $k20->kategori_stor }}</td>
                                 <td scope="col">{{ count($k20->infokewps20) }}</td>
 
                                 <td scope="col">

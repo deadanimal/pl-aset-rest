@@ -15,7 +15,6 @@ class CreateKewpa35sTable extends Migration
     {
         Schema::create('kewpa35s', function (Blueprint $table) {
             $table->id();
-
             $table->string("laporan_hasil")->nullable();
             $table->string("arahan_tatacara")->nullable();
             $table->string("langkah_mencegah")->nullable();
@@ -32,6 +31,7 @@ class CreateKewpa35sTable extends Migration
             $table->string("pengerusi")->nullable();
             $table->string("ahli")->nullable();
             $table->string("pegawai_pengawal")->nullable();
+            $table->foreignId('kewpa33_id');
             $table->timestamps();
         });
     }

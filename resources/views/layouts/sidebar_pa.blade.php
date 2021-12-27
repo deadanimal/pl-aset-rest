@@ -194,12 +194,14 @@
                                         <span class="sidenav-mini-icon"> P05 </span>
                                         <span class="sidenav-normal">PLPK PA 0205</span>
                                     </a>
-                                </li><li class="nav-item">
+                                </li>
+                                <li class="nav-item">
                                     <a href="/plpk_pa_0206" class="nav-link">
                                         <span class="sidenav-mini-icon"> P06 </span>
                                         <span class="sidenav-normal">PLPK PA 0206</span>
                                     </a>
-                                </li><li class="nav-item">
+                                </li>
+                                <li class="nav-item">
                                     <a href="/plpk_pa_0207" class="nav-link">
                                         <span class="sidenav-mini-icon"> P07 </span>
                                         <span class="sidenav-normal">PLPK PA 0207</span>
@@ -328,6 +330,66 @@
                                     <a href="/kewpa27" class="nav-link">
                                         <span class="sidenav-mini-icon"> PA27 </span>
                                         <span class="sidenav-normal"> KEW.PA 27 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa28" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA28 </span>
+                                        <span class="sidenav-normal"> KEW.PA 28 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa29" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA29 </span>
+                                        <span class="sidenav-normal"> KEW.PA 29 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa30" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA30 </span>
+                                        <span class="sidenav-normal"> KEW.PA 30 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa31" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA31 </span>
+                                        <span class="sidenav-normal"> KEW.PA 31 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa32" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA32 </span>
+                                        <span class="sidenav-normal"> KEW.PA 32 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa33" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA33 </span>
+                                        <span class="sidenav-normal"> KEW.PA 33 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa34" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA34 </span>
+                                        <span class="sidenav-normal"> KEW.PA 34 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa35" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA35 </span>
+                                        <span class="sidenav-normal"> KEW.PA 35 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa36" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA36 </span>
+                                        <span class="sidenav-normal"> KEW.PA 36 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kewpa37" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PA37 </span>
+                                        <span class="sidenav-normal"> KEW.PA 37 </span>
                                     </a>
                                 </li>
                             </ul>

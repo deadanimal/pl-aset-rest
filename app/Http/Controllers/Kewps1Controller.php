@@ -39,17 +39,25 @@ class Kewps1Controller extends Controller
      */
     public function store(Request $request)
     {
-        $kewps1 = kewps1::create($request->all());
-        $this->storeAset($request, $kewps1->id);
+
+        // $kewps1 = kewps1::create($request->all());
+        $this->storeAset($request, 1);
         return redirect('/kewps1');
     }
     public function storeAset($request, $kewps1_id)
     {
         if ($request->perihal_barang) {
             foreach (range(0, count($request->perihal_barang) - 1) as $i) {
-                $jumlah_harga = (int) $request->harga_seunit * (int) $request->kuantiti_diterima;
+                $jumlah_harga = (int) $request->harga_seunit[$i] * (int) $request->kuantiti_diterima[$i];
+                //generate no kod
+                $no_sekarang = sprintf("%'.07d\n", count(InfoKewps1::all()) + 1);
+                $tahun_ini = substr(date("Y"), -2);
+                $no_kod = array("PL", "KPES", "PA", "HI", $tahun_ini, $no_sekarang);
+                $no_kod = implode(" /", $no_kod);
+                $no_kod = trim(preg_replace('/\s\s+/', ' ', $no_kod));
+
                 InfoKewps1::create([
-                    'no_kod' => $request->no_kod[$i],
+                    'no_kod' => $no_kod,
                     'kewps1_id' => $kewps1_id,
                     'perihal_barang' => $request->perihal_barang[$i],
                     'unit_pengukuran' => $request->unit_pengukuran[$i],
@@ -105,23 +113,7 @@ class Kewps1Controller extends Controller
 
         $kewps1->update($request->all());
 
-        if ($request->info_id) {
-            foreach (range(0, count($request->info_id) - 1) as $i) {
-                InfoKewps1::where('id', $request->info_id[$i])->update([
-                    'perihal_barang' => $request->perihal_barang[$i],
-                    'unit_pengukuran' => $request->unit_pengukuran[$i],
-                    'kuantiti_dipesan' => $request->kuantiti_dipesan[$i],
-                    'kuantiti_do' => $request->kuantiti_do[$i],
-                    'kuantiti_diterima' => $request->kuantiti_diterima[$i],
-                    'harga_seunit' => $request->harga_seunit[$i],
-                    'jumlah_harga' => $request->jumlah_harga[$i],
-                    'catatan' => $request->catatan[$i],
-                ]);
-            }
-        }
-
         return redirect('/kewps1');
-
     }
 
     /**
@@ -138,7 +130,6 @@ class Kewps1Controller extends Controller
         kewps1::destroy($kewps1->id);
 
         return redirect('/kewps1');
-
     }
 
     public function generatePdf(Request $request, kewps1 $kewps1)
@@ -160,7 +151,5 @@ class Kewps1Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ps', $context);
-
     }
-
 }

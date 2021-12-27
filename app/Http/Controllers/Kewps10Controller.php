@@ -85,7 +85,7 @@ class Kewps10Controller extends Controller
         return view('modul.stor.kewps10.edit', [
             'kewps10' => $kewps10,
             'kewps3a' => Kewps3a::all(),
-            'infokewps10' => InfoKewps10::where('kewps10_id', $kewps10->id)->get(),
+            'bahagian' => KodJabatan::all(),
         ]);
     }
 
@@ -110,27 +110,6 @@ class Kewps10Controller extends Controller
     public function update(Request $request, Kewps10 $kewps10)
     {
         $kewps10->update($request->all());
-
-        if ($request->info_id) {
-            foreach (range(0, count($request->info_id) - 1) as $i) {
-                $kewps3a = Kewps3a::where('id', $request->kewps3a_id[$i])->first();
-                $kuantiti_stok = $kewps3a->parasstok->first()->maksimum_stok;
-                $kuantiti_perbezaan = (int) $kuantiti_stok - (int) $request->kuantiti_fizikal_stok[$i];
-
-                InfoKewps10::where('id', $request->info_id[$i])->update([
-                    'kewps3a_id' => $request->kewps3a_id[$i],
-                    'kuantiti_fizikal_stok' => $request->kuantiti_fizikal_stok[$i],
-                    'kuantiti_perbezaan' => $kuantiti_perbezaan,
-                    'catatan' => $request->catatan[$i],
-                    'statusA' => $request->statusA[$i],
-                    'statusB' => $request->statusB[$i],
-                    'statusC' => $request->statusC[$i],
-                    'statusD' => $request->statusD[$i],
-                    'statusE' => $request->statusE[$i],
-                    'statusF' => $request->statusF[$i],
-                ]);
-            }
-        }
 
         return redirect('kewps10');
     }

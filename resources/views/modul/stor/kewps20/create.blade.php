@@ -35,8 +35,7 @@
                         <div class="col-6 mt-3">
                             <label for="">Kementerian</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="kementerian" value="Perbadanan Labuan"
-                                    readonly>
+                                <input class="form-control" type="text" name="kementerian" value="Perbadanan Labuan">
                             </div>
                         </div>
                         <div class="col-6 mt-3">
@@ -54,17 +53,27 @@
                         <input type="hidden" name="nama_pemeriksa2" value="{{ Auth::user()->id }}">
 
                     </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="mt-4">Info Kewps20</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
                     <div class="row" id="info_kewps20">
-                        <div class="col-12 mt-2 mb-2">
+                        <div class="col-12 mb-2">
                             <h3 class="mt-4">Aset</h3>
                         </div>
-
                         <div class="col-4">
                             <label for="">No Kod</label>
                             <select class="form-control mb-3" name="kewps3a_id[]">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
-                                    <option value="{{ $k3->id }}">{{ $k3->nama_stor }} - {{ $k3->perihal_stok }}
+                                    <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                     </option>
                                 @endforeach
                             </select>
@@ -107,20 +116,23 @@
                         <a class="btn btn-sm btn-primary text-white" onclick="tambahAsetK20()">Tambah Aset</a>
                     </div>
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
+
                 </div>
-            </div>
         </form>
     </div>
 
     <script>
         function tambahAsetK20() {
             $("#info_kewps20").append(
-                `      <div class="col-4">
+                `       <div class="col-12 mb-2">
+                            <h3 class="mt-4">Aset</h3>
+                        </div>
+                        <div class="col-4">
                             <label for="">No Kod</label>
                             <select class="form-control mb-3" name="kewps3a_id[]">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
-                                    <option value="{{ $k3->id }}">{{ $k3->nama_stor }} - {{ $k3->perihal_stok }}
+                                    <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                     </option>
                                 @endforeach
                             </select>

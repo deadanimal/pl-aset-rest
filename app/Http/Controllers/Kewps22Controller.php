@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoKewps20;
 use App\Models\Kewps22;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewps22Controller extends Controller
 {
@@ -26,7 +28,9 @@ class Kewps22Controller extends Controller
      */
     public function create()
     {
-        return view('modul.stor.kewps22.create');
+        return view('modul.stor.kewps22.create', [
+            'kewps20' => InfoKewps20::all()
+        ]);
     }
 
     /**
@@ -51,6 +55,8 @@ class Kewps22Controller extends Controller
     {
         return view('modul.stor.kewps22.edit', [
             'kewps22' => $kewps22,
+            'kewps20' => InfoKewps20::all()
+
         ]);
     }
 
@@ -88,5 +94,23 @@ class Kewps22Controller extends Controller
     {
         $kewps22->delete();
         return redirect('/kewps22');
+    }
+
+    public function generatePdf(Kewps22 $kewps22)
+    {
+        $kewps22['tarikh'] = $kewps22->updated_at->format("d/m/Y");
+
+        $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps22', [$kewps22]);
+
+        $res = $response->getBody()->getContents();
+
+        $url = "data:application/pdf;base64," . $res;
+
+        $context = [
+            "url" => $url,
+            "title" => "kewps22",
+        ];
+
+        return view('modul.borang_viewer_ps', $context);
     }
 }

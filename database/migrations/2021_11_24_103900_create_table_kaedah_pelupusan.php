@@ -13,7 +13,7 @@ class CreateTableKaedahPelupusan extends Migration
      */
     public function up()
     {
-        Schema::create('kaedah_pelupusan', function (Blueprint $table) {
+        Schema::create('kaedah_pelupusans', function (Blueprint $table) {
             $table->id();
             $table->string('value');
             $table->string('text');
@@ -28,6 +28,6 @@ class CreateTableKaedahPelupusan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kaedah_pelupusan');
+        Schema::dropIfExists('kaedah_pelupusans');
     }
 }

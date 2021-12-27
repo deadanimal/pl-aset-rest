@@ -52,10 +52,12 @@
                         </div>
                         <div class="col-3">
                             <label for="">Kategori Stor</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="kategori_stor" value=""
-                                    id="k6_nama_stor">
-                            </div>
+                            <select name="kategori_stor" class="form-control mb-3" id="k6_nama_stor">
+                                <option>Pilih</option>
+                                <option value="Stor Alat Ganti">Stor Alat Ganti</option>
+                                <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
+                            </select>
+
                         </div>
                         <div class="col-3">
                             <label for="">Tarikh Luput</label>
@@ -124,7 +126,6 @@
                     'id': k6_k3a_id
                 },
                 success: function(data) {
-                    console.log(data.nama_stor);
                     $("#k6_nama_stor").val(data.nama_stor);
                 },
                 error: function() {

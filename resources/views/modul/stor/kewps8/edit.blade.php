@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">Permohonan Stok</h2>
+                            <h2 class="mb-0">Permohonan Stok (Individu Kepada Stor)</h2>
                         </div>
                     </div>
                 </div>

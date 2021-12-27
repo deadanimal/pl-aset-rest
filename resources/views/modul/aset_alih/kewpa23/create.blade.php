@@ -35,8 +35,8 @@
                         <label for="">ID Kewpa21</label>
                         <select name="kewpa21_id" class="form-control">
                             <option selected>Pilih</option>
-                            @foreach ($kewpa21 as $k21)
-                                <option value="{{ $k21->id }}">{{ $k21->id }}</option>
+                            @foreach ($infokewpa21 as $ik21)
+                                <option value="{{ $ik21->id }}">{{ $ik21->id }}</option>
                             @endforeach
                         </select>
                     </div>

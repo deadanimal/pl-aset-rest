@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Kewpa33 extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+    protected $with = ['kewpa3a'];
+
+    public function kewpa3a()
+    {
+        return $this->belongsTo(Kewpa3A::class);
+    }
 }
