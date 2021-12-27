@@ -51,7 +51,7 @@
                                     <select class="form-control mb-3" name="jabatan" required>
                                         <option value="" selected disabled hidden>Pilih Jabatan</option> required>
                                         @foreach ($kod_jabatans as $jabatan)
-                                            <option value="{{ $jabatan->nama_jabatan }}">{{ $jabatan->nama_jabatan }}
+                                            <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -74,7 +74,7 @@
        
         document.addEventListener("DOMContentLoaded", function() {
             $("#tahun_kewpa12").datepicker({
-                format: " yyyy", // Notice the Extra space at the beginning
+                format: "yyyy", // Notice the Extra space at the beginning
                 viewMode: "years",
                 minViewMode: "years"
             });
@@ -96,11 +96,20 @@
         }
 
         function jana_sijil() {
-            let lokasi = $("form input[name=tahun]").val();         
-            let jabatan = $("form select[name=jabatan]").val();         
-            // location.replace = "/kewpa13pdf/" + lokasi + "/" +jabatan;
-            window.location.reload;
+            tahun = $("form input[name=tahun]").val();         
+            jabatan = $("form select[name=jabatan]").val();     
             
+            if (tahun == "") {
+                tahun = "2021";
+            }
+
+            if (jabatan == null) {
+                jabatan = 1
+            }
+            
+
+            let location = "/kewpa13pdf/" +tahun+ "/" +jabatan;
+            window.location.href = location;
         }
     </script>
 

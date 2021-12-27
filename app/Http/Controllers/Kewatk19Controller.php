@@ -6,6 +6,7 @@ use App\Models\Kewatk3a;
 use App\Models\Kewatk19;
 use App\Models\InfoKewatk19;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewatk19Controller extends Controller
 {
@@ -120,4 +121,29 @@ class Kewatk19Controller extends Controller
       return $kewatk19->delete();
     }
 
+
+    public function generatePdf(Kewatk19 $kewatk19) {
+
+      $kewatk19->jumlah_hpa = 0;
+
+      foreach($kewatk19->info_kewatk19 as $ik19) {
+        $kewatk19->jumlah_hpa = $kewatk19->jumlah_hpa + $ik19->kewatk3a->harga_perolehan_asal;
+      }
+
+
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk19', [$kewatk19]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa19",
+      ];
+
+      return view('modul.borang_viewer_atk', $context);
+
+
+
+    }
 }

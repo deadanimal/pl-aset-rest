@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kewatk22;
+use App\Models\Kewatk19;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
 
 class Kewatk22Controller extends Controller
 {
@@ -82,4 +85,27 @@ class Kewatk22Controller extends Controller
     {
         //
     }
+
+    public function generatePdf($tahun) {
+      $context = (object)[];
+      $context->tahun = $tahun;
+      $context->kewatk19 = Kewatk19::whereYear('created_at',$tahun)->get();
+      $context->jumlah_kuantiti = count(Kewatk19::whereYear('created_at',$tahun)->get());
+
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk22', [$context]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa20",
+      ];
+
+      return view('modul.borang_viewer_atk', $context);
+
+
+
+    }
+
 }

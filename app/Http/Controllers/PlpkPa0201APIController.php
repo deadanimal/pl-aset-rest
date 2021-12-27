@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Plpk_pa_0201;
 use Illuminate\Http\Request;
 
-class PlpkPa0201Controller extends Controller
+class PlpkPa0201APIController extends Controller
 {
     public function index()
     {

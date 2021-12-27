@@ -85,7 +85,7 @@ class Kewpa3BController extends Controller
 
       $context = [
         "url" => $url,
-        "title" => "Kewpa1",
+        "title" => "Kewpa3B",
       ];
 
       return view('modul.borang_viewer_pa', $context);

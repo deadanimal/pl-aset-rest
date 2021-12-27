@@ -6,9 +6,9 @@ use App\Models\Kewatk26;
 use App\Models\User;
 use App\Models\Kewatk3a;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
-class Kewatk26Controller extends Controller
-{
+class Kewatk26Controller extends Controller {
     public function index()
     {
       $context = [
@@ -64,7 +64,7 @@ class Kewatk26Controller extends Controller
       //additional information
       $data->pelapor = "created_by";
       $data->pelapor = "jawatan";
-
+      
       $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk26', [$data]);
 
       $res = $response->getBody()->getContents();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kewatk27;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewatk27Controller extends Controller
 {
@@ -14,7 +15,9 @@ class Kewatk27Controller extends Controller
     }
 
 
-    public function generatePdf(Request $request, Kewatk27 $ktahun) {
+    public function generatePdf(Request $request, $tahun) {
+      $data = (object)[];
+      $data->tahun = $tahun;
 
       $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk27', [$data]);
 

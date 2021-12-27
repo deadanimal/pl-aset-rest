@@ -6,6 +6,7 @@ use App\Models\Kewatk20;
 use App\Models\Kewatk19;
 use App\Models\Kewatk3a;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewatk20Controller extends Controller
 {
@@ -90,4 +91,23 @@ class Kewatk20Controller extends Controller
     {
         //
     }
+
+    public function generatePdf(Kewatk20 $kewatk20) {
+
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk20', [$kewatk20]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa20",
+      ];
+
+      return view('modul.borang_viewer_atk', $context);
+
+
+
+    }
+
 }

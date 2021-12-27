@@ -21,72 +21,81 @@
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
 
-            <!-- Nav items -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
+                <!-- Nav items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
 
-                    <a class="nav-link" href="#navbar-pengguna" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
-                        <i class="fas fa-plus-square text-primary"></i>
-                        <span class="nav-link-text">Pengurusan Pengguna</span>
-                    </a>
-                    <div class="collapse" id="navbar-pengguna">
-                        <ul class="nav nav-sm flex-column">
-                          <li class="nav-item">
-                              <a href="/pengguna" class="nav-link">
-                              <span class="sidenav-mini-icon"> PG </span>
-                              <span class="sidenav-normal"> Pendaftaran Pengguna </span>
-                              </a>
-                          </li>
-                        </ul>
-                    </div>
+                        <a class="nav-link" href="#navbar-pengguna" data-toggle="collapse" role="button"
+                            aria-expanded="true" aria-controls="navbar-dashboards">
+                            <i class="fas fa-plus-square text-primary"></i>
+                            <span class="nav-link-text">Pengurusan Pengguna</span>
+                        </a>
+                        <div class="collapse" id="navbar-pengguna">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="/pengguna" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PG </span>
+                                        <span class="sidenav-normal"> Pendaftaran Pengguna </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-                    <a class="nav-link" href="#navbar-pengumuman" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
+                        <a class="nav-link" href="#navbar-pengumuman" data-toggle="collapse" role="button"
+                            aria-expanded="true" aria-controls="navbar-dashboards">
 
-                        <i class="fas fa-book text-primary"></i>
-                        <span class="nav-link-text">Pengurusan Pengumuman</span>
-                    </a>
-                    <div class="collapse" id="navbar-pengumuman">
-                        <ul class="nav nav-sm flex-column">
-                          <li class="nav-item">
-                              <a href="/pengumuman" class="nav-link">
-                              <span class="sidenav-mini-icon"> PM </span>
-                              <span class="sidenav-normal"> Pengumuman </span>
-                              </a>
-                          </li>
+                            <i class="fas fa-book text-primary"></i>
+                            <span class="nav-link-text">Pengurusan Pengumuman</span>
+                        </a>
+                        <div class="collapse" id="navbar-pengumuman">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="/pengumuman" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PM </span>
+                                        <span class="sidenav-normal"> Pengumuman </span>
+                                    </a>
+                                </li>
 
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
 
-                    <a class="nav-link" href="#navbar-kod" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
+                        <a class="nav-link" href="#navbar-kod" data-toggle="collapse" role="button"
+                            aria-expanded="true" aria-controls="navbar-dashboards">
 
-                        <i class="fas fa-search-minus text-primary"></i>
-                        <span class="nav-link-text">Pengurusan Kod</span>
-                    </a>
-                    <div class="collapse" id="navbar-kod">
-                        <ul class="nav nav-sm flex-column">
-                          <li class="nav-item">
-                              <a href="/kod-aset" class="nav-link">
-                              <span class="sidenav-mini-icon"> A </span>
-                              <span class="sidenav-normal"> Kod Aset </span>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="/lokasi" class="nav-link">
-                              <span class="sidenav-mini-icon"> L </span>
-                              <span class="sidenav-normal"> Kod Lokasi </span>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="/jabatan" class="nav-link">
-                              <span class="sidenav-mini-icon"> J </span>
-                              <span class="sidenav-normal"> Kod Jabatan </span>
-                              </a>
-                          </li>
+                            <i class="fas fa-search-minus text-primary"></i>
+                            <span class="nav-link-text">Pengurusan Kod</span>
+                        </a>
+                        <div class="collapse" id="navbar-kod">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="/kod-aset" class="nav-link">
+                                        <span class="sidenav-mini-icon"> A </span>
+                                        <span class="sidenav-normal"> Kod Aset </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/kod-stor" class="nav-link">
+                                        <span class="sidenav-mini-icon"> A </span>
+                                        <span class="sidenav-normal"> Kod Stor </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/lokasi" class="nav-link">
+                                        <span class="sidenav-mini-icon"> L </span>
+                                        <span class="sidenav-normal"> Kod Lokasi </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/jabatan" class="nav-link">
+                                        <span class="sidenav-mini-icon"> J </span>
+                                        <span class="sidenav-normal"> Kod Jabatan </span>
+                                    </a>
+                                </li>
 
-                        </ul>
-                    </div>
-                </li>
-              </ul>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
