@@ -171,6 +171,7 @@ use App\Http\Controllers\Kewps34Controller;
 use App\Http\Controllers\Kewps35Controller;
 use App\Http\Controllers\Kewps36Controller;
 use App\Http\Controllers\KodAsetController;
+use App\Http\Controllers\KodStorController;
 use App\Http\Controllers\KodJabatanController;
 use App\Http\Controllers\KodLokasiController;
 use App\Http\Controllers\OtherController;
@@ -288,6 +289,7 @@ Route::resource('info_kewpa37', InfoKewpa37Controller::class);
 # umum routes
 Route::resource('lokasi', KodLokasiController::class);
 Route::resource('kod-aset', KodAsetController::class);
+Route::resource('kod-stor', KodStorController::class);
 Route::resource('jabatan', KodJabatanController::class);
 Route::resource('pengumuman', PengumumanController::class);
 Route::resource('pengguna', UserController::class);
@@ -431,9 +433,14 @@ Route::get('kewatk16pdf/{tahun}', [Kewatk16Controller::class, 'generatePdf']);
 Route::get('kewatk17pdf/{kewatk17}', [Kewatk17Controller::class, 'generatePdf']);
 Route::get('kewatk18pdf/{kewatk18}', [Kewatk18Controller::class, 'generatePdf']);
 Route::get('kewatk19pdf/{kewatk19}', [Kewatk19Controller::class, 'generatePdf']);
+Route::get('kewatk20pdf/{kewatk20}', [Kewatk20Controller::class, 'generatePdf']);
+Route::get('kewatk21pdf/{kewatk21}', [Kewatk21Controller::class, 'generatePdf']);
+Route::get('kewatk22pdf/{tahun}', [Kewatk22Controller::class, 'generatePdf']);
 Route::get('kewatk23pdf/{kewatk23}', [Kewatk23Controller::class, 'generatePdf']);
 Route::get('kewatk24pdf/{kewatk24}', [Kewatk24Controller::class, 'generatePdf']);
 Route::get('kewatk25pdf/{kewatk25}', [Kewatk25Controller::class, 'generatePdf']);
+Route::get('kewatk26pdf/{kewatk26}', [Kewatk26Controller::class, 'generatePdf']);
+Route::get('kewatk27pdf/{kewatk27}', [Kewatk27Controller::class, 'generatePdf']);
 
 # stor utility
 Route::get('/kewps1pdf/{kewps1}', [Kewps1Controller::class, 'generatePdf']);
@@ -496,6 +503,7 @@ Route::get('/kewpa8pdf/', [Kewpa8Controller::class, 'generatePDF']);
 Route::get('/kewpa7pdf/', [Kewpa7Controller::class, 'generatePDF']);
 Route::get('/kewpa9pdf/{kewpa9}', [Kewpa9Controller::class, 'generatePDF']);
 Route::get('/kewpa11pdf/{kewpa11}', [Kewpa11Controller::class, 'generatePDF']);
+Route::get('/kewpa13pdf/{tahun}/{jabatan}', [Kewpa13Controller::class, 'generatePDF']);
 Route::get('/kewpa10pdf/{kewpa10}', [Kewpa10Controller::class, 'generatePDF']);
 Route::get('/kewpa14pdf/', [Kewpa14Controller::class, 'generatePDF']);
 Route::get('/kewpa15pdf/{kewpa15}', [Kewpa15Controller::class, 'generatePDF']);

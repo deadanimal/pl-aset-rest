@@ -18,6 +18,12 @@
     </div>
 
     <div class="container-fluid mt--6">
+<<<<<<< HEAD
+        <div id="updateDiv">
+            <form id="updateForm" action="/kewpa3a/{{ $kewpa3a->id }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+=======
         <div id="show">
 
             <div class="card mt-4">
@@ -88,10 +94,15 @@
         <div id="create" style="display: none;">
             <form method="POST" action="/kewpa3a" enctype="multipart/form-data">
                 @csrf
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                 <div class="card mt-4" id="basic-info">
                     <div class="card-header">
                         <div class="row">
                             <div class="col">
+<<<<<<< HEAD
+                                <h2 class="mb-0">Sunting Pendaftaran Aset</h2>
+                            </div>
+=======
                                 <h2 class="mb-0">Tambah Pendaftaran Aset</h2>
                             </div>
                         </div>
@@ -387,10 +398,26 @@
                     <div class="row">
                         <div class="col">
                             <h2 class="mb-0">Sunting Pendaftaran Aset</h2>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                         </div>
                     </div>
-                </div>
 
+<<<<<<< HEAD
+                    </br>
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="">Jenis Aset</label>
+                                <div class="input-group">
+                                    <select class="form-control mb-3" name="jenis_aset" required>
+                                        <option value="{{ $kewpa3a->jenis_aset }}" selected disabled hidden>
+                                            {{ $kewpa3a->jenis_aset }}</option required>
+                                        <option value="Harta Modal">Harta Modal</option>
+                                        <option value="Aset Bernilai Rendah">Aset Bernilai Rendah</option>
+                                    </select>
+                                </div>
+
+=======
 
                 </br>
                 <div class="card-body pt-0"> <label for="">Tindakan Diterima</label>
@@ -400,12 +427,17 @@
                             <label for="">Jenis Aset</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="text" name="jenis_aset" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
-                        </div>
                         <div class="col-4">
                             <label for="">Agensi</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="agensi" value="{{ $kewpa3a->agensi }}"
+                                    required>
+=======
                                 <input class="form-control mb-3" type="text" name="agensi" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
@@ -413,7 +445,12 @@
                             <div class="input-group">
                                 <input class="form-control mb-3" type="text" name="status_selenggara" value="" required>
                                 <select class="form-control mb-3" name="status_selenggara" required>
+<<<<<<< HEAD
+                                    <option value="{{ $kewpa3a->status_selenggara }}" selected disabled hidden>
+                                        {{ $kewpa3a->status_selenggara }}</option>
+=======
                                     <option value="" selected disabled hidden>Pilih Status</option>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                                     <option value="Perlu">Perlu</option>
                                     <option value="Tidak Perlu">Tidak Perlu</option>
                                 </select>
@@ -422,196 +459,362 @@
                         <div class="col-4">
                             <label for="">Tempoh Selenggara</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="tempoh_selenggara"
+                                    value="{{ $kewpa3a->tempoh_selenggara }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="tempoh_selenggara" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Bahagian</label>
+<<<<<<< HEAD
+                            <div class="input-group">
+                                <select class="form-control mb-3" name="bahagian" required>
+                                    <option value="{{ $kewpa3a->bahagian }}" selected disabled hidden>
+                                        {{ $kewpa3a->bahagian }}</option required>
+                                    @foreach ($jabatan as $jbtn)
+                                        <option value="{{ $jbtn->nama_jabatan }}">{{ $jbtn->nama_jabatan }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+=======
                             <select class="form-control mb-3" name="bahagian" required>
                                 <option value="" selected disabled hidden>Pilih Bahagian</option required>
                                 @foreach ($jabatan as $jbtn)
                                     <option value="{{ $jbtn->nama_jabatan }}">{{ $jbtn->nama_jabatan }}</option>
                                 @endforeach
                             </select>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                         </div>
                         <div class="col-4">
                             <label for="">Kod Nasional</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="kod_nasional"
+                                    value="{{ $kewpa3a->kod_nasional }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="kod_nasional" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Keterangan Aset</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="keterangan_aset"
+                                    value="{{ $kewpa3a->keterangan_aset }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="keterangan_aset" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Kategori</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="kategori"
+                                    value="{{ $kewpa3a->kategori }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="kategori" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Sub Kategori</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="sub_kategori"
+                                    value="{{ $kewpa3a->sub_kategori }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="sub_kategori" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Jenis</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="jenis" value="{{ $kewpa3a->jenis }}"
+                                    required>
+=======
                                 <input class="form-control mb-3" type="text" name="jenis" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Buatan</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="buatan" value="{{ $kewpa3a->buatan }}"
+                                    required>
+=======
                                 <input class="form-control mb-3" type="text" name="buatan" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Jenis Enjin</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="jenis_enjin"
+                                    value="{{ $kewpa3a->jenis_enjin }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="jenis_enjin" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">No Enjin</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="no_enjin"
+                                    value="{{ $kewpa3a->no_enjin }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="no_enjin" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">No Casis</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="no_casis"
+                                    value="{{ $kewpa3a->no_casis }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="no_casis" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">No Pendaftaraan Kenderaan</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="no_pendaftaraan_kenderaan"
+                                    value="{{ $kewpa3a->no_pendaftaraan_kenderaan }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="no_pendaftaraan_kenderaan" value=""
                                     required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Catatan Spesifikasi</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="catatan_spesifikasi"
+                                    value="{{ $kewpa3a->catatan_spesifikasi }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="catatan_spesifikasi" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Harga Perolehan Asal</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="number" name="harga_perolehan_asal"
+                                    value="{{ $kewpa3a->harga_perolehan_asal }}" required>
+=======
                                 <input class="form-control mb-3" type="number" name="harga_perolehan_asal" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Tarikh Perolehan</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="date" name="tarikh_perolehan"
+                                    value="{{ $kewpa3a->tarikh_perolehan }}" required>
+=======
                                 <input class="form-control mb-3" type="date" name="tarikh_perolehan" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Tarikh Diterima</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="date" name="tarikh_diterima"
+                                    value="{{ $kewpa3a->tarikh_diterima }}" required>
+=======
                                 <input class="form-control mb-3" type="date" name="tarikh_diterima" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">No Pesanan Rasmi</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="no_pesanan_rasmi"
+                                    value="{{ $kewpa3a->no_pesanan_rasmi }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="no_pesanan_rasmi" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Tempoh Jaminan</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="tempoh_jaminan"
+                                    value="{{ $kewpa3a->tempoh_jaminan }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="tempoh_jaminan" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Nama Pembekal</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="nama_pembekal"
+                                    value="{{ $kewpa3a->nama_pembekal }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="nama_pembekal" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Alamat Pembekal</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="alamat_pembekal"
+                                    value="{{ $kewpa3a->alamat_pembekal }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="alamat_pembekal" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Lokasi Penempatan</label>
+<<<<<<< HEAD
+                            <select class="form-control mb-3" name="lokasi_penempatan" required>
+                                <option value="{{ $kewpa3a->lokasi_penempatan }}" selected hidden>
+                                    {{ $kewpa3a->lokasi_penempatan }}</option> required>
+                                @foreach ($lokasi as $lok)
+                                    <option value="{{ $lok->nama_lokasi }}">{{ $lok->nama_lokasi }}</option>
+=======
                             <select class="form-control mb-3" name="lokasi" required>
                                 <option value="" selected disabled hidden>Pilih Lokasi</option required>
                                 @foreach ($lokasi as $lok)
                                     <option value="{{ $lok->id }}">{{ $lok->nama_lokasi }}</option>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-4">
                             <label for="">Tarikh Penempatan</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="date" name="tarikh_penempatan"
+                                    value="{{ $kewpa3a->tarikh_penempatan }}" required>
+=======
                                 <input class="form-control mb-3" type="date" name="tarikh_penempatan" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Tarikh Pemeriksaan</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="date" name="tarikh_pemeriksaan"
+                                    value="{{ $kewpa3a->tarikh_pemeriksaan }}" required>
+=======
                                 <input class="form-control mb-3" type="date" name="tarikh_pemeriksaan" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Status Aset</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="status_aset"
+                                    value="{{ $kewpa3a->status_aset }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="status_aset" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Tarikh Usia Guna</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="date" name="tarikh_usia_guna"
+                                    value="{{ $kewpa3a->tarikh_usia_guna }}" required>
+=======
                                 <input class="form-control mb-3" type="date" name="tarikh_usia_guna" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Usia Guna</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="usia_guna"
+                                    value="{{ $kewpa3a->usia_guna }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="usia_guna" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Nilai Semasa</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="number" name="nilai_semasa"
+                                    value="{{ $kewpa3a->nilai_semasa }}" required>
+=======
                                 <input class="form-control mb-3" type="number" name="nilai_semasa" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Perkara</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="perkara"
+                                    value="{{ $kewpa3a->perkara }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="perkara" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Cara Diperolehi</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="cara_aset_diperolehi"
+                                    value="{{ $kewpa3a->cara_aset_diperolehi }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="cara_aset_diperolehi" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Rujukan Kelulusan</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <input class="form-control mb-3" type="text" name="rujukan_kelulusan"
+                                    value="{{ $kewpa3a->rujukan_kelulusan }}" required>
+=======
                                 <input class="form-control mb-3" type="text" name="rujukan_kelulusan" value="" required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Rujukan Kewpa 1</label>
                             <div class="input-group">
+<<<<<<< HEAD
+                                <select class="form-control mb-3" name="rujukan_kewpa1_id">
+                                    <option value="{{ $kewpa3a->rujukan_kewpa1_id }}">No Rujukan:
+                                        {{ $kewpa3a->rujukan_kewpa1_id }}</option required>
+=======
                                 <select onchange="getInfoKewatk1(this)" class="form-control mb-3" name="rujukan_kewpa1_id"
                                     required>
                                     <option value="" selected disabled hidden>Pilih No. Rujukan</option required>
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870
                                     @foreach ($kewpa1 as $kew1)
                                         <option value="{{ $kew1->id }}">Kewatk1 - No Rujukan: {{ $kew1->id }}
                                         </option>
@@ -660,8 +863,12 @@
                         <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
                     </div>
                 </div>
-        </form>
+            </form>
+        </div>
     </div>
+<<<<<<< HEAD
+@endsection
+=======
     </div>
 
 
@@ -811,3 +1018,4 @@
 
 @endsection
 
+>>>>>>> dd630c7252cf0c579a158bc3f6f750d9005e2870

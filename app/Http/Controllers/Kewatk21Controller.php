@@ -6,6 +6,7 @@ use App\Models\Kewatk21;
 use App\Models\User;
 use App\Models\Kewatk19;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Kewatk21Controller extends Controller
 {
@@ -92,4 +93,23 @@ class Kewatk21Controller extends Controller
       $kewatk21->delete();
       return redirect('/kewatk21/');
     }
+
+    public function generatePdf(Kewatk21 $kewatk21) {
+
+      $response = Http::post('https://libreoffice.prototype.com.my/cetak/atk21', [$kewatk21]);
+
+      $res = $response->getBody()->getContents();
+      $url = "data:application/pdf;base64,".$res;
+
+      $context = [
+        "url" => $url,
+        "title" => "Kewpa21",
+      ];
+
+      return view('modul.borang_viewer_atk', $context);
+
+
+
+    }
+
 }
