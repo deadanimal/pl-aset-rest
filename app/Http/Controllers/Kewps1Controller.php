@@ -40,8 +40,8 @@ class Kewps1Controller extends Controller
     public function store(Request $request)
     {
 
-        // $kewps1 = kewps1::create($request->all());
-        $this->storeAset($request, 1);
+        $kewps1 = kewps1::create($request->all());
+        $this->storeAset($request, $kewps1->id);
         return redirect('/kewps1');
     }
     public function storeAset($request, $kewps1_id)

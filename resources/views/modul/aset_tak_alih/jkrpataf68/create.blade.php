@@ -35,19 +35,19 @@
                         <div class="col-3 mt-3">
                             <label for="">No Rujukan</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="no_rujukan" value="">
+                                <input class="form-control" type="text" name="no_rujukan" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Tarikh</label>
                             <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh" value="">
+                                <input class="form-control" type="date" name="tarikh" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Kategori Aset</label>
                             <div class="input-group">
-                                <select name="kategori_aset" class="form-control">
+                                <select name="kategori_aset" class="form-control" required>
                                     <option selected>Pilih</option>
                                     <option value="1">Bangunan dan Binaan Lain</option>
                                     <option value="2">Infrastruktur Jalan & Jambatan</option>
@@ -59,7 +59,7 @@
                         <div class="col-3 mt-3">
                             <label for="">Fungsi Aset</label>
                             <div class="input-group">
-                                <select name="fungsi_aset" class="form-control">
+                                <select name="fungsi_aset" class="form-control" required>
                                     <option selected>Pilih</option>
                                     <option value="1">Pejabat / Ruang Kerja</option>
                                     <option value="2">Perumahan/ Penginapan</option>
@@ -71,127 +71,138 @@
                         <div class="col-4 mt-3">
                             <label for="">Nama Premis</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="nama_premis" value="">
+                                <input class="form-control" type="text" name="nama_premis" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">Alamat Premis</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="alamat_premis" value="">
+                                <input class="form-control" type="text" name="alamat_premis" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">Koordinat GPS</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="koordinat_gps" value="">
+                                <input class="form-control" type="text" name="koordinat_gps" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">Kumpulan Agensi</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="kumpulan_agensi" value="">
+                                <input class="form-control" type="text" name="kumpulan_agensi" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">Kementerian</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="kementerian" value="Perbadanan Labuan">
+                                <input class="form-control" type="text" name="kementerian" value="Perbadanan Labuan"
+                                    required>
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">Jabatan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="jabatan" value="">
-                            </div>
+                            <select class="form-control" name="jabatan" required>
+                                <option selected>Pilih</option>
+                                @foreach ($jabatan as $j)
+                                    <option value="{{ $j->id }}">{{ $j->singkatan }}</option>
+                                @endforeach
+                            </select>
+
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Negara</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="negara" value="">
-                            </div>
+                            <select class="mdb-select md-form form-control" searchable="Search here.." name="negara"
+                                id="j68negara" required>
+                                <option value="" disabled selected>Choose your country</option>
+                                @foreach ($negara as $n)
+                                    <option value="{{ $n->id }}">
+                                        {{ $n->nama }}</option>
+                                @endforeach
+                            </select>
+
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Negeri</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="negeri" value="">
-                            </div>
+                            <select name="negeri" id="j68negeri" class="form-control" required></select>
+
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Daerah</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="daerah" value="">
+                                <input class="form-control" type="text" name="daerah" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Mukim</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="mukim" value="">
+                                <input class="form-control" type="text" name="mukim" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Kategori Fungsi Premis</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="kategori_fungsi_premis" value="">
+                                <input class="form-control" type="text" name="kategori_fungsi_premis" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">No Laluan</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="no_laluan" value="">
+                                <input class="form-control" type="text" name="no_laluan" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Bilangan Blok</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="bilangan_blok" value="">
+                                <input class="form-control" type="text" name="bilangan_blok" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Jumlah Saiz Premis</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="jumlah_saiz_premis" value="">
+                                <input class="form-control" type="text" name="jumlah_saiz_premis" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Tarikh Siap Bina Asal</label>
                             <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh_siap_bina_asal" value="">
+                                <input class="form-control" type="date" name="tarikh_siap_bina_asal" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Tarikh Warta</label>
                             <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh_warta" value="">
+                                <input class="form-control" type="date" name="tarikh_warta" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Jumlah Kos Peralihan Asal</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="jumlah_kos_perolehan_asal" value="">
+                                <input class="form-control" type="text" name="jumlah_kos_perolehan_asal" value=""
+                                    required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">No Lukisan Plan Lokasi</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="no_lukisan_pelan_lokasi" value="">
+                                <input class="form-control" type="text" name="no_lukisan_pelan_lokasi" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">No Lokisan Pelan Tapak</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="no_lukisan_pelan_tapak" value="">
+                                <input class="form-control" type="text" name="no_lukisan_pelan_tapak" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">Gambar Premis</label>
                             <div class="input-group">
-                                <input class="form-control" type="file" name="gambar_premis" value="">
+                                <input class="form-control" type="file" name="gambar_premis" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">Pegawai Teknikal</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="pegawai_teknikal" value="">
+                                <input class="form-control" type="text" name="pegawai_teknikal" value="" required>
                             </div>
                         </div>
 
@@ -208,61 +219,69 @@
                         <div class="col-4">
                             <label class="form-label col-form-label-sm" for="">Tarikh Pemilikan </label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="date" name="pemilikan_tarikh[]" value="">
+                                <input class="form-control form-control-sm" type="date" name="pemilikan_tarikh[]" value=""
+                                    required>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label col-form-label-sm" for="">Pemilikan Kos</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="pemilikan_kos[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="pemilikan_kos[]" value=""
+                                    required>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label col-form-label-sm" for="">Mukim Bandar</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="mukim_bandar[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="mukim_bandar[]" value=""
+                                    required>
                             </div>
                         </div>
                         <div class="col-3 mt-2">
                             <label class="form-label col-form-label-sm" for="">No Hakmilik</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="hakmilik_nombor[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="hakmilik_nombor[]" value=""
+                                    required>
                             </div>
                         </div>
                         <div class="col-3 mt-2">
                             <label class="form-label col-form-label-sm" for="">Jenis Hakmilik</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="hakmilik_jenis[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="hakmilik_jenis[]" value=""
+                                    required>
                             </div>
                         </div>
                         <div class="col-3 mt-2">
                             <label class="form-label col-form-label-sm" for="">No Lot</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="lot_nombor[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="lot_nombor[]" value=""
+                                    required>
                             </div>
                         </div>
                         <div class="col-3 mt-2">
                             <label class="form-label col-form-label-sm" for="">Luas Lot</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="lot_luas[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="lot_luas[]" value=""
+                                    required>
                             </div>
                         </div>
                         <div class="col-4 mt-2">
                             <label class="form-label col-form-label-sm" for="">Status</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="status[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="status[]" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-2">
                             <label class="form-label col-form-label-sm" for="">Tarikh PTP</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="date" name="tarikh_ptp[]" value="">
+                                <input class="form-control form-control-sm" type="date" name="tarikh_ptp[]" value=""
+                                    required>
                             </div>
                         </div>
                         <div class="col-4 mt-2">
                             <label class="form-label col-form-label-sm" for="">Catatan</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="catatan[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="catatan[]" value="" required>
                             </div>
                         </div>
                     </div>
@@ -278,6 +297,21 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            $("#j68negara").change(function() {
+                var val = this.value;
+                var negeri = @json($negeri->toArray());
+
+                negeri.forEach(element => {
+                    if (element.negara_id == val) {
+                        $("#j68negeri").append(`
+                            <option value=" ` + element.id + ` "> ` + element.nama + ` </option>
+                        `);
+                    }
+                });
+            });
+        });
+
         function tambahdatatanah() {
             $("#data_tanah").append(
                 `       
@@ -287,61 +321,61 @@
                         <div class="col-4">
                             <label class="form-label col-form-label-sm" for="">Tarikh Pemilikan </label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="date" name="pemilikan_tarikh[]" value="">
+                                <input class="form-control form-control-sm" type="date" name="pemilikan_tarikh[]" value="" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label col-form-label-sm" for="">Pemilikan Kos</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="pemilikan_kos[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="pemilikan_kos[]" value="" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <label class="form-label col-form-label-sm" for="">Mukim Bandar</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="mukim_bandar[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="mukim_bandar[]" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-2">
                             <label class="form-label col-form-label-sm" for="">No Hakmilik</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="hakmilik_nombor[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="hakmilik_nombor[]" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-2">
                             <label class="form-label col-form-label-sm" for="">Jenis Hakmilik</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="hakmilik_jenis[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="hakmilik_jenis[]" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-2">
                             <label class="form-label col-form-label-sm" for="">No Lot</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="lot_nombor[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="lot_nombor[]" value="" required>
                             </div>
                         </div>
                         <div class="col-3 mt-2">
                             <label class="form-label col-form-label-sm" for="">Luas Lot</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="lot_luas[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="lot_luas[]" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-2">
                             <label class="form-label col-form-label-sm" for="">Status</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="status[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="status[]" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-2">
                             <label class="form-label col-form-label-sm" for="">Tarikh PTP</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="date" name="tarikh_ptp[]" value="">
+                                <input class="form-control form-control-sm" type="date" name="tarikh_ptp[]" value="" required>
                             </div>
                         </div>
                         <div class="col-4 mt-2">
                             <label class="form-label col-form-label-sm" for="">Catatan</label>
                             <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="catatan[]" value="">
+                                <input class="form-control form-control-sm" type="text" name="catatan[]" value="" required>
                             </div>
                         </div>
                 `

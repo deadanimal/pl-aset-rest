@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataAsetKhusus;
 use App\Models\Jkrpataf68;
 use App\Models\Jkrpataf612;
 use App\Models\SenaraiBinaanLuar;
 use App\Models\SenaraiBlokBangunan;
+// use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\View;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class Jkrpataf612Controller extends Controller
 {
@@ -181,56 +184,12 @@ class Jkrpataf612Controller extends Controller
     public function generatePdf(Jkrpataf612 $jkrpataf612)
     {
 
-        foreach ($jkrpataf612->blokbangunan as $bb) {
-            $bb['tarikh'] = $jkrpataf612->blokbangunan[0]->created_at->toDateString();
+        return view('modul.aset_tak_alih.jkrpataf612.doc', [
+            'j612' => $jkrpataf612,
+        ]);
 
-            $bb['aras'] = count($bb->dataasetkhusus->maklumataras);
-            // dd($bb->gambarblok)
-            foreach ($bb->dataasetkhusus->kontraktor as $k) {
-                if ($k->kontraktor_utama_bangunan == 1) {
-                    $bb['kontraktor_utama'] = $k->nama_kontraktor_bangunan;
-                    $bb['bidang'] = $k->bidang_kerja_kontraktor_bangunan;
-                }
-            }
-            foreach ($bb->dataasetkhusus->perunding as $p) {
-                if ($p->perunding_utama_bangunan == 1) {
-                    $bb['perunding_utama'] = $p->nama_perunding_bangunan;
-                    $bb['bidang_perunding'] = $p->bidang_kerja_perunding_bangunan;
-                }
-            }
-        }
-        foreach ($jkrpataf612->binaanluar as $bl) {
-            $bl['tarikh'] = $jkrpataf612->binaanluar[0]->created_at->toDateString();
-
-            // $bb['aras'] = count($bb->dataasetkhusus->maklumataras);
-
-            foreach ($bl->dataasetkhususbl[0]->kontraktor as $k) {
-                if ($k->kontraktor_luar_utama == 1) {
-                    $bl['kontraktor_utama'] = $k->nama_kontraktor_luar;
-                    $bl['bidang'] = $k->bidang_kerja_kontraktor_luar;
-                }
-            }
-            foreach ($bl->dataasetkhususbl[0]->perunding as $p) {
-                if ($p->perunding_luar_utama == 1) {
-                    $bl['perunding_utama'] = $p->nama_perunding_luar;
-                    $bl['bidang_perunding'] = $p->bidang_kerja_perunding_luar;
-                }
-            }
-        }
-
-        // dd($jkrpataf612->blokbangunan[0]->dataasetkhusus->maklumataras[0]);
-
-        $response = Http::post('https://libreoffice.prototype.com.my/cetak/ata612', [$jkrpataf612]);
-
-        $res = $response->getBody()->getContents();
-
-        $url = "data:application/pdf;base64," . $res;
-
-        $context = [
-            "url" => $url,
-            "title" => "jkrpataf612",
-        ];
-
-        return view('modul.borang_viewer_ata', $context);
+        view()->share('j612', $jkrpataf612);
+        $pdf = PDF::loadView('modul.z612', $jkrpataf612);
+        return $pdf->download('pdf_file.pdf');
     }
 }

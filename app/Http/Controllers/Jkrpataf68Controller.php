@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\DataTanah;
 use App\Models\Jkrpataf68;
+use App\Models\KodJabatan;
+use Barryvdh\DomPDF\Facade as PDF;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class Jkrpataf68Controller extends Controller
@@ -28,7 +32,12 @@ class Jkrpataf68Controller extends Controller
      */
     public function create()
     {
-        return view('modul.aset_tak_alih.jkrpataf68.create');
+        return view('modul.aset_tak_alih.jkrpataf68.create', [
+            'jabatan' => KodJabatan::all(),
+            'negara' => DB::table('negara')->get(),
+            'negeri' => DB::table('negeri')->get(),
+
+        ]);
     }
 
     /**
@@ -42,7 +51,7 @@ class Jkrpataf68Controller extends Controller
 
         // dd(asset('aset_alih/gambarpremis/rBcK2nMUMkIPIkMOoVOpzd0YpBOIXrh5NYsbWUTN.png'));
 
-        $jkrpataf68['gambar_premis'] = $request->file('gambar_premis')->store('aset_alih/gambarpremis');
+        $jkrpataf68['gambar_premis'] = $request->file('gambar_premis')->store('aset_tak_alih/gambarpremis');
         $jkrpataf68 = Jkrpataf68::create($request->all());
         foreach (range(0, count($request->pemilikan_tarikh) - 1) as $i) {
             DataTanah::create([
@@ -126,10 +135,8 @@ class Jkrpataf68Controller extends Controller
         $jkrpataf68->delete();
         return redirect('/jkrpataf68');
     }
-
-    public function generatePdf(Jkrpataf68 $jkrpataf68)
+    public function generatePdf2(Jkrpataf68 $jkrpataf68)
     {
-
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/ata68', [$jkrpataf68]);
 
         $res = $response->getBody()->getContents();
@@ -142,5 +149,26 @@ class Jkrpataf68Controller extends Controller
         ];
 
         return view('modul.borang_viewer_ata', $context);
+    }
+    public function generatePdf(Jkrpataf68 $jkrpataf68)
+    {
+
+
+        // return view('modul.aset_tak_alih.jkrpataf68.doc', ['jkrpataf68' => $jkrpataf68]);
+
+        $pdff = new Dompdf();
+        $pdff->loadHtml(view('modul.aset_tak_alih.jkrpataf68.doc'));
+        $pdff->setPaper('A4', 'potrait');
+        $pdff->render();
+        $pdff->stream(
+            "newdompdf",
+            array("Attachment" => false)
+        );
+
+        exit(0);
+
+        // view()->share('jkrpataf68', $jkrpataf68);
+        $pdf = PDF::loadView('modul.aset_tak_alih.jkrpataf68.doc', $jkrpataf68);
+        // return $pdf->download('pdf_file.pdf');
     }
 }
