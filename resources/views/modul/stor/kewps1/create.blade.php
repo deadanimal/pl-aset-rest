@@ -118,7 +118,7 @@
                                 <option value="Unit">Unit</option>
                                 <option value="Kotak">Kotak</option>
                                 <option value="Rim">Rim</option>
-                                <option value="Butang">Butang</option>
+                                <option value="Butang">Batang</option>
                                 <option value="Buah">Buah</option>
                                 <option value="Bilah">Bilah</option>
                                 <option value="Paket">Paket</option>

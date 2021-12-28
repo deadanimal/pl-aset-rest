@@ -54,29 +54,33 @@
                                 <td scope="col">{{ $k2->kewps1->nama_pembekal }}</td>
                                 <td scope="col">{{ $k2->tindakan }}</td>
 
-                                @if ($k2->kewps1->status == 'DERAF')
-                                    <td scope="col"><span class="badge bg-warning">{{ $k2->kewps1->status }}</span></th>
-                                    @elseif ($k2->kewps1->status=="HANTAR")
-                                    <td scope="col"><span class="badge bg-primary">{{ $k2->kewps1->status }}</span></th>
-                                    @elseif ($k2->kewps1->status=="SOKONG")
-                                    <td scope="col"><span class="badge bg-warning">{{ $k2->kewps1->status }}</span></th>
-                                    @elseif ($k2->kewps1->status=="LULUS")
-                                    <td scope="col"><span class="badge bg-success">{{ $k2->kewps1->status }}</span></th>
-                                    @elseif ($k2->kewps1->status=="DITOLAK")
-                                    <td scope="col"><span class="badge bg-danger">{{ $k2->kewps1->status }}</span></th>
+                                @if ($k2->status == 'DERAF')
+                                    <td scope="col"><span class="badge bg-warning">{{ $k2->status }}</span></th>
+                                    @elseif ($k2->status=="HANTAR")
+                                    <td scope="col"><span class="badge bg-primary">{{ $k2->status }}</span></th>
+                                    @elseif ($k2->status=="SOKONG")
+                                    <td scope="col"><span class="badge bg-warning">{{ $k2->status }}</span></th>
+                                    @elseif ($k2->status=="LULUS")
+                                    <td scope="col"><span class="badge bg-success">{{ $k2->status }}</span></th>
+                                    @elseif ($k2->status=="DITOLAK")
+                                    <td scope="col"><span class="badge bg-danger">{{ $k2->status }}</span></th>
                                 @endif
 
                                 <td scope="col">
-                                    @if (Auth::user()->jawatan == 'superadmin')
-                                        <a href="/kewps2" onclick="updateStatus({{ $k2 }}, 'LULUS')"><i
-                                                class="fas fa-check-circle"></i></a>
-                                        <a href="/kewps2" onclick="updateStatus({{ $k2 }}, 'DITOLAK')"><i
-                                                class="fas fa-times-circle"></i></a>
-                                        <a href="" onclick="cetakPdf()"><i class="fas fa-print"></i></a>
-
-                                    @else
-
+                                    @if ($k2->status == 'DERAF')
+                                        <a href="/kewps2/{{ $k2->id }}/edit"><span class="fas fa-arrow-up"></span></a>
                                         <a href="/kewps2/{{ $k2->id }}"><i class="fas fa-pen"></i></a>
+                                        <a href="">
+                                            <form action="/kewps2/{{ $k2->id }}" class="d-inline"
+                                                method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn-sm bg-white border-0" type="submit"> <i
+                                                        class=" fas fa-trash"></i></button>
+                                            </form>
+                                        </a>
+
+                                    @elseif($k2->status == 'LULUS')
                                         <a href="/kewps2pdf/{{ $k2->id }}"><i class="fas fa-print"></i></a>
                                         <a href="">
                                             <form action="/kewps2/{{ $k2->id }}" class="d-inline"

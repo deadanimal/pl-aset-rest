@@ -336,6 +336,7 @@ Route::resource('info_kewatk19', InfoKewatk19Controller::class);
 # stor routes
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('kewps1', Kewps1Controller::class);
+    Route::get('/kewps2fromk1/{kewps1}', [Kewps2Controller::class, 'editfromkewps1']);
     Route::resource('info_kewps1', InfoKewps1Controller::class);
     Route::resource('kewps2', Kewps2Controller::class);
     Route::resource('infokewps2', InfoKewps2Controller::class);

@@ -47,24 +47,26 @@ class Kewps2Controller extends Controller
     {
         $request['pegawai_penerima'] = Auth::user()->name;
         $kewps2 = Kewps2::create($request->all());
-        $this->storeInfoKewps2($request, $kewps2->id);
+
+        for ($i = 0; $i < count($request->kuantiti_ditolak); $i++) {
+            if ($request->kuantiti_ditolak[$i] != null) {
+                $infokewps1 = InfoKewps1::where('id', $request->infokewps1_id[$i])->firstorfail();
+                $kurang_lebih = $infokewps1->kuantiti_diterima - $request->kuantiti_ditolak[$i];
+
+                InfoKewps2::create([
+                    'kuantiti_ditolak' => $request->kuantiti_ditolak[$i],
+                    'kuantiti_kurang_lebih' => $kurang_lebih,
+                    'sebab_penolakan' => $request->sebab_penolakan[$i],
+                    'kewps2_id' => $kewps2->id,
+                    'infokewps1_id' => $request->infokewps1_id[$i],
+                ]);
+            }
+        }
+
         return redirect('/kewps2');
     }
 
-    public function storeInfoKewps2($request, $kewps2_id)
-    {
-        foreach (range(0, count($request->kuantiti_ditolak) - 1) as $i) {
-            $infokewps1 = InfoKewps1::where('id', $request->infokewps1_id[$i])->firstorfail();
-            $kurang_lebih = $infokewps1->kuantiti_diterima - $request->kuantiti_ditolak[$i];
-            $temp = (object) [];
-            $temp->kuantiti_ditolak = $request->kuantiti_ditolak[$i];
-            $temp->kuantiti_kurang_lebih = $kurang_lebih;
-            $temp->sebab_penolakan = $request->sebab_penolakan[$i];
-            $temp->kewps2_id = $kewps2_id;
-            $temp->infokewps1_id = $request->infokewps1_id[$i];
-            (new InfoKewps2Controller)->store($temp);
-        }
-    }
+
 
     /**
      * Display the specified resource.
@@ -74,11 +76,18 @@ class Kewps2Controller extends Controller
      */
     public function show(Kewps2 $kewps2)
     {
+
+
+        $created_infokewps1 = array();
+
+        foreach ($kewps2->infokewps2 as $ik2) {
+            array_push($created_infokewps1, $ik2->infokewps1_id);
+        }
+
         return view('modul.stor.kewps2.edit', [
             'kewps2' => $kewps2,
             'kewps1' => kewps1::all(),
-            'infokewps2' => InfoKewps2::where('kewps2_id', $kewps2->id)->get(),
-            'infokewps1' => InfoKewps1::where('kewps1_id', $kewps2->kewps1->id)->get(),
+            'checkinfo1' => $created_infokewps1
         ]);
     }
 
@@ -90,6 +99,19 @@ class Kewps2Controller extends Controller
      */
     public function edit(Kewps2 $kewps2)
     {
+        $kewps2->update([
+            'status' => "LULUS"
+        ]);
+
+        return view('modul.stor.kewps2.index', [
+            'kewps2' => Kewps2::all(),
+        ]);
+    }
+    public function editfromkewps1(Kewps1 $kewps1)
+    {
+        return view('modul.stor.kewps2.minus', [
+            'kewps1' => $kewps1,
+        ]);
     }
 
     /**
@@ -149,8 +171,9 @@ class Kewps2Controller extends Controller
 
         $context = [
             "url" => $url,
+            "title" => "kewps2",
         ];
 
-        return view('modul.borang_viewer', $context);
+        return view('modul.borang_viewer_ps', $context);
     }
 }

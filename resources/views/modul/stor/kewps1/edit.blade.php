@@ -1,4 +1,4 @@
-@extends('layouts.base_pa') @section('content')
+@extends('layouts.base_stor') @section('content')
     <div class="header bg-primary pb-6">
         <div class="container-fluid">
             <div class="header-body">
