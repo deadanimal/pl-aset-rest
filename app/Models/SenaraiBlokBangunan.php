@@ -9,7 +9,7 @@ class SenaraiBlokBangunan extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['gambarblok'];
+    protected $with = ['gambarblok', 'dataasetkhusus'];
 
     public function jkrpataf612()
     {
@@ -25,5 +25,4 @@ class SenaraiBlokBangunan extends Model
     {
         return $this->hasOne(DataAsetKhusus::class, 'blok_bangunan_id');
     }
-
 }

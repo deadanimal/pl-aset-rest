@@ -31,6 +31,7 @@
                     </div>
                 </div>
             </div>
+            {{-- <iframe src="http://pl-aset-rest.test/jkrpataf612pdf/1" frameborder="0"></iframe> --}}
 
             <div class="table-responsive py-4">
                 <table class="table table-custom-simplified table-flush" id="table">

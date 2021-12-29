@@ -45,7 +45,6 @@
                         <div class="col-4">
                             <label for="">Jenis Penerimaan</label>
                             <select name="jenis_penerimaan" class="form-control mb-3" required>
-                                <option selected>Pilih...</option>
                                 <option value="Dikira">Dikira</option>
                                 <option value="Diperiksa">Diperiksa</option>
                                 <option value="Diuji">Diuji</option>
@@ -80,7 +79,6 @@
                             <label for="">Maklumat Pengangkutan</label>
                             <div class="input-group">
                                 <select name="maklumat_pengangkutan" class="form-control mb-3" required>
-                                    <option selected>Pilih...</option>
                                     <option value="Lori">Lori</option>
                                     <option value="Kapal Terbang">Kapal Terbang</option>
                                     <option value="Kapal Laut">Kapal Laut</option>
@@ -117,11 +115,10 @@
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Unit Pengukuran</label>
                             <select name="unit_pengukuran[]" class="form-control">
-                                <option selected>Pilih...</option>
                                 <option value="Unit">Unit</option>
                                 <option value="Kotak">Kotak</option>
                                 <option value="Rim">Rim</option>
-                                <option value="Butang">Butang</option>
+                                <option value="Butang">Batang</option>
                                 <option value="Buah">Buah</option>
                                 <option value="Bilah">Bilah</option>
                                 <option value="Paket">Paket</option>

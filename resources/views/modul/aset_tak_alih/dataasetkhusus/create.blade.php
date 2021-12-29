@@ -219,8 +219,8 @@
                         <input type="hidden" name="staff_id_ra[]" value="{{ Auth::user()->id }}">
                     </div>
                     <div class="mt-4">
-                        <a class="btn btn-sm btn-primary text-white" onclick="tambahmaklumataras()">Tambah Perunding
-                            Bangunan</a>
+                        <a class="btn btn-sm btn-primary text-white" onclick="tambahmaklumataras()">Tambah Maklumat
+                            Aras</a>
                     </div>
 
 

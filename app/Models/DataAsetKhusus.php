@@ -9,7 +9,7 @@ class DataAsetKhusus extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['blokbangunan', 'maklumataras'];
+    protected $with =  ['maklumataras'];
 
     public function blokbangunan()
     {

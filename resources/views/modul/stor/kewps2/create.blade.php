@@ -37,7 +37,6 @@
                             <label for="">Tindakan</label>
                             <div class="input-group">
                                 <select name="tindakan" class="form-control mb-3">
-                                    <option selected>Pilih...</option>
                                     <option value="Kuantiti Ditolak">Kuantiti Ditolak</option>
                                     <option value="Kuantiti Kurang">Kuantiti Kurang</option>
                                     <option value="Kuantiti Lebih">Kuantiti Lebih</option>
@@ -49,11 +48,13 @@
                             <select class="form-control mb-4" name="kewps1_id" id="kewps2_select">
                                 <option selected>Pilih</option>
                                 @foreach ($kewps1 as $k1)
-                                    <option value="{{ $k1->id }}">{{ $k1->id }}
+                                    <option value="{{ $k1->id }}">{{ sprintf("%'.07d\n", $k1->id) }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <input type="hidden" name="status" value="DERAF">
                     </div>
 
                     <div id="info_kewps2_create" class="row">
