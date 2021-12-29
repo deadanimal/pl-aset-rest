@@ -6,15 +6,11 @@ use App\Models\Kewpa9;
 use App\Models\InfoKewpa9;
 use Illuminate\Http\Request;
 
-class Kewpa9Controller extends Controller
+class Kewpa9APIController extends Controller
 {
     public function index()
     {
-      $context = [
-        "kewpa9" => Kewpa9::all(),
-      ];
-
-      return view('modul.aset_alih.kewpa9.index', $context);
+      return Kewpa9::all();
     }
 
     public function store(Request $request)
