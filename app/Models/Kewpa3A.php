@@ -20,7 +20,7 @@ class Kewpa3A extends Model
       return $this->belongsTo(Kewpa1::class, 'rujukan_kewpa1_id', 'id');
     }
 
-    public function infokewpa1()
+    public function info_kewpa1()
     {
         return $this->belongsTo(InfoKewpa1::class, 'rujukan_kewpa1_id');
     }

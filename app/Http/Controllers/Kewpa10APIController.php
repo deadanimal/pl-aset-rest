@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kewpa10;
 use Illuminate\Http\Request;
 
-class Kewpa10Controller extends Controller
+class Kewpa10APIController extends Controller
 {
     public function index()
     {
