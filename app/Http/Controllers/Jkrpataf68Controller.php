@@ -7,9 +7,11 @@ use App\Models\Jkrpataf68;
 use App\Models\KodJabatan;
 use Barryvdh\DomPDF\Facade as PDF;
 use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class Jkrpataf68Controller extends Controller
 {
@@ -50,9 +52,14 @@ class Jkrpataf68Controller extends Controller
     {
 
         // dd(asset('aset_alih/gambarpremis/rBcK2nMUMkIPIkMOoVOpzd0YpBOIXrh5NYsbWUTN.png'));
-
-        $jkrpataf68['gambar_premis'] = $request->file('gambar_premis')->store('aset_tak_alih/gambarpremis');
+        $out = $request->file('gambar_premis')->store('aset_tak_alih/gambarpremis/gambarpremis');
+        $jkrpataf68['gambar_premis'] = $out;
         $jkrpataf68 = Jkrpataf68::create($request->all());
+
+        $jkrpataf68->update([
+            'gambar_premis' => $out
+        ]);
+
         foreach (range(0, count($request->pemilikan_tarikh) - 1) as $i) {
             DataTanah::create([
                 'jkrpataf68_id' => $jkrpataf68->id,
@@ -131,6 +138,7 @@ class Jkrpataf68Controller extends Controller
      */
     public function destroy(Jkrpataf68 $jkrpataf68)
     {
+        Storage::delete($jkrpataf68->gambar_premis);
         DataTanah::where('jkrpataf68_id', $jkrpataf68->id)->delete();
         $jkrpataf68->delete();
         return redirect('/jkrpataf68');
@@ -157,8 +165,15 @@ class Jkrpataf68Controller extends Controller
         // return view('modul.aset_tak_alih.jkrpataf68.doc', ['jkrpataf68' => $jkrpataf68]);
 
         $pdff = new Dompdf();
-        $pdff->loadHtml(view('modul.aset_tak_alih.jkrpataf68.doc'));
-        $pdff->setPaper('A4', 'potrait');
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $pdff->setOptions($options);
+        $pdff->loadHtml(view('modul.aset_tak_alih.jkrpataf68.doc', [
+            'jkrpataf68' => $jkrpataf68
+        ]));
+        $customPaper = array(50, -60, 500, 560);
+        $pdff->setPaper($customPaper);
         $pdff->render();
         $pdff->stream(
             "newdompdf",
@@ -168,7 +183,7 @@ class Jkrpataf68Controller extends Controller
         exit(0);
 
         // view()->share('jkrpataf68', $jkrpataf68);
-        $pdf = PDF::loadView('modul.aset_tak_alih.jkrpataf68.doc', $jkrpataf68);
+        // $pdf = PDF::loadView('modul.aset_tak_alih.jkrpataf68.doc', $jkrpataf68);
         // return $pdf->download('pdf_file.pdf');
     }
 }

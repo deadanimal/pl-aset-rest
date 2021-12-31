@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\View;
 use Barryvdh\DomPDF\Facade as PDF;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class Jkrpataf612Controller extends Controller
 {
@@ -183,13 +184,29 @@ class Jkrpataf612Controller extends Controller
 
     public function generatePdf(Jkrpataf612 $jkrpataf612)
     {
+        $no_dpa = str_split($jkrpataf612->jkrpataf68_id);
+        $pdff = new Dompdf();
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $pdff->setOptions($options);
+        $pdff->loadHtml(view('modul.aset_tak_alih.jkrpataf612.doc', [
+            'j' => $jkrpataf612,
+            'no_dpa'=>$no_dpa
+        ]));
+        $customPaper = array(2, -35, 480, 627);
+        $pdff->setPaper($customPaper);
+        $pdff->render();
+        $pdff->stream(
+            "newdompdf",
+            array("Attachment" => false)
+        );
 
-        return view('modul.aset_tak_alih.jkrpataf612.doc', [
-            'j612' => $jkrpataf612,
-        ]);
+        exit(0);
 
-        view()->share('j612', $jkrpataf612);
-        $pdf = PDF::loadView('modul.z612', $jkrpataf612);
-        return $pdf->download('pdf_file.pdf');
+
+        // view()->share('j612', $jkrpataf612);
+        // $pdf = PDF::loadView('modul.z612', $jkrpataf612);
+        // return $pdf->download('pdf_file.pdf');
     }
 }
