@@ -176,6 +176,7 @@ use App\Http\Controllers\KodJabatanController;
 use App\Http\Controllers\KodLokasiController;
 use App\Http\Controllers\OtherController;
 use App\Http\Controllers\ParasStokController;
+use App\Http\Controllers\PembekalStorController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\Plpkpa0102Controller;
 use App\Http\Controllers\PlpkPa0201Controller;
@@ -187,11 +188,13 @@ use App\Http\Controllers\PlpkPa0206Controller;
 use App\Http\Controllers\PlpkPa0207Controller;
 use App\Http\Controllers\PlpkPa0208Controller;
 use App\Http\Controllers\PlpkPa0209Controller;
-
+use App\Http\Controllers\UnitUkuranStorController;
 # umum controller
 use App\Http\Controllers\UserController;
 use App\Models\DataAsetKhusus;
 use App\Models\ParasStok;
+use App\Models\PembekalStor;
+use App\Models\UnitUkuranStor;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -293,6 +296,8 @@ Route::resource('kod-stor', KodStorController::class);
 Route::resource('jabatan', KodJabatanController::class);
 Route::resource('pengumuman', PengumumanController::class);
 Route::resource('pengguna', UserController::class);
+Route::resource('unit_ukuran', UnitUkuranStorController::class);
+Route::resource('pembekal_stor', PembekalStorController::class);
 
 # atk routes
 

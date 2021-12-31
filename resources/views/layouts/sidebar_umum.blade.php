@@ -91,6 +91,18 @@
                                         <span class="sidenav-normal"> Kod Jabatan </span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/unit_ukuran" class="nav-link">
+                                        <span class="sidenav-mini-icon"> UU </span>
+                                        <span class="sidenav-normal"> Unit Ukuran Stor </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/pembekal_stor" class="nav-link">
+                                        <span class="sidenav-mini-icon"> PS </span>
+                                        <span class="sidenav-normal"> Pembekal Stor </span>
+                                    </a>
+                                </li>
 
                             </ul>
                         </div>

@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="/kod-stor">Kod Stor</a></li>
+                                <li class="breadcrumb-item"><a href="/pembekal_stor">Pembekal Stor</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">Kod Stor</h2>
+                            <h2 class="mb-0">Pembekal Stor</h2>
                         </div>
                         <div class="text-end mr-2">
                             <button class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</button>
@@ -38,31 +38,29 @@
                         <thead class="thead-light">
                             <tr>
 
-                                <th scope="col">Bil</th>
-                                <th scope="col">No Kad</th>
-                                <th scope="col">Kategori Stok</th>
-                                <th scope="col">No Kod</th>
-                                <th scope="col">Perihal</th>
-                                <th scope="col">Unit Ukuran</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Alamat</th>
+                                <th scope="col">No Fon</th>
+                                <th scope="col">No Fax</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Tindakan</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($kod_stor as $kod_stor)
+                            @foreach ($pembekalstor as $ps)
                                 <tr>
 
                                     <td scope="col">{{ $loop->iteration }}</td>
-                                    <td scope="col">{{ $kod_stor->no_kad }}</td>
-                                    <td scope="col">{{ $kod_stor->kategori_stor }}</td>
-                                    <td scope="col">{{ $kod_stor->kod_stor }}</td>
-                                    <td scope="col">{{ $kod_stor->perihal }}</td>
-                                    <td scope="col">{{ $kod_stor->unit_ukuran }}</td>
-
+                                    <td scope="col">{{ $ps->nama }}</td>
+                                    <td scope="col">{{ $ps->alamat }}</td>
+                                    <td scope="col">{{ $ps->no_fon }}</td>
+                                    <td scope="col">{{ $ps->no_fax }}</td>
+                                    <td scope="col">{{ $ps->email }}</td>
                                     <td scope="col">
-                                        <a href="#" onclick="updateData({{ $kod_stor }})"><i
-                                                class="fas fa-pen"></i></a>
-                                        <a href="/kod-stor" onclick="deleteData({{ $kod_stor }})"><i
+                                        <a onclick="updateData({{ $ps }})"><i class="fas fa-pen"></i></a>
+                                        <a href="/pembekal_stor" onclick="deleteData({{ $ps }})"><i
                                                 class="fas fa-trash"></i></a>
                                     </td>
 
@@ -75,13 +73,13 @@
         </div>
 
         <div id="create" style="display: none;">
-            <form method="POST" action="/kod-stor" enctype="multipart/form-data">
+            <form method="POST" action="/pembekal_stor" enctype="multipart/form-data">
                 @csrf
                 <div class="card mt-4" id="basic-info">
                     <div class="card-header">
                         <div class="row">
                             <div class="col">
-                                <h2 class="mb-0">Tambah Kod Stor</h2>
+                                <h2 class="mb-0">Tambah Pembekal Stor</h2>
                             </div>
                         </div>
                     </div>
@@ -90,44 +88,39 @@
                     <div class="card-body pt-0">
                         <div class="row">
                             <div class="col-4">
-                                <label for="">No Kad</label>
+                                <label for="">Nama</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="no_kad" value="">
+                                    <input class="form-control mb-3" type="text" name="nama" value="">
                                 </div>
                             </div>
-
                             <div class="col-4">
-                                <label for="">Kategori Stok</label>
+                                <label for="">Alamat</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kategori_stor" value="">
+                                    <input class="form-control mb-3" type="text" name="alamat" value="">
                                 </div>
                             </div>
-
                             <div class="col-4">
-                                <label for="">No Kod</label>
+                                <label for="">No Fon</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kod_stor" value="">
+                                    <input class="form-control mb-3" type="text" name="no_fon" value="">
                                 </div>
                             </div>
-
                             <div class="col-6">
-                                <label for="">Perihal</label>
+                                <label for="">No Fax</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="perihal" value="">
+                                    <input class="form-control mb-3" type="text" name="no_fax" value="">
                                 </div>
                             </div>
-
                             <div class="col-6">
-                                <label for="">Unit Ukuran</label>
+                                <label for="">Email</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="unit_ukuran" value="">
+                                    <input class="form-control mb-3" type="text" name="email" value="">
                                 </div>
                             </div>
-
                         </div>
 
 
-                        <div id="info_kod-stor_create"></div>
+
 
                         <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
                     </div>
@@ -137,14 +130,14 @@
         </div>
 
         <div id="updateDiv" style="display: none;">
-            <form id="updateForm" method="POST" action="/kod-stor" enctype="multipart/form-data">
+            <form id="updateForm" method="POST" action="/pembekal_stor" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card mt-4" id="basic-info">
                     <div class="card-header">
                         <div class="row">
                             <div class="col">
-                                <h2 class="mb-0">Tambah Kod Aset</h2>
+                                <h2 class="mb-0">Kemaskini Pembekal Stor</h2>
                             </div>
                         </div>
                     </div>
@@ -153,49 +146,45 @@
                     <div class="card-body pt-0">
                         <div class="row">
                             <div class="col-4">
-                                <label for="">No Kad</label>
+                                <label for="">Nama</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="no_kad" value="">
+                                    <input class="form-control mb-3" type="text" name="nama" value="">
                                 </div>
                             </div>
-
                             <div class="col-4">
-                                <label for="">Kategori Stok</label>
+                                <label for="">Alamat</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kategori_stor" value="">
+                                    <input class="form-control mb-3" type="text" name="alamat" value="">
                                 </div>
                             </div>
-
                             <div class="col-4">
-                                <label for="">No Kod</label>
+                                <label for="">No Fon</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kod_stor" value="">
+                                    <input class="form-control mb-3" type="text" name="no_fon" value="">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="">No Fax</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="no_fax" value="">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="">Email</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="email" value="">
                                 </div>
                             </div>
 
-                            <div class="col-6">
-                                <label for="">Perihal</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="perihal" value="">
-                                </div>
-                            </div>
-
-                            <div class="col-6">
-                                <label for="">Unit Ukuran</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="unit_ukuran" value="">
-                                </div>
+                            <div class="col-12">
+                                <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
                             </div>
                         </div>
-
-                        <div id="info_kod-stor_create"></div>
-
-                        <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
                     </div>
-
                 </div>
         </div>
-        </form>
+    </div>
+    </form>
     </div>
     </div>
 
@@ -205,7 +194,7 @@
 
         $(document).ready(function() {
             initiateDatatable();
-            $("#info_kod-stor_form").hide();
+            $("#info_pembekal_stor_form").hide();
             $("#button_tambah").hide();
         })
 
@@ -218,14 +207,14 @@
 
             $("#show").hide();
 
-            $("#updateForm input[name=kod_stor]").val(obj.kod_stor);
-            $("#updateForm input[name=kategori_stor]").val(obj.kategori_stor);
-            $("#updateForm input[name=no_kad]").val(obj.no_kad);
-            $("#updateForm input[name=perihal]").val(obj.perihal);
-            $("#updateForm input[name=unit_ukuran]").val(obj.unit_ukuran);
+            $("#updateForm input[name=nama]").val(obj.nama);
+            $("#updateForm input[name=alamat]").val(obj.alamat);
+            $("#updateForm input[name=no_fon]").val(obj.no_fon);
+            $("#updateForm input[name=no_fax]").val(obj.no_fax);
+            $("#updateForm input[name=email]").val(obj.email);
 
-            $("#updateForm action").val("/kod-stor/" + obj.id);
-            $("#updateForm").attr('action', "/kod-stor/" + obj.id)
+            $("#updateForm action").val("/pembekal_stor/" + obj.id);
+            $("#updateForm").attr('action', "/pembekal_stor/" + obj.id)
 
             $("#updateDiv").show();
 
@@ -238,10 +227,10 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "/kod-stor/" + id,
+                url: "/pembekal_stor/" + id,
                 type: "DELETE",
                 success: function() {
-                    location.replace = "/kod-stor";;
+                    location.replace = "/pembekal_stor";
                 }
             })
 

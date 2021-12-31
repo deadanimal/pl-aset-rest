@@ -41,8 +41,8 @@ class GambarblokController extends Controller
      */
     public function store(Request $request)
     {
-        $request['gambar_hadapan'] = $request->file('gambar_hadapan1')->store('gambar-blok');
-        $request['gambar_belakang'] = $request->file('gambar_belakang1')->store('gambar-blok');
+        $request['gambar_hadapan'] = $request->file('gambar_hadapan1')->store('aset_tak_alih/gambar-blok');
+        $request['gambar_belakang'] = $request->file('gambar_belakang1')->store('aset_tak_alih/gambar-blok');
         Gambarblok::create($request->all());
 
         return redirect('/gambarblok');

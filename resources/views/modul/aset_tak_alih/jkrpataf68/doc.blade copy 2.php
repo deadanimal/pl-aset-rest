@@ -308,34 +308,41 @@
 
 <body>
     <div class="page_break">
-        <table style="margin-top: 47px; border: 0px;">
+        <table style="margin-top: 47px; border: 0px solid black;">
             <tr>
-                <td style="width: 100px; height:29px;border: 0px; ">
+                <td style="width: 100px; height:29px;border: 0px solid black; ">
                     <p></p>
                 </td>
-                <td style="background-color:rgb(149, 149, 152); width: 220px;border: 0px;">
+                <td style="background-color:rgb(149, 149, 152); width: 220px;border: 0px solid black;">
                     <p></p>
                 </td>
-                <td style="background-color:rgb(138, 168, 110); width: 245px;border: 0px;">
-                    <span class="cls_003" style="margin-left:10px">BAB C: PENERIMAAN DAN PENDAFTARAN ASET</span>
-                </td>
-                <td style="width: 35px;border: 0px;">
+                <td style="background-color:rgb(138, 168, 110); width: 245px;border: 0px solid black;">
                     <p></p>
                 </td>
-                <td style="background-color:rgb(138, 168, 110); width: 75px;border: 0px;">
+                <td style="width: 35px;border: 0px solid black;">
+                    <p></p>
+                </td>
+                <td style="background-color:rgb(138, 168, 110); width: 75px;border: 0px solid black;">
                     <p></p>
                 </td>
             </tr>
         </table>
+        <div
+            style="position:absolute;left:50%;margin-left:-318px;top:0px;width:637px;height:883px;border-style:outset;overflow:hidden">
+            <div style="position:absolute;left:0px;top:0px">
+            </div>
 
+        </div>
+        <div style="position:absolute;left:343.04px;top:55.86px" class="cls_002"><span class="cls_002">BAB C
+                : </span><span class="cls_003">PENERIMAAN DAN PENDAFTARAN ASET</span></div>
         <div style="position:absolute;left:576.77px;top:53.26px" class="cls_004"><span
                 class="cls_004">83</span></div>
         <div style="position:absolute;left:478.52px;top:115.59px" class="cls_005"><span
                 class="cls_005">JKR.PATA.F6/8</span></div>
         <div style="position:absolute;left:120px;top:156.02px" class="cls_006"><span class="cls_006">No.
                 Rujukan : {{ $jkrpataf68->id }}</span></div>
-        <div style="position:absolute;left:120px;top:171.93px" class="cls_006"><span class="cls_006">Tarikh
-                : {{ $jkrpataf68->tarikh }}</span></div>
+        <div style="position:absolute;left:120px;top:171.93px" class="cls_006"><span
+                class="cls_006">Tarikh : {{ $jkrpataf68->tarikh }}</span></div>
         <div style="position:absolute;left:300px;top:187.41px" class="cls_020"><span class="cls_020">KAD
                 PENDAFTARAN ASET TAK ALIH</span></div>
         <div style="position:absolute;left:120px;top:220px" class="cls_009"><span class="cls_009">Kategori
@@ -438,11 +445,11 @@
         </div>
         <div style="position:absolute;left:125px;top:494.48px" class="cls_009"><span class="cls_009">*No.
                 Laluan / No. Loji : {{ $jkrpataf68->no_laluan }}</span></div>
-        <div style="position:absolute;left:128px;top:520px" class="cls_010"><span class="cls_010">*
+        <div style="position:absolute;left:128px;top:530px" class="cls_010"><span class="cls_010">*
                 potong jika tidak berkenaan </span></div>
-        <div style="position:absolute;left:120px;top:540px" class="cls_007"><span class="cls_007">DATA
+        <div style="position:absolute;left:120px;top:565.44px" class="cls_007"><span class="cls_007">DATA
                 TANAH DALAM PREMIS ASET </span></div>
-        <table style="position:absolute;left:118.42px;top:550px;">
+        <table style="position:absolute;left:118.42px;top:576.40px;">
             <tr style="background-color: rgb(230,230,230);">
                 <th colspan="2"><span class="cls_009">Pemilikan</span></th>
                 <th rowspan="2"><span class="cls_009">Mukim <br>/ Bandar<br>/ Pekan <br> / Kampung <br>
@@ -479,9 +486,9 @@
         </table>
 
 
-        <table style="position:absolute;left:118.42px;top:680px;">
+        <table style="position:absolute;left:118.42px;top:670px;">
             <tr style="background-color: rgb(218, 217, 217)">
-                <th style="width: 450px;"><span class="cls_011">PENGESAHAN</span></th>
+                <th style="width: 500px;"><span class="cls_011">PENGESAHAN</span></th>
             </tr>
             <tr>
                 <td style="height: 150px;">
@@ -492,11 +499,10 @@
 
 
 
-        <div style="position:absolute;left:180px;top:700px" class="cls_009"><span class="cls_009">Pegawai
-                Daftar & Data <br>Fasiliti: </span></div>
+        <div style="position:absolute;left:180px;top:700px" class="cls_009"><span
+                class="cls_009">Pegawai Daftar & Data <br>Fasiliti: </span></div>
         <div style="position:absolute;left:420px;top:700px" class="cls_009"><span
-                class="cls_009">Pegawai
-                Teknikal Fasiliti :</span></div>
+                class="cls_009">Pegawai Teknikal Fasiliti :</span></div>
 
         <div style="position:absolute;left:140px;top:730px" class="cls_009"><span
                 class="cls_009">Tandatangan</span></div>
@@ -542,18 +548,17 @@
     <div class="page_break">
         <table style="margin-top: 47px; border: 0px solid black;">
             <tr>
-                <td style="width: 3px;border: 0px solid black;">
+                <td style="width: 33px;border: 0px solid black;">
                     <p></p>
                 </td>
-                <td style="background-color:rgb(138, 168, 110); width: 35px;border: 0px solid black;">
+                <td style="background-color:rgb(138, 168, 110); width: 40px;border: 0px solid black;">
                     <p></p>
                 </td>
                 <td style="width: 35px;border: 0px solid black;">
                     <p></p>
                 </td>
                 <td style="background-color:rgb(138, 168, 110); width: 245px;border: 0px solid black;">
-                    <span class="cls_003" style="margin-left: 10px;">Tatacara Pengurusan Aset Tak Alih
-                        Kerajaan</span>
+                    <p></p>
                 </td>
                 <td style="background-color:rgb(149, 149, 152); width: 220px;border: 0px solid black;">
                     <p></p>
@@ -561,26 +566,35 @@
                 <td style="width: 100px; height:29px;border: 0px solid black; ">
                     <p></p>
                 </td>
+
+
+
+
             </tr>
         </table>
+        <div
+            style="position:absolute;left:50%;margin-left:-318px;top:0px;width:637px;height:883px;border-style:outset;overflow:hidden">
+            <div style="position:absolute;left:0px;top:0px">
+            </div>
+            <div style="position:absolute;left:48.90px;top:53.26px" class="cls_004"><span
+                    class="cls_004">84</span></div>
+            <div style="position:absolute;left:83.00px;top:54.90px" class="cls_002"><span
+                    class="cls_002">Tatacara Pengurusan Aset Tak Alih Kerajaan</span></div>
 
-        <div style="position:absolute;left:48.90px;top:53.26px" class="cls_004"><span
-                class="cls_004">84</span></div>
-
-
-        <div style="position:absolute;left:91.52px;top:110px" class="cls_015"><span class="cls_015">No.
-                Rujukan : {{ $jkrpataf68->id }}</span></div>
-        <div style="position:absolute;left:91.52px;top:125px" class="cls_015"><span
-                class="cls_015">Tarikh : {{ $jkrpataf68->tarikh }}</span></div>
-        <div style="position:absolute;left:217.19px;top:140px" class="cls_021"><span class="cls_021">KAD
-                PENDAFTARAN ASET TAK ALIH</span></div>
-        <div style="position:absolute;left:260.56px;top:175px" class="cls_021"><span
-                class="cls_021">GAMBAR PREMIS</span>
+            <div style="position:absolute;left:91.52px;top:110px" class="cls_015"><span
+                    class="cls_015">No. Rujukan : {{ $jkrpataf68->id }}</span></div>
+            <div style="position:absolute;left:91.52px;top:125px" class="cls_015"><span
+                    class="cls_015">Tarikh : {{ $jkrpataf68->tarikh }}</span></div>
+            <div style="position:absolute;left:217.19px;top:140px" class="cls_021"><span
+                    class="cls_021">KAD PENDAFTARAN ASET TAK ALIH</span></div>
+            <div style="position:absolute;left:260.56px;top:175px" class="cls_021"><span
+                    class="cls_021">GAMBAR PREMIS</span>
+            </div>
+            <div style="position:absolute;left:120px;top:250px" class="cls_019">
+                <img src="{{ asset('gambarpremis/e0hapByNbi679CFH9CvclXE1GJREfh4hO8U0GfdP.jpg') }}" width="400px"
+                    height="400px" alt="">
+            </div>
         </div>
-        <div style="position:absolute;left:120px;top:250px" class="cls_019">
-            <img src="{{ asset($jkrpataf68->gambar_premis) }}" width="400px" height="400px" alt="">
-        </div>
-    </div>
     </div>
 </body>
 
