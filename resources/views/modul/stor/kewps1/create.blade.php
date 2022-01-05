@@ -34,8 +34,12 @@
                     <div class="row">
                         <div class="col-4">
                             <label for="">Nama Pembekal</label>
-                            <input class="form-control mb-3" type="text" name="nama_pembekal" value="Perbadanan Labuan"
-                                required>
+                            <select name="nama_pembekal" class="form-control mb-3" required>
+                                @foreach ($pembekal as $p)
+                                    <option value="{{ $p->nama }}">{{ $p->nama }}</option>
+                                @endforeach
+                            </select>
+
                         </div>
                         <div class="col-4">
                             <label for="">Alamat Pembekal</label>
@@ -115,14 +119,17 @@
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Unit Pengukuran</label>
                             <select name="unit_pengukuran[]" class="form-control">
-                                <option value="Unit">Unit</option>
+                                @foreach ($unitukuran as $u)
+                                    <option value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
+                                @endforeach
+                                {{-- <option value="Unit">Unit</option>
                                 <option value="Kotak">Kotak</option>
                                 <option value="Rim">Rim</option>
                                 <option value="Butang">Batang</option>
                                 <option value="Buah">Buah</option>
                                 <option value="Bilah">Bilah</option>
                                 <option value="Paket">Paket</option>
-                                <option value="Keping">Keping</option>
+                                <option value="Keping">Keping</option> --}}
                             </select>
                         </div>
                         <div class="col-4 mt-2">

@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\InfoKewps1;
 use App\Models\kewps1;
+use App\Models\PembekalStor;
+use App\Models\UnitUkuranStor;
 use Illuminate\Http\Request;
+
+
 use Illuminate\Support\Facades\Http;
 
 class Kewps1Controller extends Controller
@@ -28,7 +32,10 @@ class Kewps1Controller extends Controller
      */
     public function create()
     {
-        return view('modul.stor.kewps1.create');
+        return view('modul.stor.kewps1.create', [
+            'pembekal' => PembekalStor::all(),
+            'unitukuran' => UnitUkuranStor::all()
+        ]);
     }
 
     /**
@@ -85,6 +92,7 @@ class Kewps1Controller extends Controller
     {
         return view('modul.stor.kewps1.edit', [
             'kewps1' => $kewps1,
+            'pembekal' => PembekalStor::all(),
             'infokewps1' => InfoKewps1::where('kewps1_id', $kewps1->id)->get(),
         ]);
     }
