@@ -34,13 +34,7 @@
                     <div class="row">
                         <div class="col-6">
                             <label for="">Tahun</label>
-                            <select class="form-control mb-3" name="tahun">
-                                <option selected>Pilih</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                            </select>
+                            <input type="text" name="tahun" class="form-control mb-3 tahun">
                         </div>
                         <div class="col-6">
                             <label for="">Kementerian</label>
@@ -93,6 +87,16 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            $(".tahun").datepicker({
+                format: "yyyy",
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true
+            });
+            $(".tahun").attr('autocomplete', 'off');
+        });
+
         function tambahAsetK31() {
             $("#info_kewps31").append(
                 `       

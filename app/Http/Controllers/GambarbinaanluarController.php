@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Gambarbinaanluar;
 use App\Models\SenaraiBinaanLuar;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GambarbinaanluarController extends Controller
 {
@@ -30,7 +31,6 @@ class GambarbinaanluarController extends Controller
         return view('modul.aset_tak_alih.gambarbinaanluar.create', [
             'binaanluar' => SenaraiBinaanLuar::all(),
         ]);
-
     }
 
     /**
@@ -41,10 +41,13 @@ class GambarbinaanluarController extends Controller
      */
     public function store(Request $request)
     {
-        $request['gambar_hadapan'] = $request->file('gambar_hadapan1')->store('gambar-binaanluar');
-        $request['gambar_belakang'] = $request->file('gambar_belakang1')->store('gambar-binaanluar');
+        $request['gambar_hadapan'] = $request->file('gambar_hadapan1')->store('aset_tak_alih/gambar-binaanluar');
+        $request['gambar_belakang'] = $request->file('gambar_belakang1')->store('aset_tak_alih/gambar-binaanluar');
 
         Gambarbinaanluar::create($request->all());
+
+
+
         return redirect('/gambarbinaanluar');
     }
 
@@ -97,7 +100,6 @@ class GambarbinaanluarController extends Controller
 
         $gambarbinaanluar->update($request->all());
         return redirect('/gambarbinaanluar');
-
     }
 
     /**
@@ -113,6 +115,5 @@ class GambarbinaanluarController extends Controller
 
         $gambarbinaanluar->delete();
         return redirect('/gambarbinaanluar');
-
     }
 }

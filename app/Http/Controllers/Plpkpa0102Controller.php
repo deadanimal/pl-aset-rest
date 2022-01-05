@@ -27,7 +27,6 @@ class Plpkpa0102Controller extends Controller
     public function create()
     {
         return view('modul.aset_tak_alih.plpkpa0102.create');
-
     }
 
     /**
@@ -53,7 +52,6 @@ class Plpkpa0102Controller extends Controller
         return view('modul.aset_tak_alih.plpkpa0102.edit', [
             'plpkpa0102' => $plpkpa0102,
         ]);
-
     }
 
     /**

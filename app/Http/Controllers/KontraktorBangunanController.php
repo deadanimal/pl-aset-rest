@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KontraktorBangunan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class KontraktorBangunanController extends Controller
 {
@@ -35,7 +36,8 @@ class KontraktorBangunanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        KontraktorBangunan::create($request->all());
+        return redirect('/dataasetkhusus/' . $request->data_aset_khusus_id);
     }
 
     /**
@@ -67,9 +69,10 @@ class KontraktorBangunanController extends Controller
      * @param  \App\Models\KontraktorBangunan  $kontraktorBangunan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KontraktorBangunan $kontraktorBangunan)
+    public function update(Request $request, KontraktorBangunan $kontraktorbangunan)
     {
-        //
+        $kontraktorbangunan->update($request->all());
+        return redirect('/dataasetkhusus/' . $kontraktorbangunan->data_aset_khusus_id);
     }
 
     /**
@@ -78,8 +81,9 @@ class KontraktorBangunanController extends Controller
      * @param  \App\Models\KontraktorBangunan  $kontraktorBangunan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KontraktorBangunan $kontraktorBangunan)
+    public function destroy(KontraktorBangunan $kontraktorbangunan)
     {
-        //
+        $kontraktorbangunan->delete();
+        return redirect('/dataasetkhusus/' . $kontraktorbangunan->data_aset_khusus_id);
     }
 }

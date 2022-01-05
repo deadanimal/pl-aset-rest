@@ -56,6 +56,9 @@ class Kewps1Controller extends Controller
                 $no_kod = implode(" /", $no_kod);
                 $no_kod = trim(preg_replace('/\s\s+/', ' ', $no_kod));
 
+                // PL / Singkatan Jabatan / Kod Lokasi / A, R, T, HI, HBI / Tahun / Serial No
+
+
                 InfoKewps1::create([
                     'no_kod' => $no_kod,
                     'kewps1_id' => $kewps1_id,

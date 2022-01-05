@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InfoJkrpata92;
 use App\Models\Jkrpata92;
+use App\Models\Jkrpataf610;
 use App\Models\Jkrpataf68;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -19,6 +20,7 @@ class Jkrpata92Controller extends Controller
     {
         return view('modul.aset_tak_alih.jkrpata92.index', [
             'jkrpata92' => Jkrpata92::all(),
+
         ]);
     }
 

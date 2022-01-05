@@ -38,8 +38,8 @@
                             <tr>
                                 <th scope="col">No Rujukan BTB</th>
                                 <th scope="col">Nama Pembekal</th>
-                                <th scope="col">No Kod Dalam Aset</th>
                                 <th scope="col">Jenis Penerimaan</th>
+                                <th scope="col">No Kod Dalam Aset</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Tindakan</th>
                             </tr>

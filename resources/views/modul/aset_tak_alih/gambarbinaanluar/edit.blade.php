@@ -18,7 +18,7 @@
     </div>
 
     <div class="container-fluid mt--6">
-        <form method="POST" action="/gambarblok/{{ $gambarblok->id }}" enctype="multipart/form-data">
+        <form method="POST" action="/gambarbinaanluar/{{ $gambarbinaanluar->id }}" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="card mt-4">
@@ -36,11 +36,12 @@
                         <div class="col-6 mt-3">
                             <label for="">ID Blok Bangunan</label>
                             <div class="input-group">
-                                <select name="senarai_blok_bangunan_id" class="form-control">
+                                <select name="senarai_binaan_luar_id" class="form-control">
                                     <option selected>Pilih</option>
-                                    @foreach ($blokbangunan as $bb)
-                                        <option {{ $bb->id == $gambarblok->senarai_blok_bangunan_id ? 'selected' : '' }}
-                                            value="{{ $bb->id }}">{{ $bb->id }}</option>
+                                    @foreach ($binaanluar as $bl)
+                                        <option
+                                            {{ $bl->id == $gambarbinaanluar->senarai_binaan_luar_id ? 'selected' : '' }}
+                                            value="{{ $bl->id }}">{{ $bl->id }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -48,40 +49,39 @@
                         <div class="col-6 mt-3">
                             <label for="">Tarikh</label>
                             <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh" value="{{ $gambarblok->tarikh }}">
+                                <input class="form-control" type="date" name="tarikh"
+                                    value="{{ $gambarbinaanluar->tarikh }}">
                             </div>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">From Page</label>
                             <div class="input-group">
                                 <input class="form-control" type="number" name="from_page"
-                                    value="{{ $gambarblok->from_page }}">
+                                    value="{{ $gambarbinaanluar->from_page }}">
                             </div>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">To Page</label>
                             <div class="input-group">
                                 <input class="form-control" type="number" name="to_page"
-                                    value="{{ $gambarblok->to_page }}">
+                                    value="{{ $gambarbinaanluar->to_page }}">
                             </div>
                         </div>
 
                         <div class="col-6 mt-3">
                             <label for="">Gambar Hadapan</label><br>
                             <img class="mb-2 rounded mx-auto d-block" style="height: 100px;"
-                                src="{{ asset('/storage/' . $gambarblok->gambar_hadapan) }}">
+                                src="{{ asset($gambarbinaanluar->gambar_hadapan) }}">
                             <div class="input-group">
-                                <input style="height: 38px;" class="form-control" type="file" name="gambar_hadapan1"
-                                    value="">
+                                <input class="form-control" type="file" name="gambar_hadapan1" value="">
                             </div>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">Gambar Belakang</label><br>
                             <img class="mb-2 rounded mx-auto d-block" style="height: 100px;"
-                                src="{{ asset('/storage/' . $gambarblok->gambar_belakang) }}">
+                                src="{{ asset($gambarbinaanluar->gambar_belakang) }}">
                             <div class="input-group">
-                                <input style="height: 38px;" class="form-control" type="file" name="gambar_belakang1"
-                                    value="">
+                                <input class="form-control" type="file" name="gambar_belakang1" value="">
                             </div>
                         </div>
                     </div>

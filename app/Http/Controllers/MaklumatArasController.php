@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MaklumatAras;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class MaklumatArasController extends Controller
 {
@@ -35,7 +36,8 @@ class MaklumatArasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        MaklumatAras::create($request->all());
+        return redirect('/dataasetkhusus/' . $request->data_aset_khusus_id);
     }
 
     /**
@@ -67,9 +69,10 @@ class MaklumatArasController extends Controller
      * @param  \App\Models\MaklumatAras  $maklumatAras
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MaklumatAras $maklumatAras)
+    public function update(Request $request, MaklumatAras $maklumatara)
     {
-        //
+        $maklumatara->update($request->all());
+        return redirect('/dataasetkhusus/' . $maklumatara->data_aset_khusus_id);
     }
 
     /**
@@ -78,8 +81,9 @@ class MaklumatArasController extends Controller
      * @param  \App\Models\MaklumatAras  $maklumatAras
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MaklumatAras $maklumatAras)
+    public function destroy(MaklumatAras $maklumatara)
     {
-        //
+        $maklumatara->delete();
+        return redirect('/dataasetkhusus/' . $maklumatara->data_aset_khusus_id);
     }
 }

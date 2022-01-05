@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SenaraiBlokBangunan;
+use App\Models\KontraktorLuarPremis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-class SenaraiBlokBangunanController extends Controller
+class KontraktorLuarPremisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,17 +36,17 @@ class SenaraiBlokBangunanController extends Controller
      */
     public function store(Request $request)
     {
-        SenaraiBlokBangunan::create($request->all());
-        return redirect('/jkrpataf612/' . $request->jkrpataf612_id);
+        KontraktorLuarPremis::create($request->all());
+        return redirect('/dakbinaanluar/' . $request->data_aset_khusus_binaan_luar_id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
+     * @param  \App\Models\KontraktorLuarPremis  $kontraktorLuarPremis
      * @return \Illuminate\Http\Response
      */
-    public function show(SenaraiBlokBangunan $senaraiBlokBangunan)
+    public function show(KontraktorLuarPremis $kontraktorLuarPremis)
     {
         //
     }
@@ -54,10 +54,10 @@ class SenaraiBlokBangunanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
+     * @param  \App\Models\KontraktorLuarPremis  $kontraktorLuarPremis
      * @return \Illuminate\Http\Response
      */
-    public function edit(SenaraiBlokBangunan $senaraiBlokBangunan)
+    public function edit(KontraktorLuarPremis $kontraktorLuarPremis)
     {
         //
     }
@@ -66,24 +66,24 @@ class SenaraiBlokBangunanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
+     * @param  \App\Models\KontraktorLuarPremis  $kontraktorLuarPremis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SenaraiBlokBangunan $blokbangunan)
+    public function update(Request $request, KontraktorLuarPremis $kontraktorbl)
     {
-        $blokbangunan->update($request->all());
-        return redirect('/jkrpataf612/' . $blokbangunan->jkrpataf612_id);
+        $kontraktorbl->update($request->all());
+        return redirect('/dakbinaanluar/' . $kontraktorbl->data_aset_khusus_binaan_luar_id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
+     * @param  \App\Models\KontraktorLuarPremis  $kontraktorLuarPremis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SenaraiBlokBangunan $blokbangunan)
+    public function destroy(KontraktorLuarPremis $kontraktorbl)
     {
-        $blokbangunan->delete();
-        return redirect('/jkrpataf612/' . $blokbangunan->jkrpataf612_id);
+        $kontraktorbl->delete();
+        return redirect('/dakbinaanluar/' . $kontraktorbl->data_aset_khusus_binaan_luar_id);
     }
 }

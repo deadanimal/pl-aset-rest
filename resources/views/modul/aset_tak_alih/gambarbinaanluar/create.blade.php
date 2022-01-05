@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">Gambar Blok</a></li>
+                                <li class="breadcrumb-item"><a href="">Gambar Binaan Luar</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -35,8 +35,7 @@
                         <div class="col-6 mt-3">
                             <label for="">ID Binaan Luar</label>
                             <div class="input-group">
-                                <select name="senarai_binaan_luar_id" class="form-control">
-                                    <option selected>Pilih</option>
+                                <select name="senarai_binaan_luar_id" class="form-control" required>
                                     @foreach ($binaanluar as $bl)
                                         <option value="{{ $bl->id }}">{{ $bl->id }}</option>
                                     @endforeach

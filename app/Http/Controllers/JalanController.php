@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SenaraiBlokBangunan;
+use App\Models\Jalan;
+use App\Models\Plpkpa0102;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
-class SenaraiBlokBangunanController extends Controller
+class JalanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,9 @@ class SenaraiBlokBangunanController extends Controller
      */
     public function index()
     {
-        //
+        return view('modul.aset_tak_alih.jalan.index', [
+            'jalan' => Jalan::all(),
+        ]);
     }
 
     /**
@@ -25,7 +27,9 @@ class SenaraiBlokBangunanController extends Controller
      */
     public function create()
     {
-        //
+        return view('modul.aset_tak_alih.jalan.create', [
+            'plpk0102' => Plpkpa0102::all()
+        ]);
     }
 
     /**
@@ -36,17 +40,17 @@ class SenaraiBlokBangunanController extends Controller
      */
     public function store(Request $request)
     {
-        SenaraiBlokBangunan::create($request->all());
-        return redirect('/jkrpataf612/' . $request->jkrpataf612_id);
+        Jalan::create($request->all());
+        return redirect('/jalan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
+     * @param  \App\Models\Jalan  $jalan
      * @return \Illuminate\Http\Response
      */
-    public function show(SenaraiBlokBangunan $senaraiBlokBangunan)
+    public function show(Jalan $jalan)
     {
         //
     }
@@ -54,36 +58,39 @@ class SenaraiBlokBangunanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
+     * @param  \App\Models\Jalan  $jalan
      * @return \Illuminate\Http\Response
      */
-    public function edit(SenaraiBlokBangunan $senaraiBlokBangunan)
+    public function edit(Jalan $jalan)
     {
-        //
+        return view('modul.aset_tak_alih.jalan.edit', [
+            'jalan' => $jalan,
+            'plpk0102' => Plpkpa0102::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
+     * @param  \App\Models\Jalan  $jalan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SenaraiBlokBangunan $blokbangunan)
+    public function update(Request $request, Jalan $jalan)
     {
-        $blokbangunan->update($request->all());
-        return redirect('/jkrpataf612/' . $blokbangunan->jkrpataf612_id);
+        $jalan->update($request->all());
+        return redirect('/jalan');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
+     * @param  \App\Models\Jalan  $jalan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SenaraiBlokBangunan $blokbangunan)
+    public function destroy(Jalan $jalan)
     {
-        $blokbangunan->delete();
-        return redirect('/jkrpataf612/' . $blokbangunan->jkrpataf612_id);
+        $jalan->delete();
+        return redirect('/jalan');
     }
 }

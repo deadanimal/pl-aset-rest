@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">Gambar Binaan Luar</a></li>
+                                <li class="breadcrumb-item"><a href="">Jalan</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -23,10 +23,10 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <h2 class="mb-0">Gambar Binaan Luar</h2>
+                        <h2 class="mb-0">Jalan</h2>
                     </div>
                     <div class="text-end mr-2">
-                        <a href="/gambarbinaanluar/create"><button class="align-self-end btn btn-sm btn-primary"
+                        <a href="/jalan/create"><button class="align-self-end btn btn-sm btn-primary"
                                 id="tambah">Tambah</button></a>
                     </div>
                 </div>
@@ -36,28 +36,33 @@
                 <table class="table table-custom-simplified table-flush" id="table">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">ID Gambar</th>
-                            <th scope="col">ID Binaan Luar</th>
-                            <th scope="col">Tarikh</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tahun Daftar</th>
+                            <th scope="col">Nama Jalan</th>
+                            <th scope="col">Panjang Jalan</th>
+                            <th scope="col">Lebar Jalan</th>
+                            <th scope="col">ID PL-PK(PA)-01/02</th>
                             <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($gambarbinaanluar as $gbl)
+                        @foreach ($jalan as $j)
                             <tr>
-                                <td scope="col">{{ $gbl->id }}</td>
-                                <td scope="col">{{ $gbl->senarai_binaan_luar_id }}</td>
-                                <td scope="col">{{ $gbl->tarikh }}</td>
+                                <td scope="col">{{ $j->id }}</td>
+                                <td scope="col">{{ $j->tahun_daftar }}</td>
+                                <td scope="col">{{ $j->nama_jalan }}</td>
+                                <td scope="col">{{ $j->panjang_jalan }}</td>
+                                <td scope="col">{{ $j->lebar_jalan }}</td>
+                                <td scope="col">{{ $j->plpk0102_id }}</td>
                                 <td scope="col">
-                                    <a class="btn-sm bg-white border-0" href="/gambarbinaanluar/{{ $gbl->id }}"><i
+                                    <a class="btn btn-sm bg-white border-0 mx-0" href="/jalan/{{ $j->id }}/edit"><i
                                             class="fas fa-pen"></i></a>
-                                    {{-- <a class="btn-sm bg-white border-0" href="/gambarbinaanluarpdf/{{ $gbl->id }}"><i
-                                            class="fas fa-print"></i></a> --}}
-                                    <form action="/gambarbinaanluar/{{ $gbl->id }}" class="d-inline"
-                                        method="POST">
+                                    <a class="btn btn-sm bg-white border-0 mx-0" href="/jalanpdf/{{ $j->id }}"><i
+                                            class="fas fa-print"></i></a>
+                                    <form action="/jalan/{{ $j->id }}" class="d-inline mx-0" method="POST">
                                         @method('delete')
                                         @csrf
-                                        <button class="btn-sm bg-white border-0" type="submit"> <i
+                                        <button class="btn btn-sm bg-white border-0" type="submit"> <i
                                                 class=" fas fa-trash"></i></button>
                                     </form>
                                 </td>

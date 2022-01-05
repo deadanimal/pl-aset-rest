@@ -11,7 +11,7 @@
 |
  */
 
-
+use App\Http\Controllers\BahuJalanController;
 use App\Http\Controllers\DataAsetKhususBinaanLuarController;
 use App\Http\Controllers\DataAsetKhususController;
 use App\Http\Controllers\GambarbinaanluarController;
@@ -57,6 +57,7 @@ use App\Http\Controllers\InfoPlpkPa0206Controller;
 use App\Http\Controllers\InfoPlpkPa0207Controller;
 use App\Http\Controllers\InfoPlpkPa0208Controller;
 use App\Http\Controllers\InfoPlpkPa0209Controller;
+use App\Http\Controllers\JalanController;
 use App\Http\Controllers\Jkrpata92Controller;
 use App\Http\Controllers\Jkrpataf68Controller;
 use App\Http\Controllers\Jkrpataf69Controller;
@@ -174,10 +175,16 @@ use App\Http\Controllers\KodAsetController;
 use App\Http\Controllers\KodStorController;
 use App\Http\Controllers\KodJabatanController;
 use App\Http\Controllers\KodLokasiController;
+use App\Http\Controllers\KontraktorBangunanController;
+use App\Http\Controllers\KontraktorLuarPremisController;
+use App\Http\Controllers\KontraktorLuarPremiss;
+use App\Http\Controllers\MaklumatArasController;
 use App\Http\Controllers\OtherController;
 use App\Http\Controllers\ParasStokController;
 use App\Http\Controllers\PembekalStorController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PerundingBangunanController;
+use App\Http\Controllers\PerundingLuarPremisController;
 use App\Http\Controllers\Plpkpa0102Controller;
 use App\Http\Controllers\PlpkPa0201Controller;
 use App\Http\Controllers\PlpkPa0202Controller;
@@ -188,12 +195,17 @@ use App\Http\Controllers\PlpkPa0206Controller;
 use App\Http\Controllers\PlpkPa0207Controller;
 use App\Http\Controllers\PlpkPa0208Controller;
 use App\Http\Controllers\PlpkPa0209Controller;
+use App\Http\Controllers\SenaraiBinaanLuarController;
+use App\Http\Controllers\SenaraiBlokBangunanController;
 use App\Http\Controllers\UnitUkuranStorController;
 # umum controller
 use App\Http\Controllers\UserController;
 use App\Models\DataAsetKhusus;
+use App\Models\KontraktorBangunan;
+use App\Models\KontraktorLuarPremis;
 use App\Models\ParasStok;
 use App\Models\PembekalStor;
+use App\Models\SenaraiBinaanLuar;
 use App\Models\UnitUkuranStor;
 use Illuminate\Support\Facades\Route;
 
@@ -410,6 +422,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/jkrpataf104', Jkrpataf104Controller::class);
     Route::resource('/jkrpataf114', Jkrpataf114Controller::class);
     Route::resource('/plpkpa0102', Plpkpa0102Controller::class);
+    Route::resource('/blokbangunan', SenaraiBlokBangunanController::class);
+    Route::resource('/binaanluar', SenaraiBinaanLuarController::class);
+    Route::resource('/kontraktorbangunan', KontraktorBangunanController::class);
+    Route::resource('/perundingbangunan', PerundingBangunanController::class);
+    Route::resource('/maklumataras', MaklumatArasController::class);
+    Route::resource('/kontraktorbl', KontraktorLuarPremisController::class);
+    Route::resource('/perundingbl', PerundingLuarPremisController::class);
+    Route::resource('/jalan', JalanController::class);
+    Route::resource('/bahujalan', BahuJalanController::class);
 });
 
 Route::get('modul', [OtherController::class, 'modul_index'])->middleware('auth');

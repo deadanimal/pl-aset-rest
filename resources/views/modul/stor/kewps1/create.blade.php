@@ -107,7 +107,7 @@
                             <h3>Info 1</h3>
                             <input type="hidden" id="increament" value="1">
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Perihal Barang</label>
                             <input class="form-control" type="text" name="perihal_barang[]"
                                 value="{{ old('perihal_barang[]') }}">
@@ -214,6 +214,11 @@
             )
 
             $("#increament").val(val);
+
+            $("html, body").animate({
+                scrollTop: $(document).height() - $(window).height()
+            });
+
         }
     </script>
 @endsection

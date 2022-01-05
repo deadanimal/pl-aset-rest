@@ -32,7 +32,6 @@ class DataAsetKhususBinaanLuarController extends Controller
         return view('modul.aset_tak_alih.dataasetkhususbinaanluar.create', [
             'binaanluar' => SenaraiBinaanLuar::all(),
         ]);
-
     }
 
     /**
@@ -55,7 +54,7 @@ class DataAsetKhususBinaanLuarController extends Controller
 
         $dataAsetKhususLuar = DataAsetKhususBinaanLuar::create($request->all());
 
-//kontraktor
+        //kontraktor
         if ($request->nama_kontraktor_luar) {
             foreach (range(0, count($request->nama_kontraktor_luar) - 1) as $i) {
                 KontraktorLuarPremis::create([
@@ -66,7 +65,7 @@ class DataAsetKhususBinaanLuarController extends Controller
                 ]);
             }
         }
-//perunding
+        //perunding
         if ($request->nama_perunding_luar) {
             foreach (range(0, count($request->nama_perunding_luar) - 1) as $i) {
                 PerundingLuarPremis::create([
@@ -79,7 +78,6 @@ class DataAsetKhususBinaanLuarController extends Controller
         }
 
         return redirect('/dakbinaanluar');
-
     }
 
     /**
@@ -96,7 +94,6 @@ class DataAsetKhususBinaanLuarController extends Controller
             'binaanluar' => SenaraiBinaanLuar::all(),
             'dakBinaanLuar' => $dataAsetKhususBinaanLuar,
         ]);
-
     }
 
     /**
@@ -123,29 +120,7 @@ class DataAsetKhususBinaanLuarController extends Controller
 
         $dataAsetKhususBinaanLuar->update($request->all());
 
-        //kontraktor
-        if ($request->nama_kontraktor_luar) {
-            foreach (range(0, count($request->nama_kontraktor_luar) - 1) as $i) {
-                KontraktorLuarPremis::where('id', $request->kontraktorluar_id[$i])->update([
-                    'nama_kontraktor_luar' => $request->nama_kontraktor_luar[$i],
-                    'bidang_kerja_kontraktor_luar' => $request->bidang_kerja_kontraktor_luar[$i],
-                    'kontraktor_luar_utama' => $request->kontraktor_luar_utama[$i],
-                ]);
-            }
-        }
-//perunding
-        if ($request->nama_perunding_luar) {
-            foreach (range(0, count($request->nama_perunding_luar) - 1) as $i) {
-                PerundingLuarPremis::where('id', $request->perundingluar_id[$i])->update([
-                    'nama_perunding_luar' => $request->nama_perunding_luar[$i],
-                    'bidang_kerja_perunding_luar' => $request->bidang_kerja_perunding_luar[$i],
-                    'perunding_luar_utama' => $request->perunding_luar_utama[$i],
-                ]);
-            }
-        }
-
         return redirect('/dakbinaanluar');
-
     }
 
     /**
@@ -161,6 +136,5 @@ class DataAsetKhususBinaanLuarController extends Controller
         DataAsetKhususBinaanLuar::where('id', $dataAsetKhususBinaanLuar)->delete();
 
         return redirect('/dakbinaanluar');
-
     }
 }
