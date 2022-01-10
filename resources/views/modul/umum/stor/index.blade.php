@@ -189,8 +189,10 @@
                                 <div class="input-group">
                                     <select name="unit_ukuran" class="form-control mb-3">
                                         @foreach ($unit_ukuran as $u)
-                                            <option {{ $kod_stor->unit_ukuran == $u->unit_ukuran ? 'selected' : '' }}
-                                                value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
+                                            <option @if (isset($kod_stor->unit_ukuran))
+                                                {{ $u->unit_ukuran == $kod_stor->unit_ukuran ? 'selected' : '' }}
+                                        @endif
+                                        value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
                                         @endforeach
                                     </select>
                                 </div>
