@@ -62,6 +62,7 @@
                                     <td scope="col">
                                         <a href="#" onclick="updateData({{ $kod_stor }})"><i
                                                 class="fas fa-pen"></i></a>
+                                        <a href="/kod-storpdf"><i class="fas fa-print"></i></a>
                                         <a href="/kod-stor" onclick="deleteData({{ $kod_stor }})"><i
                                                 class="fas fa-trash"></i></a>
                                     </td>
@@ -120,10 +121,13 @@
                             <div class="col-6">
                                 <label for="">Unit Ukuran</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="unit_ukuran" value="">
+                                    <select name="unit_ukuran" class="form-control mb-3">
+                                        @foreach ($unit_ukuran as $u)
+                                            <option value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-
                         </div>
 
 
@@ -183,7 +187,12 @@
                             <div class="col-6">
                                 <label for="">Unit Ukuran</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="unit_ukuran" value="">
+                                    <select name="unit_ukuran" class="form-control mb-3">
+                                        @foreach ($unit_ukuran as $u)
+                                            <option {{ $kod_stor->unit_ukuran == $u->unit_ukuran ? 'selected' : '' }}
+                                                value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -215,14 +224,11 @@
         });
 
         function updateData(obj) {
-
             $("#show").hide();
-
             $("#updateForm input[name=kod_stor]").val(obj.kod_stor);
             $("#updateForm input[name=kategori_stor]").val(obj.kategori_stor);
             $("#updateForm input[name=no_kad]").val(obj.no_kad);
             $("#updateForm input[name=perihal]").val(obj.perihal);
-            $("#updateForm input[name=unit_ukuran]").val(obj.unit_ukuran);
 
             $("#updateForm action").val("/kod-stor/" + obj.id);
             $("#updateForm").attr('action', "/kod-stor/" + obj.id)

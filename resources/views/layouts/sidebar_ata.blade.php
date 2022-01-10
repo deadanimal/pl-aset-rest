@@ -158,6 +158,19 @@
                                         <span class="sidenav-normal"> PL-PK(PA)-01/02 </span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/jalan" class="nav-link {{ Request::is('jalan*') ? 'active' : '' }}">
+                                        <span class="sidenav-mini-icon">Pendaftaran Jalan </span>
+                                        <span class="sidenav-normal"> Pendaftaran Jalan </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/bahujalan"
+                                        class="nav-link {{ Request::is('bahujalan*') ? 'active' : '' }}">
+                                        <span class="sidenav-mini-icon">Pendaftaran BahuJalan </span>
+                                        <span class="sidenav-normal"> Pendaftaran BahuJalan </span>
+                                    </a>
+                                </li>
 
                             </ul>
                         </div>

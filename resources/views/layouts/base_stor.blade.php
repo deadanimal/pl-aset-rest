@@ -14,7 +14,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Pipeline Network">
 
     <title>
@@ -80,6 +79,7 @@
 
 </head>
 
+
 <body class="">
 
     @include('layouts.sidebar_stor')
@@ -90,6 +90,7 @@
         @include('layouts.navigation')
 
         <!-- Page content -->
+        @include('flash-message')
         @yield('content')
 
 

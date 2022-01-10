@@ -41,7 +41,6 @@ class DataAsetKhususController extends Controller
             'blokbangunan' => SenaraiBlokBangunan::all(),
             'check' => $check,
         ]);
-
     }
 
     /**
@@ -56,8 +55,36 @@ class DataAsetKhususController extends Controller
 
         $jkrpataf68 = $senaraibb->jkrpataf612->jkrpataf68;
 
-        $request['kegunaan_blok'] = $jkrpataf68->fungsi_aset;
-        $request['jenis_struktur'] = $jkrpataf68->kategori_aset;
+
+        switch ($jkrpataf68->fungsi_aset) {
+            case (1):
+                $request['kegunaan_blok'] = 'Bangunan & Binaan Lain';
+                break;
+            case (2):
+                $request['kegunaan_blok'] = 'Infrastruktur Jalan & Jambatan';
+                break;
+            case (3):
+                $request['kegunaan_blok'] = 'Infrastruktur (* Saliran / Pembetungan/ Aset Air)';
+                break;
+            case (4):
+                $request['kegunaan_blok'] = 'Lain-lain: ......(Nyatakan) ...........';
+                break;
+        }
+        switch ($jkrpataf68->kategori_aset) {
+            case (1):
+                $request['jenis_struktur'] = 'Pejabat / Ruang Kerja';
+                break;
+            case (2):
+                $request['jenis_struktur'] = 'Perumahan/ Penginapan';
+                break;
+            case (3):
+                $request['jenis_struktur'] = 'Fasiliti/ Infrastruktur Awam';
+                break;
+            case (4):
+                $request['jenis_struktur'] = 'Lain-lain: ......(Nyatakan) ...........';
+                break;
+        }
+
         $request['no_siri_pendaftaran'] = $jkrpataf68->id;
         $request['tahun_siap_bina_asal'] = date('Y', strtotime($jkrpataf68->tarikh_siap_bina_asal));
 
@@ -121,7 +148,6 @@ class DataAsetKhususController extends Controller
             'blokbangunan' => SenaraiBlokBangunan::all(),
             'dataasetkhusus' => $dataasetkhusu,
         ]);
-
     }
 
     /**

@@ -48,7 +48,6 @@
                             <label for="">Kategori Aset</label>
                             <div class="input-group">
                                 <select name="kategori_aset" class="form-control" required>
-                                    <option selected>Pilih</option>
                                     <option value="1">Bangunan dan Binaan Lain</option>
                                     <option value="2">Infrastruktur Jalan & Jambatan</option>
                                     <option value="3">Infrastruktur (* Saliran / Pembetungan/ Aset air )</option>
@@ -60,7 +59,6 @@
                             <label for="">Fungsi Aset</label>
                             <div class="input-group">
                                 <select name="fungsi_aset" class="form-control" required>
-                                    <option selected>Pilih</option>
                                     <option value="1">Pejabat / Ruang Kerja</option>
                                     <option value="2">Perumahan/ Penginapan</option>
                                     <option value="3">Fasiliti/ Infrastruktur Awam</option>

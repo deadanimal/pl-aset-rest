@@ -137,31 +137,31 @@ class Jkrpataf612Controller extends Controller
     {
         $jkrpataf612->update($request->all());
 
-        if ($request->nama_blok) {
-            foreach (range(0, count($request->nama_blok) - 1) as $i) {
-                SenaraiBlokBangunan::where('id', $request->bb_id[$i])->update([
-                    'nama_blok' => $request->nama_blok[$i],
-                    'luas_tapak' => $request->luas_tapak[$i],
-                    'catatan' => $request->catatan1[$i],
-                    'from_page' => $request->from_page[$i],
-                    'to_page' => $request->to_page[$i],
-                    'staff_id' => $request->staff_id,
-                ]);
-            }
-        }
+        // if ($request->nama_blok) {
+        //     foreach (range(0, count($request->nama_blok) - 1) as $i) {
+        //         SenaraiBlokBangunan::where('id', $request->bb_id[$i])->update([
+        //             'nama_blok' => $request->nama_blok[$i],
+        //             'luas_tapak' => $request->luas_tapak[$i],
+        //             'catatan' => $request->catatan1[$i],
+        //             'from_page' => $request->from_page[$i],
+        //             'to_page' => $request->to_page[$i],
+        //             'staff_id' => $request->staff_id,
+        //         ]);
+        //     }
+        // }
 
-        if ($request->nama_binaan_luar) {
-            foreach (range(0, count($request->nama_binaan_luar) - 1) as $i) {
-                SenaraiBinaanLuar::where('id', $request->bl_id[$i])->update([
-                    'nama_binaan_luar' => $request->nama_binaan_luar[$i],
-                    'luas_tapak' => $request->luas_tapak2[$i],
-                    'catatan' => $request->catatan2[$i],
-                    'from_page' => $request->from_page2[$i],
-                    'to_page' => $request->to_page2[$i],
-                    'staff_id' => $request->staff_id,
-                ]);
-            }
-        }
+        // if ($request->nama_binaan_luar) {
+        //     foreach (range(0, count($request->nama_binaan_luar) - 1) as $i) {
+        //         SenaraiBinaanLuar::where('id', $request->bl_id[$i])->update([
+        //             'nama_binaan_luar' => $request->nama_binaan_luar[$i],
+        //             'luas_tapak' => $request->luas_tapak2[$i],
+        //             'catatan' => $request->catatan2[$i],
+        //             'from_page' => $request->from_page2[$i],
+        //             'to_page' => $request->to_page2[$i],
+        //             'staff_id' => $request->staff_id,
+        //         ]);
+        //     }
+        // }
 
         return redirect('/jkrpataf612');
     }
@@ -192,7 +192,7 @@ class Jkrpataf612Controller extends Controller
         $pdff->setOptions($options);
         $pdff->loadHtml(view('modul.aset_tak_alih.jkrpataf612.doc', [
             'j' => $jkrpataf612,
-            'no_dpa'=>$no_dpa
+            'no_dpa' => $no_dpa
         ]));
         $customPaper = array(2, -35, 480, 627);
         $pdff->setPaper($customPaper);

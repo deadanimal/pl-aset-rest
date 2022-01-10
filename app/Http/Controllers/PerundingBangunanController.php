@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PerundingBangunan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class PerundingBangunanController extends Controller
 {
@@ -35,7 +36,8 @@ class PerundingBangunanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        PerundingBangunan::create($request->all());
+        return redirect('/dataasetkhusus/' . $request->data_aset_khusus_id);
     }
 
     /**
@@ -67,9 +69,10 @@ class PerundingBangunanController extends Controller
      * @param  \App\Models\PerundingBangunan  $perundingBangunan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PerundingBangunan $perundingBangunan)
+    public function update(Request $request, PerundingBangunan $perundingbangunan)
     {
-        //
+        $perundingbangunan->update($request->all());
+        return redirect('/dataasetkhusus/' . $perundingbangunan->data_aset_khusus_id);
     }
 
     /**
@@ -78,8 +81,9 @@ class PerundingBangunanController extends Controller
      * @param  \App\Models\PerundingBangunan  $perundingBangunan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PerundingBangunan $perundingBangunan)
+    public function destroy(PerundingBangunan $perundingbangunan)
     {
-        //
+        $perundingbangunan->delete();
+        return redirect('/dataasetkhusus/' . $perundingbangunan->data_aset_khusus_id);
     }
 }

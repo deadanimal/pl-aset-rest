@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SenaraiBinaanLuar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class SenaraiBinaanLuarController extends Controller
 {
@@ -35,7 +36,8 @@ class SenaraiBinaanLuarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SenaraiBinaanLuar::create($request->all());
+        return redirect('/jkrpataf612/' . $request->jkrpataf612_id);
     }
 
     /**
@@ -67,9 +69,10 @@ class SenaraiBinaanLuarController extends Controller
      * @param  \App\Models\SenaraiBinaanLuar  $senaraiBinaanLuar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SenaraiBinaanLuar $senaraiBinaanLuar)
+    public function update(Request $request, SenaraiBinaanLuar $binaanluar)
     {
-        //
+        $binaanluar->update($request->all());
+        return redirect('/jkrpataf612/' . $binaanluar->jkrpataf612_id);
     }
 
     /**
@@ -78,8 +81,9 @@ class SenaraiBinaanLuarController extends Controller
      * @param  \App\Models\SenaraiBinaanLuar  $senaraiBinaanLuar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SenaraiBinaanLuar $senaraiBinaanLuar)
+    public function destroy(SenaraiBinaanLuar $binaanluar)
     {
-        //
+        $binaanluar->delete();
+        return redirect('/jkrpataf612/' . $binaanluar->jkrpataf612_id);
     }
 }

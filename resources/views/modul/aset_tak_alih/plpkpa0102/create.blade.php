@@ -96,35 +96,9 @@
                         <input type="hidden" name="staff_id" value="{{ Auth::user()->id }}">
                     </div>
 
-                    <div class="row" id="plpk_jalan">
-                        <div class="col-12">
-                            <h3>Jalan</h3>
-                        </div>
-                        {{-- <div class="col-3 mt-3">
-                            <label for="">Tarikh Pengesahan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh_pengesahan" value="">
-                            </div>
-                        </div> --}}
-                    </div>
-                    <div class="mt-2">
-                        <a class="btn btn-sm btn-primary text-white" onclick="tambahplpk_jalan()">Tambah Aset</a>
-                    </div>
-
-
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
                 </div>
             </div>
         </form>
     </div>
-
-    <script>
-        function tambahplpk_jalan() {
-            $("#plpk_jalan").append(
-                `       
-                    <h1>Belum buat</h1>
-                `
-            )
-        }
-    </script>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SenaraiBlokBangunan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class SenaraiBlokBangunanController extends Controller
 {
@@ -35,7 +36,8 @@ class SenaraiBlokBangunanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SenaraiBlokBangunan::create($request->all());
+        return redirect('/jkrpataf612/' . $request->jkrpataf612_id);
     }
 
     /**
@@ -67,9 +69,10 @@ class SenaraiBlokBangunanController extends Controller
      * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SenaraiBlokBangunan $senaraiBlokBangunan)
+    public function update(Request $request, SenaraiBlokBangunan $blokbangunan)
     {
-        //
+        $blokbangunan->update($request->all());
+        return redirect('/jkrpataf612/' . $blokbangunan->jkrpataf612_id);
     }
 
     /**
@@ -78,8 +81,9 @@ class SenaraiBlokBangunanController extends Controller
      * @param  \App\Models\SenaraiBlokBangunan  $senaraiBlokBangunan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SenaraiBlokBangunan $senaraiBlokBangunan)
+    public function destroy(SenaraiBlokBangunan $blokbangunan)
     {
-        //
+        $blokbangunan->delete();
+        return redirect('/jkrpataf612/' . $blokbangunan->jkrpataf612_id);
     }
 }

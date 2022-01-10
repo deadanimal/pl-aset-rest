@@ -38,8 +38,8 @@
                             <tr>
                                 <th scope="col">No Rujukan BTB</th>
                                 <th scope="col">Nama Pembekal</th>
-                                <th scope="col">No Kod Dalam Aset</th>
                                 <th scope="col">Jenis Penerimaan</th>
+                                <th scope="col">No Kod Dalam Aset</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Tindakan</th>
                             </tr>
@@ -52,7 +52,7 @@
                                     <td scope="col">{{ $k1->jenis_penerimaan }}</td>
                                     <td scope="col">
                                         @foreach ($k1->infokewps1 as $ik1)
-                                            {{ $ik1->no_kod }},<br>
+                                            {{ $ik1->no_kod }}<br>
                                         @endforeach
                                     </td>
 

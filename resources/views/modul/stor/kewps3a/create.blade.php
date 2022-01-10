@@ -61,14 +61,9 @@
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Unit Pengukuran</label>
                             <select class="form-control form-control-sm" name="unit_pengukuran" id="k1_unit_pengukuran">
-                                <option value="Unit">Unit</option>
-                                <option value="Kotak">Kotak</option>
-                                <option value="Rim">Rim</option>
-                                <option value="Butang">Butang</option>
-                                <option value="Buah">Buah</option>
-                                <option value="Bilah">Bilah</option>
-                                <option value="Paket">Paket</option>
-                                <option value="Keping">Keping</option>
+                                @foreach ($unit_ukuran as $u)
+                                    <option value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-4 mt-2">
@@ -148,6 +143,16 @@
                 });
 
             });
+
+            var infokewps1 = @json($infokewps1->toArray());
+            window.setInterval(function() {
+                infokewps1.forEach(element => {
+                    if ($("#k1_perihal_stok").val() == element.perihal_barang) {
+                        $("#k1_unit_pengukuran").val(element.unit_pengukuran).change();
+                        $("#3a_no_kad").val(element.no_kod).change();
+                    }
+                });
+            }, 1000);
 
         });
 

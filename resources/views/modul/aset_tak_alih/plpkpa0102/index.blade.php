@@ -23,7 +23,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <h2 class="mb-0">Jalan</h2>
+                        <h2 class="mb-0">PL-PK(PA)-01/02</h2>
                     </div>
                     <div class="text-end mr-2">
                         <a href="/plpkpa0102/create"><button class="align-self-end btn btn-sm btn-primary"
@@ -36,7 +36,7 @@
                 <table class="table table-custom-simplified table-flush" id="table">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">No DPA</th>
+                            <th scope="col">ID</th>
                             <th scope="col">No Arahan Kerja</th>
                             <th scope="col">Nama Penerima</th>
                             <th scope="col">Bil</th>
