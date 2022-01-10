@@ -161,6 +161,7 @@ class Jkrpataf68Controller extends Controller
     public function generatePdf(Jkrpataf68 $jkrpataf68)
     {
 
+        // dd(base_path());
 
         // return view('modul.aset_tak_alih.jkrpataf68.doc', ['jkrpataf68' => $jkrpataf68]);
 

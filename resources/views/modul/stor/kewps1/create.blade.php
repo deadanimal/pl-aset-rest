@@ -116,38 +116,38 @@
                             <input class="form-control" type="text" name="perihal_barang[]"
                                 value="{{ old('perihal_barang[]') }}">
                         </div>
-                        <div class="col-4 mt-2">
+                        {{-- <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Unit Pengukuran</label>
                             <select name="unit_pengukuran[]" class="form-control">
                                 @foreach ($unitukuran as $u)
                                     <option value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
                                 @endforeach
-                                {{-- <option value="Unit">Unit</option>
+                                <option value="Unit">Unit</option>
                                 <option value="Kotak">Kotak</option>
                                 <option value="Rim">Rim</option>
                                 <option value="Butang">Batang</option>
                                 <option value="Buah">Buah</option>
                                 <option value="Bilah">Bilah</option>
                                 <option value="Paket">Paket</option>
-                                <option value="Keping">Keping</option> --}}
+                                <option value="Keping">Keping</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Kuantiti Dipesan</label>
                             <input class="form-control" type="number" name="kuantiti_dipesan[]"
                                 value="{{ old('kuantiti_dipesan[]') }}">
                         </div>
-                        <div class="col-3 mt-2">
+                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Kuantiti DO</label>
                             <input class="form-control" type="number" name="kuantiti_do[]"
                                 value="{{ old('kuantiti_do[]') }}">
                         </div>
-                        <div class="col-3 mt-2">
+                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Kuantiti Diterima</label>
                             <input class="form-control" type="number" name="kuantiti_diterima[]" value=""
                                 id="kewps1_kuantiti_diterima[]">
                         </div>
-                        <div class="col-3 mt-2">
+                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Harga Seunit</label>
                             <div class="input-group">
                                 <span class="input-group-text">RM</span>
@@ -156,7 +156,7 @@
                             </div>
                         </div>
 
-                        <div class="col-3 mt-2">
+                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Catatan</label>
                             <input class="form-control" type="text" name="catatan[]" value="{{ old('catatan[]') }}">
                         </div>
@@ -180,32 +180,18 @@
                             <input class="form-control" type="text" name="perihal_barang[]" value="{{ old('perihal_barang[]') }}">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label ">Unit Pengukuran</label>
-                             <select name="unit_pengukuran[]" class="form-control">
-                                    <option selected>Pilih...</option>
-                                    <option value="Unit">Unit</option>
-                                    <option value="Kotak">Kotak</option>
-                                    <option value="Rim">Rim</option>
-                                    <option value="Butang">Butang</option>
-                                    <option value="Buah">Buah</option>
-                                    <option value="Bilah">Bilah</option>
-                                    <option value="Paket">Paket</option>
-                                    <option value="Keping">Keping</option>
-                            </select>
-                        </div>
-                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Kuantiti Dipesan</label>
                             <input class="form-control" type="number" name="kuantiti_dipesan[]" value="{{ old('kuantiti_dipesan[]') }}">
                         </div>
-                        <div class="col-3 mt-2">
+                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Kuantiti DO</label>
                             <input class="form-control" type="number" name="kuantiti_do[]" value="{{ old('kuantiti_do[]') }}">
                         </div>
-                        <div class="col-3 mt-2">
+                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Kuantiti Diterima</label>
                             <input class="form-control" type="number" name="kuantiti_diterima[]" value="" id="kewps1_kuantiti_diterima[]">
                         </div>
-                        <div class="col-3 mt-2">
+                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Harga Seunit</label>
                             <div class="input-group">
                                 <span class="input-group-text">RM</span>
@@ -213,7 +199,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-3 mt-2">
+                        <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Catatan</label>
                             <input class="form-control" type="text" name="catatan[]" value="{{ old('catatan[]') }}">
                         </div>

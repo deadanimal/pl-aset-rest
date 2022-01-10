@@ -579,6 +579,7 @@
         </div>
         <div style="position:absolute;left:120px;top:250px" class="cls_019">
             <img src="{{ asset($jkrpataf68->gambar_premis) }}" width="400px" height="400px" alt="">
+            {{-- <img src="{{ URL::to('/') }}/images/img.png" width="400px" height="400px" alt=""> --}}
         </div>
     </div>
     </div>

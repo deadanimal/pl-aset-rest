@@ -16,6 +16,7 @@ use App\Http\Controllers\DataAsetKhususBinaanLuarController;
 use App\Http\Controllers\DataAsetKhususController;
 use App\Http\Controllers\GambarbinaanluarController;
 use App\Http\Controllers\GambarblokController;
+use App\Http\Controllers\HomeStorController;
 use App\Http\Controllers\InfoKewatk1Controller;
 use App\Http\Controllers\InfoKewatk2Controller;
 use App\Http\Controllers\InfoKewatk4Controller;
@@ -27,7 +28,6 @@ use App\Http\Controllers\InfoKewatk15Controller;
 use App\Http\Controllers\InfoKewatk19Controller;
 use App\Http\Controllers\InfoKewpa1Controller;
 use App\Http\Controllers\InfoKewpa2Controller;
-use App\Http\Controllers\InfoKewpa8Controller;
 use App\Http\Controllers\InfoKewpa9Controller;
 use App\Http\Controllers\InfoKewpa11Controller;
 use App\Http\Controllers\InfoKewpa14Controller;
@@ -46,10 +46,10 @@ use App\Http\Controllers\InfoKewpa29Controller;
 use App\Http\Controllers\InfoKewpa32Controller;
 use App\Http\Controllers\InfoKewpa36Controller;
 use App\Http\Controllers\InfoKewpa37Controller;
-use App\Http\Controllers\InfoKewps10Controller;
 use App\Http\Controllers\InfoKewps1Controller;
-use App\Http\Controllers\InfoKewps20Controller;
 use App\Http\Controllers\InfoKewps2Controller;
+use App\Http\Controllers\InfoKewps10Controller;
+use App\Http\Controllers\InfoKewps20Controller;
 use App\Http\Controllers\InfoPlpkPa0202Controller;
 use App\Http\Controllers\InfoPlpkPa0203Controller;
 use App\Http\Controllers\InfoPlpkPa0204Controller;
@@ -172,12 +172,11 @@ use App\Http\Controllers\Kewps34Controller;
 use App\Http\Controllers\Kewps35Controller;
 use App\Http\Controllers\Kewps36Controller;
 use App\Http\Controllers\KodAsetController;
-use App\Http\Controllers\KodStorController;
 use App\Http\Controllers\KodJabatanController;
 use App\Http\Controllers\KodLokasiController;
+use App\Http\Controllers\KodStorController;
 use App\Http\Controllers\KontraktorBangunanController;
 use App\Http\Controllers\KontraktorLuarPremisController;
-use App\Http\Controllers\KontraktorLuarPremiss;
 use App\Http\Controllers\MaklumatArasController;
 use App\Http\Controllers\OtherController;
 use App\Http\Controllers\ParasStokController;
@@ -200,13 +199,6 @@ use App\Http\Controllers\SenaraiBlokBangunanController;
 use App\Http\Controllers\UnitUkuranStorController;
 # umum controller
 use App\Http\Controllers\UserController;
-use App\Models\DataAsetKhusus;
-use App\Models\KontraktorBangunan;
-use App\Models\KontraktorLuarPremis;
-use App\Models\ParasStok;
-use App\Models\PembekalStor;
-use App\Models\SenaraiBinaanLuar;
-use App\Models\UnitUkuranStor;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -218,7 +210,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
-
 
 # authentication
 Route::post('auth', [AuthenticationController::class, 'authenticateUser']);
@@ -311,6 +302,9 @@ Route::resource('pengguna', UserController::class);
 Route::resource('unit_ukuran', UnitUkuranStorController::class);
 Route::resource('pembekal_stor', PembekalStorController::class);
 
+#utility Umum
+Route::get('kod-storpdf/{kodstor}', [KodStorController::class, 'generatePDF']);
+
 # atk routes
 
 Route::resource('kewatk1', Kewatk1Controller::class);
@@ -354,6 +348,8 @@ Route::resource('info_kewatk19', InfoKewatk19Controller::class);
 
 # stor routes
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/homestor', [HomeStorController::class, 'index']);
+
     Route::resource('kewps1', Kewps1Controller::class);
     Route::get('/kewps2fromk1/{kewps1}', [Kewps2Controller::class, 'editfromkewps1']);
     Route::resource('info_kewps1', InfoKewps1Controller::class);
@@ -517,7 +513,6 @@ Route::get('/jkrpataf102pdf/{jkrpataf102}', [Jkrpataf102Controller::class, 'gene
 Route::get('/jkrpataf104pdf/{jkrpataf104}', [Jkrpataf104Controller::class, 'generatePdf']);
 Route::get('/jkrpataf114pdf', [Jkrpataf114Controller::class, 'generatePdf']);
 Route::get('/jkrpataf612pdf/{jkrpataf612}', [Jkrpataf612Controller::class, 'generatePdf']);
-
 
 //kewpa utility
 //branch israa

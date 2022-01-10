@@ -52,7 +52,7 @@
                                     <td scope="col">{{ $k1->jenis_penerimaan }}</td>
                                     <td scope="col">
                                         @foreach ($k1->infokewps1 as $ik1)
-                                            {{ $ik1->no_kod }},<br>
+                                            {{ $ik1->no_kod }}<br>
                                         @endforeach
                                     </td>
 

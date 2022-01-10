@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(KaedahPelupusanSeeder::class);
         $this->call(NegaraSeeder::class);
         $this->call(NegeriSeeder::class);
+        $this->call(UnitUkuranStorSeeder::class);
 
         User::create([
             'id' => 1,

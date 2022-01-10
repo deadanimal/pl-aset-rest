@@ -23,7 +23,11 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-
+                        <a class="nav-link {{ Route::getCurrentRoute() == '/homestor' ? 'active' : '' }}"
+                            href="/homestor">
+                            <i class="fas fa-home text-primary"></i>
+                            <span class="nav-link-text">Halaman Utama</span>
+                        </a>
                         <a class="nav-link" href="#navbar-penerimaan" data-toggle="collapse" role="button"
                             aria-expanded="true" aria-controls="navbar-dashboards">
                             <i class="fas fa-plus-square text-primary"></i>
