@@ -26,9 +26,9 @@ class PengumumanController extends Controller
       $pengumuman->staff_id = $request->user()->id;
       $pengumuman->save();
 
-      if ($request->status == "Aktif") {
-        $this->deactivateOther($pengumuman->id);
-      }
+      //If ($request->status == "Aktif") {
+      //  $this->deactivateOther($pengumuman->id);
+      //}
 
 
       return redirect('/pengumuman');
@@ -49,9 +49,9 @@ class PengumumanController extends Controller
         $pengumuman->save();
       }
 
-      if ($request->status == "Aktif") {
-        $this->deactivateOther($pengumuman->id);
-      }
+      //if ($request->status == "Aktif") {
+      //  $this->deactivateOther($pengumuman->id);
+      //}
 
       return redirect('/pengumuman');
 

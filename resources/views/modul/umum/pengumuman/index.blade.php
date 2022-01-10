@@ -41,6 +41,7 @@
             <th scope="col">Tajuk</th>
             <th scope="col">Info</th>
             <th scope="col">Gambar</th>
+            <th scope="col">Tarikh Pengumuman</th>
             <th scope="col">Status</th>
             <th scope="col">Tindakan</th>
 
@@ -54,11 +55,14 @@
             <td scope="col">{{$pengumuman->tajuk}}</td>
             <td scope="col">{{$pengumuman->info_pengumuman}}</td>
             <td scope="col"><a class="btn btn-sm btn-primary" href="/storage/{{$pengumuman->gambar_pengumuman}}" target="_blank">Lihat</a></td>
+            <td scope="col">{{$pengumuman->tarikh_pengumuman}}</td>
+
             @if ($pengumuman->status=="Aktif") 
-              <td scope="col"><span class="badge bg-success">Aktif</span></th>
+              <td scope="col"><span class="badge bg-success">Aktif</span></td>
             @elseif ($pengumuman->status=="Tidak Aktif") 
-              <td scope="col"><span class="badge bg-warning">Tidak Aktif</span></th>
+              <td scope="col"><span class="badge bg-warning">Tidak Aktif</span></td>
             @endif
+
 
             <td scope="col">
               <a href="#" onclick="updateData({{$pengumuman}})"><i class="fas fa-pen"></i></a>
@@ -102,6 +106,14 @@
               <input class="form-control mb-3" type="text" name="info_pengumuman" value="" required>
             </div>
             </div>
+
+            <div class="col-4">
+            <label for="">Tarikh Pengumuman</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="date" name="tarikh_pengumuman" value="" required>
+            </div>
+            </div>
+
 
             <div class="col-4">
             <label for="">Gambar</label>
@@ -164,6 +176,14 @@
             </div>
 
             <div class="col-4">
+            <label for="">Tarikh Pengumuman</label>
+            <div class="input-group">
+              <input class="form-control mb-3" type="date" name="tarikh_pengumuman" value="" required>
+            </div>
+            </div>
+
+
+            <div class="col-4">
             <label for="">Gambar</label>
             <div class="input-group">
               <input class="form-control mb-3" type="file" name="gambar_pengumuman">
@@ -211,6 +231,7 @@
       $("#show").hide();
 
       $("#updateForm input[name=tajuk]").val(obj.tajuk);
+      $("#updateForm input[name=tarikh_pengumuman]").val(obj.tarikh_pengumuman);
       $("#updateForm input[name=info_pengumuman]").val(obj.info_pengumuman);
       $("#updateForm select[name=status ]").val(obj.status );
 
@@ -219,36 +240,6 @@
 
       $("#updateDiv").show();
 
-    }
-
-    function updateStatus(obj, mode) {
-      $("#updateForm input[name=tindakan_diterima]").val(obj.tindakan_diterima);
-      $("#updateForm input[name=pegawai_penerima]").val(obj.pegawai_penerima);
-      $("#updateForm input[name=pembekal]").val(obj.pembekal);
-      $("#updateForm input[name=status]").val(mode);
-      $("#updateForm select[name=jenis_penolakan]").val(obj.jenis_penolakan);
-      $("#updateForm select[name=no_rujukan_atk1]").val(obj.no_rujukan_atk1);
-
-
-      $("#updateForm action").val("/pengumuman/" + obj.id);      
-      $("#updateForm").attr('action', "/pengumuman/" + obj.id)
-      
-      var values = {};
-      $.each($('#updateForm').serializeArray(), function(i, field) {
-          values[field.name] = field.value;
-      });
-      console.log(values);
-
-      var url = $("#updateForm").attr('action');
-
-      $.ajax({
-        type: "POST",
-        url: url,
-        data: values, // serializes the form's elements.
-        success: function(data)
-        {
-        }
-      });
     }
 
     function deleteData(obj) {
