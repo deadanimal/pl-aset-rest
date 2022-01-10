@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kewps3a;
 use App\Models\kewps3b;
+use App\Models\KodStor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -29,7 +30,7 @@ class Kewps3bController extends Controller
     public function create()
     {
         return view('modul.stor.kewps3b.create', [
-            'kewps3a' => Kewps3a::all()
+            'kewps3a' => Kewps3a::all(),
         ]);
     }
 
@@ -44,7 +45,14 @@ class Kewps3bController extends Controller
 
         $request['terima_keluar'] = $request->terima . '/' . $request->terima_keluar;
 
-        kewps3b::create($request->all());
+        $kewps3b = kewps3b::create($request->all());
+
+        $no_kod = KodStor::where('perihal', $kewps3b->kewps3a->perihal_stok
+        )->first();
+
+        $no_kod->update([
+            'baki_stok_semasa' => $request->kuantiti_baki,
+        ]);
 
         return redirect('/kewps3b');
     }
@@ -59,7 +67,7 @@ class Kewps3bController extends Controller
     {
         return view('modul.stor.kewps3b.edit', [
             'kewps3b' => $kewps3b,
-            'kewps3a' => Kewps3a::all()
+            'kewps3a' => Kewps3a::all(),
         ]);
     }
 

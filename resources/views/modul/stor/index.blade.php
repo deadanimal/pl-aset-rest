@@ -75,7 +75,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -96,7 +96,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -117,7 +117,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach<tr>
@@ -137,7 +137,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach<tr>
@@ -157,7 +157,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach<tr>
@@ -177,7 +177,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -229,7 +229,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -251,7 +251,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -272,7 +272,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach<tr>
@@ -292,7 +292,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach<tr>
@@ -312,7 +312,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach<tr>
@@ -332,7 +332,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -384,7 +384,7 @@
                                                     <td>{{ $k->perihal }}</td>
                                                     <td>{{ $k->unit_ukuran }}</td>
                                                     <td>{{ $k->kod_stor }}</td>
-                                                    <td></td>
+                                                    <td>{{ $k->baki_stok_semasa }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach

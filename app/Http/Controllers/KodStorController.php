@@ -14,6 +14,7 @@ class KodStorController extends Controller
         $context = [
             "kod_stor" => $kod_stors,
             "unit_ukuran" => UnitUkuranStor::all(),
+
         ];
 
         return view('modul.umum.stor.index', $context);

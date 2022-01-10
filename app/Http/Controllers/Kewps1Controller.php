@@ -74,6 +74,10 @@ class Kewps1Controller extends Controller
                 'catatan' => $request->catatan[$i],
             ]);
 
+            $noKod->update([
+                'baki_stok_semasa' => $request->kuantiti_diterima[$i],
+            ]);
+
         }
 
         return redirect('/kewps1');
