@@ -10,7 +10,7 @@ class Kewpa21APIController extends Controller
 {
     public function index()
     {
-      return InfoKewpa21::where('scan_status', "scanned")->get();
+      return InfoKewpa21::where('scan_status', "scanned")->orWhere('scan_status', 'diperiksa')->get();
     }
 
     public function store(Request $request)
