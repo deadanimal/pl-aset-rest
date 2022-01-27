@@ -66,8 +66,6 @@ class Kewps2Controller extends Controller
         return redirect('/kewps2');
     }
 
-
-
     /**
      * Display the specified resource.
      *
@@ -76,7 +74,6 @@ class Kewps2Controller extends Controller
      */
     public function show(Kewps2 $kewps2)
     {
-
 
         $created_infokewps1 = array();
 
@@ -87,7 +84,7 @@ class Kewps2Controller extends Controller
         return view('modul.stor.kewps2.edit', [
             'kewps2' => $kewps2,
             'kewps1' => kewps1::all(),
-            'checkinfo1' => $created_infokewps1
+            'checkinfo1' => $created_infokewps1,
         ]);
     }
 
@@ -100,7 +97,7 @@ class Kewps2Controller extends Controller
     public function edit(Kewps2 $kewps2)
     {
         $kewps2->update([
-            'status' => "LULUS"
+            'status' => "LULUS",
         ]);
 
         return view('modul.stor.kewps2.index', [
@@ -153,7 +150,6 @@ class Kewps2Controller extends Controller
         return response()->json($data);
     }
 
-
     public function generatePdf(Request $request, Kewps2 $kewps2)
     {
         $infoKewps2 = InfoKewps2::where('kewps2_id', $kewps2->id)->get();
@@ -162,6 +158,8 @@ class Kewps2Controller extends Controller
         // $kewps1 = kewps1::where('id', $kewps2->kewps1_id)->get()->first();
 
         // dd($kewps2->infokewps1->perihal_barang);
+
+        $kewps2['newid'] = sprintf("%'.07d", $kewps2->id);
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps2', [$kewps2]);
 

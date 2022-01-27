@@ -18,20 +18,20 @@
   <meta name="author" content="Pipeline Network">
 
   <title>
-    Perbadanan Labuan - Pengurusan Aset & Stor  
+    Perbadanan Labuan - Pengurusan Aset & Stor
   </title>
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/img/logo-labuan.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-  
+
   <!-- Icons -->
   <link rel="stylesheet" href="/assets/vendor/nucleo/css/nucleo.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/regular.min.css" integrity="sha512-1yhsV5mlXC9Ve9GDpVWlM/tpG2JdCTMQGNJHvV5TEzAJycWtHfH0/HHSDzHFhFgqtFsm1yWyyHqssFERrYlenA==" crossorigin="anonymous" />
   <link rel="stylesheet" href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
 
-  <!-- Specific Page CSS goes HERE  -->  
+  <!-- Specific Page CSS goes HERE  -->
   @yield('styles')
 
   <!-- Argon CSS -->
@@ -57,20 +57,20 @@
 
 </head>
 <body class="">
-  
-  
+
+
   <!-- Main content -->
   <div class="main-content" id="panel">
 
     <!-- Page content -->
     @yield('content')
 
-    
+
   </div>
 
   <!-- Argon Scripts -->
   <!-- Core -->
-  
+
   <script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/assets/vendor/js-cookie/js.cookie.js"></script>
   <script src="/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
@@ -78,7 +78,7 @@
 
   <!-- Specific Page JS goes HERE  -->
   @yield('scripts')
-  
+
   <!-- Argon JS -->
   <script src="/assets/js/argon.js?v=1.2.0"></script>
 
@@ -155,7 +155,7 @@
       $('.ic-input').keypress(function (e) {
         var txt = String.fromCharCode(e.which);
         if (!txt.match(/[0-9]|\-/)) {
-          
+
           return false;
         }
       });

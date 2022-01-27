@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PembekalAset;
-use App\Models\PembekalStor;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class PembekalStorController extends Controller
+class MenuSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,7 @@ class PembekalStorController extends Controller
      */
     public function index()
     {
-        $active = "stor";
-        return view('modul.umum.pembekal_stor.index', [
-            'pembekalstor' => PembekalStor::all(),
-            'pembekalaset' => PembekalAset::all(),
-            'active' => $active,
-        ]);
+        return view('modul.menu_setting');
     }
 
     /**
@@ -41,17 +35,16 @@ class PembekalStorController extends Controller
      */
     public function store(Request $request)
     {
-        PembekalStor::create($request->all());
-        return redirect('/pembekal_stor');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PembekalStor  $pembekalStor
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(PembekalStor $pembekalStor)
+    public function show(User $user)
     {
         //
     }
@@ -59,10 +52,10 @@ class PembekalStorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PembekalStor  $pembekalStor
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(PembekalStor $pembekalStor)
+    public function edit(User $user)
     {
         //
     }
@@ -71,24 +64,22 @@ class PembekalStorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PembekalStor  $pembekalStor
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PembekalStor $pembekal_stor)
+    public function update(Request $request, User $user)
     {
-        $pembekal_stor->update($request->all());
-        return redirect('/pembekal_stor');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PembekalStor  $pembekalStor
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PembekalStor $pembekal_stor)
+    public function destroy(User $user)
     {
-        $pembekal_stor->delete();
-        return redirect('/pembekal_stor');
+        //
     }
 }

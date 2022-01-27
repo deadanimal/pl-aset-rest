@@ -58,31 +58,18 @@
 
                             </ul>
                         </div>
-
-                        <a class="nav-link" href="#navbar-kod" data-toggle="collapse" role="button"
+                        <a class="nav-link" href="#navbar-kod-aset" data-toggle="collapse" role="button"
                             aria-expanded="true" aria-controls="navbar-dashboards">
 
-                            <i class="fas fa-search-minus text-primary"></i>
-                            <span class="nav-link-text">Pengurusan Kod</span>
+                            <i class="fas fa-code-branch text-primary"></i>
+                            <span class="nav-link-text">Pengurusan Kod Aset</span>
                         </a>
-                        <div class="collapse" id="navbar-kod">
+                        <div class="collapse" id="navbar-kod-aset">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="/kod-aset" class="nav-link">
                                         <span class="sidenav-mini-icon"> A </span>
                                         <span class="sidenav-normal"> Kod Aset </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/kod-stor" class="nav-link">
-                                        <span class="sidenav-mini-icon"> A </span>
-                                        <span class="sidenav-normal"> Kod Stor </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/lokasi" class="nav-link">
-                                        <span class="sidenav-mini-icon"> L </span>
-                                        <span class="sidenav-normal"> Kod Lokasi </span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -92,20 +79,51 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/unit_ukuran" class="nav-link">
-                                        <span class="sidenav-mini-icon"> UU </span>
-                                        <span class="sidenav-normal"> Unit Ukuran Stor </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/pembekal_stor" class="nav-link">
-                                        <span class="sidenav-mini-icon"> PS </span>
-                                        <span class="sidenav-normal"> Pembekal Stor </span>
+                                    <a href="/lokasi" class="nav-link">
+                                        <span class="sidenav-mini-icon"> L </span>
+                                        <span class="sidenav-normal"> Kod Lokasi </span>
                                     </a>
                                 </li>
 
                             </ul>
                         </div>
+                        <a class="nav-link" href="#navbar-kod-stor" data-toggle="collapse" role="button"
+                            aria-expanded="true" aria-controls="navbar-dashboards">
+
+                            <i class="fas fa-code-branch text-primary"></i>
+                            <span class="nav-link-text">Pengurusan Kod Stor</span>
+                        </a>
+                        <div class="collapse" id="navbar-kod-stor">
+                            <ul class="nav nav-sm flex-column">
+
+                                <li class="nav-item">
+                                    <a href="/kategori-stor/alat-tulis-pejabat" class="nav-link">
+                                        <span class="sidenav-mini-icon"> K </span>
+                                        <span class="sidenav-normal"> Kategori & Kod Stor </span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/kod-stor" class="nav-link">
+                                        <span class="sidenav-mini-icon"> A </span>
+                                        <span class="sidenav-normal"> Kod Stor </span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/unit_ukuran" class="nav-link">
+                                        <span class="sidenav-mini-icon"> UU </span>
+                                        <span class="sidenav-normal"> Unit Ukuran Stor </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <a class="nav-link" href="/pembekal-stor">
+                            <i class="fas fa-industry text-primary"></i>
+                            <span class="nav-link-text">Pembekal Aset & Stor</span>
+                        </a>
                     </li>
                 </ul>
             </div>

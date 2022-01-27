@@ -34,17 +34,18 @@
                     <div class="row">
                         <div class="col-4">
                             <label for="">Nama Pembekal</label>
-                            <select name="nama_pembekal" class="form-control mb-3" required>
+                            <select name="nama_pembekal" class="form-control mb-3" id="kewps1_changepembekalcreate"
+                                required>
                                 @foreach ($pembekal as $p)
                                     <option value="{{ $p->nama }}">{{ $p->nama }}</option>
                                 @endforeach
                             </select>
-
                         </div>
+
                         <div class="col-4">
                             <label for="">Alamat Pembekal</label>
-                            <input class="form-control mb-3" type="text" name="alamat_pembekal"
-                                value="Peti Surat 81245, Wilayah Persekutuan Labuan" required>
+                            <input class="form-control mb-3" type="text" name="alamat_pembekal" value=""
+                                id="kewps1_changealamatcreate" required>
                         </div>
                         <div class="col-4">
                             <label for="">Jenis Penerimaan</label>
@@ -213,5 +214,24 @@
             });
 
         }
+
+        $("#kewps1_changepembekalcreate").change(function() {
+            var pembekal = @json($pembekal->toArray());
+
+            pembekal.forEach(element => {
+                if (element.nama == this.value) {
+                    $("#kewps1_changealamatcreate").val(element.alamat);
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            var pembekal = @json($pembekal->toArray());
+            pembekal.forEach(element => {
+                if (element.nama == $("#kewps1_changepembekalcreate").val()) {
+                    $("#kewps1_changealamatcreate").val(element.alamat);
+                }
+            });
+        });
     </script>
 @endsection

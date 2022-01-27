@@ -123,7 +123,6 @@ class Kewps1Controller extends Controller
      */
     public function update(Request $request, kewps1 $kewps1)
     {
-
         $kewps1->update($request->all());
 
         return redirect('/kewps1');
@@ -151,6 +150,8 @@ class Kewps1Controller extends Controller
         $kewps1->data = $infoKewps1;
 
         // dd($kewps1);
+
+        $kewps1['newid'] = sprintf("%'.07d\n", $kewps1->id);
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps1', [$kewps1]);
 
