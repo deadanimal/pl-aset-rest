@@ -50,19 +50,19 @@
                     <tbody>
                         @foreach ($kewps2 as $k2)
                             <tr>
-                                <td scope="col">{{ $k2->id }}</td>
+                                <td scope="col"> {{ sprintf("%'.07d", $k2->id) }}</td>
                                 <td scope="col">{{ $k2->kewps1->nama_pembekal }}</td>
                                 <td scope="col">{{ $k2->tindakan }}</td>
 
                                 @if ($k2->status == 'DERAF')
                                     <td scope="col"><span class="badge bg-warning">{{ $k2->status }}</span></th>
-                                    @elseif ($k2->status=="HANTAR")
+                                    @elseif ($k2->status == 'HANTAR')
                                     <td scope="col"><span class="badge bg-primary">{{ $k2->status }}</span></th>
-                                    @elseif ($k2->status=="SOKONG")
+                                    @elseif ($k2->status == 'SOKONG')
                                     <td scope="col"><span class="badge bg-warning">{{ $k2->status }}</span></th>
-                                    @elseif ($k2->status=="LULUS")
+                                    @elseif ($k2->status == 'LULUS')
                                     <td scope="col"><span class="badge bg-success">{{ $k2->status }}</span></th>
-                                    @elseif ($k2->status=="DITOLAK")
+                                    @elseif ($k2->status == 'DITOLAK')
                                     <td scope="col"><span class="badge bg-danger">{{ $k2->status }}</span></th>
                                 @endif
 

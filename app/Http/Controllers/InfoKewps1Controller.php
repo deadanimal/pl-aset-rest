@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfoKewps1;
+use App\Models\KodStor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 class InfoKewps1Controller extends Controller
 {
 
-
-
     public function store(Request $request)
     {
-        $no_sekarang = sprintf("%'.07d\n", count(InfoKewps1::all()) + 1);
-        $tahun_ini = substr(date("Y"), -2);
-        $no_kod = array("PL", "KPES", "PA", "HI", $tahun_ini, $no_sekarang);
-        $no_kod = implode(" /", $no_kod);
-        $no_kod = trim(preg_replace('/\s\s+/', ' ', $no_kod));
+        $noKod = KodStor::where('perihal', $request->perihal_barang)->first();
+        if ($noKod == null) {
+            return back()->with('error', "Perihal " . $request->perihal_barang . " tidak sah");
+        }
+        $no_kod = $noKod->no_kad . "-" . $noKod->kategori_stor . "-" . $noKod->kod_stor;
+
         $request['no_kod'] = $no_kod;
 
         InfoKewps1::create($request->all());
@@ -25,16 +24,22 @@ class InfoKewps1Controller extends Controller
         return redirect('/kewps1/' . $request->kewps1_id);
     }
 
-
-
     public function update(Request $request, InfoKewps1 $info_kewps1)
     {
+        $noKod = KodStor::where('perihal', $request->perihal_barang)->first();
+        if ($noKod == null) {
+            return back()->with('error', "Perihal " . $request->perihal_barang . " tidak sah");
+        }
+        $no_kod = $noKod->no_kad . "-" . $noKod->kategori_stor . "-" . $noKod->kod_stor;
+
+        $request['no_kod'] = $no_kod;
+
+        $request['unit_pengukuran'] = $noKod->unit_ukuran;
 
         $info_kewps1->update($request->all());
 
         return redirect('/kewps1/' . $info_kewps1->kewps1_id);
     }
-
 
     public function destroy(InfoKewps1 $info_kewps1)
     {

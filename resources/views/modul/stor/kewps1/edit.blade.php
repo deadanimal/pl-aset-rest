@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-4">
                                 <label for="">Nama Pembekal</label>
-                                <select class="form-control mb-3" name="nama_pembekal">
+                                <select class="form-control mb-3" name="nama_pembekal" id="kewps1_changepembekaledit">
                                     @foreach ($pembekal as $p)
                                         <option {{ $kewps1->nama_pembekal == $p->nama ? 'selected' : '' }}
                                             value="{{ $p->nama }}">{{ $p->nama }}</option>
@@ -46,7 +46,7 @@
                             <div class="col-4">
                                 <label for="">Alamat Pembekal</label>
                                 <input class="form-control mb-3" type="text" name="alamat_pembekal"
-                                    value="{{ $kewps1->alamat_pembekal }}">
+                                    value="{{ $kewps1->alamat_pembekal }}" id="kewps1_changealamatedit">
                             </div>
                             <div class=" col-4">
                                 <label for="">Jenis Penerimaan</label>
@@ -166,12 +166,12 @@
 
                             <div class="col-3">
                                 <label for="">Perihal Barang</label>
-                                <input class="form-control mb-3 info{{ $ik1->id }}" type="text" name="perihal_barang"
-                                    value="{{ $ik1->perihal_barang }}">
+                                <input class="form-control mb-3" type="text" name="perihal_barang"
+                                    value="{{ $ik1->perihal_barang }}" id="perihal_edit_kewps1_{{ $ik1->id }}">
                             </div>
                             <div class="col-3">
                                 <label for="">Unit Pengukuran</label>
-                                <select name="unit_pengukuran info{{ $ik1->id }}" class="form-control mb-3">
+                                <select name="unit_pengukuran" class="form-control mb-3">
                                     @foreach ($unitukuran as $u)
                                         <option {{ $ik1->unit_pengukuran == $u->unit_ukuran ? 'selected' : '' }}
                                             value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
@@ -235,24 +235,19 @@
                         <div class="modal-body">
                             <div class="row">
                                 <input type="hidden" name="kewps1_id" value="{{ $kewps1->id }}">
-                                <div class="col-6">
+                                <div class="col-12 mb-3">
                                     <label for="">Perihal Barang</label>
-                                    <input class="form-control" type="text" name="perihal_barang" value="">
+                                    <input class="form-control" type="text" name="perihal_barang" value=""
+                                        id="edit_addnew_perihal_kewps1">
                                 </div>
-                                <div class="col-6">
+                                {{-- <div class="col-6">
                                     <label for="">Unit Pengukuran</label>
                                     <select name="unit_pengukuran" class="form-control mb-3">
-                                        <option selected>Pilih...</option>
-                                        <option value="Unit">Unit</option>
-                                        <option value="Kotak">Kotak</option>
-                                        <option value="Rim">Rim</option>
-                                        <option value="Butang">Butang</option>
-                                        <option value="Buah">Buah</option>
-                                        <option value="Bilah">Bilah</option>
-                                        <option value="Paket">Paket</option>
-                                        <option value="Keping">Keping</option>
+                                        @foreach ($unitukuran as $u)
+                                            <option value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
+                                        @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="col-6">
                                     <label for="">Kuantiti Dipesan</label>
                                     <input class="form-control mb-3" type="number" name="kuantiti_dipesan" value="">
@@ -319,15 +314,14 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-
             $("#kewps2_edit_addnew_submit").click(function() {
                 $("html, body").animate({
                     scrollTop: $(document).height() - $(window).height()
                 });
             });
 
-
         });
+
 
 
         // function infokewps1_kemaskini(obj) {
@@ -346,6 +340,17 @@
             $("#create").hide()
             $("#show").show();
         }
+
+
+        $("#kewps1_changepembekaledit").change(function() {
+            var pembekal = @json($pembekal->toArray());
+
+            pembekal.forEach(element => {
+                if (element.nama == this.value) {
+                    $("#kewps1_changealamatedit").val(element.alamat);
+                }
+            });
+        });
     </script>
 
 @endsection
