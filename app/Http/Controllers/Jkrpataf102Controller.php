@@ -28,6 +28,8 @@ class Jkrpataf102Controller extends Controller
      */
     public function create()
     {
+        $jkrpataf68_id[] = [];
+
         $jkrpataf102 = Jkrpataf102::all();
         foreach ($jkrpataf102 as $i) {
             $jkrpataf68_id[] = $i->jkrpataf68_id;

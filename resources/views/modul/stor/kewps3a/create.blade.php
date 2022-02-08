@@ -66,13 +66,13 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-4 mt-2">
+                        {{-- <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Kumpulan</label>
                             <select class="form-control form-control-sm" name="kumpulan">
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Pergerakan</label>
                             <select class="form-control form-control-sm" name="pergerakan">
@@ -83,27 +83,28 @@
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Gudang Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="gudang_stok">
+                            <input class="form-control form-control-sm kod" type="text" name="gudang_stok">
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Baris Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="baris_stok">
+                            <input class="form-control form-control-sm kod" type="text" name="baris_stok">
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Rak Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="rak_stok">
+                            <input class="form-control form-control-sm kod" type="text" name="rak_stok">
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Tingkat Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="tingkat_stok">
+                            <input class="form-control form-control-sm kod" type="text" name="tingkat_stok">
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Petak Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="petak_stok">
+                            <input class="form-control form-control-sm kod" type="text" name="petak_stok">
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label col-form-label-sm">Kod Lokasi Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="kod_lokasi_stok">
+                            <input class="form-control form-control-sm" type="text" name="kod_lokasi_stok"
+                                id="kod_lokasi_stok">
                         </div>
                     </div>
                     <div class="row mt-5" id="paras_stok_create">
@@ -144,16 +145,45 @@
 
             });
 
+
+
+        });
+
+        $("#k1_perihal_stok").keyup(function() {
+            let val = this.value;
             var infokewps1 = @json($infokewps1->toArray());
-            window.setInterval(function() {
-                infokewps1.forEach(element => {
-                    if ($("#k1_perihal_stok").val() == element.perihal_barang) {
-                        $("#k1_unit_pengukuran").val(element.unit_pengukuran).change();
-                        $("#3a_no_kad").val(element.no_kod).change();
+            infokewps1.forEach(element => {
+                if (val == element.perihal_barang) {
+                    $("#k1_unit_pengukuran").val(element.unit_pengukuran).change();
+                    $("#3a_no_kad").val(element.no_kod).change();
+                }
+            });
+        });
+
+        $(".kod").keyup(function() {
+
+            let kod = $(".kod");
+            let output = "";
+            let notEmpty = false;
+            jQuery.each(kod, function(key, val) {
+                if (val.value != "") {
+                    notEmpty = true;
+                } else {
+                    notEmpty = false;
+                }
+            });
+
+            if (notEmpty) {
+                jQuery.each(kod, function(key, val) {
+                    if (key == 0) {
+                        output = output.concat(val.value);
+                    } else {
+                        output = output.concat("/" + val.value);
                     }
                 });
-            }, 1000);
+                $("#kod_lokasi_stok").val(output);
 
+            }
         });
 
         function tambahKeluaranStokSuku() {

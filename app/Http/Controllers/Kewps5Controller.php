@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Kewps3a;
 use App\Models\Kewps5;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class Kewps5Controller extends Controller
@@ -29,8 +28,15 @@ class Kewps5Controller extends Controller
      */
     public function create()
     {
+        $purata = Kewps5::get('purata_pembelian');
+
+        $jumlah = 0;
+        foreach ($purata as $p) {
+            $jumlah += $p->purata_pembelian;
+        }
         return view('modul.stor.kewps5.create', [
             'kewps3a' => Kewps3a::all(),
+            'jumlah' => $jumlah,
         ]);
     }
 

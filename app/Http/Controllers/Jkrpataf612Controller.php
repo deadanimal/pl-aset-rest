@@ -7,12 +7,11 @@ use App\Models\Jkrpataf612;
 use App\Models\SenaraiBinaanLuar;
 use App\Models\SenaraiBlokBangunan;
 // use Barryvdh\DomPDF\PDF;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\View;
-use Barryvdh\DomPDF\Facade as PDF;
-use Dompdf\Dompdf;
-use Dompdf\Options;
 
 class Jkrpataf612Controller extends Controller
 {
@@ -192,7 +191,7 @@ class Jkrpataf612Controller extends Controller
         $pdff->setOptions($options);
         $pdff->loadHtml(view('modul.aset_tak_alih.jkrpataf612.doc', [
             'j' => $jkrpataf612,
-            'no_dpa' => $no_dpa
+            'no_dpa' => $no_dpa,
         ]));
         $customPaper = array(2, -35, 480, 627);
         $pdff->setPaper($customPaper);
@@ -204,9 +203,22 @@ class Jkrpataf612Controller extends Controller
 
         exit(0);
 
-
         // view()->share('j612', $jkrpataf612);
         // $pdf = PDF::loadView('modul.z612', $jkrpataf612);
         // return $pdf->download('pdf_file.pdf');
+    }
+
+    public function senaraiBB()
+    {
+        return view('modul.aset_tak_alih.jkrpataf612.senaraiBB', [
+            'senaraiBB' => SenaraiBlokBangunan::all(),
+        ]);
+    }
+
+    public function senaraiBL()
+    {
+        return view('modul.aset_tak_alih.jkrpataf612.senaraiBL', [
+            'senaraiBL' => SenaraiBinaanLuar::all(),
+        ]);
     }
 }

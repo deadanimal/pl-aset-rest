@@ -48,12 +48,12 @@
 
                         <div class="col-3 mt-3">
                             <label for="">Jumlah beli tahun Lepas</label>
-                            <input class="form-control" type="number" name="jumlah_beli_setahun_lepas"
+                            <input class="form-control input" type="number" name="jumlah_beli_setahun_lepas"
                                 id="jbsatutahunlepas" value="">
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Jumlah beli dua tahun lepas</label>
-                            <input class="form-control" type="number" name="jumlah_beli_dua_tahun_lepas" value=""
+                            <input class="form-control input" type="number" name="jumlah_beli_dua_tahun_lepas" value=""
                                 id="jbduatahunlepas">
                         </div>
                         <div class="col-3 mt-3">
@@ -82,34 +82,24 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            //setup before functions
-            var typingTimer; //timer identifier
-            var doneTypingInterval = 1000; //time in ms, 5 second for example
-            var $input = $('#jbduatahunlepas');
-
-            //on keyup, start the countdown
-            $input.on('keyup', function() {
-                clearTimeout(typingTimer);
-                typingTimer = setTimeout(doneTyping, doneTypingInterval);
+        $(".input").keyup(function() {
+            let input = $(".input");
+            let notEmpty = false;
+            jQuery.each(input, function(key, val) {
+                if (val.value != "") {
+                    notEmpty = true;
+                } else {
+                    notEmpty = false;
+                }
             });
-
-            //on keydown, clear the countdown 
-            $input.on('keydown', function() {
-                clearTimeout(typingTimer);
-            });
-
-            //user is "finished typing," do something
-            function doneTyping() {
+            if (notEmpty) {
+                var jumlah = @json($jumlah);
                 var satu = parseInt($('#jbsatutahunlepas').val());
                 var dua = parseInt($('#jbduatahunlepas').val());
-
                 var purata = (satu + dua) / 2;
-                var peratusan = (purata / (satu + dua)) * 100;
+                var peratusan = (purata / jumlah) * 100;
                 $('#ck5purata').val(purata);
-                // $('#ck5peratusan').val(peratusan);
             }
-
         });
     </script>
 @endsection

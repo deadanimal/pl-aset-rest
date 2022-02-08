@@ -421,7 +421,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/jkrpata92', Jkrpata92Controller::class);
     Route::resource('/jkrpataf69', Jkrpataf69Controller::class);
     Route::resource('/jkrpataf610', Jkrpataf610Controller::class);
-    Route::resource('/jkrpataf612', Jkrpataf612Controller::class);
     Route::resource('/dataasetkhusus', DataAsetKhususController::class);
     Route::resource('/dakbinaanluar', DataAsetKhususBinaanLuarController::class);
     Route::resource('/gambarblok', GambarblokController::class);
@@ -439,11 +438,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/jalan', JalanController::class);
     Route::resource('/bahujalan', BahuJalanController::class);
 
-    Route::get('modul', [OtherController::class, 'modul_index'])->middleware('auth');
+    Route::resource('/jkrpataf612', Jkrpataf612Controller::class);
+    Route::get('/senarai-blok-bangunan', [Jkrpataf612Controller::class, 'senaraiBB']);
+    Route::get('/senarai-binaan-luar', [Jkrpataf612Controller::class, 'senaraiBL']);
+
+    Route::get('modul', [OtherController::class, 'modul_index']);
     Route::get('aset-alih', [OtherController::class, 'aset_alih_index']);
     Route::get('aset-tak-alih', [OtherController::class, 'aset_tak_alih_index']);
     Route::get('aset-tak-ketara', [OtherController::class, 'aset_tak_ketara_index']);
-    Route::get('stor', [OtherController::class, 'stor_index'])->middleware('auth');
+    Route::get('stor', [OtherController::class, 'stor_index']);
     Route::get('umum', [OtherController::class, 'umum_index']);
 
 # kewatk1 utility
@@ -562,4 +565,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kewpa35pdf/{kewpa35}', [Kewpa35Controller::class, 'generatePDF']);
     Route::get('/kewpa36pdf/{kewpa36}', [Kewpa36Controller::class, 'generatePDF']);
     Route::get('/kewpa37pdf/{kewpa37}', [Kewpa37Controller::class, 'generatePDF']);
+
 });
