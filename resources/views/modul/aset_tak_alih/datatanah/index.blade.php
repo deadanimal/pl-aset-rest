@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="/maklumat-aras-ruang">Maklumat Aras & Ruang</a></li>
+                                <li class="breadcrumb-item"><a href="/datatanah">Data Tanah</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -23,10 +23,10 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <h2 class="mb-0">Maklumat Aras</h2>
+                        <h2 class="mb-0">Data Tanah</h2>
                     </div>
                     <div class="text-end mr-2">
-                        <a href="/maklumataras/create"><button class="align-self-end btn btn-sm btn-primary"
+                        <a href="/datatanah/create"><button class="align-self-end btn btn-sm btn-primary"
                                 id="tambah">Tambah</button></a>
                     </div>
                 </div>
@@ -37,34 +37,31 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Senarai Ruang Aras</th>
-                            <th scope="col">Nama Ruang</th>
-                            <th scope="col">Luas Ruang</th>
-                            <th scope="col">Fungsi Ruang</th>
-                            <th scope="col">ID Data Aset Khusus</th>
+                            <th scope="col">Tarikh Pemilikan</th>
+                            <th scope="col">Kos Pemilikan</th>
+                            <th scope="col">Mukim Bandar</th>
+                            <th scope="col">Jenis Hakmilik</th>
+                            <th scope="col">No Hakmilik</th>
                             <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($maklumatAras as $ma)
+                        @foreach ($datatanah as $dt)
                             <tr>
-                                <td scope="col">{{ $ma->id }}</td>
-                                <td scope="col">{{ $ma->senarai_ruang_aras }}</td>
-                                <td scope="col">{{ $ma->nama_ruang }}</td>
-                                <td scope="col">{{ $ma->luas_ruang }}</td>
-                                <td scope="col">{{ $ma->fungsi_ruang }}</td>
-                                <td scope="col">{{ $ma->data_aset_khusus_id }}</td>
+                                <td scope="col">{{ $dt->id }}</td>
+                                <td scope="col">{{ $dt->pemilikan_tarikh }}</td>
+                                <td scope="col">{{ $dt->pemilikan_kos }}</td>
+                                <td scope="col">{{ $dt->mukim_bandar }}</td>
+                                <td scope="col">{{ $dt->hakmilik_jenis }}</td>
+                                <td scope="col">{{ $dt->hakmilik_nombor }}</td>
                                 <td scope="col">
-                                    <a class="btn-sm bg-white border-0" href="/maklumataras/{{ $ma->id }}"><i
+                                    <a class="btn-sm bg-white border-0" href="/datatanah/{{ $dt->id }}"><i
                                             class="fas fa-pen"></i></a>
-                                    <a class="btn-sm bg-white border-0"
-                                        href="/dataasetkhususpdf/{{ $ma->data_aset_khusus_id }}"><i
-                                            class="fas fa-print"></i></a>
-                                    <form action="/maklumataras/{{ $ma->id }}" class="d-inline" method="POST">
+                                    <form action="/datatanah/{{ $dt->id }}" class="d-inline" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                class="fas fa-trash text-danger"></i></button>
+                                                class=" fas fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

@@ -25,10 +25,7 @@
                     <div class="col">
                         <h2 class="mb-0">Maklumat Aras</h2>
                     </div>
-                    <div class="text-end mr-2">
-                        <a href="/maklumataras/create"><button class="align-self-end btn btn-sm btn-primary"
-                                id="tambah">Tambah</button></a>
-                    </div>
+
                 </div>
             </div>
 
@@ -41,8 +38,8 @@
                             <th scope="col">Nama Ruang</th>
                             <th scope="col">Luas Ruang</th>
                             <th scope="col">Fungsi Ruang</th>
+                            <th scope="col">Tinggi Ruang</th>
                             <th scope="col">ID Data Aset Khusus</th>
-                            <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,20 +50,8 @@
                                 <td scope="col">{{ $ma->nama_ruang }}</td>
                                 <td scope="col">{{ $ma->luas_ruang }}</td>
                                 <td scope="col">{{ $ma->fungsi_ruang }}</td>
+                                <td scope="col">{{ $ma->tinggi_ruang }}</td>
                                 <td scope="col">{{ $ma->data_aset_khusus_id }}</td>
-                                <td scope="col">
-                                    <a class="btn-sm bg-white border-0" href="/maklumataras/{{ $ma->id }}"><i
-                                            class="fas fa-pen"></i></a>
-                                    <a class="btn-sm bg-white border-0"
-                                        href="/dataasetkhususpdf/{{ $ma->data_aset_khusus_id }}"><i
-                                            class="fas fa-print"></i></a>
-                                    <form action="/maklumataras/{{ $ma->id }}" class="d-inline" method="POST">
-                                        @method('delete')
-                                        @csrf
-                                        <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                class="fas fa-trash text-danger"></i></button>
-                                    </form>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>

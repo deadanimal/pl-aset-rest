@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\DataTanah;
 use App\Models\Jkrpataf68;
 use App\Models\KodJabatan;
-use Barryvdh\DomPDF\Facade as PDF;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Http\Request;
@@ -57,24 +56,8 @@ class Jkrpataf68Controller extends Controller
         $jkrpataf68 = Jkrpataf68::create($request->all());
 
         $jkrpataf68->update([
-            'gambar_premis' => $out
+            'gambar_premis' => $out,
         ]);
-
-        foreach (range(0, count($request->pemilikan_tarikh) - 1) as $i) {
-            DataTanah::create([
-                'jkrpataf68_id' => $jkrpataf68->id,
-                'pemilikan_tarikh' => $request->pemilikan_tarikh[$i],
-                'pemilikan_kos' => $request->pemilikan_kos[$i],
-                'mukim_bandar' => $request->mukim_bandar[$i],
-                'hakmilik_jenis' => $request->hakmilik_jenis[$i],
-                'hakmilik_nombor' => $request->hakmilik_nombor[$i],
-                'lot_nombor' => $request->lot_nombor[$i],
-                'lot_luas' => $request->lot_luas[$i],
-                'status' => $request->status[$i],
-                'tarikh_ptp' => $request->tarikh_ptp[$i],
-                'catatan' => $request->catatan[$i],
-            ]);
-        }
 
         return redirect('/jkrpataf68');
     }
@@ -87,8 +70,12 @@ class Jkrpataf68Controller extends Controller
      */
     public function show(Jkrpataf68 $jkrpataf68)
     {
+
         return view('modul.aset_tak_alih.jkrpataf68.edit', [
             'jkrpataf68' => $jkrpataf68,
+            'jabatan' => KodJabatan::all(),
+            'negara' => DB::table('negara')->get(),
+            'negeri' => DB::table('negeri')->get(),
         ]);
     }
 
@@ -112,20 +99,20 @@ class Jkrpataf68Controller extends Controller
      */
     public function update(Request $request, Jkrpataf68 $jkrpataf68)
     {
+
+        if ($request->file('gambar_premis')) {
+            Storage::delete($jkrpataf68->gambar_premis);
+        }
+
         $jkrpataf68->update($request->all());
-        foreach (range(0, count($request->pemilikan_tarikh) - 1) as $i) {
-            DataTanah::where('id', $request->datatanah_id[$i])->update([
-                'pemilikan_tarikh' => $request->pemilikan_tarikh[$i],
-                'pemilikan_kos' => $request->pemilikan_kos[$i],
-                'mukim_bandar' => $request->mukim_bandar[$i],
-                'hakmilik_jenis' => $request->hakmilik_jenis[$i],
-                'hakmilik_nombor' => $request->hakmilik_nombor[$i],
-                'lot_nombor' => $request->lot_nombor[$i],
-                'lot_luas' => $request->lot_luas[$i],
-                'status' => $request->status[$i],
-                'tarikh_ptp' => $request->tarikh_ptp[$i],
-                'catatan' => $request->catatan[$i],
+
+        if ($request->file('gambar_premis')) {
+            $out = $request->file('gambar_premis')->store('aset_tak_alih/gambarpremis/gambarpremis');
+            $jkrpataf68['gambar_premis'] = $out;
+            $jkrpataf68->update([
+                'gambar_premis' => $out,
             ]);
+
         }
         return redirect('/jkrpataf68');
     }
@@ -171,7 +158,7 @@ class Jkrpataf68Controller extends Controller
         $options->set('isRemoteEnabled', true);
         $pdff->setOptions($options);
         $pdff->loadHtml(view('modul.aset_tak_alih.jkrpataf68.doc', [
-            'jkrpataf68' => $jkrpataf68
+            'jkrpataf68' => $jkrpataf68,
         ]));
         $customPaper = array(50, -60, 500, 560);
         $pdff->setPaper($customPaper);

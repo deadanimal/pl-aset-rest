@@ -33,197 +33,69 @@
 
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-4 mt-3">
-                            <label for="">ID Data Aset Khusus Blok/Binaan Luar</label>
+                        <div class="col-6">
+                            <label for="">ID Data Aset Khusus Blok Bangunan</label>
                             <div class="input-group">
-                                <select name="dak" class="form-control">
+                                <select class="form-control mb-3" name="data_aset_khusus_id" required>
                                     <option disabled hidden selected>Pilih</option>
-                                    <option value="dakbl"></option>
-
+                                    @foreach ($dakbb as $bb)
+                                        <option value="{{ $bb->id }}">{{ $bb->id }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="row" id="maklumat_aras">
-                            <div class="col-12 mt-5">
-                                <h3>Maklumat Aras</h3>
+
+                        <div class="col-6">
+                            <label class="form-label" for="">Senarai Ruang Aras</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="number" name="senarai_ruang_aras" value="" required>
                             </div>
-                            <div class="col-3">
-                                <label class="form-label col-form-label-sm" for="">Senarai Ruang Aras</label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" type="number" name="senarai_ruang_aras[]"
-                                        value="">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label col-form-label-sm" for="">Nama Ruang</label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" type="text" name="nama_ruang[]" value="">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <label class="form-label col-form-label-sm" for="">Fungsi Ruang</label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" type="text" name="fungsi_ruang[]" value="">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <label class="form-label col-form-label-sm" for="">Luas Ruang</label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" type="number" step="0.01"
-                                        name="luas_ruang[]" value="">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <label class="form-label col-form-label-sm" for="">Tinggi Ruang</label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" type="number" step="0.01"
-                                        name="tinggi_ruang[]" value="">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <label class="form-label col-form-label-sm" for="">From Page</label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" type="number" name="from_page2[]" value="">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <label class="form-label col-form-label-sm" for="">To Page</label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" type="number" name="to_page2[]" value="">
-                                </div>
-                            </div>
-                            <input type="hidden" name="staff_id_ra[]" value="{{ Auth::user()->id }}">
                         </div>
-                        <div class="mt-4">
-                            <a class="btn btn-sm btn-primary text-white" onclick="tambahmaklumataras()">Tambah Maklumat
-                                Aras</a>
+
+                        <div class="col-6">
+                            <label class="form-label" for="">Nama Ruang</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="text" name="nama_ruang" value="" required>
+                            </div>
                         </div>
-                        <button class="btn btn-primary mt-5" type="submit">Simpan</button>
+
+                        <div class="col-6">
+                            <label class="form-label" for="">Fungsi Ruang</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="text" name="fungsi_ruang" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-label" for="">Luas Ruang</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="number" step="0.01" name="luas_ruang" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-label" for="">Tinggi Ruang</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="number" step="0.01" name="tinggi_ruang" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-label" for="">From Page</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="number" name="from_page" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-label" for="">To Page</label>
+                            <div class="input-group">
+                                <input class="form-control mb-3" type="number" name="to_page" value="" required>
+                            </div>
+                        </div>
+                        <input type="hidden" name="staff_id" value="{{ Auth::user()->id }}">
                     </div>
+
+                    <button class="btn btn-primary mt-5" type="submit">Simpan</button>
                 </div>
         </form>
     </div>
-
-    <script>
-        function tambahkontraktorbangunan() {
-            $("#kontraktor_bangunan").append(
-                `      <div class="col-12 mt-5">
-                            <h3>Kontraktor Bangunan</h3>
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label col-form-label-sm" for="">Nama Kontraktor Bangunan</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="nama_kontraktor_bangunan[]"
-                                    value="">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label col-form-label-sm" for="">Bidang Kerja Kontraktor Bangunan</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="text"
-                                    name="bidang_kerja_kontraktor_bangunan[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label col-form-label-sm" for="">Kontraktor Utama Bangunan</label>
-                            <div class="input-group">
-                                <select class="form-control form-control-sm" name="kontraktor_utama_bangunan[]">
-                                    <option selected>Pilih</option>
-                                    <option value="1">Ya</option>
-                                    <option value="0">Tidak</option>
-                                </select>
-                            </div>
-                        </div>
-                `
-            )
-        }
-
-        function tambahperundingbangunan() {
-            $("#perunding_bangunan").append(
-                `      <div class="col-12 mt-5">
-                            <h3>Perunding Bangunan</h3>
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label col-form-label-sm" for="">Nama Perunding Bangunan</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="nama_perunding_bangunan[]"
-                                    value="">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label col-form-label-sm" for="">Bidang Kerja Perunding Bangunan</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="text"
-                                    name="bidang_kerja_perunding_bangunan[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <label class="form-label col-form-label-sm" for="">Perunding Utama Bangunan</label>
-                            <div class="input-group">
-                                <select class="form-control form-control-sm" name="perunding_utama_bangunan[]">
-                                    <option selected>Pilih</option>
-                                    <option value="1">Ya</option>
-                                    <option value="0">Tidak</option>
-                                </select>
-                            </div>
-                        </div>
-                `
-            )
-        }
-
-        function tambahmaklumataras() {
-            $("#maklumat_aras").append(
-                `      <div class="col-12 mt-5">
-                            <h3>Maklumat Aras</h3>
-                        </div>
-                        <div class="col-3">
-                            <label class="form-label col-form-label-sm" for="">Senarai Ruang Aras</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="number" name="senarai_ruang_aras[]"
-                                    value="">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <label class="form-label col-form-label-sm" for="">Nama Ruang</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="nama_ruang[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <label class="form-label col-form-label-sm" for="">Fungsi Ruang</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="text" name="fungsi_ruang[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <label class="form-label col-form-label-sm" for="">Luas Ruang</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="number" step="0.01" name="luas_ruang[]"
-                                    value="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <label class="form-label col-form-label-sm" for="">Tinggi Ruang</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="number" step="0.01" name="tinggi_ruang[]"
-                                    value="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <label class="form-label col-form-label-sm" for="">From Page</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="number" name="from_page2[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <label class="form-label col-form-label-sm" for="">To Page</label>
-                            <div class="input-group">
-                                <input class="form-control form-control-sm" type="number" name="to_page2[]" value="">
-                            </div>
-                        </div>
-                        <input type="hidden" name="staff_id_ra[]" value="{{ Auth::user()->id }}">
-                `
-            )
-        }
-    </script>
 @endsection

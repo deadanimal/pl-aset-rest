@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataAsetKhusus;
-use App\Models\DataAsetKhususBinaanLuar;
 use App\Models\MaklumatAras;
 use Illuminate\Http\Request;
 
@@ -30,7 +29,6 @@ class MaklumatArasController extends Controller
     {
         return view('modul.aset_tak_alih.maklumatAras.create', [
             'dakbb' => DataAsetKhusus::all(),
-            'dakbl' => DataAsetKhususBinaanLuar::all(),
         ]);
     }
 
@@ -43,7 +41,7 @@ class MaklumatArasController extends Controller
     public function store(Request $request)
     {
         MaklumatAras::create($request->all());
-        return redirect('/dataasetkhusus/' . $request->data_aset_khusus_id);
+        return redirect('/maklumataras');
     }
 
     /**
@@ -52,9 +50,12 @@ class MaklumatArasController extends Controller
      * @param  \App\Models\MaklumatAras  $maklumatAras
      * @return \Illuminate\Http\Response
      */
-    public function show(MaklumatAras $maklumatAras)
+    public function show(MaklumatAras $maklumatara)
     {
-        //
+        return view('modul.aset_tak_alih.maklumatAras.edit', [
+            'dakbb' => DataAsetKhusus::all(),
+            'ma' => $maklumatara,
+        ]);
     }
 
     /**
@@ -78,7 +79,7 @@ class MaklumatArasController extends Controller
     public function update(Request $request, MaklumatAras $maklumatara)
     {
         $maklumatara->update($request->all());
-        return redirect('/dataasetkhusus/' . $maklumatara->data_aset_khusus_id);
+        return redirect('/maklumataras');
     }
 
     /**
@@ -90,6 +91,6 @@ class MaklumatArasController extends Controller
     public function destroy(MaklumatAras $maklumatara)
     {
         $maklumatara->delete();
-        return redirect('/dataasetkhusus/' . $maklumatara->data_aset_khusus_id);
+        return redirect('/maklumataras');
     }
 }

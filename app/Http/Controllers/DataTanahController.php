@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataTanah;
+use App\Models\Jkrpataf68;
 use Illuminate\Http\Request;
 
 class DataTanahController extends Controller
@@ -14,7 +15,9 @@ class DataTanahController extends Controller
      */
     public function index()
     {
-        //
+        return view('modul.aset_tak_alih.datatanah.index', [
+            'datatanah' => DataTanah::all(),
+        ]);
     }
 
     /**
@@ -24,7 +27,9 @@ class DataTanahController extends Controller
      */
     public function create()
     {
-        //
+        return view('modul.aset_tak_alih.datatanah.create', [
+            'jkrpataf68' => Jkrpataf68::all(),
+        ]);
     }
 
     /**
@@ -35,7 +40,8 @@ class DataTanahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DataTanah::create($request->all());
+        return redirect('/datatanah');
     }
 
     /**
@@ -44,9 +50,13 @@ class DataTanahController extends Controller
      * @param  \App\Models\DataTanah  $dataTanah
      * @return \Illuminate\Http\Response
      */
-    public function show(DataTanah $dataTanah)
+    public function show(DataTanah $datatanah)
     {
-        //
+        return view('modul.aset_tak_alih.datatanah.edit', [
+            'dt' => $datatanah,
+            'jkrpataf68' => Jkrpataf68::all(),
+        ]);
+
     }
 
     /**
@@ -67,9 +77,10 @@ class DataTanahController extends Controller
      * @param  \App\Models\DataTanah  $dataTanah
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DataTanah $dataTanah)
+    public function update(Request $request, DataTanah $datatanah)
     {
-        //
+        $datatanah->update($request->all());
+        return redirect('/datatanah');
     }
 
     /**
@@ -78,8 +89,9 @@ class DataTanahController extends Controller
      * @param  \App\Models\DataTanah  $dataTanah
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DataTanah $dataTanah)
+    public function destroy(DataTanah $datatanah)
     {
-        //
+        $datatanah->delete();
+        return redirect('/datatanah');
     }
 }

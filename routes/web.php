@@ -14,6 +14,7 @@
 use App\Http\Controllers\BahuJalanController;
 use App\Http\Controllers\DataAsetKhususBinaanLuarController;
 use App\Http\Controllers\DataAsetKhususController;
+use App\Http\Controllers\DataTanahController;
 use App\Http\Controllers\GambarbinaanluarController;
 use App\Http\Controllers\GambarblokController;
 use App\Http\Controllers\HomeStorController;
@@ -418,6 +419,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('/jkrpataf102', Jkrpataf102Controller::class);
     Route::resource('/jkrpataf68', Jkrpataf68Controller::class);
+    Route::resource('/datatanah', DataTanahController::class);
     Route::resource('/jkrpata92', Jkrpata92Controller::class);
     Route::resource('/jkrpataf69', Jkrpataf69Controller::class);
     Route::resource('/jkrpataf610', Jkrpataf610Controller::class);
@@ -437,10 +439,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/perundingbl', PerundingLuarPremisController::class);
     Route::resource('/jalan', JalanController::class);
     Route::resource('/bahujalan', BahuJalanController::class);
-
     Route::resource('/jkrpataf612', Jkrpataf612Controller::class);
     Route::get('/senarai-blok-bangunan', [Jkrpataf612Controller::class, 'senaraiBB']);
     Route::get('/senarai-binaan-luar', [Jkrpataf612Controller::class, 'senaraiBL']);
+    Route::get('/senarai-maklumat-aras', [Jkrpataf612Controller::class, 'senaraiMA']);
 
     Route::get('modul', [OtherController::class, 'modul_index']);
     Route::get('aset-alih', [OtherController::class, 'aset_alih_index']);
