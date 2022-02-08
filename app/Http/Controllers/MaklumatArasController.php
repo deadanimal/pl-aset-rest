@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\MaklumatAras;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 class MaklumatArasController extends Controller
 {
@@ -15,7 +14,9 @@ class MaklumatArasController extends Controller
      */
     public function index()
     {
-        //
+        return view('modul.aset_tak_alih.maklumatAras.index', [
+            'maklumatAras' => MaklumatAras::all(),
+        ]);
     }
 
     /**

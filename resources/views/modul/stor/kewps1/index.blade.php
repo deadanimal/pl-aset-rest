@@ -23,7 +23,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">Penerimaan Aset</h2>
+                            <h2 class="mb-0">Penerimaan Stok</h2>
                         </div>
                         <div class="text-end mr-2">
                             <a href="/kewps1/create"><button class="align-self-end btn btn-sm btn-primary"
@@ -58,13 +58,13 @@
 
                                     @if ($k1->status == 'DERAF')
                                         <td scope="col"><span class="badge bg-warning">{{ $k1->status }}</span></th>
-                                        @elseif ($k1->status=="HANTAR")
+                                        @elseif ($k1->status == 'HANTAR')
                                         <td scope="col"><span class="badge bg-primary">{{ $k1->status }}</span></th>
-                                        @elseif ($k1->status=="SOKONG")
+                                        @elseif ($k1->status == 'SOKONG')
                                         <td scope="col"><span class="badge bg-warning">{{ $k1->status }}</span></th>
-                                        @elseif ($k1->status=="LULUS")
+                                        @elseif ($k1->status == 'LULUS')
                                         <td scope="col"><span class="badge bg-success">{{ $k1->status }}</span></th>
-                                        @elseif ($k1->status=="DITOLAK")
+                                        @elseif ($k1->status == 'DITOLAK')
                                         <td scope="col"><span class="badge bg-danger">{{ $k1->status }}</span></th>
                                     @endif
 

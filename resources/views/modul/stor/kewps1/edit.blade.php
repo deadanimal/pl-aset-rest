@@ -88,36 +88,45 @@
                             <div class="col-12">
                                 <h5 class="mt-4">Nota Hantaran</h5>
                             </div>
-                            <div class="col-4">
+                            <div class="col-6">
                                 <label for="">No DO</label>
                                 <div class="input-group">
                                     <input class="form-control mb-3" type="text" name="nombor_do"
                                         value="{{ $kewps1->nombor_do }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-6">
                                 <label for="">Tarikh DO</label>
                                 <div class="input-group">
                                     <input class="form-control mb-3" type="date" name="tarikh_do"
                                         value="{{ $kewps1->tarikh_do }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-6">
+                                <div class="d-none">
+                                    <?= $mp = $kewps1->maklumat_pengangkutan ?>
+                                </div>
                                 <label for="">Maklumat Pengangkutan</label>
                                 <div class="input-group">
-                                    <select name="maklumat_pengangkutan" class="form-control mb-3">
-                                        <option {{ $kewps1->maklumat_pengangkutan == 'Lori' ? 'selected' : '' }}
-                                            value="Lori">Lori</option>
-                                        <option {{ $kewps1->maklumat_pengangkutan == 'Kapal Terbang' ? 'selected' : '' }}
-                                            value="Kapal Terbang">Kapal Terbang</option>
-                                        <option {{ $kewps1->maklumat_pengangkutan == 'Kapal Laut' ? 'selected' : '' }}
-                                            value="Kapal Laut">Kapal Laut</option>
-                                        <option
-                                            {{ $kewps1->maklumat_pengangkutan == 'Perkhidmatan kourier' ? 'selected' : '' }}
+                                    <select name="maklumat_pengangkutan" class="form-control mb-3"
+                                        id="maklumat_pengangkutan">
+                                        <option {{ $mp == 'Lori' ? 'selected' : '' }} value="Lori">Lori</option>
+                                        <option {{ $mp == 'Kapal Terbang' ? 'selected' : '' }} value="Kapal Terbang">
+                                            Kapal Terbang</option>
+                                        <option {{ $mp == 'Kapal Laut' ? 'selected' : '' }} value="Kapal Laut">Kapal Laut
+                                        </option>
+                                        <option {{ $mp == 'Perkhidmatan kourier' ? 'selected' : '' }}
                                             value="Perkhidmatan kourier">Perkhidmatan kourier</option>
+                                        <option
+                                            {{ $mp != 'Perkhidmatan kourier' || $mp == 'Lori' || $mp == 'Kapal Terbang' || $mp == 'Kapal Laut'? 'selected': '' }}
+                                            value="Lain-lain">Lain-lain</option>
                                     </select>
-
                                 </div>
+                            </div>
+                            <div class="col-6 d-none" id="div_lain">
+                                <Label>Lain-lain</Label>
+                                <input type="text" name="mp_lain_lain" class="form-control mb-3"
+                                    value="{{ $mp }}">
                             </div>
                         </div>
                         <button class="btn-sm btn btn-primary" type="submit">Simpan</button>
@@ -319,10 +328,22 @@
                     scrollTop: $(document).height() - $(window).height()
                 });
             });
-
+            let mp = @json($mp);
+            if (mp != 'Perkhidmatan kourier' || mp == 'Lori' || mp == 'Kapal Terbang' || mp == 'Kapal Laut') {
+                $("#div_lain").removeClass("d-none");
+            } else {
+                $("#div_lain").addClass("d-none");
+            }
         });
 
-
+        $("#maklumat_pengangkutan").change(function() {
+            let val = this.value;
+            if (val == "Lain-lain") {
+                $("#div_lain").removeClass("d-none");
+            } else {
+                $("#div_lain").addClass("d-none");
+            }
+        });
 
         // function infokewps1_kemaskini(obj) {
         //     $(".info" + obj.id).attr("readonly", false);

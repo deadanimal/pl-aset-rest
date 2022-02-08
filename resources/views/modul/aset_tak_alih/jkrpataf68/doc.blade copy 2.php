@@ -317,8 +317,7 @@
                     <p></p>
                 </td>
                 <td style="background-color:rgb(138, 168, 110); width: 245px;border: 0px;">
-                    <span class="cls_003" style="margin-left:10px">Permohonan Tanah (Kad Pendaftaran Aset Tak Alih
-                        - Tanah)</span>
+                    <span class="cls_003" style="margin-left:10px">BAB C: PENERIMAAN DAN PENDAFTARAN ASET</span>
                 </td>
                 <td style="width: 35px;border: 0px;">
                     <p></p>
@@ -332,11 +331,11 @@
         <div style="position:absolute;left:576.77px;top:53.26px" class="cls_004"><span
                 class="cls_004">83</span></div>
         <div style="position:absolute;left:478.52px;top:115.59px" class="cls_005"><span
-                class="cls_005">JKR.PATA.F6/8 (TANAH)</span></div>
+                class="cls_005">JKR.PATA.F6/8</span></div>
         <div style="position:absolute;left:120px;top:156.02px" class="cls_006"><span class="cls_006">No.
-                Rujukan Tanah : {{ $jkrpataf68->id }}</span></div>
+                Rujukan : {{ $jkrpataf68->id }}</span></div>
         <div style="position:absolute;left:120px;top:171.93px" class="cls_006"><span class="cls_006">Tarikh
-                Pendaftaran : {{ $jkrpataf68->tarikh }}</span></div>
+                : {{ $jkrpataf68->tarikh }}</span></div>
         <div style="position:absolute;left:300px;top:187.41px" class="cls_020"><span class="cls_020">KAD
                 PENDAFTARAN ASET TAK ALIH</span></div>
         <div style="position:absolute;left:120px;top:220px" class="cls_009"><span class="cls_009">Kategori
@@ -375,15 +374,15 @@
             </span></div>
 
         <div style="position:absolute;left:120px;top:261.38px" class="cls_009"><span class="cls_009">Nama
-                Tanah</span></div>
+                Premis</span></div>
         <div style="position:absolute;left:184px;top:261.38px" class="cls_009"><span class="cls_009">:
                 {{ $jkrpataf68->nama_premis }}</span></div>
         <div style="position:absolute;left:120px;top:272.35px" class="cls_009"><span
-                class="cls_009">Alamat Tanah</span></div>
+                class="cls_009">Alamat Premis</span></div>
         <div style="position:absolute;left:184px;top:272.35px" class="cls_009"><span class="cls_009">:
                 {{ $jkrpataf68->alamat_premis }}</span></div>
         <div style="position:absolute;left:120px;top:284.82px" class="cls_009"><span
-                class="cls_009">**Koordinat GPS <br> (Tanah)</span></div>
+                class="cls_009">**Koordinat GPS</span></div>
         <div style="position:absolute;left:184px;top:284.82px" class="cls_009"><span class="cls_009">:
                 {{ $jkrpataf68->koordinat_gps }}</span></div>
 
@@ -392,15 +391,58 @@
                 1959 dan Akta Rahsia Rasmi 1970</span></div>
 
         <div style="position:absolute;left:150px;top:340px" class="cls_009"><span class="cls_009">***No.
-                DPA <br> (Tanah)</span></div>
+                DPA</span></div>
         <div style="position:absolute;left:194px;top:340px" class="cls_009"><span class="cls_009">:
                 {{ $jkrpataf68->id }}</span></div>
         <div style="position:absolute;left:182.29px;top:353px" class="cls_010"><span
                 class="cls_010">***diperolehi selepas pendaftaran ke dalam sistem mySPATA</span></div>
+        <div style="position:absolute;left:120px;top:374.92px" class="cls_007"><span
+                class="cls_007">MAKLUMAT PREMIS ASET</span></div>
 
-        <div style="position:absolute;left:120px;top:400px" class="cls_007"><span class="cls_007">DATA
+        <div style="position:absolute;left:125px;top:387.61px" class="cls_009"><span
+                class="cls_009">Kumpulan Agensi : {{ $jkrpataf68->kumpulan_agensi }}</span></div>
+        <div style="position:absolute;left:315.17px;top:387.61px" class="cls_009"><span
+                class="cls_009">Bilangan Blok/ Binaan / Sistem Utama : {{ $jkrpataf68->bilangan_blok }}</span>
+        </div>
+        <div style="position:absolute;left:125px;top:400.94px" class="cls_009"><span
+                class="cls_009">Kementerian : {{ $jkrpataf68->kementerian }}</span></div>
+        <div style="position:absolute;left:315.17px;top:400.94px" class="cls_009"><span
+                class="cls_009">Jumlah Saiz Premis ( Keluasan / Panjang) :
+                {{ $jkrpataf68->jumlah_saiz_premis }}</span></div>
+        <div style="position:absolute;left:125px;top:414.27px" class="cls_009"><span
+                class="cls_009">Jabatan : {{ $jkrpataf68->jabatan }}</span></div>
+        <div style="position:absolute;left:315.17px;top:414.27px" class="cls_009"><span
+                class="cls_009">Tarikh Siap Bina Asal : {{ $jkrpataf68->tarikh_siap_bina_asal }}</span></div>
+        <div style="position:absolute;left:125px;top:427.82px" class="cls_009"><span
+                class="cls_009">Negara : {{ $jkrpataf68->negara }}</span></div>
+        <div style="position:absolute;left:315.17px;top:427.82px" class="cls_009"><span
+                class="cls_009">Tarikh Warta (jika berkenaan) : {{ $jkrpataf68->tarikh_warta }}</span></div>
+        <div style="position:absolute;left:125px;top:441.15px" class="cls_009"><span
+                class="cls_009">Negeri (jika berkenaan) : {{ $jkrpataf68->negeri }}</span></div>
+        <div style="position:absolute;left:315.17px;top:441.15px" class="cls_009"><span
+                class="cls_009">Jumlah Kos Perolehan Aset :
+                {{ $jkrpataf68->jumlah_kos_perolehan_asal }}</span>
+        </div>
+        <div style="position:absolute;left:125px;top:454.48px" class="cls_009"><span
+                class="cls_009">Daerah (jika berkenaan) : {{ $jkrpataf68->daerah }}</span></div>
+        <div style="position:absolute;left:315.17px;top:454.48px" class="cls_009"><span
+                class="cls_009">No. Lukisan Pelan Lokasi : {{ $jkrpataf68->no_lukisan_pelan_lokasi }}</span>
+        </div>
+        <div style="position:absolute;left:125px;top:467.81px" class="cls_009"><span class="cls_009">Mukim
+                (jika berkenaan) : {{ $jkrpataf68->mukim }}</span></div>
+        <div style="position:absolute;left:315.17px;top:467.81px" class="cls_009"><span
+                class="cls_009">No. Lukisan Pelan Tapak : {{ $jkrpataf68->no_lukisan_pelan_tapak }}</span>
+        </div>
+        <div style="position:absolute;left:125px;top:481.32px" class="cls_013"><span
+                class="cls_013">Kategori Fungsi Premis : {{ $jkrpataf68->kategori_fungsi_premis }}</span>
+        </div>
+        <div style="position:absolute;left:125px;top:494.48px" class="cls_009"><span class="cls_009">*No.
+                Laluan / No. Loji : {{ $jkrpataf68->no_laluan }}</span></div>
+        <div style="position:absolute;left:128px;top:520px" class="cls_010"><span class="cls_010">*
+                potong jika tidak berkenaan </span></div>
+        <div style="position:absolute;left:120px;top:540px" class="cls_007"><span class="cls_007">DATA
                 TANAH DALAM PREMIS ASET </span></div>
-        <table style="position:absolute;left:118.42px;top:410px;">
+        <table style="position:absolute;left:118.42px;top:550px;">
             <tr style="background-color: rgb(230,230,230);">
                 <th colspan="2"><span class="cls_009">Pemilikan</span></th>
                 <th rowspan="2"><span class="cls_009">Mukim <br>/ Bandar<br>/ Pekan <br> / Kampung <br>
@@ -443,6 +485,75 @@
         </table>
 
 
+        {{-- <table style="position:absolute;left:118.42px;top:680px;">
+            <tr style="background-color: rgb(218, 217, 217)">
+                <th style="width: 450px;"><span class="cls_011">PENGESAHAN</span></th>
+            </tr>
+            <tr>
+                <td style="height: 150px;">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+
+
+
+        <div style="position:absolute;left:180px;top:700px" class="cls_009"><span
+                class="cls_009">Pegawai
+                Daftar & Data <br>Fasiliti: </span></div>
+        <div style="position:absolute;left:420px;top:700px" class="cls_009"><span
+                class="cls_009">Pegawai
+                Teknikal Fasiliti :</span></div>
+
+        <div style="position:absolute;left:140px;top:730px" class="cls_009"><span
+                class="cls_009">Tandatangan</span></div>
+        <div style="position:absolute;left:190px;top:730px" class="cls_009"><span
+                class="cls_009">:</span>
+        </div>
+
+        <div style="position:absolute;left:370px;top:730px" class="cls_009"><span
+                class="cls_009">Tandatangan</span></div>
+        <div style="position:absolute;left:420px;top:730px" class="cls_009"><span
+                class="cls_009">:</span>
+        </div>
+
+        <div style="position:absolute;left:140px;top:740px" class="cls_009"><span
+                class="cls_009">Nama</span></div>
+        <div style="position:absolute;left:190px;top:740px" class="cls_009"><span
+                class="cls_009">:</span>
+        </div>
+
+        <div style="position:absolute;left:370px;top:740px" class="cls_009"><span
+                class="cls_009">Nama</span></div>
+        <div style="position:absolute;left:420px;top:740px" class="cls_009"><span
+                class="cls_009">:</span>
+        </div>
+
+        <div style="position:absolute;left:140px;top:750px" class="cls_009"><span
+                class="cls_009">Jawatan</span></div>
+        <div style="position:absolute;left:190px;top:750px" class="cls_009"><span
+                class="cls_009">:</span>
+        </div>
+
+        <div style="position:absolute;left:370px;top:750px" class="cls_009"><span
+                class="cls_009">Jawatan</span></div>
+        <div style="position:absolute;left:420px;top:750px" class="cls_009"><span
+                class="cls_009">:</span>
+        </div>
+
+        <div style="position:absolute;left:140px;top:760px" class="cls_009"><span
+                class="cls_009">Tarikh</span></div>
+        <div style="position:absolute;left:190px;top:760px" class="cls_009"><span
+                class="cls_009">:</span>
+        </div>
+
+        <div style="position:absolute;left:370px;top:760px" class="cls_009"><span
+                class="cls_009">Tarikh</span></div>
+        <div style="position:absolute;left:420px;top:760px" class="cls_009"><span
+                class="cls_009">:</span>
+        </div> --}}
+
+
     </div>
 
 
@@ -475,6 +586,13 @@
         <div style="position:absolute;left:48.90px;top:53.26px" class="cls_004"><span
                 class="cls_004">84</span></div>
 
+
+        <div style="position:absolute;left:91.52px;top:110px" class="cls_015"><span class="cls_015">No.
+                Rujukan : {{ $jkrpataf68->id }}</span></div>
+        <div style="position:absolute;left:91.52px;top:125px" class="cls_015"><span
+                class="cls_015">Tarikh : {{ $jkrpataf68->tarikh }}</span></div>
+        <div style="position:absolute;left:217.19px;top:140px" class="cls_021"><span class="cls_021">KAD
+                PENDAFTARAN ASET TAK ALIH</span></div>
         <div style="position:absolute;left:260.56px;top:175px" class="cls_021"><span
                 class="cls_021">GAMBAR PREMIS</span>
         </div>

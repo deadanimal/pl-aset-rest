@@ -72,29 +72,34 @@
                         <div class="col-12">
                             <h5 class="mt-4">Nota Hantaran</h5>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <label for="">No DO</label>
                             <input class="form-control mb-3" type="text" name="nombor_do" value="" required>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <label for="">Tarikh DO</label>
                             <input class="form-control mb-3" type="date" name="tarikh_do" value="" required>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <label for="">Maklumat Pengangkutan</label>
                             <div class="input-group">
-                                <select name="maklumat_pengangkutan" class="form-control mb-3" required>
+                                <select name="maklumat_pengangkutan" class="form-control mb-3" id="maklumat_pengangkutan"
+                                    required>
                                     <option value="Lori">Lori</option>
                                     <option value="Kapal Terbang">Kapal Terbang</option>
                                     <option value="Kapal Laut">Kapal Laut</option>
                                     <option value="Perkhidmatan kourier">Perkhidmatan kourier</option>
+                                    <option value="Lain-lain">Lain-lain</option>
                                 </select>
                             </div>
                         </div>
+                        <div class="col-6 d-none" id="div_lain">
+                            <Label>Lain-lain</Label>
+                            <input type="text" name="mp_lain_lain" class="form-control mb-3">
+                        </div>
                         <input class="form-control form-control-sm" type="hidden" name="status" value="DERAF">
                     </div>
-                    <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
-                    <a class="btn btn-sm btn-primary text-white" onclick="tambahAset()">Tambah Aset</a>
+
                 </div>
             </div>
 
@@ -164,6 +169,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row my-3">
+                <div class="col">
+                    <button class="btn btn-primary" type="submit">Simpan</button>
+                    <a class="btn btn-primary text-white" onclick="tambahAset()">Tambah Stok</a>
+                </div>
+            </div>
+
         </form>
     </div>
 
@@ -214,6 +227,15 @@
             });
 
         }
+
+        $("#maklumat_pengangkutan").change(function() {
+            let val = this.value;
+            if (val == "Lain-lain") {
+                $("#div_lain").removeClass("d-none");
+            } else {
+                $("#div_lain").addClass("d-none");
+            }
+        });
 
         $("#kewps1_changepembekalcreate").change(function() {
             var pembekal = @json($pembekal->toArray());

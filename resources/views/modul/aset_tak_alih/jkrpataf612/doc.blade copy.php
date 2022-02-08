@@ -612,26 +612,26 @@
                     width=637 height=883>
             </div>
             <div style="position:absolute;left:343.04px;top:55.86px" class="cls_002"><span
-                    class="cls_002">BAB C : </span><span class="cls_003">SENARAI TANAH YANG TELAH
-                    DIDAFTARKAN</span></div>
+                    class="cls_002">BAB C : </span><span class="cls_003">PENERIMAAN DAN PENDAFTARAN
+                    ASET</span></div>
             <div style="position:absolute;left:576.77px;top:53.26px" class="cls_004"><span
                     class="cls_004">91</span></div>
             <div style="position:absolute;left:456.88px;top:95.73px" class="cls_005"><span
                     class="cls_005">JKR.PATA.F6/12</span></div>
             <div style="position:absolute;left:220.96px;top:120.15px" class="cls_041"><span
-                    class="cls_041">LAPORAN DAFTAR ASET KHUSUS (TANAH)</span></div>
+                    class="cls_041">LAPORAN DAFTAR ASET KHUSUS</span></div>
             <div style="position:absolute;left:214.02px;top:156.11px" class="cls_009"><span
                     class="cls_009">MAKLUMAT ASAS DAFTAR PREMIS ASET (DPA)</span></div>
             <div style="position:absolute;left:113.92px;top:194.51px" class="cls_010"><span
-                    class="cls_010">Nama Tanah</span></div>
+                    class="cls_010">Nama Premis</span></div>
             <div style="position:absolute;left:184.12px;top:194.51px" class="cls_010"><span
                     class="cls_010">: &nbsp;&nbsp;&nbsp; {{ $j->jkrpataf68->nama_premis }}</span></div>
             <div style="position:absolute;left:184.12px;top:225.48px" class="cls_010"><span
                     class="cls_010">: &nbsp;&nbsp;&nbsp; {{ $j->jkrpataf68->alamat_premis }}</span></div>
             <div style="position:absolute;left:108.42px;top:226.69px" class="cls_010"><span
-                    class="cls_010">Alamat Tanah</span></div>
+                    class="cls_010">Alamat Premis</span></div>
             <div style="position:absolute;left:124.91px;top:263.10px" class="cls_010"><span
-                    class="cls_010">**No. DPA <br> (Tanah)</span></div>
+                    class="cls_010">**No. DPA</span></div>
             <div style="position:absolute;left:184.12px;top:258.10px" class="cls_010"><span
                     class="cls_010">: &nbsp;&nbsp;&nbsp; &nbsp; @foreach ($no_dpa as $n)
                         {{ $n }} &nbsp;
@@ -641,9 +641,9 @@
                     class="cls_012">**diperolehi selepas pendaftaran ke dalam sistem mySPATA</span></div>
             <div style="position:absolute;left:87.77px;top:328.36px" class="cls_010"><span
                     class="cls_010">Bil. Blok Bangunan</span></div>
-            <div style="position:absolute;left:80px;top:310.36px;background-color:white;width:100%;height:200px;" class="cls_010"><span class="cls_010">
-                   </span></div>
-            {{-- <div style="position:absolute;left:87.77px;top:353.88px" class="cls_010"><span
+            <div style="position:absolute;left:210px;top:328.36px" class="cls_010"><span class="cls_010">
+                    {{ $j->bil_blok_bangunan }}</span></div>
+            <div style="position:absolute;left:87.77px;top:353.88px" class="cls_010"><span
                     class="cls_010">Bil. Binaan Luar</span></div>
             <div style="position:absolute;left:210px;top:353.88px" class="cls_010"><span
                     class="cls_010">{{ $j->bil_binaan_luar }}</span></div>
@@ -651,7 +651,7 @@
             <div style="position:absolute;left:137.26px;top:461.10px" class="cls_010"><span
                     class="cls_010">Catatan</span></div>
             <div style="position:absolute;left:184.12px;top:461.10px" class="cls_010"><span
-                    class="cls_010">: &nbsp;&nbsp; {{ $j->catatan }}</span></div> --}}
+                    class="cls_010">: &nbsp;&nbsp; {{ $j->catatan }}</span></div>
         </div>
     </div>
 
@@ -840,7 +840,7 @@
                                 <th style="width: 70px;">Bidang Kerja</th>
                             </thead>
                             @foreach ($bb->dataasetkhusus->kontraktor as $kbb)
-                                <tr>
+                            <tr>
                                     @if ($kbb->kontraktor_utama_bangunan)
                                         <td><span class="cls_018">Kontraktor Utama</span></td>
                                         <td><span class="cls_018">{{ $kbb->nama_kontraktor_bangunan }}</span>
@@ -848,18 +848,16 @@
                                         <td><span
                                                 class="cls_018">{{ $kbb->bidang_kerja_kontraktor_bangunan }}</span>
                                         </td>
-                                    @else
-                                        <td><span class="cls_018">Kontraktor {{ $loop->iteration }}</span>
-                                        </td>
-                                        <td><span class="cls_018">{{ $kbb->nama_kontraktor_bangunan }}</span>
-                                        </td>
+                                    @else  
+                                        <td><span class="cls_018">Kontraktor {{ $loop->iteration }}</span></td>
+                                        <td><span class="cls_018">{{ $kbb->nama_kontraktor_bangunan }}</span></td>
                                         <td><span
                                                 class="cls_018">{{ $kbb->bidang_kerja_kontraktor_bangunan }}</span>
                                         </td>
                                     @endif
                                 </tr>
                             @endforeach
-
+                          
                         </table>
                     </div>
 
@@ -871,26 +869,24 @@
                                 <th style="width: 70px;">Bidang Kerja</th>
                             </thead>
                             @foreach ($bb->dataasetkhusus->perunding as $pbb)
-                                <tr>
-                                    @if ($pbb->perunding_utama_bangunan)
+                            <tr>
+                                @if ($pbb->perunding_utama_bangunan)
                                         <td><span class="cls_018">Perunding Utama</span></td>
                                         <td><span class="cls_018">{{ $pbb->nama_perunding_bangunan }}</span>
                                         </td>
                                         <td><span
                                                 class="cls_018">{{ $pbb->bidang_kerja_perunding_bangunan }}</span>
                                         </td>
-                                    @else
-                                        <td><span class="cls_018">Perunding {{ $loop->iteration }}</span>
-                                        </td>
-                                        <td><span class="cls_018">{{ $pbb->nama_perunding_bangunan }}</span>
-                                        </td>
-                                        <td><span
-                                                class="cls_018">{{ $pbb->bidang_kerja_perunding_bangunan }}</span>
-                                        </td>
-                                    @endif
-                                </tr>
+                                @else
+                                    <td><span class="cls_018">Perunding {{ $loop->iteration }}</span></td>
+                                    <td><span class="cls_018">{{ $pbb->nama_perunding_bangunan }}</span></td>
+                                    <td><span
+                                            class="cls_018">{{ $pbb->bidang_kerja_perunding_bangunan }}</span>
+                                    </td>
+                                @endif
+                            </tr>
                             @endforeach
-
+                           
                         </table>
                     </div>
 
@@ -1576,8 +1572,7 @@
                         <div style="position:absolute;left:81.83px;top:543px" class="cls_018"><span
                                 class="cls_018">Luas Binaan Luar</span></div>
                         <div style="position:absolute;left:200.54px;top:543px" class="cls_018"><span
-                                class="cls_018">:
-                                &nbsp;&nbsp;&nbsp;&nbsp;{{ $dakbl->luas_binaan_luar }}</span>
+                                class="cls_018">: &nbsp;&nbsp;&nbsp;&nbsp;{{ $dakbl->luas_binaan_luar }}</span>
                         </div>
                         <div style="position:absolute;left:324.16px;top:543px" class="cls_018"><span
                                 class="cls_018">Kapasiti Air</span></div>

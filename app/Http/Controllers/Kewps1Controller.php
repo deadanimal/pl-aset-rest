@@ -54,6 +54,10 @@ class Kewps1Controller extends Controller
             $no_kod = $noKod->no_kad . "-" . $noKod->kategori_stor . "-" . $noKod->kod_stor;
         }
 
+        if ($request->maklumat_pengangkutan == "Lain-lain") {
+            $request['maklumat_pengangkutan'] = $request->mp_lain_lain;
+        }
+
         $kewps1 = kewps1::create($request->all());
         for ($i = 0; $i < count($request->perihal_barang); $i++) {
             $noKod = KodStor::where('perihal', $request->perihal_barang[$i])->first();
@@ -123,6 +127,10 @@ class Kewps1Controller extends Controller
      */
     public function update(Request $request, kewps1 $kewps1)
     {
+        if ($request->maklumat_pengangkutan == "Lain-lain") {
+            $request['maklumat_pengangkutan'] = $request->mp_lain_lain;
+        }
+
         $kewps1->update($request->all());
 
         return redirect('/kewps1');
@@ -148,8 +156,6 @@ class Kewps1Controller extends Controller
     {
         $infoKewps1 = InfoKewps1::where('kewps1_id', $kewps1->id)->get();
         $kewps1->data = $infoKewps1;
-
-        // dd($kewps1);
 
         $kewps1['newid'] = sprintf("%'.07d\n", $kewps1->id);
 
