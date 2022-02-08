@@ -26,7 +26,7 @@
                         <h2 class="mb-0">Data Aset Khusus</h2>
                     </div>
                     <div class="text-end mr-2">
-                        <a href="/dataasetkhusus/create"><button class="align-self-end btn btn-sm btn-primary"
+                        <a href="/maklumataras/create"><button class="align-self-end btn btn-sm btn-primary"
                                 id="tambah">Tambah</button></a>
                     </div>
                 </div>
@@ -37,12 +37,11 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Kegunaan Blok</th>
-                            {{-- <th scope="col">Jenis Struktur</th> --}}
-                            <th scope="col">ID Blok Bangunan</th>
-                            <th scope="col">Bil. Kontraktor</th>
-                            <th scope="col">Bil. Perunding</th>
-                            <th scope="col">Bil. Maklumat Aras</th>
+                            <th scope="col">Senarai Ruang Aras</th>
+                            <th scope="col">Nama Ruang</th>
+                            <th scope="col">Luas Ruang</th>
+                            <th scope="col">Fungsi Ruang</th>
+                            <th scope="col">ID Data Aset Khusus</th>
                             <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
@@ -50,27 +49,11 @@
                         @foreach ($maklumatAras as $ma)
                             <tr>
                                 <td scope="col">{{ $ma->id }}</td>
-                                <td scope="col">
-                                    @if ($ma->kegunaan_blok == 1)Bangunan dan Binaan
-                                        Lain
-                                    @elseif($ma->kegunaan_blok == 2)Infrastruktur Jalan & Jambatan
-                                    @elseif($ma->kegunaan_blok == 3)Infrastruktur (Saliran / Pembetungan/ Aset air )
-                                    @elseif($ma->kegunaan_blok == 4)Lain-lain
-                                    @endif
-                                </td>
-                                {{-- <td scope="col">
-                                    @if ($ma->jenis_struktur == 1)Pejabat / Ruang Kerja
-                                    @elseif($ma->jenis_struktur == 2)Perumahan/ Penginapan
-                                    @elseif($ma->jenis_struktur == 3)Fasiliti/ Infrastruktur Awam
-                                    @elseif($ma->jenis_struktur == 4)Lain-lain
-                                    @endif
-                                </td> --}}
-                                <td scope="col">{{ $ma->blok_bangunan_id }}</td>
-                                <td scope="col"></td>
-                                <td scope="col"></td>
-                                <td scope="col"></td>
-
-
+                                <td scope="col">{{ $ma->senarai_ruang_aras }}</td>
+                                <td scope="col">{{ $ma->nama_ruang }}</td>
+                                <td scope="col">{{ $ma->luas_ruang }}</td>
+                                <td scope="col">{{ $ma->fungsi_ruang }}</td>
+                                <td scope="col">{{ $ma->data_aset_khusus_id }}</td>
                                 <td scope="col">
                                     <a class="btn-sm bg-white border-0" href="/dataasetkhusus/{{ $ma->id }}"><i
                                             class="fas fa-pen"></i></a>
@@ -80,7 +63,7 @@
                                         @method('delete')
                                         @csrf
                                         <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                class=" fas fa-trash"></i></button>
+                                                class="fas fa-trash text-danger"></i></button>
                                     </form>
                                 </td>
                             </tr>

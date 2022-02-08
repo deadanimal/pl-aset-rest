@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataAsetKhusus;
+use App\Models\DataAsetKhususBinaanLuar;
 use App\Models\MaklumatAras;
 use Illuminate\Http\Request;
 
@@ -26,7 +28,10 @@ class MaklumatArasController extends Controller
      */
     public function create()
     {
-        //
+        return view('modul.aset_tak_alih.maklumatAras.create', [
+            'dakbb' => DataAsetKhusus::all(),
+            'dakbl' => DataAsetKhususBinaanLuar::all(),
+        ]);
     }
 
     /**
