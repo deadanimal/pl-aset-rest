@@ -100,7 +100,7 @@
                         <div class="col-4 mt-3">
                             <label for="">Jabatan</label>
                             <select class="form-control" name="jabatan" required>
-                                <option hidden disabled selected>Pilih</option>
+                                <option selected>Pilih</option>
                                 @foreach ($jabatan as $j)
                                     <option value="{{ $j->id }}">{{ $j->singkatan }}</option>
                                 @endforeach
@@ -109,14 +109,15 @@
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Negara</label>
-                            <select class="mdb-select md-form form-control" searchable="Search here.." name="negara2"
+                            <select class="mdb-select md-form form-control" searchable="Search here.." name="negara"
                                 id="j68negara" required>
-                                <option value="" disabled selected>Pilih Negara</option>
+                                <option value="" disabled selected>Choose your country</option>
                                 @foreach ($negara as $n)
-                                    <option value="{{ $n->id }}">{{ $n->nama }}</option>
+                                    <option value="{{ $n->id }}">
+                                        {{ $n->nama }}</option>
                                 @endforeach
                             </select>
-                            <input type="hidden" name="negara" value="" id="negara">
+
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Negeri</label>
@@ -206,7 +207,85 @@
                         <input type="hidden" name="pegawai_daftar" value="{{ Auth::user()->id }}">
                     </div>
 
-
+                    <div class="row" id="data_tanah">
+                        <div class="col-12 mt-5">
+                            <h3>DATA TANAH DALAM PREMIS ASET</h3>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <h5>Tanah</h5>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label col-form-label-sm" for="">Tarikh Pemilikan </label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="date" name="pemilikan_tarikh[]" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label col-form-label-sm" for="">Pemilikan Kos</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="pemilikan_kos[]" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label col-form-label-sm" for="">Mukim Bandar</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="mukim_bandar[]" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <label class="form-label col-form-label-sm" for="">No Hakmilik</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="hakmilik_nombor[]" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Jenis Hakmilik</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="hakmilik_jenis[]" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <label class="form-label col-form-label-sm" for="">No Lot</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="lot_nombor[]" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Luas Lot</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="lot_luas[]" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Status</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="status[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Tarikh PTP</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="date" name="tarikh_ptp[]" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Catatan</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="catatan[]" value="" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <a class="btn btn-sm btn-primary text-white" onclick="tambahdatatanah()">Tambah Aset</a>
+                    </div>
 
 
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
@@ -216,25 +295,89 @@
     </div>
 
     <script>
-        $("#j68negara").change(function() {
-            $("#j68negeri").html('');
-            var val = this.value;
+        $(document).ready(function() {
+            $("#j68negara").change(function() {
+                var val = this.value;
+                var negeri = @json($negeri->toArray());
 
-            var negeri = @json($negeri->toArray());
-            var negara = @json($negara->toArray());
-
-            negara.forEach(e => {
-                if (e.id == val) {
-                    $("#negara").val(e.nama);
-                }
-            });
-            negeri.forEach(element => {
-                if (element.negara_id == val) {
-                    $("#j68negeri").append(`
-                            <option value=" ` + element.nama + ` "> ` + element.nama + ` </option>
+                negeri.forEach(element => {
+                    if (element.negara_id == val) {
+                        $("#j68negeri").append(`
+                            <option value=" ` + element.id + ` "> ` + element.nama + ` </option>
                         `);
-                }
+                    }
+                });
             });
         });
+
+        function tambahdatatanah() {
+            $("#data_tanah").append(
+                `       
+                  <div class="col-12 mt-4">
+                            <h5>Tanah</h5>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label col-form-label-sm" for="">Tarikh Pemilikan </label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="date" name="pemilikan_tarikh[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label col-form-label-sm" for="">Pemilikan Kos</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="pemilikan_kos[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label col-form-label-sm" for="">Mukim Bandar</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="mukim_bandar[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <label class="form-label col-form-label-sm" for="">No Hakmilik</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="hakmilik_nombor[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Jenis Hakmilik</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="hakmilik_jenis[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <label class="form-label col-form-label-sm" for="">No Lot</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="lot_nombor[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Luas Lot</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="lot_luas[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Status</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="status[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Tarikh PTP</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="date" name="tarikh_ptp[]" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label class="form-label col-form-label-sm" for="">Catatan</label>
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" type="text" name="catatan[]" value="" required>
+                            </div>
+                        </div>
+                `
+            )
+        }
     </script>
 @endsection

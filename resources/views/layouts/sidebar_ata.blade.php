@@ -30,7 +30,7 @@
                             <i class="fas fa-book text-primary"></i>
                             <span class="nav-link-text">TANAH</span>
                         </a>
-                        <div class="collapse {{ Request::is('jkrpataf68') ? 'show' : '' }}" id="navbar-tanah">
+                        <div class="collapse" id="navbar-tanah">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="#" class="nav-link ">
@@ -39,8 +39,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/jkrpataf68"
-                                        class="nav-link {{ Request::is('jkrpataf68') ? 'active' : '' }}">
+                                    <a href="/datatanah" class="nav-link">
                                         <span class="sidenav-mini-icon"> </span>
                                         <span class="sidenav-normal"> PERMOHONAN TANAH </span>
                                     </a>
@@ -73,7 +72,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link ">
+                                            <a href="/senarai-maklumat-aras" class="nav-link ">
                                                 <span class="sidenav-normal"> ARAS DAN RUANG </span>
                                             </a>
                                         </li>
@@ -86,7 +85,8 @@
                                 </div>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/jkrpataf68"
+                                        class="nav-link  {{ Request::is('jkrpataf68') ? 'active' : '' }}">
                                         <span class="sidenav-mini-icon"> </span>
                                         <span class="sidenav-normal"> PERMOHONAN <br> BANGUNAN/PREMIS </span>
                                     </a>

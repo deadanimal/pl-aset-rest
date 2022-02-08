@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jkrpataf68;
 use App\Models\Jkrpataf612;
+use App\Models\MaklumatAras;
 use App\Models\SenaraiBinaanLuar;
 use App\Models\SenaraiBlokBangunan;
 // use Barryvdh\DomPDF\PDF;
@@ -219,6 +220,12 @@ class Jkrpataf612Controller extends Controller
     {
         return view('modul.aset_tak_alih.jkrpataf612.senaraiBL', [
             'senaraiBL' => SenaraiBinaanLuar::all(),
+        ]);
+    }
+    public function senaraiMA()
+    {
+        return view('modul.aset_tak_alih.jkrpataf612.senaraiMA', [
+            'maklumatAras' => MaklumatAras::all(),
         ]);
     }
 }
