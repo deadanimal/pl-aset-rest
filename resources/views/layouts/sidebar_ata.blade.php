@@ -160,6 +160,41 @@
                             </ul>
                         </div>
 
+                        <a class="nav-link" href="#navbar-jalan" data-toggle="collapse" role="button"
+                            aria-expanded="{{ Request::is('plpkpa0102*') ? 'true' : 'false' }}"
+                            aria-controls="navbar-dashboards">
+
+                            <i class="fas fa-road text-primary"></i>
+                            <span class="nav-link-text">Jalan</span>
+                        </a>
+
+                        <div class="collapse {{ Request::is('plpkpa0102*') ? 'show' : '' }}" id="navbar-jalan">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="/plpkpa0102"
+                                        class="nav-link {{ Request::is('plpkpa0102*') ? 'active' : '' }}">
+                                        <span class="sidenav-mini-icon"> ATA(01/02) </span>
+                                        <span class="sidenav-normal"> PL-PK(PA)-01/02 </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/jalan" class="nav-link {{ Request::is('jalan*') ? 'active' : '' }}">
+                                        <span class="sidenav-mini-icon">Pendaftaran Jalan </span>
+                                        <span class="sidenav-normal"> Pendaftaran Jalan </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/bahujalan"
+                                        class="nav-link {{ Request::is('bahujalan*') ? 'active' : '' }}">
+                                        <span class="sidenav-mini-icon">Pendaftaran BahuJalan </span>
+                                        <span class="sidenav-normal"> Pendaftaran BahuJalan </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+
                     </li>
                 </ul>
             </div>
