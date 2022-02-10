@@ -122,22 +122,6 @@
                             <input class="form-control" type="text" name="perihal_barang[]"
                                 value="{{ old('perihal_barang[]') }}">
                         </div>
-                        {{-- <div class="col-4 mt-2">
-                            <label for="" class="col-form-label ">Unit Pengukuran</label>
-                            <select name="unit_pengukuran[]" class="form-control">
-                                @foreach ($unitukuran as $u)
-                                    <option value="{{ $u->unit_ukuran }}">{{ $u->unit_ukuran }}</option>
-                                @endforeach
-                                <option value="Unit">Unit</option>
-                                <option value="Kotak">Kotak</option>
-                                <option value="Rim">Rim</option>
-                                <option value="Butang">Batang</option>
-                                <option value="Buah">Buah</option>
-                                <option value="Bilah">Bilah</option>
-                                <option value="Paket">Paket</option>
-                                <option value="Keping">Keping</option>
-                            </select>
-                        </div> --}}
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Kuantiti Dipesan</label>
                             <input class="form-control" type="number" name="kuantiti_dipesan[]"
@@ -172,7 +156,7 @@
 
             <div class="row my-3">
                 <div class="col">
-                    <button class="btn btn-primary" type="submit">Simpan</button>
+                    <button class="btn btn-primary" type="submit" onclick="confirmSimpan(event,this)">Simpan</button>
                     <a class="btn btn-primary text-white" onclick="tambahAset()">Tambah Stok</a>
                 </div>
             </div>

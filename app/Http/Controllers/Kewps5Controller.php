@@ -123,6 +123,18 @@ class Kewps5Controller extends Controller
     {
         $kewps5->data = $kewps5->all();
 
+        $jumlah = 0;
+        foreach ($kewps5->data as $k) {
+            if ($k->peratusan >= 30) {
+                $k['kumpulan'] = "B";
+            } else {
+                $k['kumpulan'] = "A";
+            }
+            $jumlah += $k->purata_pembelian;
+        }
+
+        $kewps5['nama_stor'] = $kewps5->first()->kewps3a->nama_stor;
+        $kewps5['jumlah'] = $jumlah;
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps5', [$kewps5]);
 
         $res = $response->getBody()->getContents();

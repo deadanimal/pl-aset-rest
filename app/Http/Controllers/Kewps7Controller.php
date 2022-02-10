@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\InfoKewps7;
 use App\Models\Kewps3a;
 use App\Models\Kewps7;
+use App\Models\PembekalStor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -31,6 +32,7 @@ class Kewps7Controller extends Controller
     {
         return view('modul.stor.kewps7.create', [
             'kewps3a' => Kewps3a::all(),
+            'pembekalstor' => PembekalStor::all(),
         ]);
     }
 
@@ -85,7 +87,7 @@ class Kewps7Controller extends Controller
     {
         return view('modul.stor.kewps7.status', [
             'kewps7' => $kewps7,
-            'kewps3a' => Kewps3a::all()
+            'kewps3a' => Kewps3a::all(),
         ]);
     }
 
@@ -99,21 +101,7 @@ class Kewps7Controller extends Controller
     public function update(Request $request, Kewps7 $kewps7)
     {
 
-
-        if ($kewps7->status == "DITERIMA") {
-            foreach (range(0, count($request->kewps3a_id) - 1) as $i) {
-                InfoKewps7::where('id', $request->info7_id)->update([
-                    'kewps3a_id' => $request->kewps3a_id[$i],
-                    'catatan_pemohon' => $request->catatan_pemohon[$i],
-                    'kuantiti_dimohon' => $request->kuantiti_dimohon[$i],
-                    'kuantiti_diluluskan' => $request->kuantiti_diluluskan[$i],
-                    'catatan_pelulus' => $request->catatan_pelulus[$i],
-                    'kuantiti_dikeluarkan' => $request->kuantiti_dikeluarkan[$i],
-                    'pembungkusan' => $request->pembungkusan[$i],
-                    'kuantiti_diterima' => $request->kuantiti_diterima[$i],
-                ]);
-            }
-        } elseif ($kewps7->status == "DIPOHON") {
+        if ($kewps7->status == "DIPOHON") {
             for ($i = 0; $i < count($request->kuantiti_diluluskan); $i++) {
                 InfoKewps7::where('id', $request->infokewps7_id[$i])->update([
                     'kuantiti_diluluskan' => $request->kuantiti_diluluskan[$i],
@@ -123,6 +111,25 @@ class Kewps7Controller extends Controller
         } elseif ($kewps7->status == "DILULUS") {
             for ($i = 0; $i < count($request->kuantiti_dikeluarkan); $i++) {
                 InfoKewps7::where('id', $request->infokewps7_id[$i])->update([
+                    'kuantiti_dikeluarkan' => $request->kuantiti_dikeluarkan[$i],
+                    'pembungkusan' => $request->pembungkusan[$i],
+                    // 'kuantiti_diterima' => $request->kuantiti_diterima[$i],
+                ]);
+            }
+        } elseif ($kewps7->status == "DITERIMA") {
+            for ($i = 0; $i < count($request->infokewps7_id); $i++) {
+                InfoKewps7::where('id', $request->infokewps7_id[$i])->update([
+                    'kuantiti_diterima' => $request->kuantiti_diterima[$i],
+                ]);
+            }
+        } elseif ($kewps7->status == "SELESAI") {
+            foreach (range(0, count($request->kewps3a_id) - 1) as $i) {
+                InfoKewps7::where('id', $request->info7_id)->update([
+                    'kewps3a_id' => $request->kewps3a_id[$i],
+                    'catatan_pemohon' => $request->catatan_pemohon[$i],
+                    'kuantiti_dimohon' => $request->kuantiti_dimohon[$i],
+                    'kuantiti_diluluskan' => $request->kuantiti_diluluskan[$i],
+                    'catatan_pelulus' => $request->catatan_pelulus[$i],
                     'kuantiti_dikeluarkan' => $request->kuantiti_dikeluarkan[$i],
                     'pembungkusan' => $request->pembungkusan[$i],
                     'kuantiti_diterima' => $request->kuantiti_diterima[$i],
@@ -158,6 +165,10 @@ class Kewps7Controller extends Controller
             $i7->harga_seunit = $i7->kewps3a->kewps1->harga_seunit;
             $i7->jumlah_harga = $jumlah_harga;
         }
+
+        //(BPS/0000001)
+        $newid = sprintf('%07d', $kewps7->id);
+        $kewps7['newid'] = "BPS/" . $newid;
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps7', [$kewps7]);
 

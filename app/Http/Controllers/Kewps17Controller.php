@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InfoKewps1;
 use App\Models\InfoKewps17;
 use App\Models\Kewps3a;
 use App\Models\Kewps17;
@@ -118,15 +117,12 @@ class Kewps17Controller extends Controller
     }
     public function generatePdf(Kewps17 $kewps17)
     {
-        $infokewps17 = InfoKewps17::where('kewps17_id', $kewps17->id)->get();
-
-        $kewps17->data = $infokewps17;
-
-        $harga_seunit = InfoKewps1::where('no_kod', $infokewps17[0]->kewps3a_id)->first()->harga_seunit;
-
-        foreach ($kewps17->data as $ik17) {
+        foreach ($kewps17->infokewps17 as $ik17) {
+            $harga_seunit = $ik17->kewps3a->kewps1->harga_seunit;
             $ik17->jumlah = (int) $ik17->kuantiti_dilulus * (int) $harga_seunit;
         }
+
+        $kewps17['newid'] = sprintf('%07d', $kewps17->id);
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps17', [$kewps17]);
 

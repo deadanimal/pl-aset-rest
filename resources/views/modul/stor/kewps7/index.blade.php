@@ -53,33 +53,43 @@
                                 <td scope="col">{{ count($k7->infokewps7) }}</td>
                                 @if ($k7->status == 'DIPOHON')
                                     <td scope="col"><span class="badge bg-warning">{{ $k7->status }}</span></th>
-                                    @elseif ($k7->status=="DITERIMA")
+                                    @elseif ($k7->status == 'DITERIMA')
                                     <td scope="col"><span class="badge bg-primary">{{ $k7->status }}</span></th>
-                                    @elseif ($k7->status=="DILULUS")
+                                    @elseif ($k7->status == 'DILULUS')
                                     <td scope="col"><span class="badge bg-success">{{ $k7->status }}</span></th>
-                                    @elseif ($k7->status=="DITOLAK")
+                                    @elseif ($k7->status == 'SELESAI')
+                                    <td scope="col"><span class="badge bg-success">{{ $k7->status }}</span></th>
+                                    @elseif ($k7->status == 'DITOLAK')
                                     <td scope="col"><span class="badge bg-danger">{{ $k7->status }}</span></th>
                                 @endif
                                 <td scope="col">
                                     @if ($k7->status == 'DIPOHON')
-                                        <a href="/kewps7/{{ $k7->id }}/edit"><i class="fas fa-check-circle"></i></a>
-                                        <a href="#"><i class="fas fa-times-circle"></i></a>
+                                        <a href="/kewps7/{{ $k7->id }}/edit" class="btn btn-sm btn-primary"><i
+                                                class="fas fa-check-circle"></i></a>
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times-circle"></i></a>
                                     @endif
 
                                     @if ($k7->status == 'DILULUS')
-                                        <a href="/kewps7/{{ $k7->id }}/edit"><i class="fas fa-check-circle"></i></a>
-                                        <a href="#"><i class="fas fa-times-circle"></i></a>
+                                        <a href="/kewps7/{{ $k7->id }}/edit" class="btn btn-sm btn-success"><i
+                                                class="fas fa-check-circle"></i></a>
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times-circle"></i></a>
                                     @endif
-
                                     @if ($k7->status == 'DITERIMA')
-                                        <a href="/kewps7/{{ $k7->id }}"><i class="fas fa-pen"></i></a>
-                                        <a href="/kewps7pdf/{{ $k7->id }}"><i class="fas fa-print"></i></a>
+                                        <a href="/kewps7/{{ $k7->id }}/edit" class="btn btn-sm btn-success"><i
+                                                class="fas fa-check-circle"></i></a>
+                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-times-circle"></i></a>
+                                    @endif
+                                    @if ($k7->status == 'SELESAI')
+                                        <a href="/kewps7/{{ $k7->id }}" class="btn btn-sm btn-primary"><i
+                                                class="fas fa-pen"></i></a>
+                                        <a href="/kewps7pdf/{{ $k7->id }}" class="btn btn-sm btn-success"><i
+                                                class="fas fa-print"></i></a>
                                         <a href="">
                                             <form action="/kewps7/{{ $k7->id }}" class="d-inline"
                                                 method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button class="btn-sm bg-white border-0" type="submit"> <i
+                                                <button class="btn btn-sm btn-danger" type="submit"> <i
                                                         class=" fas fa-trash"></i></button>
                                             </form>
                                         </a>

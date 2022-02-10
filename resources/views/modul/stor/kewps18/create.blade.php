@@ -34,12 +34,13 @@
                     <div class="row">
                         <div class="col-6 mt-3">
                             <label for="">Tahun</label>
-                            <input type="text" class="form-control" id="k18_tahun" value="">
+                            <input type="text" class="form-control" id="k18_tahun" name="tahun" value=""
+                                autocomplete="off">
                         </div>
                         <div class="col-6 mt-3">
-                            <label for="">Pindahan Stok</label>
+                            <label for="">Pindahan Stok (Kew.Ps-17)</label>
                             <select class="form-control mb-3" name="kewps17_id">
-                                <option selected>Pilih No Pindahan</option>
+                                <option disabled hidden selected>Pilih</option>
                                 @foreach ($kewps17 as $k17)
                                     <option value="{{ $k17->id }}">{{ $k17->id }} - {{ $k17->status_pindahan }}
                                     </option>

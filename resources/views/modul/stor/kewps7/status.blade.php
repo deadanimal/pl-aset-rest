@@ -114,13 +114,62 @@
                                         <option value="Perlu">Perlu</option>
                                     </select>
                                 </div>
+
+
+                            @endif
+                            @if ($kewps7->status == 'DITERIMA')
+                                <input type="hidden" name="status" value="SELESAI">
+                                <input type="hidden" name="infokewps7_id[]" value="{{ $ik7->id }}">
+                                <div class="col-2 mt-3">
+                                    <label for="">Kuantiti Dimohon</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="number" value="{{ $ik7->kuantiti_dimohon }}"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <label for="">Catatan Pemohon</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" value="{{ $ik7->catatan_pemohon }}"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-2 mt-3">
+                                    <label for="">Kuantiti Diluluskan</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="number"
+                                            value="{{ $ik7->kuantiti_diluluskan }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <label for="">Catatan Pelulus</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" value="{{ $ik7->catatan_pelulus }}"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <label for="">Kuantiti Dikeluarkan</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="number" name="kuantiti_dikeluarkan[]"
+                                            value="{{ $ik7->kuantiti_dikeluarkan }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <label for="">Pembungkusan</label>
+                                    <select class="form-control" name="pembungkusan[]" disabled>
+                                        <option {{ $ik7->pembungkusan == 'Tidak Perlu' ? 'selected' : '' }}
+                                            value="Tidak Perlu">Tidak Perlu</option>
+                                        <option {{ $ik7->pembungkusan == 'Perlu' ? 'selected' : '' }} value="Perlu">Perlu
+                                        </option>
+                                    </select>
+                                </div>
                                 <div class="col-4 mt-3">
                                     <label for="">Kuantiti Diterima</label>
                                     <div class="input-group">
                                         <input class="form-control" type="number" name="kuantiti_diterima[]" value="">
                                     </div>
                                 </div>
-
                             @endif
                         </div>
                     @endforeach
@@ -131,25 +180,4 @@
             </div>
         </form>
     </div>
-    {{-- <script>
-        function bungkus(val, id) {
-            alert(val.value);
-            var row = "#k7_row" + id
-
-            if (val.value == "Perlu") {
-                $(row).append(`
-                                <div class="col-4 mt-3">    
-                                    <label for="">Kuantiti Diterima</label>
-                                        <div class="input-group">
-                                            <input class="form-control" type="number" name="kuantiti_diterima[]" value="">
-                                        </div>
-                                </div>`);
-            } else {
-
-            }
-
-
-        }
-    </script> --}}
-
 @endsection

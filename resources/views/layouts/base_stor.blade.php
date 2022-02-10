@@ -121,6 +121,52 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+
+    {{-- Sweetalert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.0/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function sweetalert(e, btn, t1, t2, t3) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Adakah anda pasti?',
+                text: "Anda tidak akan dapat mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: t1,
+                cancelButtonText: 'Batal!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        t2,
+                        t3,
+                        'success'
+                    );
+                    setTimeout(() => {
+                        $(btn).parents('form').submit();
+                    }, 2000);
+                }
+            });
+        }
+
+        function confirmSimpan(e, btn) {
+            let t1 = "Ya, Sila Simpan!"
+            let t2 = "Disimpan!"
+            let t3 = 'Data tersebut telah berjaya disimpan.'
+            sweetalert(e, btn, t1, t2, t3);
+        }
+
+
+        function confirmDel(e, btn) {
+            let t1 = "Ya, Sila Padam!"
+            let t2 = "Dipadam!"
+            let t3 = 'Data tersebut telah berjaya dibuang.'
+            sweetalert(e, btn, t1, t2, t3);
+        }
+    </script>
+
+
     <script>
         function FilterTableData(filter, col) {
             var table = $('.table-custom-simplified').DataTable();
