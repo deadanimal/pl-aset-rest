@@ -70,40 +70,39 @@
 
                                     @if ($k1->status == 'HANTAR')
                                         <td scope="col">
-                                            <a href="/kewps1pdf/{{ $k1->id }}" class="ml-2"><span
+                                            <a href="/kewps1pdf/{{ $k1->id }}" class="btn btn-sm btn-success "><span
                                                     class="fas fa-print"></span></a>
-                                            <a href="/kewps2fromk1/{{ $k1->id }}" class="ml-2"> <span
-                                                    class="fas fa-minus" style="color: red"></span></a>
+                                            <a href="/kewps2fromk1/{{ $k1->id }}" class="btn btn-warning btn-sm">
+                                                <span class="fas fa-minus"></span></a>
                                         </td>
                                     @endif
 
                                     @if ($k1->status == 'DERAF')
                                         <td scope="col">
                                             @if (Auth::user()->jawatan == 'superadmin')
-                                                <a href="/kewps1" onclick="updateStatus({{ $k1 }}, 'LULUS')"><i
-                                                        class="fas fa-check-circle"></i></a>
-                                                <a href="/kewps1" onclick="updateStatus({{ $k1 }}, 'DITOLAK')"><i
-                                                        class="fas fa-times-circle"></i></a>
-                                                <a href="" onclick="cetakPdf()"><i class="fas fa-print"></i></a>
+                                                <a href="/kewps1" onclick="updateStatus({{ $k1 }}, 'LULUS')"
+                                                    class="btn btn-primary btn-sm"><i class="fas fa-check-circle"></i></a>
+                                                <a href="/kewps1" onclick="updateStatus({{ $k1 }}, 'DITOLAK')"
+                                                    class="btn btn-primary btn-sm"><i class="fas fa-times-circle"></i></a>
+                                                <a href="" onclick="cetakPdf()" class="btn btn-success btn-sm"><i
+                                                        class="fas fa-print"></i></a>
 
                                             @else
-                                                <a href="">
-                                                    <form action="/kewps1/{{ $k1->id }}/edit" class="d-inline"
-                                                        method="GET">
-                                                        @csrf
-                                                        <button class="btn-sm bg-white border-0" type="submit">
-                                                            <i class="fas fa-arrow-up"></i>
-                                                        </button>
-                                                    </form>
-                                                </a>
-                                                <a href="/kewps1/{{ $k1->id }}"><i class="fas fa-pen"></i></a>
-                                                {{-- <a href="/kewps1pdf/{{ $k1->id }}"><i class="fas fa-print"></i></a> --}}
+                                                <form action="/kewps1/{{ $k1->id }}/edit" class="d-inline mr-2"
+                                                    method="GET">
+                                                    @csrf
+                                                    <button class="btn btn-primary btn-sm" type="submit">
+                                                        <i class="fas fa-arrow-up"></i>
+                                                    </button>
+                                                </form>
+                                                <a href="/kewps1/{{ $k1->id }}" class="btn btn-primary btn-sm "><i
+                                                        class="fas fa-pen"></i></a>
                                                 <form action="/kewps1/{{ $k1->id }}" class="d-inline"
-                                                    method="POST">
+                                                    method="POST" id="del">
                                                     @method('delete')
                                                     @csrf
-                                                    <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                            class=" fas fa-trash"></i></button>
+                                                    <button onclick="confirmDel(event,this)" class="btn btn-danger btn-sm"
+                                                        type="submit"> <i class=" fas fa-trash"></i></button>
                                                 </form>
                                             @endif
                                         </td>
@@ -116,7 +115,5 @@
                 </div>
             </div>
         </div>
-
-
 
     @endsection

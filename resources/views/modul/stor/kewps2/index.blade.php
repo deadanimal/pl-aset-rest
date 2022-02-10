@@ -68,26 +68,29 @@
 
                                 <td scope="col">
                                     @if ($k2->status == 'DERAF')
-                                        <a href="/kewps2/{{ $k2->id }}/edit"><span class="fas fa-arrow-up"></span></a>
-                                        <a href="/kewps2/{{ $k2->id }}"><i class="fas fa-pen"></i></a>
+                                        <a href="/kewps2/{{ $k2->id }}/edit" class="btn btn-primary btn-sm"><span
+                                                class="fas fa-arrow-up"></span></a>
+                                        <a href="/kewps2/{{ $k2->id }}" class="btn btn-primary btn-sm"><i
+                                                class="fas fa-pen"></i></a>
                                         <a href="">
                                             <form action="/kewps2/{{ $k2->id }}" class="d-inline"
                                                 method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button class="btn-sm bg-white border-0" type="submit"> <i
+                                                <button class="btn btn-danger btn-sm" type="submit"> <i
                                                         class=" fas fa-trash"></i></button>
                                             </form>
                                         </a>
 
                                     @elseif($k2->status == 'LULUS')
-                                        <a href="/kewps2pdf/{{ $k2->id }}"><i class="fas fa-print"></i></a>
+                                        <a href="/kewps2pdf/{{ $k2->id }}" class="btn btn-success btn-sm"><i
+                                                class="fas fa-print"></i></a>
                                         <a href="">
                                             <form action="/kewps2/{{ $k2->id }}" class="d-inline"
                                                 method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button class="btn-sm bg-white border-0" type="submit"> <i
+                                                <button class="btn btn-danger btn-sm" type="submit"> <i
                                                         class=" fas fa-trash"></i></button>
                                             </form>
                                         </a>

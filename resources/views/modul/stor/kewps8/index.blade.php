@@ -55,44 +55,33 @@
                                 <td scope="col">{{ $k8->kuantiti_diluluskan }}</td>
                                 @if ($k8->status == 'DIPOHON')
                                     <td scope="col"><span class="badge bg-warning">{{ $k8->status }}</span></th>
-                                    @elseif ($k8->status=="DITERIMA")
+                                    @elseif ($k8->status == 'DITERIMA')
                                     <td scope="col"><span class="badge bg-primary">{{ $k8->status }}</span></th>
-                                    @elseif ($k8->status=="DILULUS")
+                                    @elseif ($k8->status == 'DILULUS')
                                     <td scope="col"><span class="badge bg-success">{{ $k8->status }}</span></th>
-                                    @elseif ($k8->status=="DITOLAK")
+                                    @elseif ($k8->status == 'DITOLAK')
                                     <td scope="col"><span class="badge bg-danger">{{ $k8->status }}</span></th>
                                 @endif
                                 <td scope="col">
                                     @if ($k8->status == 'DIPOHON')
-                                        @if (Auth::user()->jawatan == 'user')
-                                            <a href="/kewps8/{{ $k8->id }}/edit"><i
-                                                    class="fas fa-check-circle"></i></a>
-                                            <a href="#"><i class="fas fa-times-circle"></i></a>
-                                        @else
-                                            <a href="/kewps8/{{ $k8->id }}"><i class="fas fa-pen"></i></a>
-                                            <a href="">
-                                                <form action="/kewps8/{{ $k8->id }}" class="d-inline"
-                                                    method="POST">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                            class=" fas fa-trash"></i></button>
-                                                </form>
-                                            </a>
-                                        @endif
+                                        <a href="/kewps8/{{ $k8->id }}/edit" class="btn btn-success btn-sm"><i
+                                                class="fas fa-check-circle"></i></a>
+                                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-times-circle"></i></a>
                                     @endif
                                     @if ($k8->status == 'DILULUS')
-                                        <a href="/kewps8/{{ $k8->id }}/edit"><i class="fas fa-check-circle"></i></a>
-                                        <a href="#"><i class="fas fa-times-circle"></i></a>
+                                        <a href="/kewps8/{{ $k8->id }}/edit" class="btn btn-success btn-sm"><i
+                                                class="fas fa-check-circle"></i></a>
+                                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-times-circle"></i></a>
                                     @endif
                                     @if ($k8->status == 'DITERIMA')
-                                        <a href="/kewps8/{{ $k8->id }}"><i class="fas fa-pen"></i></a>
+                                        <a href="/kewps8/{{ $k8->id }}" class="btn btn-primary btn-sm"><i
+                                                class="fas fa-pen"></i></a>
                                         <a href="">
                                             <form action="/kewps8/{{ $k8->id }}" class="d-inline"
                                                 method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button class="btn-sm bg-white border-0" type="submit"> <i
+                                                <button class="btn btn-sm btn-danger" type="submit"> <i
                                                         class=" fas fa-trash"></i></button>
                                             </form>
                                         </a>

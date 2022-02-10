@@ -30,6 +30,7 @@ class Kewps9Controller extends Controller
     public function create()
     {
         return view('modul.stor.kewps9.create', [
+            'kewps7' => Kewps7::all(),
             'infokewps7' => InfoKewps7::all(),
         ]);
     }
@@ -42,7 +43,24 @@ class Kewps9Controller extends Controller
      */
     public function store(Request $request)
     {
-        Kewps9::create($request->all());
+
+        for ($i = 0; $i < count($request->infokewps7_id); $i++) {
+            $infokewps7 = InfoKewps7::where('id', $request->infokewps7_id[$i])->firstOrFail();
+            $infokewps7->update([
+                'pembungkusan' => $request->pembungkusan[$i],
+            ]);
+            Kewps9::create([
+                'infokewps7_id' => $request->infokewps7_id[$i],
+                'pembungkus_id' => $request->pembungkus_id,
+                'status' => $request->status,
+                'kuantiti_dibungkus' => $request->kuantiti_dibungkus[$i],
+                'maklumat_bungkusan' => $request->maklumat_bungkusan[$i],
+                'maklumat_penghantaran' => $request->maklumat_penghantaran[$i],
+                'pemeriksa_id' => 'not yet',
+                'penerima_id' => 'not yet',
+            ]);
+        }
+
         return redirect('/kewps9');
     }
 
@@ -100,6 +118,10 @@ class Kewps9Controller extends Controller
     {
         $kewps7 = Kewps7::all()->get(0);
         $kewps9->data = $kewps9->all();
+
+        //(BPS/0000001)
+        $newid = sprintf('%07d', $kewps9->id);
+        $kewps9['newid'] = "BPS/" . $newid;
 
         $kewps9->nama_pemohon = $kewps7->nama_stor_pemesan;
         $kewps9->alamat_pemohon = $kewps7->alamat_stor_pemesan;

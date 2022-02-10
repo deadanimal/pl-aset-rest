@@ -1,4 +1,15 @@
 @extends('layouts.base_umum') @section('content')
+    <style>
+        a.nav-link.active>p.h3 {
+            color: white;
+        }
+
+        a.nav-link.active.pill {
+            background-color: rgb(0, 0, 98);
+        }
+
+    </style>
+
     <div class="header bg-primary pb-6">
         <div class="container-fluid">
             <div class="header-body">
@@ -26,18 +37,16 @@
             <div class="card-body">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
+                        <ul class="nav nav-pills nav-fill mb-3 " id="pills-tab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link {{ $active == 'stor' ? 'active' : '' }}" id="pills-home-tab"
-                                    data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
-                                    aria-selected="true">
-                                    <p class=" h3 mb-0 ">Pembekal Stor</p>
+                                <a class="nav-link active pill" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                                    role="tab" aria-controls="pills-home" aria-selected="true">
+                                    <p class="h3 mb-0">Pembekal Stor</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ $active == 'aset' ? 'active' : '' }}" id="pills-profile-tab"
-                                    data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
-                                    aria-selected="false">
+                            <li class=" nav-item">
+                                <a class="nav-link pill" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                    role="tab" aria-controls="pills-profile" aria-selected="false">
                                     <p class="h3 mb-0">Pembekal Aset</p>
                                 </a>
                             </li>

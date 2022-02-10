@@ -31,34 +31,98 @@
 
                 </br>
                 <div class="card-body pt-0">
-                    <div class="row">
-
+                    <div class="row" id="rowbody">
+                        <input type="hidden" id="iteration" value="2">
                         <input class="form-control mb-3" type="hidden" name="pemohon_id" value="{{ Auth::user()->id }}">
-                        <input class="form-control mb-3" type="hidden" name="status" value="DIPOHON">
                         <div class="col-4">
                             <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id">
-                                <option selected>Pilih</option>
+                            <select class="form-control mb-3" name="kewps3a_id[]" onchange="kewps(this,1)">
+                                <option disabled hidden selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
-                                    <option value="{{ $k3->id }}">{{ $k3->no_kad }}
-                                    </option>
+                                    @if ($k3->parasstok->first()->maksimum_stok == 0)
+                                        <option disabled value="{{ $k3->id }}">{{ $k3->no_kad }}</option>
+                                    @else
+                                        <option value="{{ $k3->id }}">{{ $k3->no_kad }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-4">
-                            <label for="">Kuantiti Dipohon</label>
-                            <input class="form-control mb-3" type="number" name="kuantiti_dimohon" value="">
+                            <label for="">Perihal Stok</label>
+                            <input class="form-control mb-3" type="text" id="perihal1" readonly>
                         </div>
                         <div class="col-4">
+                            <label for="">Kuantiti Stok Sebelum</label>
+                            <input class="form-control mb-3" type="text" name="sebelum[]" id="kuantiti1" readonly>
+                        </div>
+                        <div class="col-6">
+                            <label for="">Kuantiti Dipohon</label>
+                            <input class="form-control mb-3" id="pohon1" type="number" name="kuantiti_dimohon[]" value=""
+                                required>
+                        </div>
+                        <div class="col-6">
                             <label for="">Catatan Pemohon</label>
-                            <input class="form-control mb-3" type="text" name="catatan_pemohon" value="">
+                            <input class="form-control mb-3" type="text" name="catatan_pemohon[]" value="">
                         </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Simpan</button>
-                        </div>
+
                     </div>
+                    <button class="btn btn-primary" type="button" onclick="tambah()"><i class="fas fa-plus"></i>
+                        Tambah</button>
+                    <button class="btn btn-primary" type="submit">Simpan</button>
                 </div>
             </div>
         </form>
     </div>
+
+    <script>
+        function tambah() {
+
+            let iteration = $("#iteration").val();
+
+            $("#rowbody").append(`
+                 <div class="col-4">
+                            <label for="">No Kod</label>
+                            <select class="form-control mb-3" name="kewps3a_id[]" onchange="kewps(this,` + iteration + `)">
+                                <option disabled hidden selected>Pilih</option>
+                                @foreach ($kewps3a as $k3)
+                                    @if ($k3->parasstok->first()->maksimum_stok == 0)
+                                        <option disabled value="{{ $k3->id }}">{{ $k3->no_kad }}</option>
+                                    @else
+                                        <option value="{{ $k3->id }}">{{ $k3->no_kad }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Perihal Stok</label>
+                            <input class="form-control mb-3" type="text" id="perihal` + iteration + `" readonly>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Kuantiti Stok Sebelum</label>
+                            <input class="form-control mb-3" type="text" name="sebelum[]" id="kuantiti` + iteration + `" readonly>
+                        </div>
+                        <div class="col-6">
+                            <label for="">Kuantiti Dipohon</label>
+                            <input class="form-control mb-3" type="number" id="pohon` + iteration + `" name="kuantiti_dimohon[]" value="" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="">Catatan Pemohon</label>
+                            <input class="form-control mb-3" type="text" name="catatan_pemohon[]" value="" required>
+                        </div>
+            `);
+        }
+
+        function kewps(e, num) {
+            let kewps3a_id = e.value;
+            var kewps3a = @json($kewps3a->toArray());
+            kewps3a.forEach(el => {
+                if (el.id == kewps3a_id) {
+                    $('#perihal' + num).val(el.perihal_stok);
+                    $('#kuantiti' + num).val(el.parasstok[0].maksimum_stok);
+
+                }
+            });
+
+        }
+    </script>
 @endsection

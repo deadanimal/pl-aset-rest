@@ -50,7 +50,7 @@
                         <div class="col-3">
                             <label for="">No Kod</label>
                             <select class="form-control mb-3" name="kewps3a_id[]">
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps3a as $k3)
                                     <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                     </option>
@@ -91,7 +91,7 @@
                 `       <div class="col-3">
                             <label for="">No Kod</label>
                             <select class="form-control mb-3" name="kewps3a_id[]">
-                                <option selected>Pilih</option>
+                                <option disabled hidden selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
                                     <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                     </option>

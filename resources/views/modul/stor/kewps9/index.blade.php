@@ -49,17 +49,17 @@
                         @foreach ($kewps9 as $k9)
                             <tr>
                                 <td scope="col">{{ $loop->iteration }}</td>
-                                <td scope="col">{{ $k9->kewps7_id }}</td>
+                                <td scope="col">{{ $k9->infokewps7_id }}</td>
                                 <td scope="col">{{ $k9->kuantiti_dibungkus }}</td>
                                 <td scope="col">{{ $k9->maklumat_bungkusan }}</td>
                                 <td scope="col">{{ $k9->maklumat_penghantaran }}</td>
                                 @if ($k9->status == 'DIPOHON')
                                     <td scope="col"><span class="badge bg-warning">{{ $k9->status }}</span></th>
-                                    @elseif ($k9->status=="DIPERIKSA")
+                                    @elseif ($k9->status == 'DIPERIKSA')
                                     <td scope="col"><span class="badge bg-primary">{{ $k9->status }}</span></th>
-                                    @elseif ($k9->status=="DIBUNGKUS")
+                                    @elseif ($k9->status == 'DIBUNGKUS')
                                     <td scope="col"><span class="badge bg-success">{{ $k9->status }}</span></th>
-                                    @elseif ($k9->status=="DITERIMA")
+                                    @elseif ($k9->status == 'DITERIMA')
                                     <td scope="col"><span class="badge bg-danger">{{ $k9->status }}</span></th>
                                 @endif
                                 <td scope="col">
