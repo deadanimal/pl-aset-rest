@@ -58,11 +58,19 @@
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Jenis Jalan</label>
-                            <input class="form-control" type="text" name="jenis_jalan" value="">
+                            <select class="form-control" name="jenis_jalan" >
+                              <option value="Bitumen">Bitumen</option>
+                              <option value="Earth">Earth</option>
+                              <option value="Gravel">Gravel</option>
+                           </select> 
+
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Jenis Carrage Way</label>
-                            <input class="form-control" type="text" name="jenis_carriage_way" value="">
+                            <select class="form-control" name="jenis_carriage_way" >
+                              <option value="Single">Single</option>
+                              <option value="Dual">Dual</option>
+                           </select> 
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Bilangan Lorong</label>
@@ -82,7 +90,12 @@
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Jenis Pembahagi Jalan</label>
-                            <input class="form-control" type="text" name="jenis_pembahagi_jalan" value="">
+                            <select class="form-control" name="jenis_pembahagi_jalan" >
+                              <option value="Concrete">Concrete</option>
+                              <option value="Bitumen">Bitumen</option>
+                              <option value="Tiada Rekod">Tiada Rekod</option>
+                           </select> 
+
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Latitude Mula</label>

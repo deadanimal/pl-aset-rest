@@ -37,6 +37,15 @@ class Plpkpa0102Controller extends Controller
      */
     public function store(Request $request)
     {
+
+        
+        $request->merge([
+          'kerosakan' => json_encode($request->kerosakan),
+          'catatan' => json_encode($request->catatan),
+          'staff_id' => $request->user()->id,
+        ]);
+
+
         Plpkpa0102::create($request->all());
         return redirect('/plpkpa0102');
     }

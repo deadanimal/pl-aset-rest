@@ -60,11 +60,20 @@
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Jenis Jalan</label>
-                            <input class="form-control" type="text" name="jenis_jalan" value="">
+                            <select class="form-control" name="jenis_jalan" >
+                              <option value="Bitumen">Bitumen</option>
+                              <option value="Earth">Earth</option>
+                              <option value="Gravel">Gravel</option>
+                           </select> 
+
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Jenis Carrage Way</label>
-                            <input class="form-control" type="text" name="jenis_carriage_way" value="">
+                            <select class="form-control" name="jenis_carriage_way" >
+                              <option value="Single">Single</option>
+                              <option value="Dual">Dual</option>
+                           </select> 
+
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Bilangan Lorong</label>
@@ -84,7 +93,12 @@
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Jenis Pembahagi Jalan</label>
-                            <input class="form-control" type="text" name="jenis_pembahagi_jalan" value="">
+                            <select class="form-control" name="jenis_pembahagi_jalan" >
+                              <option value="Concrete">Concrete</option>
+                              <option value="Bitumen">Bitumen</option>
+                              <option value="Tiada Rekod">Tiada Rekod</option>
+                           </select> 
+
                         </div>
                         <div class="col-3 mb-3">
                             <label for="">Latitude Mula</label>
@@ -162,13 +176,13 @@
             $("input[name=nama_jalan]").val(j.nama_jalan);
             $("input[name=panjang_jalan]").val(j.panjang_jalan);
             $("input[name=lebar_jalan]").val(j.lebar_jalan);
-            $("input[name=jenis_jalan]").val(j.jenis_jalan);
-            $("input[name=jenis_carriage_way]").val(j.jenis_carriage_way);
+            $("select[name=jenis_jalan]").val(j.jenis_jalan);
+            $("select[name=jenis_carriage_way]").val(j.jenis_carriage_way);
             $("input[name=bilangan_lorong]").val(j.bilangan_lorong);
             $("input[name=lebar_lorong]").val(j.lebar_lorong);
             $("input[name=lebar_rezab_jalan]").val(j.lebar_rezab_jalan);
             $("input[name=lebar_pembahagi_jalan]").val(j.lebar_pembahagi_jalan);
-            $("input[name=jenis_pembahagi_jalan]").val(j.jenis_pembahagi_jalan);
+            $("select[name=jenis_pembahagi_jalan]").val(j.jenis_pembahagi_jalan);
             $("input[name=latitude_mula]").val(j.latitude_mula);
             $("input[name=longitude_mula]").val(j.longitude_mula);
             $("input[name=latitude_akhir]").val(j.latitude_akhir);

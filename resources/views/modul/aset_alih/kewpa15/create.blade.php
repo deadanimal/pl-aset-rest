@@ -36,7 +36,7 @@
                             <div class="col-4">
                                 <label for="">No Siri Pendaftaran</label>
                                 <div class="input-group">
-                                    <select class="form-control mb-3" name="no_siri_pendaftaran" required>
+                                    <select class="form-control mb-3" name="no_siri_pendaftaran" onchange="findSelectedKewpa3A()" required>
                                         <option value="" selected disabled hidden>Sila Pilih No Siri</option required>
                                         @foreach ($kewpa3a as $k3)
                                         <option value="{{$k3->no_siri_pendaftaran}}">{{$k3->no_siri_pendaftaran}}</option>
@@ -44,8 +44,22 @@
                                     </select>
                                 </div>
                             </div>
-
-
+                            <div class="col-4">
+                                <label for="">Jenis</label>
+                                <input class="form-control mb-3" type="text" value="" name="jenis" disabled>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Sub-Kategori</label>
+                                <input class="form-control mb-3" type="text" value="" name="sub_kategori" disabled>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Keterangan Aset Alih</label>
+                                <input class="form-control mb-3" type="text" value="" name="keterangan_aset_alih" disabled>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Lokasi</label>
+                                <input class="form-control mb-3" type="text" value="" name="lokasi" disabled>
+                            </div>
                         </div>
 
                         <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
@@ -64,6 +78,8 @@
 
 
     <script type="text/javascript">
+        var list_no_siri = <?php echo $kewpa3a; ?>
+
         $(document).ready(function() {
             initiateDatatable();
             
@@ -156,6 +172,21 @@
                                     </select>
                     </div>
                 </div>-->
+
+                <div class="col-4">
+                    <label for="">Nama</label>
+                    <div class="input-group">
+                    <input class="form-control mb-3" type="text" name="" value="{{auth()->user()->name}}" required disabled>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <label for="">Jawatan</label>
+                    <div class="input-group">
+                    <input class="form-control mb-3" type="text" name="" value="{{auth()->user()->jawatan}}" required disabled>
+                    </div>
+                </div>
+
             </div>
 
             </div>
@@ -166,14 +197,23 @@
 
         }
 
-
-        function initiateDatatable() {
-            const dataTableBasic = new simpleDatatables.DataTable("#table", {
-                searchable: true,
-                fixedHeight: true,
-                sortable: false
-            });
+        function findSelectedKewpa3A() {
+            let no_siri = $("select[name=no_siri_pendaftaran]").val();
+            for (let i = 0; i < list_no_siri.length; i++) {
+                if (no_siri == list_no_siri[i]['no_siri_pendaftaran']) {
+                    setValueToForm(list_no_siri[i])
+                }
+            }
         }
+
+        function setValueToForm(k3) {
+            $("input[name=jenis]").val(k3['jenis_aset']);
+            $("input[name=sub_kategori]").val(k3['sub_kategori']);
+            $("input[name=keterangan_aset_alih]").val(k3['keterangan_aset']);
+            $("input[name=lokasi]").val(k3['lokasi_penempatan']);
+        }
+
+        
     </script>
 
 @endsection

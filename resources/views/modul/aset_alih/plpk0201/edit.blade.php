@@ -26,7 +26,8 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col">
-                                <h2 class="mb-0">Sunting PLPK PA 0201</h2>
+                            
+                            <h2 class="mb-0">Sunting PLPK PA 0201 </h2>
                             </div>
                         </div>
                     </div>
@@ -94,6 +95,8 @@
                                     <input class="form-control mb-3" type="text" name="perihal_rosak" value="{{ $plpk_pa_0201->perihal_rosak }}" required>
                                 </div>
                             </div>
+
+                            @if (auth()->user()->jawatan == "superadmin") 
                             <div class="col-4">
                                 <label for="">Kos Penyelenggaraan Dahulu</label>
                                 <div class="input-group">
@@ -114,14 +117,22 @@
                                     <input class="form-control mb-3" type="text" name="syor_ulasan" value="{{ $plpk_pa_0201->syor_ulasan }}" required>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            @endif
+
+                            
+
+
+
+                            @if (auth()->user()->jawatan == "pemeriksa") 
+                            {{-- <div class="col-4">
                                 <label for="">Tarikh Lulus Tak</label>
                                 <div class="input-group">
                                     <input class="form-control mb-3" type="text" name="date" value="{{ $plpk_pa_0201->tarikh_lulus_tak }}" required>
                                 </div>
-                            </div>
+                            </div> --}}
+                            
                             <div class="col-4">
-                                <label for="">Pembaikan Dalamann Luar</label>
+                                <label for="">Pembaikan Dalaman Luar</label>
                                 <div class="input-group">
                                     <input class="form-control mb-3" type="text" name="pembaikan_dalaman_luar" value="{{ $plpk_pa_0201->pembaikan_dalaman_luar }}"
                                         required>
@@ -133,6 +144,28 @@
                                     <input class="form-control mb-3" type="text" name="alatganti" value="{{ $plpk_pa_0201->alatganti }}" required>
                                 </div>
                             </div>
+                            
+                            @endif
+                            @if (auth()->user()->jawatan == "ketuajabatan") 
+                            <div class="col-4">
+                                <label for="">Ulasan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="ulasan" value="{{ $plpk_pa_0201->ulasan }}" required>
+                                </div>
+                            </div>
+
+                            <br/>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <input type="radio" name="status" value="LULUS" required>
+                                    <label for="html">Diluluskan</label><br>
+                                    <input type="radio" name="status" value="DITOLAK" required>
+                                    <label for="html">Ditolak</label><br>
+                                </div>
+                            </div>
+                            <br/>
+
+                            @endif
                         </div>
                         <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
                     </div>

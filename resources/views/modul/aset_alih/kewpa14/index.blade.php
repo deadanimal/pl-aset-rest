@@ -28,6 +28,7 @@
           </div>
           <div class="text-end mr-2">
             <a href="/kewpa14pdf" class="align-self-end btn btn-sm btn-primary" id="tambah">Cetak</a>
+            <a href="/kewpa14/create" class="align-self-end btn btn-sm btn-primary" id="tambah">Tambah</a>
           </div>
         </div>
       </div>

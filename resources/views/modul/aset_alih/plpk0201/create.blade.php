@@ -93,6 +93,9 @@
                                     <input class="form-control mb-3" type="text" name="perihal_rosak" value="" required>
                                 </div>
                             </div>
+
+                            @if (auth()->user()->role == "superadmin") 
+
                             <div class="col-4">
                                 <label for="">Kos Penyelenggaraan Dahulu</label>
                                 <div class="input-group">
@@ -113,14 +116,17 @@
                                     <input class="form-control mb-3" type="text" name="syor_ulasan" value="" required>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            @endif
+                            {{-- <div class="col-4">
                                 <label for="">Tarikh Lulus Tak</label>
                                 <div class="input-group">
                                     <input class="form-control mb-3" type="date" name="tarikh_lulus_tak" value="" required>
                                 </div>
-                            </div>
+                            </div> --}}
+                            @if (auth()->user()->role == "pemeriksa") 
+
                             <div class="col-4">
-                                <label for="">Pembaikan Dalamann Luar</label>
+                                <label for="">Pembaikan Dalaman Luar</label>
                                 <div class="input-group">
                                     <input class="form-control mb-3" type="text" name="pembaikan_dalaman_luar" value=""
                                         required>
@@ -132,6 +138,7 @@
                                     <input class="form-control mb-3" type="text" name="alatganti" value="" required>
                                 </div>
                             </div>
+                            @endif
                         </div>
 
                         <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
