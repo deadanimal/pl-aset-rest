@@ -17,8 +17,8 @@
         </div>
     </div>
 
+    <form method="POST" action="/plpkpa0102">
     <div class="container-fluid mt--6">
-        <form method="POST" action="/plpkpa0102">
             @csrf
             <div class="card mt-4">
                 <div class="card-header">
@@ -57,48 +57,96 @@
                             </div>
                         </div>
                         <div class="col-4 mt-3">
-                            <label for="">Kerosakan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kerosakan" value="">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Catatan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="catatan" value="">
-                            </div>
-                        </div>
-                        <div class="col-3 mt-3">
                             <label for="">Nama Pengadu</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="nama_pengadu" value="">
                             </div>
                         </div>
-                        <div class="col-3 mt-3">
+                        <div class="col-4 mt-3">
                             <label for="">No Telefon Pengadu</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="no_telefon_pengadu" value="">
                             </div>
                         </div>
-                        <div class="col-3 mt-3">
+                        <div class="col-4 mt-3">
                             <label for="">Nota</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="nota" value="">
                             </div>
                         </div>
-                        <div class="col-3 mt-3">
+                        <div class="col-4 mt-3">
                             <label for="">Tarikh Pengesahan</label>
                             <div class="input-group">
                                 <input class="form-control" type="date" name="tarikh_pengesahan" value="">
                             </div>
                         </div>
 
-                        <input type="hidden" name="staff_id" value="{{ Auth::user()->id }}">
+
+                        <input type="hidden" name="" value="{{ Auth::user()->id }}">
                     </div>
 
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
+                    <a class="btn btn-primary mt-5 text-white" onclick="tambahKerosakan()">Tambah Kerosakan</a>
                 </div>
             </div>
-        </form>
     </div>
+
+    <br>
+    <br>
+    <div class="container-fluid mt--6" id="form_kerosakan_div">
+    </div>
+
+    </form>
+
+
+    <script>
+        var form_kerosakan = `<div class="card mt-4">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="mb-0">Kerosakan Jalan</h2>
+                        </div>
+                    </div>
+                </div>
+
+                </br>
+                <div class="card-body pt-0">
+                    <div class="row">
+                        <div class="col-6 mt-3">
+                            <label for="">Kerosakan</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="kerosakan[]" value="">
+                            </div>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <label for="">Catatan</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="catatan[]" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                <br>
+                <a class="align-self-end btn btn-primary text-white" onclick="$(this).closest('.card').remove()">Buang</a>
+
+                </div>
+            </div>`
+
+
+      $(document).ready(function() {
+        $("#form_kerosakan_div").append(form_kerosakan);
+           
+
+      });
+
+
+      function tambahKerosakan() {
+          $("#form_kerosakan_div").append(form_kerosakan);
+
+      }
+
+
+
+    </script>
+
 @endsection

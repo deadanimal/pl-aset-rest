@@ -59,6 +59,8 @@
               <td scope="col"><span class="badge bg-warning">{{$plpk_pa_0201->status}}</span></th>
                 @elseif ($plpk_pa_0201->status=="HANTAR")
               <td scope="col"><span class="badge bg-primary">{{$plpk_pa_0201->status}}</span></th>
+                @elseif ($plpk_pa_0201->status=="DISEMAK")
+              <td scope="col"><span class="badge bg-warning">{{$plpk_pa_0201->status}}</span></th>
                 @elseif ($plpk_pa_0201->status=="LULUS")
               <td scope="col"><span class="badge bg-success">{{$plpk_pa_0201->status}}</span></th>
                 @elseif ($plpk_pa_0201->status=="DITOLAK")
@@ -66,9 +68,54 @@
                 @endif
 
               <td scope="col">
-                <a href="/plpk_pa_0201/{{$plpk_pa_0201->id}}/edit"><i class="fas fa-pen"></i></a>
-                <a href="/plpk_pa_0201pdf/{{$plpk_pa_0201->id}}"><i class="fas fa-print"></i></a>
-                <a href="/plpk_pa_0201" onclick="deleteData({{$plpk_pa_0201}})"><i class="fas fa-trash"></i></a>
+                
+                  {{-- KAWALAN AKSES PENGGUNA 1
+                      PENGGUNA tidak boleh edit/hantar semula aduan selepas hantar --}}
+                      @if (auth()->user()->jawatan == 'user' and $plpk_pa_0201->status == 'DERAF')
+                      <a href="/plpk_pa_0201" onclick="ubahStatusAduan({{ $plpk_pa_0201->id }}, 'HANTAR')"><i
+                              class="fas fa-arrow-up"></i></a>
+                      <a href="/plpk_pa_0201/{{ $plpk_pa_0201->id }}/edit"><i class="fas fa-pen"></i></a>
+                  @endif
+
+                  {{-- KAWALAN AKSES SA 1
+                  -SA cuma boleh semak dan hantar semakan setelah pengguna menghantar aduan (status = HANTAR)
+                  -SA cuma boleh tidak boleh semak semula dan hantar semakan setelah menyemak aduan (status = DISEMAK) --}}
+                  @if (auth()->user()->jawatan == 'superadmin' and $plpk_pa_0201->status == 'HANTAR')
+                      <a href="/plpk_pa_0201" onclick="ubahStatusAduan({{ $plpk_pa_0201->id }}, 'DISEMAK')"><i
+                              class="fas fa-check"></i></a>
+                      <a href="/plpk_pa_0201/{{ $plpk_pa_0201->id }}/edit"><i class="fas fa-pen"></i></a>
+                  @endif
+
+
+
+                  {{-- KAWALAN AKSES KETUA JABATAN
+                    KJ boleh sah/tolak aduan yg berstatus semak sahaja --}}
+                  @if (auth()->user()->jawatan == 'ketuajabatan' and $plpk_pa_0201->status == 'DISEMAK')
+                      {{-- <a href="/plpk_pa_0201" onclick="ubahStatusAduan({{ $plpk_pa_0201->id }}, 'LULUS')"><i
+                              class="fas fa-check"></i></a>
+                      <a href="/plpk_pa_0201" onclick="ubahStatusAduan({{ $plpk_pa_0201->id }}, 'DITOLAK')"><i
+                              class="fas fa-times"></i></a> --}}
+                      <a href="/plpk_pa_0201/{{ $plpk_pa_0201->id }}/edit"><i class="fas fa-pen"></i></a>
+                  @endif
+
+                  {{-- KAWALAN PEMERIKSA
+                  -SA cuma boleh semak dan hantar semakan setelah pengguna menghantar aduan (status = LULUS)
+                  -SA cuma boleh tidak boleh semak semula dan hantar semakan setelah menyemak aduan (status = DIPERIKSA) --}}
+                  @if (auth()->user()->jawatan == 'superadmin' and $plpk_pa_0201->status == 'HANTAR')
+                      <a href="/plpk_pa_0201" onclick="ubahStatusAduan({{ $plpk_pa_0201->id }}, 'DISEMAK')"><i
+                              class="fas fa-check"></i></a>
+                      <a href="/plpk_pa_0201/{{ $plpk_pa_0201->id }}/edit"><i class="fas fa-pen"></i></a>
+                  @endif
+
+
+
+
+
+                  <a href="/plpk_pa_0201pdf/{{ $plpk_pa_0201->id }}"><i class="fas fa-print"></i></a>
+                  <a href="/plpk_pa_0201" onclick="deleteData({{ $plpk_pa_0201 }})"><i
+                          class="fas fa-trash"></i></a>
+              
+              
               </td>
 
             </tr>
@@ -104,6 +151,23 @@
       }
     })
   }
+
+  function ubahStatusAduan(id, status) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "/plpk_pa_0201/" + id,
+                type: "PUT",
+                data: {
+                    "status": status
+                },
+                success: function() {
+                    location.replace = "/plpk_pa_0201";
+                }
+            })
+        }
+
 </script>
 
 @endsection

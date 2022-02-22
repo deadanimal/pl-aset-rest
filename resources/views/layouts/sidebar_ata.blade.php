@@ -170,13 +170,14 @@
 
                         <div class="collapse {{ Request::is('plpkpa0102*') ? 'show' : '' }}" id="navbar-jalan">
                             <ul class="nav nav-sm flex-column">
+
                                 <li class="nav-item">
-                                    <a href="/plpkpa0102"
-                                        class="nav-link {{ Request::is('plpkpa0102*') ? 'active' : '' }}">
-                                        <span class="sidenav-mini-icon"> ATA(01/02) </span>
-                                        <span class="sidenav-normal"> PL-PK(PA)-01/02 </span>
+                                    <a class="nav-link {{ Request::is('jalan*') ? 'active' : '' }}">
+                                        <span class="sidenav-mini-icon">D</span>
+                                        <span class="sidenav-normal"> Dashboard Aduan <br/>(PL-PK(PA)-01/02) </span>
                                     </a>
                                 </li>
+
                                 <li class="nav-item">
                                     <a href="/jalan" class="nav-link {{ Request::is('jalan*') ? 'active' : '' }}">
                                         <span class="sidenav-mini-icon">Pendaftaran Jalan </span>
@@ -190,6 +191,14 @@
                                         <span class="sidenav-normal"> Pendaftaran BahuJalan </span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/plpkpa0102"
+                                        class="nav-link {{ Request::is('plpkpa0102*') ? 'active' : '' }}">
+                                        <span class="sidenav-mini-icon"> ATA(01/02) </span>
+                                        <span class="sidenav-normal"> Aduan <br/>(PL-PK(PA)-01/02) </span>
+                                    </a>
+                                </li>
+
 
                             </ul>
                         </div>

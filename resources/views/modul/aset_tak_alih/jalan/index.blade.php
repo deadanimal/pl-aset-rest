@@ -37,11 +37,9 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Tahun Daftar</th>
                             <th scope="col">Nama Jalan</th>
-                            <th scope="col">Panjang Jalan</th>
-                            <th scope="col">Lebar Jalan</th>
-                            <th scope="col">ID PL-PK(PA)-01/02</th>
+                            <th scope="col">Tahun Daftar</th>
+                            <th scope="col">Panjang Jalan(KM)</th>
                             <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
@@ -49,11 +47,9 @@
                         @foreach ($jalan as $j)
                             <tr>
                                 <td scope="col">{{ $j->id }}</td>
-                                <td scope="col">{{ $j->tahun_daftar }}</td>
                                 <td scope="col">{{ $j->nama_jalan }}</td>
+                                <td scope="col">{{ $j->tahun_daftar }}</td>
                                 <td scope="col">{{ $j->panjang_jalan }}</td>
-                                <td scope="col">{{ $j->lebar_jalan }}</td>
-                                <td scope="col">{{ $j->plpk0102_id }}</td>
                                 <td scope="col">
                                     <a class="btn btn-sm bg-white border-0 mx-0" href="/jalan/{{ $j->id }}/edit"><i
                                             class="fas fa-pen"></i></a>
@@ -62,8 +58,11 @@
                                     <form action="/jalan/{{ $j->id }}" class="d-inline mx-0" method="POST">
                                         @method('delete')
                                         @csrf
+                                        
+                                        @if (Auth::user()->jawatan=='superadmin')
                                         <button class="btn btn-sm bg-white border-0" type="submit"> <i
                                                 class=" fas fa-trash"></i></button>
+                                        @endif
                                     </form>
                                 </td>
                             </tr>

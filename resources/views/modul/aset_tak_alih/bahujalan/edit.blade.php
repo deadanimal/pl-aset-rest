@@ -48,11 +48,22 @@
                         </div>
                         <div class="col-4 mb-3">
                             <label for="">Jenis Bahu</label>
-                            <input class="form-control" type="text" name="jenis_bahu" value="">
+                            <select class="form-control" name="jenis_bahu" >
+                              <option value="Concrete">Concrete</option>
+                              <option value="Grass">Grass</option>
+                              <option value="Laterite">Laterite</option>
+                              <option value="Bitumen">Bitumen</option>
+                           </select> 
+
                         </div>
                         <div class="col-4 mb-3">
                             <label for="">Jenis Longkang</label>
-                            <input class="form-control" type="text" name="jenis_longkang" value="">
+                            <select class="form-control" name="jenis_longkang" >
+                              <option value="Concrete">Concrete</option>
+                              <option value="Bitumen">Bitumen</option>
+                              <option value="Earth">Earth</option>
+                           </select> 
+
                         </div>
                         <div class="col-4 mb-3">
                             <label for="">Lebar Laluan</label>
@@ -75,8 +86,8 @@
             var j = @json($bahujalan->toArray());
             $("input[name=jalan_id]").val(j.jalan_id);
             $("input[name=lebar_bahu]").val(j.lebar_bahu);
-            $("input[name=jenis_bahu]").val(j.jenis_bahu);
-            $("input[name=jenis_longkang]").val(j.jenis_longkang);
+            $("select[name=jenis_bahu]").val(j.jenis_bahu);
+            $("select[name=jenis_longkang]").val(j.jenis_longkang);
             $("input[name=lebar_laluan]").val(j.lebar_laluan);
             $("input[name=catatan]").val(j.catatan);
         });

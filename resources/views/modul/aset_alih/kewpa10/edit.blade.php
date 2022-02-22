@@ -70,6 +70,27 @@
                                     <input class="form-control mb-3" type="text" name="perihal_kerosakan" value="{{$kewpa10->perihal_kerosakan}}" required>
                                 </div>
                             </div>
+
+                            @if (auth()->user()->jawatan == "superadmin")
+                            <div class="col-4">
+                                <label for="">Kos Penyelenggaraan Terdahulu (RM)</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="jumlah_kos_penyelenggaraan" value="{{$kewpa10->jumlah_kos_penyelenggaraan}}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Anggaran Kos (RM)</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="anggaran_kos" value="{{$kewpa10->anggaran_kos}}" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Syor dan Ulasan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="syor_ulasan" value="{{$kewpa10->syor_ulasan}}" required>
+                                </div>
+                            </div>
+                            @endif
                             {{-- <div class="col-4">
                                 <label for="">Jumlah Kos Penyelenggaraan</label>
                                 <div class="input-group">{{

@@ -46,11 +46,23 @@
                         </div>
                         <div class="col-4 mb-3">
                             <label for="">Jenis Bahu</label>
-                            <input class="form-control" type="text" name="jenis_bahu" value="">
+                            <select class="form-control" name="jenis_bahu" >
+                              <option value="Concrete">Concrete</option>
+                              <option value="Grass">Grass</option>
+                              <option value="Laterite">Laterite</option>
+                              <option value="Bitumen">Bitumen</option>
+                           </select> 
+
                         </div>
                         <div class="col-4 mb-3">
                             <label for="">Jenis Longkang</label>
-                            <input class="form-control" type="text" name="jenis_longkang" value="">
+                            <select class="form-control" name="jenis_longkang" >
+                              <option value="Concrete">Concrete</option>
+                              <option value="Bitumen">Bitumen</option>
+                              <option value="Earth">Earth</option>
+                           </select> 
+
+
                         </div>
                         <div class="col-4 mb-3">
                             <label for="">Lebar Laluan</label>
