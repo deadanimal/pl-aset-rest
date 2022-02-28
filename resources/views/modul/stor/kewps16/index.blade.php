@@ -48,7 +48,7 @@
                         @foreach ($kewps16 as $k16)
                             <tr>
                                 <td scope="col">{{ $loop->iteration }}</td>
-                                <td scope="col">{{ $k16->infokewps16[0]->kewps3a->nama_stor }}</td>
+                                <td scope="col">{{ $k16->infokewps16[0]->kewps3a->nama_stor ?? 'Telah Dipadam' }}</td>
                                 <td scope="col">{{ $k16->ulasan }}</td>
                                 <td scope="col">{{ $k16->tindakan }}</td>
                                 <td scope="col">{{ count($k16->infokewps16) }}</td>
@@ -72,5 +72,4 @@
             </div>
         </div>
     </div>
-
 @endsection

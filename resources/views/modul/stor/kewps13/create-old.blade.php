@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="/kewps13">kewps13</a></li>
+                                <li class="breadcrumb-item"><a href="">kewps13</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -18,8 +18,7 @@
     </div>
 
     <div class="container-fluid mt--6">
-        <form method="POST" action="/kewps13/{{ $kewps13->id }}">
-            @method('put')
+        <form method="POST" action="/kewps13">
             @csrf
             <div class="card mt-4">
                 <div class="card-header">
@@ -33,20 +32,13 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-1 text-center">
-                            <label for="">
-                                <h4>Selected</h4>
-                            </label>
-                            <input type="checkbox" name="selected" value="selected"
-                                {{ $kewps13->selected == 'selected' ? 'checked' : '' }}>
-                        </div>
-                        <div class="col-5">
+                        <div class="col-6">
                             <label for="">No Rujukan InfoKewps10</label>
                             <select class="form-control mb-3" name="infokewps10_id" id="k13_infok10">
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($infokewps10 as $k10)
-                                    <option {{ $k10->id == $kewps13->infokewps10_id ? 'selected' : '' }}
-                                        value="{{ $k10->id }}">
-                                        {{ $k10->id }}
+                                    <option value="{{ $k10->id }}">{{ $k10->id }} -
+                                        {{ $k10->kewps10->tahun }}
                                     </option>
                                 @endforeach
                             </select>
@@ -54,9 +46,10 @@
                         <div class="col-6">
                             <label for="">No Kod</label>
                             <select class="form-control mb-3" name="kewps3a_id">
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps3a as $k3a)
-                                    <option {{ $k3a->id == $kewps13->kewps3a_id ? 'selected' : '' }}
-                                        value="{{ $k3a->id }}">{{ $k3a->no_kad }}
+                                    <option value="{{ $k3a->id }}">{{ $k3a->id }} -
+                                        {{ $k3a->nama_stor }}
                                     </option>
                                 @endforeach
                             </select>
@@ -67,69 +60,63 @@
                         <div class="col-2">
                             <label for="">(A) Usang</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_A" id="k13_A"
-                                    value="{{ $kewps13->jumlah_stok_A }}">
+                                <input class="form-control mb-3" type="number" name="jumlah_stok_A" id="k13_A" value="">
                             </div>
                         </div>
                         <div class="col-2">
                             <label for="">(B) Rosak</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_B" id="k13_B"
-                                    value="{{ $kewps13->jumlah_stok_B }}">
+                                <input class="form-control mb-3" type="number" name="jumlah_stok_B" id="k13_B" value="">
                             </div>
                         </div>
                         <div class="col-2">
                             <label for="">(C) Tidak Aktif</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_C" id="k13_C"
-                                    value="{{ $kewps13->jumlah_stok_C }}">
+                                <input class="form-control mb-3" type="number" name="jumlah_stok_C" id="k13_C" value="">
                             </div>
                         </div>
                         <div class="col-2">
                             <label for="">(D) Tidak Diperlukan</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_D" id="k13_D"
-                                    value="{{ $kewps13->jumlah_stok_D }}">
+                                <input class="form-control mb-3" type="number" name="jumlah_stok_D" id="k13_D" value="">
                             </div>
                         </div>
                         <div class="col-2">
                             <label for="">(E) Luput Tempoh</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_E" id="k13_E"
-                                    value="{{ $kewps13->jumlah_stok_E }}">
+                                <input class="form-control mb-3" type="number" name="jumlah_stok_E" id="k13_E" value="">
                             </div>
                         </div>
                         <div class="col-2">
                             <label for="">(F) Hilang</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_F" id="k13_F"
-                                    value="{{ $kewps13->jumlah_stok_F }}">
+                                <input class="form-control mb-3" type="number" name="jumlah_stok_F" id="k13_F" value="">
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Jumlah Keseluruhan</label>
                             <div class="input-group">
-                                <input class="form-control" type="number" name="jumlah_kesuluruhan" id="k13_stok_semasa"
-                                    value="{{ $kewps13->jumlah_kesuluruhan }}">
+                                <input class="form-control" type="number" name="jumlah_kesuluruhan" id="k13_stok_semasa">
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Stok Tidak Diverikasi</label>
                             <div class="input-group">
                                 <input class="form-control" type="number" name="stok_tidak_diverifikasi"
-                                    value="{{ $kewps13->stok_tidak_diverifikasi }}" id="k13_tidak_diverifikasi">
+                                    id="k13_tidak_diverifikasi">
                             </div>
                         </div>
                         <div class="col-4">
                             <label for="">Peratusan Diverifikasi</label>
                             <div class="input-group">
                                 <input class="form-control" type="number" name="peratusan_diverifikasi"
-                                    value="{{ $kewps13->peratusan_diverifikasi }}" id="k13_peratusan_diverifikasi">
+                                    id="k13_peratusan_diverifikasi">
                             </div>
                         </div>
 
                     </div>
-                    <div class="text-right mt-3">
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                    <div class=" mt-3">
                         <button class="btn btn-primary" type="submit">Simpan</button>
                     </div>
                 </div>

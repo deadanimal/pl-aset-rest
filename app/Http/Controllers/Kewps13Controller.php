@@ -30,11 +30,9 @@ class Kewps13Controller extends Controller
     public function create()
     {
 
-
-
+        $infokewps10 = InfoKewps10::where('selected', 'selected')->get();
         return view('modul.stor.kewps13.create', [
-            'infokewps10' => InfoKewps10::all(),
-            'kewps3a' => Kewps3a::all(),
+            'infokewps10' => $infokewps10,
         ]);
     }
 
@@ -46,11 +44,31 @@ class Kewps13Controller extends Controller
      */
     public function store(Request $request)
     {
-        $infokewps10 = InfoKewps10::where('id', $request->infokewps10_id)->first();
+        for ($i = 0; $i < count($request->tahun); $i++) {
+            $kewps13 = Kewps13::create([
+                "tahun" => $request->tahun[$i],
+                "stok_tidak_diverifikasi" => $request->stok_tidak_diverifikasi[$i],
+                "peratusan_diverifikasi" => $request->peratusan_diverifikasi[$i],
+                "jumlah_stok_A" => $request->jumlah_stok_A[$i],
+                "jumlah_stok_B" => $request->jumlah_stok_B[$i],
+                "jumlah_stok_C" => $request->jumlah_stok_C[$i],
+                "jumlah_stok_D" => $request->jumlah_stok_D[$i],
+                "jumlah_stok_E" => $request->jumlah_stok_E[$i],
+                "jumlah_stok_F" => $request->jumlah_stok_F[$i],
+                "jumlah_kesuluruhan" => $request->jumlah_keseluruhan[$i],
+                "user_id" => $request->user_id,
+                "infokewps10_id" => $request->infokewps10_id[$i],
+                "kewps3a_id" => $request->kewps3a_id[$i],
+            ]);
 
-        $request['tahun'] = $infokewps10->kewps10->tahun;
-
-        Kewps13::create($request->all());
+            foreach ($request->selected as $select) {
+                if ($select == $i) {
+                    $kewps13->update([
+                        'selected' => "selected",
+                    ]);
+                }
+            }
+        }
 
         return redirect('/kewps13');
     }
@@ -92,6 +110,10 @@ class Kewps13Controller extends Controller
     {
         $kewps13->update($request->all());
 
+        if ($request->selected == null) {
+            $kewps13->update(['selected' => null]);
+        }
+
         return redirect('/kewps13');
     }
 
@@ -107,25 +129,41 @@ class Kewps13Controller extends Controller
         return redirect('/kewps13');
     }
 
-    public function getDinamic(Request $request)
-    {
-        $infokewps10 = InfoKewps10::where('id', $request->id)->first();
-
-        foreach ($infokewps10->kewps3a->parasstok as $paras) {
-            if ($paras->tahun_paras_stok == $infokewps10->kewps10->tahun) {
-                $infokewps10['stok_semasa'] = $paras->maksimum_stok;
-            }
-        }
-
-        return response()->json($infokewps10);
-    }
-
     public function generatePdf(Kewps13 $kewps13)
     {
 
-        $kewps13->data = $kewps13->all();
+        $kewps13->data = Kewps13::where('selected', 'selected')->get();
 
-        $kewps13->tahun = $kewps13->first()->infokewps10->kewps10->tahun;
+        $kewps13['tahun'] = $kewps13->data->first()->infokewps10->kewps10->tahun;
+
+        $kewps13['j_keseluruhan'] = 0;
+        $kewps13['j_diverifikasi'] = 0;
+        $kewps13['j_tidak_diverifikasi'] = 0;
+        $kewps13['j_peratusan_diverifikasi'] = 0;
+        $kewps13['A'] = 0;
+        $kewps13['B'] = 0;
+        $kewps13['C'] = 0;
+        $kewps13['D'] = 0;
+        $kewps13['E'] = 0;
+        $kewps13['F'] = 0;
+
+        foreach ($kewps13->data as $kewps) {
+            $kewps['kementerian'] = $kewps->infokewps10->kewps10->kementerian;
+            $kewps['kategori_stor'] = $kewps->infokewps10->kewps10->kategori_stor;
+            $kewps['diverifikasi'] = $kewps->infokewps10->kuantiti_fizikal_stok;
+
+            $kewps13['j_keseluruhan'] += (int) $kewps->jumlah_kesuluruhan;
+            $kewps13['j_diverifikasi'] += (int) $kewps->diverifikasi;
+            $kewps13['j_tidak_diverifikasi'] += (int) $kewps->stok_tidak_diverifikasi;
+            $kewps13['j_peratusan_diverifikasi'] += (int) $kewps->peratusan_diverifikasi;
+
+            $kewps13['A'] += (int) $kewps->jumlah_stok_A;
+            $kewps13['B'] += (int) $kewps->jumlah_stok_B;
+            $kewps13['C'] += (int) $kewps->jumlah_stok_C;
+            $kewps13['D'] += (int) $kewps->jumlah_stok_D;
+            $kewps13['E'] += (int) $kewps->jumlah_stok_E;
+            $kewps13['F'] += (int) $kewps->jumlah_stok_F;
+        }
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps13', [$kewps13]);
 

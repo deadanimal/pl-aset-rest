@@ -101,12 +101,13 @@
                 <div class="row mt-4">
                     <div class="col">
                         <h3 class="d-inline mr-3">Info {{ $loop->iteration }}</h3>
-                        <form action="/infokewps10/{{ $k10->id }}" method="POST" class="d-inline">
+                        <form action="/infokewps10/{{ $k10->id }}" method="POST" class="d-inline mr-3">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger btn-sm rounded-3" type="submit"><span
                                     class="fas fa-trash-alt"></span></button>
                         </form>
+
                     </div>
                 </div>
 
@@ -114,7 +115,12 @@
                     <div class="row">
                         @csrf
                         @method('put')
-                        <div class="col-4">
+                        <div class="col-1 mt-3 text-center">
+                            <h4 class="d-inline-flex">Selected: </h4>
+                            <input type="checkbox" name="selected" {{ $k10->selected == 'selected' ? 'checked' : '' }}
+                                value="selected" class="">
+                        </div>
+                        <div class="col-3">
                             <label for="">No Kod</label>
                             <select class="form-control mb-3" name="kewps3a_id">
                                 @foreach ($kewps3a as $k3)
@@ -125,7 +131,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <label for="">Kuantiti Fizikal Stok</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="kuantiti_fizikal_stok"
@@ -206,9 +212,12 @@
                         <form action="/infokewps10" method="POST">
                             @csrf
                             <div class="modal-body row">
-
-
                                 <div class="col-12">
+                                    <h4 class="d-inline">Selected</h4>
+                                    <input type="checkbox" name="selected" value="selected" required>
+                                </div>
+
+                                <div class="col-12 mt-2">
                                     <label for="">No Kod</label>
                                     <select class="form-control mb-3" name="kewps3a_id">
                                         <option selected>Pilih</option>

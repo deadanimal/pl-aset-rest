@@ -1,4 +1,11 @@
 @extends('layouts.base_stor') @section('content')
+    <style>
+        #kewps13-table td {
+            min-width: 150px;
+            vertical-align: middle;
+        }
+
+    </style>
     <div class="header bg-primary pb-6">
         <div class="container-fluid">
             <div class="header-body">
@@ -31,92 +38,94 @@
 
                 </br>
                 <div class="card-body pt-0">
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="">Verifikasi Stor</label>
-                            <select class="form-control mb-3" name="infokewps10_id" id="k13_infok10">
-                                <option selected>Pilih</option>
-                                @foreach ($infokewps10 as $k10)
-                                    <option value="{{ $k10->id }}">{{ $k10->id }} -
-                                        {{ $k10->kewps10->tahun }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-6">
-                            <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps3a as $k3a)
-                                    <option value="{{ $k3a->id }}">{{ $k3a->id }} -
-                                        {{ $k3a->nama_stor }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <h3>Status Stok</h3>
-                        </div>
-                        <div class="col-2">
-                            <label for="">(A) Usang</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_A" id="k13_A" value="">
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <label for="">(B) Rosak</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_B" id="k13_B" value="">
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <label for="">(C) Tidak Aktif</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_C" id="k13_C" value="">
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <label for="">(D) Tidak Diperlukan</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_D" id="k13_D" value="">
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <label for="">(E) Luput Tempoh</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_E" id="k13_E" value="">
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <label for="">(F) Hilang</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="jumlah_stok_F" id="k13_F" value="">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <label for="">Jumlah Keseluruhan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="jumlah_kesuluruhan" id="k13_stok_semasa">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <label for="">Stok Tidak Diverikasi</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="stok_tidak_diverifikasi"
-                                    id="k13_tidak_diverifikasi">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <label for="">Peratusan Diverifikasi</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="peratusan_diverifikasi"
-                                    id="k13_peratusan_diverifikasi">
-                            </div>
-                        </div>
+                    <table class="table table-bordered text-center table-responsive mt-5" id="kewps13-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" rowspan="2">Select All
+                                    <div>
+                                        <input type="checkbox" id="check">
+                                    </div>
+                                </th>
+                                <th scope="col" rowspan="2">KEMENTERIAN/ <br> JABATAN</th>
+                                <th scope="col" rowspan="2">KATEGORI STOR</th>
+                                <th scope="col" colspan="3">JUMLAH KUANTITI STOK</th>
+                                <th scope="col" rowspan="2">PERATUSAN DIVERIFIKASI (%) (c) = [(b)/(a)]x100</th>
+                                <th scope="col" colspan="6">JUMLAH STOK</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">KESELURUHAN (a)</th>
+                                <th scope="col">DIVERIFIKASI (b)</th>
+                                <th scope="col">TIDAK DIVERIFIKASI</th>
+                                <th scope="col">A</th>
+                                <th scope="col">B</th>
+                                <th scope="col">C</th>
+                                <th scope="col">D</th>
+                                <th scope="col">E</th>
+                                <th scope="col">F</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($infokewps10 as $ik10)
+                                <input type="hidden" name="tahun[]" value="{{ $ik10->kewps10->tahun }}">
+                                <input type="hidden" name="infokewps10_id[]" value="{{ $ik10->id }}">
+                                <input type="hidden" name="kewps3a_id[]" value="{{ $ik10->kewps3a_id }}">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="check-all" name="selected[]"
+                                            value="{{ $loop->index }}">
+                                    </td>
+                                    <td>
+                                        {{ $ik10->kewps10->kementerian }}
+                                    </td>
+                                    <td>
+                                        {{ $ik10->kewps10->kategori_stor }}
+                                    </td>
+                                    <td>
+                                        {{ $ik10->kewps3a->parasstok->first()->maksimum_stok }}
+                                        <input type="hidden" name="jumlah_keseluruhan[]" class="form-control"
+                                            value="{{ $ik10->kewps3a->parasstok->first()->maksimum_stok }}">
+                                    </td>
+                                    <td>
+                                        {{ $ik10->kuantiti_fizikal_stok }}
+                                        <input type="hidden" name="diverifikasi[]"
+                                            value="{{ $ik10->kuantiti_fizikal_stok }}">
+                                    </td>
+                                    <td>
+                                        {{ $ik10->kewps3a->parasstok->first()->maksimum_stok - $ik10->kuantiti_fizikal_stok }}
+                                        <input type="hidden" name="stok_tidak_diverifikasi[]"
+                                            value="{{ $ik10->kewps3a->parasstok->first()->maksimum_stok - $ik10->kuantiti_fizikal_stok }}">
+                                    </td>
+                                    <td>
+                                        {{ number_format(($ik10->kuantiti_fizikal_stok / $ik10->kewps3a->parasstok->first()->maksimum_stok) * 100, 2) }}
+                                        <input type="hidden" name="peratusan_diverifikasi[]"
+                                            value="{{ ($ik10->kuantiti_fizikal_stok / $ik10->kewps3a->parasstok->first()->maksimum_stok) * 100 }}"
+                                            class="form-control" step="0.01">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="jumlah_stok_A[]" value="" class=" form-control">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="jumlah_stok_B[]" value="" class=" form-control">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="jumlah_stok_C[]" value="" class=" form-control">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="jumlah_stok_D[]" value="" class=" form-control">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="jumlah_stok_E[]" value="" class=" form-control">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="jumlah_stok_F[]" value="" class=" form-control">
+                                    </td>
 
-                    </div>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    <div class=" mt-3">
+                    <div class="text-right mt-3">
                         <button class="btn btn-primary" type="submit">Simpan</button>
                     </div>
                 </div>
@@ -126,43 +135,39 @@
 
 
     <script>
-        $(document).ready(function() {
-            $("#k13_infok10").change(function() {
-                var infok10_id = this.value;
-                $.ajax({
-                    type: 'get',
-                    url: '/kewps13_dinamic',
-                    data: {
-                        'id': infok10_id
-                    },
-                    success: function(data) {
-                        $("#k13_A").val(data.statusA);
-                        $("#k13_B").val(data.statusB);
-                        $("#k13_C").val(data.statusC);
-                        $("#k13_D").val(data.statusD);
-                        $("#k13_E").val(data.statusE);
-                        $("#k13_F").val(data.statusF);
-                        $("#k13_stok_semasa").val(data.stok_semasa);
+        $("#check").change(function() {
+            if (this.checked) {
+                $(".check-all").prop('checked', true);;
+            } else {
+                $(".check-all").prop('checked', false);;
 
-                        var jumlah_verifikasi = data.kuantiti_fizikal_stok;
+            }
+        });
 
-                        var tidak_diverifikasi = data.stok_semasa - jumlah_verifikasi;
-
-                        $("#k13_tidak_diverifikasi").val(tidak_diverifikasi);
-
-                        var peratusan_diverifikasi = (jumlah_verifikasi / data.stok_semasa) *
-                            100;
-                        $("#k13_peratusan_diverifikasi").val(peratusan_diverifikasi);
-
-                    },
-                    error: function() {
-                        console.log('success');
-                    },
-                });
-
+        function status(index) {
+            let status = $(".status-" + index);
+            let approve = true;
+            jQuery.each(status, function(key, val) {
+                if (val.value == "") {
+                    approve = false;
+                }
             });
 
-        });
-    </script>
+            if (approve) {
+                let total = 0;
+                jQuery.each(status, function(key, val) {
+                    total += parseInt(val.value);
+                });
+                $("#keseluruhan-" + index).val(total);
 
+                let verifikasi = $("#diverifikasi-" + index).val();
+
+                console.log(verifikasi);
+                let result = (parseInt(verifikasi) / total) * 100;
+
+                $("#peratusan-" + index).val(result);
+
+            }
+        }
+    </script>
 @endsection

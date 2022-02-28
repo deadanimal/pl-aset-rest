@@ -1,4 +1,11 @@
 @extends('layouts.base_stor') @section('content')
+    <style>
+        #kewps15-table td {
+            min-width: 130px;
+            vertical-align: middle;
+        }
+
+    </style>
     <div class="header bg-primary pb-6">
         <div class="container-fluid">
             <div class="header-body">
@@ -32,45 +39,108 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-12 mt-3">
-                            <label for="">Verifikasi Stor</label>
-                            <select class="form-control mb-3" name="infokewps10_id">
-                                <option selected>Pilih</option>
-                                @foreach ($infokewps10 as $k10)
-                                    <option value="{{ $k10->id }}">{{ $k10->id }} -
-                                        {{ $k10->kewps10->kementerian }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-12 mt-3">
-                            <h3>ASET</h3>
-                        </div>
-                    </div>
-                    <div class="row" id="asetk15">
-                        <div class="col-3 mt-3">
-                            <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id[]">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps3a as $k3a)
-                                    <option value="{{ $k3a->id }}">{{ $k3a->id }} -
-                                        {{ $k3a->nama_stor }} - {{ $k3a->perihal_stok }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-3 mt-3">
-                            <label for="">Kuantiti Fizikal</label>
-                            <input class="form-control" type="text" name="kuantiti_fizikal[]">
+                        <div class="col-6 mt-3">
+                            <label for="">Agensi</label>
+                            <input type="text" name="agensi" class="form-control" value="Perbadanan Aset Labuan">
                         </div>
                         <div class="col-6 mt-3">
-                            <label for="">Justifikasi</label>
-                            <input class="form-control" type="text" name="justifikasi[]">
+                            <label for="">Kategori Stor</label>
+                            <select name="kategori_stor" class="form-control">
+                                <option selected disabled hidden>Pilih</option>
+                                <option value="Stor Alat Ganti">Stor Alat Ganti</option>
+                                <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
+                            </select>
                         </div>
+                        <input type="hidden" name="pegawai_menyediakan" value="{{ auth()->user()->id }}">
+                        <input type="hidden" name="pegawai_mengesahkan" value="{{ auth()->user()->id }}">
                     </div>
-                    <a class="btn btn-sm btn-primary text-white mt-3" onclick="tambahk15()">Tambah Aset</a>
+                    <table class="table table-bordered text-center table-responsive mt-5" id="kewps15-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" rowspan="2">Select All
+                                    <div>
+                                        <input type="checkbox" id="check">
+                                    </div>
+                                </th>
+                                <th scope="col" rowspan="2">No Kod</th>
+                                <th scope="col" rowspan="2">Perihal Stok</th>
+                                <th scope="col" rowspan="2">Tarikh Penemuan</th>
+                                <th scope="col" colspan="2">Baki di Kad Daftar Stok <br> (a)</th>
+                                <th scope="col" colspan="2">Baki Fizikal <br> (b)</th>
+                                <th scope="col" colspan="2">Perbezaan <br> (+/-) <br> (b) - (a)</th>
+                                <th scope="col" rowspan="2">Justifikasi</th>
+                                <th scope="col" rowspan="2">Kelulusan Ketua Jabatan (Lulus/ Tidak Lulus)</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Kuantiti</th>
+                                <th scope="col">Nilai (RM)</th>
+                                <th scope="col">Kuantiti</th>
+                                <th scope="col">Nilai (RM)</th>
+                                <th scope="col">Kuantiti</th>
+                                <th scope="col">Nilai (RM)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($infokewps10 as $ik)
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="check-all" name="selected[]"
+                                            value="{{ $loop->index }}">
+                                    </td>
+                                    <td>
+                                        {{ $ik->kewps3a->no_kad }}
+                                    </td>
+                                    <td>
+                                        {{ $ik->kewps3a->perihal_stok }}
+                                    </td>
+                                    <td>
+                                        <input type="date" name="tarikh_penemuan[]" class="form-control" required>
+                                    </td>
+                                    <td>
+                                        {{ $ik->kewps3a->parasstok->first()->maksimum_stok }}
+                                        <input type="hidden" name="kuantiti_stok[]" id="kuantiti_stok-{{ $loop->index }}"
+                                            value=" {{ $ik->kewps3a->parasstok->first()->maksimum_stok }}">
+                                    </td>
+                                    <td>
+                                        {{ $ik->kewps3a->parasstok->first()->maksimum_stok * $ik->kewps3a->kewps1->harga_seunit }}
+
+                                    </td>
+                                    <td>
+                                        <input type="number" name="kuantiti_fizikal[]"
+                                            onkeyup="kf(this,{{ $ik->kewps3a->kewps1->harga_seunit }}, {{ $loop->index }})"
+                                            class="form-control" required>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="" class="form-control"
+                                            id="nilai_fizikal-{{ $loop->index }}" readonly>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" name="kuantiti_perbezaan[]"
+                                            id="kuantiti_perbezaan-{{ $loop->index }}" readonly>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control"
+                                            id="nilai_perbezaan-{{ $loop->index }}" readonly>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="justifikasi[]" class="form-control">
+                                    </td>
+                                    <td>
+                                        <select name="status_kelulusan[]" class="form-control">
+                                            <option selected disabled hidden>Pilih</option>
+                                            <option value="Lulus">Lulus</option>
+                                            <option value="Tidak Lulus">Tidak Lulus</option>
+                                        </select>
+                                    </td>
+                                    <input type="hidden" name="kewps3a_id[]" value="{{ $ik->kewps3a_id }}">
+                                    <input type="hidden" name="infokewps10_id[]" value="{{ $ik->id }}">
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    <div class=" mt-5">
+                    <div class="text-right mt-4">
                         <button class="btn btn-primary" type="submit">Simpan</button>
                     </div>
                 </div>
@@ -78,30 +148,29 @@
         </form>
     </div>
 
+
     <script>
-        function tambahk15() {
-            $("#asetk15").append(
-                `   <div class="col-3 mt-3">
-                            <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id[]">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps3a as $k3a)
-                                    <option value="{{ $k3a->id }}">{{ $k3a->id }} -
-                                        {{ $k3a->nama_stor }} - {{ $k3a->perihal_stok }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-3 mt-3">
-                            <label for="">Kuantiti Fizikal</label>
-                            <input class="form-control" type="text" name="kuantiti_fizikal[]">
-                        </div>
-                        <div class="col-6 mt-3">
-                            <label for="">Justifikasi</label>
-                            <input class="form-control" type="text" name="justifikasi[]">
-                        </div> 
-                `
-            )
+        $("#check").change(function() {
+            if (this.checked) {
+                $(".check-all").prop('checked', true);;
+            } else {
+                $(".check-all").prop('checked', false);;
+
+            }
+        });
+
+        function kf(el, harga_seunit, index) {
+            let kuantiti_fizikal = parseInt(el.value);
+            let nilai = kuantiti_fizikal * parseInt(harga_seunit);
+            $("#nilai_fizikal-" + index).val(nilai);
+
+            let kuantiti_stok = $("#kuantiti_stok-" + index).val();
+            let perbezaan = kuantiti_fizikal - kuantiti_stok;
+
+            $("#kuantiti_perbezaan-" + index).val(perbezaan);
+
+            let nilai_perbezaan = perbezaan * parseInt(harga_seunit);
+            $("#nilai_perbezaan-" + index).val(nilai_perbezaan);
         }
     </script>
 @endsection
