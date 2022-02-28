@@ -15,6 +15,7 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "mckenziearts/laravel-notify": "^2.2",
         "ncjoes/office-converter": "^1.0",
         "ovac/idoc": "^1.4",
         "phpoffice/phpword": "^0.18.2"

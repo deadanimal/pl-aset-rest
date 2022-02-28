@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InfoKewps10;
 use App\Models\Kewps3a;
+use App\Models\Kewps4;
 use App\Models\Kewps10;
 use App\Models\KodJabatan;
 use Illuminate\Http\Request;
@@ -31,8 +32,8 @@ class Kewps10Controller extends Controller
     public function create()
     {
         return view('modul.stor.kewps10.create', [
-            'kewps3a' => Kewps3a::all(),
-            'bahagian' => KodJabatan::all()
+            'kewps4' => Kewps4::all(),
+            'bahagian' => KodJabatan::all(),
         ]);
     }
 
@@ -44,34 +45,50 @@ class Kewps10Controller extends Controller
      */
     public function store(Request $request)
     {
+
+        for ($i = 0; $i < count($request->kewps3a_id); $i++) {
+            if ($request->kuantiti_perbezaan[$i] == null) {
+                notify()->error('Kuantiti Perbezaan Tiada Nilai', 'Gagal');
+                return back()->withInput();
+            }
+            if ($request->kuantiti_fizikal_stok[$i] > $request->maksimum_stok[$i]) {
+                notify()->error('Kuantiti Fizikal melebihi Kuantiti Stok untuk No Kod ' . $request->no_kad[$i], 'Gagal');
+                return back()->withInput();
+            }
+            $jumlah = $request->statusA[$i] + $request->statusB[$i] + $request->statusC[$i] + $request->statusD[$i] + $request->statusE[$i] + $request->statusF[$i];
+            if ($jumlah > $request->kuantiti_fizikal_stok[$i]) {
+                notify()->error('Jumlah status stok melebihi kuantiti stok untuk No Kod ' . $request->no_kad[$i], 'Gagal');
+                return back()->withInput();
+
+            }
+
+        }
+
         $kewps10 = Kewps10::create($request->all());
-        $this->storeAset($request, $kewps10->id);
-        return redirect('/kewps10');
-    }
-    public function storeAset($request, $kewps10_id)
-    {
-        if ($request->kewps3a_id) {
-            foreach (range(0, count($request->kewps3a_id) - 1) as $i) {
-                $kewps3a = Kewps3a::where('id', $request->kewps3a_id[$i])->first();
-                $kuantiti_stok = $kewps3a->parasstok->first()->maksimum_stok;
-                $kuantiti_perbezaan = (int) $kuantiti_stok - (int) $request->kuantiti_fizikal_stok[$i];
 
-                InfoKewps10::create([
-                    'kewps10_id' => $kewps10_id,
-                    'kewps3a_id' => $request->kewps3a_id[$i],
-                    'kuantiti_fizikal_stok' => $request->kuantiti_fizikal_stok[$i],
-                    'kuantiti_perbezaan' => $kuantiti_perbezaan,
-                    'catatan' => $request->catatan[$i],
-                    'statusA' => $request->statusA[$i],
-                    'statusB' => $request->statusB[$i],
-                    'statusC' => $request->statusC[$i],
-                    'statusD' => $request->statusD[$i],
-                    'statusE' => $request->statusE[$i],
-                    'statusF' => $request->statusF[$i],
+        for ($i = 0; $i < count($request->kewps3a_id); $i++) {
+            $ik10 = InfoKewps10::create([
+                'kewps10_id' => $kewps10->id,
+                'kewps3a_id' => $request->kewps3a_id[$i],
+                'kuantiti_fizikal_stok' => $request->kuantiti_fizikal_stok[$i],
+                'kuantiti_perbezaan' => $request->kuantiti_perbezaan[$i],
+                'statusA' => $request->statusA[$i],
+                'statusB' => $request->statusB[$i],
+                'statusC' => $request->statusC[$i],
+                'statusD' => $request->statusD[$i],
+                'statusE' => $request->statusE[$i],
+                'statusF' => $request->statusF[$i],
+                'catatan' => $request->catatan[$i],
+            ]);
 
+            if ($request->selected == $i) {
+                $ik10->update([
+                    'selected' => 'selected',
                 ]);
             }
         }
+        notify()->success('', 'Berjaya Disimpan');
+        return redirect('/kewps10');
     }
 
     /**
@@ -129,7 +146,9 @@ class Kewps10Controller extends Controller
 
     public function generatePdf(Kewps10 $kewps10)
     {
-
+        $kewps10['newinfokewps10'] = InfoKewps10::where('selected', 'selected')->get();
+        $newid = sprintf("%'.07d", $kewps10->id);
+        $kewps10['newid'] = "BVS/" . $newid;
         $kewps10->nama_stor = $kewps10->infokewps10->first()->kewps3a->nama_stor;
 
         $kewps10->maksimum = $kewps10->infokewps10->first()->kewps3a->parasstok[0]->maksimum_stok;

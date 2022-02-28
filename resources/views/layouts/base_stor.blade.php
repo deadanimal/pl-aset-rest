@@ -35,6 +35,8 @@
     <!-- Specific Page CSS goes HERE  -->
     @yield('styles')
 
+    @notifyCss
+
     <!-- Argon CSS -->
     <link rel="stylesheet" href="/assets/css/argon.css?v=1.2.0" type="text/css">
 
@@ -93,8 +95,10 @@
         @include('flash-message')
         @yield('content')
 
+        @include('notify::components.notify')
 
     </div>
+
 
     <!-- Argon Scripts -->
     <!-- Core -->
@@ -121,10 +125,18 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    @notifyJs
 
     {{-- Sweetalert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.0/dist/sweetalert2.all.min.js"></script>
     <script>
+        $(".tahun").datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years",
+            autoclose: true
+        });
+
         function sweetalert(e, btn, t1, t2, t3) {
             e.preventDefault();
             Swal.fire({

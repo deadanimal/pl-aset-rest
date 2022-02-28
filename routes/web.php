@@ -411,7 +411,6 @@ Route::group(['middleware' => 'auth'], function () {
     //for selection
     Route::get('kewps2_dinamic', [Kewps2Controller::class, 'getDinamic']);
     Route::get('kewps3_dinamic', [Kewps3aController::class, 'getDinamic']);
-    Route::get('kewps13_dinamic', [Kewps13Controller::class, 'getDinamic']);
     Route::get('kewps12_dinamic', [Kewps12Controller::class, 'getDinamic']);
     Route::get('kewps6_dinamic', [Kewps6Controller::class, 'getDinamic']);
 
