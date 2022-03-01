@@ -33,7 +33,12 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-1 text-center mt-4">
+                            <label for="">Selected</label>
+                            <input id="check-box" type="checkbox" {{ $kewps9->selected == 'selected' ? 'checked' : '' }}>
+                            <input id="check-text" type="hidden" name="selected" value="{{ $kewps9->selected }}">
+                        </div>
+                        <div class="col-6">
                             <label for="">No Permohonan</label>
                             <select class="form-control mb-3" name="kewps7_id">
                                 <option selected value="{{ $kewps9->infokewps7_id }}">{{ $kewps9->infokewps7_id }}
@@ -46,35 +51,20 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-12">
+                        <div class="col-5">
                             <label for="">Kuantiti Dibungkus</label>
                             <input class="form-control mb-3" type="number" name="kuantiti_dibungkus"
                                 value="{{ $kewps9->kuantiti_dibungkus }}">
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <label for="">Maklumat Pembungkusan</label>
                             <input class="form-control mb-3" type="text" name="maklumat_bungkusan"
                                 value="{{ $kewps9->maklumat_bungkusan }}">
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <label for="">Maklumat Penghantaran</label>
                             <input class="form-control mb-3" type="text" name="maklumat_penghantaran"
                                 value="{{ $kewps9->maklumat_penghantaran }}">
-                        </div>
-                        <div class="col-12">
-                            <label for="">Pemeriksa ID</label>
-                            <input class="form-control mb-3" type="text" name="pemeriksa_id"
-                                value="{{ $kewps9->pemeriksa_id }}">
-                        </div>
-                        <div class="col-12">
-                            <label for="">Pembungkus ID</label>
-                            <input class="form-control mb-3" type="text" name="pembungkus_id"
-                                value="{{ $kewps9->pembungkus_id }}">
-                        </div>
-                        <div class="col-12">
-                            <label for="">Penerima ID</label>
-                            <input class="form-control mb-3" type="text" name="penerima_id"
-                                value="{{ $kewps9->penerima_id }}">
                         </div>
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit">Simpan</button>
@@ -84,4 +74,14 @@
             </div>
         </form>
     </div>
+
+    <script>
+        $("#check-box").change(function() {
+            if (this.checked) {
+                $("#check-text").val('selected');
+            } else {
+                $("#check-text").val('');
+            }
+        });
+    </script>
 @endsection
