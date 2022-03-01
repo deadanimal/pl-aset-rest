@@ -30,8 +30,7 @@ class Kewps9Controller extends Controller
     public function create()
     {
         return view('modul.stor.kewps9.create', [
-            'kewps7' => Kewps7::all(),
-            'infokewps7' => InfoKewps7::all(),
+            'infokewps7' => InfoKewps7::where('pembungkusan', 'perlu')->get(),
         ]);
     }
 
@@ -43,22 +42,25 @@ class Kewps9Controller extends Controller
      */
     public function store(Request $request)
     {
-
         for ($i = 0; $i < count($request->infokewps7_id); $i++) {
-            $infokewps7 = InfoKewps7::where('id', $request->infokewps7_id[$i])->firstOrFail();
-            $infokewps7->update([
-                'pembungkusan' => $request->pembungkusan[$i],
-            ]);
-            Kewps9::create([
+            $kewps9 = Kewps9::create([
                 'infokewps7_id' => $request->infokewps7_id[$i],
-                'pembungkus_id' => $request->pembungkus_id,
-                'status' => $request->status,
+                'pembungkus_id' => auth()->id(),
+                'status' => "DIPOHON",
                 'kuantiti_dibungkus' => $request->kuantiti_dibungkus[$i],
                 'maklumat_bungkusan' => $request->maklumat_bungkusan[$i],
                 'maklumat_penghantaran' => $request->maklumat_penghantaran[$i],
                 'pemeriksa_id' => 'not yet',
                 'penerima_id' => 'not yet',
             ]);
+
+            foreach ($request->selected as $select) {
+                if ($request->infokewps7_id[$i] == $select) {
+                    $kewps9->update([
+                        'selected' => 'selected',
+                    ]);
+                }
+            }
         }
 
         return redirect('/kewps9');
@@ -141,5 +143,14 @@ class Kewps9Controller extends Controller
 
         return view('modul.borang_viewer_ps', $context);
 
+    }
+
+    public function pengesahan(Kewps9 $kewps9)
+    {
+        $kewps9->update([
+            'status' => 'DITERIMA',
+        ]);
+
+        return redirect(route('kewps9.index'));
     }
 }

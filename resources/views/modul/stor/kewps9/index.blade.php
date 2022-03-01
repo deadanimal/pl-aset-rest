@@ -58,21 +58,35 @@
                                     @elseif ($k9->status == 'DIPERIKSA')
                                     <td scope="col"><span class="badge bg-primary">{{ $k9->status }}</span></th>
                                     @elseif ($k9->status == 'DIBUNGKUS')
-                                    <td scope="col"><span class="badge bg-success">{{ $k9->status }}</span></th>
+                                    <td scope="col"><span class="badge bg-primary">{{ $k9->status }}</span></th>
                                     @elseif ($k9->status == 'DITERIMA')
-                                    <td scope="col"><span class="badge bg-danger">{{ $k9->status }}</span></th>
+                                    <td scope="col"><span class="badge bg-success">{{ $k9->status }}</span></th>
                                 @endif
-                                <td scope="col">
-                                    <a href="/kewps9/{{ $k9->id }}"><i class="fas fa-pen"></i></a>
-                                    <a href="">
+                                @if ($k9->status == 'DIPOHON')
+                                    <td scope="col">
+                                        <a class="btn btn-sm btn-primary"
+                                            href="{{ route('pengesahan-kewps9', $k9->id) }}"><i
+                                                class="fas fa-arrow-up"></i></a>
+                                        <a class="btn btn-sm btn-primary" href="/kewps9/{{ $k9->id }}"><i
+                                                class="fas fa-pen"></i></a>
                                         <form action="/kewps9/{{ $k9->id }}" class="d-inline" method="POST">
                                             @method('delete')
                                             @csrf
-                                            <button class="btn-sm bg-white border-0" type="submit"> <i
+                                            <button class="btn btn-sm btn-danger" type="submit"> <i
                                                     class=" fas fa-trash"></i></button>
                                         </form>
-                                    </a>
-                                </td>
+                                    </td>
+                                @endif
+                                @if ($k9->status == 'DITERIMA')
+                                    <td scope="col">
+                                        <form action="/kewps9/{{ $k9->id }}" method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-sm btn-danger" type="submit"> <i
+                                                    class=" fas fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

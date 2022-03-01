@@ -414,6 +414,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('kewps12_dinamic', [Kewps12Controller::class, 'getDinamic']);
     Route::get('kewps6_dinamic', [Kewps6Controller::class, 'getDinamic']);
 
+    //for pengesahan
+    Route::get('kewps9-pengesahan/{kewps9}', [Kewps9Controller::class, 'pengesahan'])->name('pengesahan-kewps9');
+
 #ata Routes
 
     Route::resource('/jkrpataf102', Jkrpataf102Controller::class);
