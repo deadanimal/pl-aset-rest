@@ -1,86 +1,74 @@
 @extends('layouts.base_login')
 @section('content')
 
-    <section style="background-image: url('/assets/img/bg-labuan.jpg') !important;
-                                      background-repeat: no-repeat;
-                                      background-size: stretch;
-                                      height: 100vh !important;
-                                      width: 100vw !important;
-                                      ">
+    <section>
+        <div class="row pb-4">
+            <div class="col-1"></div>
+            <div class="col-2 d-flex align-items-center">
+                <a class="navbar-brand">
+                    <img src="/assets/img/logo-labuan.png" class="mt-3 ml-3 navbar-brand-img" style="max-height: 6rem;">
+                </a>
+            </div>
+
+            <div class="col-9 bg-primary"
+                style="display: flex; justify-content: flex-end; border-bottom-left-radius: 300px;">
+                <div class="mx-auto my-auto">
+                    <h1 class="text-white text-center" style="font-size: 30px;">SISTEM PENGURUSAN ASET DAN STOR</h1>
+                    <h1 class="text-white text-center" style="font-size: 30px;">PERBADANAN LABUAN</h1>
+                </div>
+            </div>
+        </div>
+
+
         <div class="container-fluid">
-            <div class="row h-100">
-                <div class="col-8">
-                    <div class="row pb-4"
-                        style="background: rgba(250,250,250, 0.4); border-bottom-right-radius: 300px;">
-                        <div class="col-2 d-flex align-items-center">
-                            <a class="navbar-brand">
-                                <img src="/assets/img/logo-labuan.png" class="mt-3 ml-3 navbar-brand-img"
-                                    style="max-height: 5rem;">
-                            </a>
-                        </div>
+            <div class="text-center p-4">
+                <h1 class="text-primary" style="font-size: 50px;">PENGUMUMAN TERKINI</h1>
+            </div>
+            <div class="row">
+                <div class="col-6">
 
-                        <div class="col-10">
-                            <div class="mt-4">
-                                <h1 class="text-dark" style="font-size: 30px;">SISTEM PENGURUSAN ASET DAN STOR</h1>
-                                <h1 class="text-dark" style="font-size: 30px;">PERBADANAN LABUAN</h1>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="mt-6 ml-4">
-                        <h1 style="font-size: 50px; color: white;">Pengumuman<br>Terkini</h1>
-                        <h2 style="color: white;">{{ $pengumuman->tajuk }}</h3>
-                            <h3 style="color: white;">{{ $pengumuman->info_pengumuman }}</h3>
+                    <div class="accordion" id="accordionExample">
+                        @foreach ($pengumumans as $pengumuman)
+                            <div class="card">
+                                <div class="card-header" id="headingOne" onclick="updatePicture({{$pengumuman}})">
+                                  <h2 class="mb-0">
+                                    <button  class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{$pengumuman->id}}" aria-expanded="true" aria-controls="collapseOne{{$pengumuman->id}}">
+                                        <i class="fa fa-comments">&nbsp;</i> {{ $pengumuman->tajuk }}
+                                    </button>
+                                  </h2>
+                                </div>
+                            
+                                <div id="collapseOne{{$pengumuman->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                  <div class="card-body">
+                                    {{ $pengumuman->info_pengumuman }}
+                                  </div>
+                                </div>
+                              </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="col-4 w-100">
-
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="p-5" style="border-radius: 250px; background: rgba(255, 255, 255, 0.2)">
-                        <h1 class="text-center text-white" style="font-size: 40px;">Log Masuk</h1>
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <div class="form-outline mb-4">
-
-                                <label class="form-label text-white" for="form3Example3">Alamat E-mel</label>
-                                <input type="email" name="email" id="form3Example3" class="form-control" placeholder="" />
-                            </div>
-
-                            <!-- Password input -->
-                            <div class="form-outline mb-3">
-
-                                <label class="form-label text-white" for="form3Example4">Kata Laluan</label>
-                                <input type="password" name="password" id="form3Example4" class="form-control"
-                                    placeholder="" />
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center">
-                                <!-- Checkbox -->
-                                <div class="form-check mb-0">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                                    <label class="form-check-label text-white" for="form2Example3">
-                                        Ingati Saya
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="text-center text-lg-start">
-                                <button type="submit" class="btn btn-secondary btn-lg">Login</button>
-                            </div>
-
-                        </form>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="mb-0">
+                                Gambar Pengumuman
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <img width="100%" height="400" id="imageviewer" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Tiada_gambar_tersedia.svg/1200px-Tiada_gambar_tersedia.svg.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-@stop
+
+    <script type="text/javascript">
+
+        function updatePicture(pengumuman) {
+            console.log(pengumuman);
+            $("#imageviewer").attr("src", `/storage/${pengumuman.gambar_pengumuman}`);
+        }
+
+    </script>
+@endsection

@@ -20,9 +20,12 @@ class AuthenticatedSessionController extends Controller
     {
       $context = [
         "pengumuman" => Pengumuman::where('status', 'Aktif')->first()
+        // "pengumumans" => Pengumuman::all()->take(3)
+
       ];
 
-      return view('auth.new_login', $context);
+
+      return view('auth.new_login2', $context);
       //return view('auth.login');
     }
 

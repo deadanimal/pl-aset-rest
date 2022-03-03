@@ -57,13 +57,15 @@
 
 </head>
 <body class="">
+
+ 
   
   
   <!-- Main content -->
   <div class="main-content" id="panel">
-
+      {{-- @include('layouts.sidebar_stor') --}}
+        @yield('content')
     <!-- Page content -->
-    @yield('content')
 
     
   </div>
