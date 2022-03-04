@@ -157,7 +157,7 @@
                     );
                     setTimeout(() => {
                         $(btn).parents('form').submit();
-                    }, 2000);
+                    }, 1500);
                 }
             });
         }

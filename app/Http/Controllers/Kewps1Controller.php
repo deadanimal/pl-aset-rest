@@ -34,6 +34,7 @@ class Kewps1Controller extends Controller
         return view('modul.stor.kewps1.create', [
             'pembekal' => PembekalStor::all(),
             'unitukuran' => UnitUkuranStor::all(),
+            'kodstor' => KodStor::all(),
         ]);
     }
 
@@ -49,9 +50,9 @@ class Kewps1Controller extends Controller
         for ($i = 0; $i < count($request->perihal_barang); $i++) {
             $noKod = KodStor::where('perihal', $request->perihal_barang[$i])->first();
             if ($noKod == null) {
-                return back()->with('error', "Perihal " . $request->perihal_barang[$i] . " tidak sah");
+                notify()->error('Nama Perihal: ' . $request->perihal_barang[$i] . ' tidak wujud');
+                return back()->withInput();
             }
-            $no_kod = $noKod->no_kad . "-" . $noKod->kategori_stor . "-" . $noKod->kod_stor;
         }
 
         if ($request->maklumat_pengangkutan == "Lain-lain") {
@@ -61,9 +62,9 @@ class Kewps1Controller extends Controller
         $kewps1 = kewps1::create($request->all());
         for ($i = 0; $i < count($request->perihal_barang); $i++) {
             $noKod = KodStor::where('perihal', $request->perihal_barang[$i])->first();
-            $unit_ukuran = $noKod->unit_ukuran;
+            $no_kod = $noKod->no_kad . "-" . $noKod->kategori_stor . "-" . $noKod->kod_stor;
 
-            $jumlah_harga = (int) $request->harga_seunit[$i] * (int) $request->kuantiti_diterima[$i];
+            $unit_ukuran = $noKod->unit_ukuran;
 
             InfoKewps1::create([
                 'no_kod' => $no_kod,
@@ -74,12 +75,13 @@ class Kewps1Controller extends Controller
                 'kuantiti_do' => $request->kuantiti_do[$i],
                 'kuantiti_diterima' => $request->kuantiti_diterima[$i],
                 'harga_seunit' => $request->harga_seunit[$i],
-                'jumlah_harga' => $jumlah_harga,
+                'jumlah_harga' => $request->jumlah_harga[$i],
                 'catatan' => $request->catatan[$i],
             ]);
 
+            $baki_semasa = $noKod->baki_stok_semasa;
             $noKod->update([
-                'baki_stok_semasa' => $request->kuantiti_diterima[$i],
+                'baki_stok_semasa' => $request->kuantiti_diterima[$i] + $baki_semasa,
             ]);
 
         }
@@ -145,9 +147,19 @@ class Kewps1Controller extends Controller
     public function destroy(kewps1 $kewps1)
     {
 
-        InfoKewps1::where('kewps1_id', $kewps1->id)->delete();
+        foreach ($kewps1->infokewps1 as $ik1) {
+            $kodStor = KodStor::where('perihal', $ik1->perihal_barang)->first();
 
-        kewps1::destroy($kewps1->id);
+            $nilai_semasa = (int) $kodStor->baki_stok_semasa - (int) $ik1->kuantiti_diterima;
+
+            $kodStor->update([
+                'baki_stok_semasa' => $nilai_semasa,
+            ]);
+        }
+
+        $kewps1->update([
+            'status' => 'DIBUANG',
+        ]);
 
         return redirect('/kewps1');
     }
@@ -157,7 +169,7 @@ class Kewps1Controller extends Controller
         $infoKewps1 = InfoKewps1::where('kewps1_id', $kewps1->id)->get();
         $kewps1->data = $infoKewps1;
 
-        $kewps1['newid'] = sprintf("%'.07d\n", $kewps1->id);
+        $kewps1['newid'] = "BTB/" . sprintf("%'.07d\n", $kewps1->id);
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps1', [$kewps1]);
 

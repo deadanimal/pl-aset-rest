@@ -33,20 +33,24 @@
                 <div class="card-body pt-0">
                     <div class="row">
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                        <div class="col-4">
-                            <label for="">No Kod </label>
+                        <div class="col-3">
+                            <label for="">No Rujukan</label>
                             <select name="no_transaksi" class="form-control mb-3" id="k3b_nokod" required>
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps3a as $k3a)
-                                    <option value="{{ $k3a->id }}">{{ $k3a->no_kad }}</option>
+                                    <option value="{{ $k3a->id }}">PK/BTB/BPSS/BPSI/BPIN {{ $k3a->id }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
+                            <label for="">Perihal Stok</label>
+                            <input type="text" id="perihal_stok" class="form-control">
+                        </div>
+                        <div class="col-3">
                             <label for="">Tarikh Transaksi</label>
                             <input class="form-control mb-3" type="date" name="tarikh" required>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <label for="">Terima Daripada</label>
                             <input class="form-control mb-3" type="text" name="terima" id="k3b_terima" required>
                         </div>
@@ -110,6 +114,7 @@
                         $("#k3b_kuantiti_diterima").val(b.kewps1.kuantiti_diterima);
                         $("#k3b_harga_seunit_terima").val(b.kewps1.harga_seunit);
                         $("#k3b_jumlah_harga_terima").val(b.kewps1.jumlah_harga);
+                        $("#perihal_stok").val(b.perihal_stok);
                     }
                 });
             });
@@ -149,5 +154,4 @@
 
         });
     </script>
-
 @endsection

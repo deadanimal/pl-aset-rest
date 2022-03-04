@@ -50,15 +50,17 @@
                                     <td scope="col">{{ $k3a->nama_stor }}</td>
                                     <td scope="col">{{ $k3a->perihal_stok }}</td>
                                     <td scope="col">
-                                        <a href="/kewps3a/{{ $k3a->id }}"><i class="fas fa-pen"></i></a>
-                                        <a href="/kewps3apdf/{{ $k3a->id }}"><i class="fas fa-print"></i></a>
+                                        <a class="btn btn-sm btn-primary" href="/kewps3a/{{ $k3a->id }}"><i
+                                                class="fas fa-pen"></i></a>
+                                        <a class="btn btn-sm btn-primary" href="/kewps3apdf/{{ $k3a->id }}"><i
+                                                class="fas fa-print"></i></a>
                                         <a href="">
                                             <form action="/kewps3a/{{ $k3a->id }}" class="d-inline"
                                                 method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                        class=" fas fa-trash"></i></button>
+                                                <button onclick="confirmDel(event,this)" class="btn btn-sm btn-danger"
+                                                    type="submit"> <i class=" fas fa-trash"></i></button>
                                             </form>
                                         </a>
                                     </td>
@@ -70,5 +72,4 @@
             </div>
         </div>
     </div>
-
 @endsection
