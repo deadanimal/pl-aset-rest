@@ -109,24 +109,9 @@
                         <div class="col-12">
                             <h5>Paras Stok</h5>
                         </div>
-                        <div class="col-3 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Tahun</label>
-                            <input type="text" class="datepicker form-control" name="tahun_paras_stok[]"
-                                autocomplete="off" />
-                        </div>
-                        <div class="col-3 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Maksimum Stok</label>
-                            <input class="form-control" type="number" name="maksimum_stok[]">
-                        </div>
-                        <div class="col-3 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Menokok Stok</label>
-                            <input class="form-control" type="number" name="menokok_stok[]">
-                        </div>
-                        <div class="col-3 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Minimum Stok</label>
-                            <input class="form-control" type="number" name="minimum_stok[]">
-                        </div>
                     </div>
+                    <a class="btn btn-sm btn-primary text-white mt-3" onclick="tambahParasStok()">Tambah Paras
+                        Stok</a>
                     <div class="mt-5">
                         <button class="btn btn-primary" type="submit">Simpan</button>
                     </div>
@@ -199,6 +184,105 @@
             }
         });
 
+        function tambahKeluaranStokSuku() {
+            $("#keluaran_stok_create").append(
+                `
+                 
+                        <div class="col-4 mt-2">
+                            <label for="">Tahun</label>
+                            <select class="form-control" name="tahun_keluar_stok[]">
+                                <option selected>Pilih</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="">Kuantiti Keluar Stok Pertama</label>
+                            <input class="form-control" type="text" name="kuantiti_keluar_stok_pertama[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="">Nilai Kuantiti Keluar Pertama</label>
+                            <input class="form-control" type="text" name="nilai_kuantiti_keluar_pertama[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="">Kuantiti Keluar Stok Kedua</label>
+                            <input class="form-control" type="text" name="kuantiti_keluar_stok_kedua[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="">Nilai Kuantiti Keluar Kedua</label>
+                            <input class="form-control" type="text" name="nilai_kuantiti_keluar_kedua[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="">Kuantiti Keluar Stok Ketiga</label>
+                            <input class="form-control" type="text" name="kuantiti_keluar_stok_ketiga[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="">Nilai Kuantiti Keluar Ketiga</label>
+                            <input class="form-control" type="text" name="nilai_kuantiti_keluar_ketiga[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="">Kuantiti Keluar Stok Keempat</label>
+                            <input class="form-control" type="text" name="kuantiti_keluar_stok_keempat[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="">Nilai Kuantiti Keluar
+                                Keempat</label>
+                            <input class="form-control" type="text" name="nilai_kuantiti_keluar_keempat[]">
+                        </div>    
+                `
+            )
+        }
+
+        function tambahTerimaanStokSuku() {
+            $("#terimaan_stok_create").append(
+                `     
+                        <div class="col-4 mt-2">
+                            <label for="">Tahun</label>
+                            <select class="form-control" name="tahun_terima_stok[]">
+                                <option selected>Pilih</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                            </select>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="">Kuantiti Terima Stok Pertama</label>
+                            <input class="form-control" type="number" name="kuantiti_terima_stok_pertama[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="" class="col-form-label col-form-label-sm">Nilai Terima Stok Pertama</label>
+                            <input class="form-control" type="text" name="nilai_terima_stok_pertama[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Terima Stok Kedua</label>
+                            <input class="form-control" type="number" name="kuantiti_terima_stok_kedua[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="" class="col-form-label col-form-label-sm">Nilai Terima Stok Kedua</label>
+                            <input class="form-control" type="text" name="nilai_terima_stok_kedua[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Terima Stok Ketiga</label>
+                            <input class="form-control" type="number" name="kuantiti_terima_stok_ketiga[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="" class="col-form-label col-form-label-sm">Nilai Terima Stok Ketiga</label>
+                            <input class="form-control" type="text" name="nilai_terima_stok_ketiga[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Terima Stok Keempat</label>
+                            <input class="form-control" type="number" name="kuantiti_terima_stok_keempat[]">
+                        </div>
+                        <div class="col-4 mt-2">
+                            <label for="" class="col-form-label col-form-label-sm">Nilai Terima Stok Keempat</label>
+                            <input class="form-control" type="text" name="nilai_terima_stok_keempat[]">
+                        </div>
+                `
+            )
+        }
 
         function tambahParasStok() {
             $("#paras_stok_create").append(

@@ -6,6 +6,7 @@ use App\Models\InfoKewps1;
 use App\Models\InfoKewps2;
 use App\Models\kewps1;
 use App\Models\Kewps2;
+use App\Models\KodStor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -32,7 +33,7 @@ class Kewps2Controller extends Controller
     public function create()
     {
         return view('modul.stor.kewps2.create', [
-            'kewps1' => kewps1::all(),
+            'kewps1' => kewps1::where('status', 'HANTAR')->get(),
             'infokewps1' => InfoKewps1::all(),
         ]);
     }
@@ -49,18 +50,23 @@ class Kewps2Controller extends Controller
         $kewps2 = Kewps2::create($request->all());
 
         for ($i = 0; $i < count($request->kuantiti_ditolak); $i++) {
-            if ($request->kuantiti_ditolak[$i] != null) {
-                $infokewps1 = InfoKewps1::where('id', $request->infokewps1_id[$i])->firstorfail();
-                $kurang_lebih = $infokewps1->kuantiti_diterima - $request->kuantiti_ditolak[$i];
+            $infokewps1 = InfoKewps1::where('id', $request->infokewps1_id[$i])->firstorfail();
 
-                InfoKewps2::create([
-                    'kuantiti_ditolak' => $request->kuantiti_ditolak[$i],
-                    'kuantiti_kurang_lebih' => $kurang_lebih,
-                    'sebab_penolakan' => $request->sebab_penolakan[$i],
-                    'kewps2_id' => $kewps2->id,
-                    'infokewps1_id' => $request->infokewps1_id[$i],
-                ]);
-            }
+            InfoKewps2::create([
+                'kuantiti_ditolak' => $request->kuantiti_ditolak[$i],
+                'kuantiti_kurang_lebih' => $request->kuantiti_kurang_lebih[$i],
+                'sebab_penolakan' => $request->sebab_penolakan[$i],
+                'kewps2_id' => $kewps2->id,
+                'infokewps1_id' => $request->infokewps1_id[$i],
+            ]);
+
+            $kodStor = KodStor::where('perihal', $infokewps1->perihal_barang)->first();
+
+            $baki_semasa_new = (int) $kodStor->baki_stok_semasa - (int) $request->kuantiti_ditolak[$i];
+
+            $kodStor->update([
+                'baki_stok_semasa' => $baki_semasa_new,
+            ]);
         }
 
         return redirect('/kewps2');
@@ -136,6 +142,14 @@ class Kewps2Controller extends Controller
      */
     public function destroy(Kewps2 $kewps2)
     {
+        foreach ($kewps2->infokewps2 as $ik2) {
+            $kodStor = KodStor::where('perihal', $ik2->infokewps1->perihal_barang)->first();
+
+            $baki_semasa_new = (int) $kodStor->baki_stok_semasa + (int) $ik2->kuantiti_ditolak;
+            $kodStor->update([
+                'baki_stok_semasa' => $baki_semasa_new,
+            ]);
+        }
         InfoKewps2::where('kewps2_id', $kewps2->id)->delete();
 
         Kewps2::destroy($kewps2->id);
@@ -150,14 +164,10 @@ class Kewps2Controller extends Controller
         return response()->json($data);
     }
 
-    public function generatePdf(Request $request, Kewps2 $kewps2)
+    public function generatePdf(Kewps2 $kewps2)
     {
         $infoKewps2 = InfoKewps2::where('kewps2_id', $kewps2->id)->get();
         $kewps2->data = $infoKewps2;
-
-        // $kewps1 = kewps1::where('id', $kewps2->kewps1_id)->get()->first();
-
-        // dd($kewps2->infokewps1->perihal_barang);
 
         $kewps2['newid'] = sprintf("%'.07d", $kewps2->id);
 

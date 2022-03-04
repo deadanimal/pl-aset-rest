@@ -44,11 +44,11 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <label for="">Borang BTB</label>
-                            <select class="form-control mb-4" name="kewps1_id" id="kewps2_select">
-                                <option selected>Pilih</option>
+                            <label for="">No Rujukan BTB</label>
+                            <select class="form-control mb-4" name="kewps1_id" onchange="kewps2Select(this)">
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps1 as $k1)
-                                    <option value="{{ $k1->id }}">{{ sprintf("%'.07d\n", $k1->id) }}
+                                    <option value="{{ $k1->id }}">BTB/{{ sprintf("%'.07d\n", $k1->id) }}
                                     </option>
                                 @endforeach
                             </select>
@@ -57,37 +57,17 @@
                         <input type="hidden" name="status" value="DERAF">
                     </div>
 
-                    <div id="info_kewps2_create" class="row">
-                        <div class="col-4">
-                            <label for="">Aset</label>
-                            <div class="input-group">
-                                <select class="form-control infok1 mb-4" name="infokewps1_id[]" id="k2_infok1">
-                                    <option selected>Pilih</option>
+                    <div id="info_kewps2_create" class="container mt-3">
 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <label for="">Kuantiti Ditolak</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="kuantiti_ditolak[]" value="">
-                            </div>
-                        </div>
-
-                        <div class="col-4">
-                            <label for="">Sebab penolakan</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="sebab_penolakan[]" value="">
-                            </div>
-                        </div>
                     </div>
 
-                    <a id="button_aset_diperiksa" class="btn btn-sm btn-primary text-white"
-                        onclick="tambahAsetDiperiksa()">Tambah Aset</a>
+
 
                     <hr>
 
-                    <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit">Simpan</button>
+                    </div>
 
                 </div>
             </div>
@@ -98,79 +78,81 @@
     </div>
 
     <script>
-        function tambahAsetDiperiksa() {
+        function kewps2Select(el) {
+            $("#info_kewps2_create").html("");
 
+            let val = el.value;
+            var kewps1 = @json($kewps1->toArray());
 
-            var str = `<div class="col-4">
-                <label for="">Aset</label>
-                <div class="input-group">
-                    <select class="form-control infok1 mb-4" name="infokewps1_id[]" id="k2_infok1">
-                        <option selected>Pilih</option>
-                          
-                    </select>
-                </div>
-            </div>
-            <div class="col-4">
-                <label for="">Kuantiti Ditolak</label>
-                <div class="input-group">
-                    <input class="form-control mb-3" type="text" name="kuantiti_ditolak[]" value="">
-                </div>
-            </div>
-           
-            <div class="col-4">
-                <label for="">Sebab penolakan</label>
-                <div class="input-group">
-                    <input class="form-control mb-3" type="text" name="sebab_penolakan[]" value="">
-                </div>
-            </div>   `;
+            kewps1.forEach(e => {
+                if (e.id == val) {
+                    infokewps1 = e.infokewps1;
+                }
+            });
 
-            $("#info_kewps2_create").append(str);
+            infokewps1.forEach(function(e, i) {
+                $("#info_kewps2_create").append(`
+                    <div id="div` + e.id + `" class="row mb-4">
+                            <div class="col-12">
+                                <h4 class="d-inline">Aset ` + (i + 1) + `</h4>
+                                <a onclick="minus_infokewps1(` + e.id + `)"
+                                    class="btn btn-danger btn-sm ml-3 text-white">Buang</a>
+                            </div>
+                            <div class="col-4">
+                                <label for="">No Kod</label>
+                                <input type="text" class="form-control mb-3" value="` + e.no_kod + `" readonly>
+                                <input type="hidden" name="infokewps1_id[]" value="` + e.id + `">
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti Diterima</label>
+                                <input type="text" id="kuantiti_diterima-` + e.id + `"
+                                 class="form-control mb-3" value="` + e.kuantiti_diterima + `" readonly>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Perihal Barang</label>
+                                <input type="text" class="form-control mb-3" value="` + e.perihal_barang + `"
+                                    readonly>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti Ditolak</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" onkeyup="forKurangLebih(this,` + e.id + `)"
+                                    type="text" name="kuantiti_ditolak[]" value="" required>
+                                </div>
+                            </div>
 
-            var kps1_id = $("#kewps2_select").val();
-            var op = " ";
-            $.ajax({
-                type: 'get',
-                url: '/kewps2_dinamic',
-                data: {
-                    'id': kps1_id
-                },
-                success: function(data) {
-                    for (var i = 0; i < data.length; i++) {
-                        op += '<option value="' + data[i].id + '">' + data[i].no_kod + '</option>';
-                    }
-                    $('.infok1').html(" ");
-                    $('.infok1').append(op);
-                },
-                error: function() {
-                    console.log('success');
-                },
+                            <div class="col-4">
+                                <label for="">Sebab penolakan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="sebab_penolakan[]" value="" required>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <label for="">Kuantiti Kurang/Lebih</label>
+                                <input type="number" name="kuantiti_kurang_lebih[]" class="form-control mb-3"
+                                    id="kurang-lebih-` + e.id + `" readonly>
+                            </div>
+                        </div>
+                
+                `);
+
             });
         }
 
 
-        $("#kewps2_select").change(function() {
-            var kps1_id = $("#kewps2_select").val();
-            var op = " ";
-            $.ajax({
-                type: 'get',
-                url: "/kewps2_dinamic",
-                data: {
-                    'id': kps1_id
-                },
-                success: function(data) {
-                    for (var i = 0; i < data.length; i++) {
-                        op += '<option value="' + data[i].id + '">' + data[i].no_kod + '</option>';
-                    }
-                    $('.infok1').html(" ");
-                    $('.infok1').append(op);
-                },
-                error: function() {
-                    console.log('success');
-                },
-            });
+        function minus_infokewps1(id) {
+            $("#div" + id).hide();
+        }
 
-        });
+        function forKurangLebih(el, infokewps1_id) {
+            let ditolak = el.value;
+            let diterima = $('#kuantiti_diterima-' + infokewps1_id).val();
+
+            let kurangLebih = diterima - ditolak;
+
+            $('#kurang-lebih-' + infokewps1_id).val(kurangLebih);
+
+        }
     </script>
-
-
 @endsection

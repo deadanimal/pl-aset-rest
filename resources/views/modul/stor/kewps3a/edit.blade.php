@@ -35,8 +35,8 @@
                     <div class="row">
 
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">No Kod</label>
-                            <select class="form-control form-control-sm" name="no_kad" id="3a_no_kad">
+                            <label for="" class="">No Kod</label>
+                            <select class="form-control" name="no_kad" id="3a_no_kad">
                                 <option selected>Pilih</option>
                                 @foreach ($infokewps1 as $ik1)
                                     <option {{ $ik1->no_kod == $kewps3a->no_kad ? 'selected' : '' }}
@@ -47,8 +47,8 @@
                             </select>
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Nama Stor</label>
-                            <select class="form-control form-control-sm" name="nama_stor">
+                            <label for="" class="">Nama Stor</label>
+                            <select class="form-control" name="nama_stor">
                                 <option {{ $kewps3a->nama_stor == 'Stor Alat Ganti' ? 'selected' : '' }}
                                     value="Stor Alat Ganti">Stor Alat Ganti</option>
                                 <option {{ $kewps3a->nama_stor == 'Stor Bekalan Pejabat' ? 'selected' : '' }}
@@ -56,13 +56,13 @@
                             </select>
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Perihal Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="perihal_stok" id="k1_perihal_stok"
+                            <label for="" class="">Perihal Stok</label>
+                            <input class="form-control" type="text" name="perihal_stok" id="k1_perihal_stok"
                                 value="{{ $kewps3a->perihal_stok }}">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Unit Pengukuran</label>
-                            <select class="form-control form-control-sm" name="unit_pengukuran" id="k1_unit_pengukuran">
+                            <label for="" class="">Unit Pengukuran</label>
+                            <select class="form-control" name="unit_pengukuran" id="k1_unit_pengukuran">
                                 <option {{ $kewps3a->unit_pengukuran == 'Unit' ? 'selected' : '' }} value="Unit">Unit
                                 </option>
                                 <option {{ $kewps3a->unit_pengukuran == 'Kotak' ? 'selected' : '' }} value="Kotak">Kotak
@@ -83,16 +83,16 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Kumpulan</label>
-                            <select class="form-control form-control-sm" name="kumpulan">
+                        {{-- <div class="col-4 mt-2">
+                            <label for="" class="">Kumpulan</label>
+                            <select class="form-control" name="kumpulan">
                                 <option {{ $kewps3a->kumpulan == 'A' ? 'selected' : '' }} value="A">A</option>
                                 <option {{ $kewps3a->kumpulan == 'B' ? 'selected' : '' }} value="B">B</option>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Pergerakan</label>
-                            <select class="form-control form-control-sm" name="pergerakan">
+                            <label for="" class="">Pergerakan</label>
+                            <select class="form-control" name="pergerakan">
                                 <option {{ $kewps3a->pergerakan == 'Aktif' ? 'selected' : '' }} value="Aktif">Aktif
                                 </option>
                                 <option {{ $kewps3a->pergerakan == 'Tak Aktif' ? 'selected' : '' }} value="Tak Aktif">Tak
@@ -102,34 +102,33 @@
                             </select>
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Gudang Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="gudang_stok"
+                            <label for="" class="">Gudang Stok</label>
+                            <input class="form-control" type="text" name="gudang_stok"
                                 value="{{ $kewps3a->gudang_stok }}">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Baris Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="baris_stok"
+                            <label for="" class="">Baris Stok</label>
+                            <input class="form-control" type="text" name="baris_stok"
                                 value="{{ $kewps3a->baris_stok }}">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Rak Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="rak_stok"
-                                value="{{ $kewps3a->rak_stok }}">
+                            <label for="" class="">Rak Stok</label>
+                            <input class="form-control" type="text" name="rak_stok" value="{{ $kewps3a->rak_stok }}">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Tingkat Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="tingkat_stok"
+                            <label for="" class="">Tingkat Stok</label>
+                            <input class="form-control" type="text" name="tingkat_stok"
                                 value="{{ $kewps3a->tingkat_stok }}">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Petak Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="petak_stok"
+                            <label for="" class="">Petak Stok</label>
+                            <input class="form-control" type="text" name="petak_stok"
                                 value="{{ $kewps3a->petak_stok }}">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Kod Lokasi Stok</label>
-                            <input class="form-control form-control-sm" type="text" name="kod_lokasi_stok"
-                                value="{{ $kewps3a->kod_lokasi_stok }}">
+                            <label for="" class="">Kod Lokasi Stok</label>
+                            <input class="form-control" type="text" name="kod_lokasi_stok"
+                                value="{{ $kewps3a->kod_lokasi_stok }}" readonly>
                         </div>
                     </div>
                     <div class="mt-5">
@@ -151,17 +150,17 @@
 
         </br>
         <div class="card-body pt-0">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12">
                     <h3 class="mt-3 d-inline-flex">Paras Stok</h3> <a id="btnParasStok" class="btn btn-sm btn-primary mx-3"
                         data-toggle="modal" data-target="#modalParasStok"><span
                             class="d-inline-flex fas fa-plus text-light"></span></a>
                 </div>
-            </div>
+            </div> --}}
             @foreach ($parasStok as $p)
                 <div class="row">
                     <div class="col-12 mt-4">
-                        <h6 class="d-inline-flex">Paras Stok {{ $loop->iteration }}</h6>
+                        <h3 class="d-inline-flex">Paras Stok {{ $loop->iteration }}</h3>
                         <form action="/parasstok/{{ $p->id }}" class="d-inline-flex" method="post">
                             @csrf
                             @method('delete')
@@ -176,23 +175,23 @@
                         @csrf
                         @method('put')
                         <div class="col-1 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Tahun</label>
-                            <input type="text" class="datepicker form-control form-control-sm tahun" name="tahun_paras_stok"
+                            <label for="" class="">Tahun</label>
+                            <input type="text" class="datepicker form-control tahun" name="tahun_paras_stok"
                                 autocomplete="off" value="{{ $p->tahun_paras_stok }}" />
                         </div>
                         <div class="col-3 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Maksimum Stok</label>
-                            <input class="form-control form-control-sm" type="number" name="maksimum_stok"
+                            <label for="" class="">Maksimum Stok</label>
+                            <input class="form-control" type="number" name="maksimum_stok"
                                 value="{{ $p->maksimum_stok }}">
                         </div>
                         <div class="col-3 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Menokok Stok</label>
-                            <input class="form-control form-control-sm" type="number" name="menokok_stok"
+                            <label for="" class="">Menokok Stok</label>
+                            <input class="form-control" type="number" name="menokok_stok"
                                 value="{{ $p->menokok_stok }}">
                         </div>
                         <div class="col-3 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Minimum Stok</label>
-                            <input class="form-control form-control-sm" type="number" name="minimum_stok"
+                            <label for="" class="">Minimum Stok</label>
+                            <input class="form-control" type="number" name="minimum_stok"
                                 value="{{ $p->minimum_stok }}">
                         </div>
                         <div class="col-2 mt-4">
@@ -213,48 +212,48 @@
                         <h6>Terimaan {{ $loop->iteration }}</h6>
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Tahun</label>
-                        <input type="text" class="form-control form-control-sm tahun" name="tahun_terima_stok[]"
+                        <label for="" class="">Tahun</label>
+                        <input type="text" class="form-control tahun" name="tahun_terima_stok[]"
                             value="{{ $t->tahun_terima_stok }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Kuantiti Terima Stok Pertama</label>
-                        <input class="form-control form-control-sm" type="number" name="kuantiti_terima_stok_pertama[]"
+                        <label for="" class="">Kuantiti Terima Stok Pertama</label>
+                        <input class="form-control" type="number" name="kuantiti_terima_stok_pertama[]"
                             value="{{ $t->kuantiti_terima_stok_pertama }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Nilai Terima Stok Pertama</label>
-                        <input class="form-control form-control-sm" type="text" name="nilai_terima_stok_pertama[]"
+                        <label for="" class="">Nilai Terima Stok Pertama</label>
+                        <input class="form-control" type="text" name="nilai_terima_stok_pertama[]"
                             value="{{ $t->nilai_terima_stok_pertama }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Kuantiti Terima Stok Kedua</label>
-                        <input class="form-control form-control-sm" type="number" name="kuantiti_terima_stok_kedua[]"
+                        <label for="" class="">Kuantiti Terima Stok Kedua</label>
+                        <input class="form-control" type="number" name="kuantiti_terima_stok_kedua[]"
                             value="{{ $t->kuantiti_terima_stok_kedua }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Nilai Terima Stok Kedua</label>
-                        <input class="form-control form-control-sm" type="text" name="nilai_terima_stok_kedua[]"
+                        <label for="" class="">Nilai Terima Stok Kedua</label>
+                        <input class="form-control" type="text" name="nilai_terima_stok_kedua[]"
                             value="{{ $t->nilai_terima_stok_kedua }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Kuantiti Terima Stok Ketiga</label>
-                        <input class="form-control form-control-sm" type="number" name="kuantiti_terima_stok_ketiga[]"
+                        <label for="" class="">Kuantiti Terima Stok Ketiga</label>
+                        <input class="form-control" type="number" name="kuantiti_terima_stok_ketiga[]"
                             value="{{ $t->kuantiti_terima_stok_ketiga }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Nilai Terima Stok Ketiga</label>
-                        <input class="form-control form-control-sm" type="text" name="nilai_terima_stok_ketiga[]"
+                        <label for="" class="">Nilai Terima Stok Ketiga</label>
+                        <input class="form-control" type="text" name="nilai_terima_stok_ketiga[]"
                             value="{{ $t->nilai_terima_stok_ketiga }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Kuantiti Terima Stok Keempat</label>
-                        <input class="form-control form-control-sm" type="number" name="kuantiti_terima_stok_keempat[]"
+                        <label for="" class="">Kuantiti Terima Stok Keempat</label>
+                        <input class="form-control" type="number" name="kuantiti_terima_stok_keempat[]"
                             value="{{ $t->kuantiti_terima_stok_keempat }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Nilai Terima Stok Keempat</label>
-                        <input class="form-control form-control-sm" type="text" name="nilai_terima_stok_keempat[]"
+                        <label for="" class="">Nilai Terima Stok Keempat</label>
+                        <input class="form-control" type="text" name="nilai_terima_stok_keempat[]"
                             value="{{ $t->nilai_terima_stok_keempat }}">
                     </div>
                 @endforeach
@@ -268,48 +267,48 @@
                         <h6>Keluaran {{ $loop->iteration }}</h6>
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Tahun</label>
-                        <input type="text" class="form-control form-control-sm tahun" name="tahun_keluar_stok[]"
+                        <label for="" class="">Tahun</label>
+                        <input type="text" class="form-control tahun" name="tahun_keluar_stok[]"
                             value="{{ $k->tahun_keluar_stok }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Kuantiti Keluar Stok Pertama</label>
-                        <input class="form-control form-control-sm" type="number" name="kuantiti_keluar_stok_pertama[]"
+                        <label for="" class="">Kuantiti Keluar Stok Pertama</label>
+                        <input class="form-control" type="number" name="kuantiti_keluar_stok_pertama[]"
                             value="{{ $k->kuantiti_keluar_stok_pertama }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Nilai keluar Stok Pertama</label>
-                        <input class="form-control form-control-sm" type="text" name="nilai_kuantiti_keluar_pertama[]"
+                        <label for="" class="">Nilai keluar Stok Pertama</label>
+                        <input class="form-control" type="text" name="nilai_kuantiti_keluar_pertama[]"
                             value="{{ $k->nilai_kuantiti_keluar_pertama }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Kuantiti Keluar Stok Kedua</label>
-                        <input class="form-control form-control-sm" type="number" name="kuantiti_keluar_stok_kedua[]"
+                        <label for="" class="">Kuantiti Keluar Stok Kedua</label>
+                        <input class="form-control" type="number" name="kuantiti_keluar_stok_kedua[]"
                             value="{{ $k->kuantiti_keluar_stok_kedua }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Nilai keluar Stok Kedua</label>
-                        <input class="form-control form-control-sm" type="text" name="nilai_kuantiti_keluar_kedua[]"
+                        <label for="" class="">Nilai keluar Stok Kedua</label>
+                        <input class="form-control" type="text" name="nilai_kuantiti_keluar_kedua[]"
                             value="{{ $k->nilai_kuantiti_keluar_kedua }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Kuantiti keluar Stok Ketiga</label>
-                        <input class="form-control form-control-sm" type="number" name="kuantiti_keluar_stok_ketiga[]"
+                        <label for="" class="">Kuantiti keluar Stok Ketiga</label>
+                        <input class="form-control" type="number" name="kuantiti_keluar_stok_ketiga[]"
                             value="{{ $k->kuantiti_keluar_stok_ketiga }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Nilai keluar Stok Ketiga</label>
-                        <input class="form-control form-control-sm" type="text" name="nilai_kuantiti_keluar_ketiga[]"
+                        <label for="" class="">Nilai keluar Stok Ketiga</label>
+                        <input class="form-control" type="text" name="nilai_kuantiti_keluar_ketiga[]"
                             value="{{ $k->nilai_kuantiti_keluar_ketiga }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Kuantiti keluar Stok Keempat</label>
-                        <input class="form-control form-control-sm" type="number" name="kuantiti_keluar_stok_keempat[]"
+                        <label for="" class="">Kuantiti keluar Stok Keempat</label>
+                        <input class="form-control" type="number" name="kuantiti_keluar_stok_keempat[]"
                             value="{{ $k->kuantiti_keluar_stok_keempat }}">
                     </div>
                     <div class="col-4 mt-2">
-                        <label for="" class="col-form-label col-form-label-sm">Nilai keluar Stok Keempat</label>
-                        <input class="form-control form-control-sm" type="text" name="nilai_kuantiti_keluar_keempat[]"
+                        <label for="" class="">Nilai keluar Stok Keempat</label>
+                        <input class="form-control" type="text" name="nilai_kuantiti_keluar_keempat[]"
                             value="{{ $k->nilai_kuantiti_keluar_keempat }}">
                     </div>
                 @endforeach
@@ -330,15 +329,15 @@
                 <form action="/parasstok" method="POST">
                     @csrf
                     <div class="modal-body">
-                        <label for="" class="col-form-label col-form-label-sm">Tahun</label>
-                        <input type="text" class="datepicker form-control form-control-sm mb-3 tahun"
-                            name="tahun_paras_stok" autocomplete="off" />
-                        <label for="" class="col-form-label col-form-label-sm">Maksimum Stok</label>
-                        <input class="form-control form-control-sm mb-3" type="number" name="maksimum_stok">
-                        <label for="" class="col-form-label col-form-label-sm">Menokok Stok</label>
-                        <input class="form-control form-control-sm mb-3" type="number" name="menokok_stok">
-                        <label for="" class="col-form-label col-form-label-sm">Minimum Stok</label>
-                        <input class="form-control form-control-sm mb-3" type="number" name="minimum_stok">
+                        <label for="" class="">Tahun</label>
+                        <input type="text" class="datepicker form-control mb-3 tahun" name="tahun_paras_stok"
+                            autocomplete="off" />
+                        <label for="" class="">Maksimum Stok</label>
+                        <input class="form-control mb-3" type="number" name="maksimum_stok">
+                        <label for="" class="">Menokok Stok</label>
+                        <input class="form-control mb-3" type="number" name="menokok_stok">
+                        <label for="" class="">Minimum Stok</label>
+                        <input class="form-control mb-3" type="number" name="minimum_stok">
                         <input type="hidden" name="kewps3a_id" value="{{ $kewps3a->id }}">
                     </div>
                     <div class="modal-footer">
@@ -382,8 +381,8 @@
                 `
                  
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Tahun</label>
-                            <select class="form-control form-control-sm" name="tahun_keluar_stok[]">
+                            <label for="" class="">Tahun</label>
+                            <select class="form-control" name="tahun_keluar_stok[]">
                                 <option selected>Pilih</option>
                                 <option value="2021">2021</option>
                                 <option value="2020">2020</option>
@@ -392,37 +391,37 @@
                             </select>
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Keluar Stok Pertama</label>
-                            <input class="form-control form-control-sm" type="text" name="kuantiti_keluar_stok_pertama[]">
+                            <label for="" class="">Kuantiti Keluar Stok Pertama</label>
+                            <input class="form-control" type="text" name="kuantiti_keluar_stok_pertama[]">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Nilai Kuantiti Keluar Pertama</label>
-                            <input class="form-control form-control-sm" type="text" name="nilai_kuantiti_keluar_pertama[]">
+                            <label for="" class="">Nilai Kuantiti Keluar Pertama</label>
+                            <input class="form-control" type="text" name="nilai_kuantiti_keluar_pertama[]">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Keluar Stok Kedua</label>
-                            <input class="form-control form-control-sm" type="text" name="kuantiti_keluar_stok_kedua[]">
+                            <label for="" class="">Kuantiti Keluar Stok Kedua</label>
+                            <input class="form-control" type="text" name="kuantiti_keluar_stok_kedua[]">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Nilai Kuantiti Keluar Kedua</label>
-                            <input class="form-control form-control-sm" type="text" name="nilai_kuantiti_keluar_kedua[]">
+                            <label for="" class="">Nilai Kuantiti Keluar Kedua</label>
+                            <input class="form-control" type="text" name="nilai_kuantiti_keluar_kedua[]">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Keluar Stok Ketiga</label>
-                            <input class="form-control form-control-sm" type="text" name="kuantiti_keluar_stok_ketiga[]">
+                            <label for="" class="">Kuantiti Keluar Stok Ketiga</label>
+                            <input class="form-control" type="text" name="kuantiti_keluar_stok_ketiga[]">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Nilai Kuantiti Keluar Ketiga</label>
-                            <input class="form-control form-control-sm" type="text" name="nilai_kuantiti_keluar_ketiga[]">
+                            <label for="" class="">Nilai Kuantiti Keluar Ketiga</label>
+                            <input class="form-control" type="text" name="nilai_kuantiti_keluar_ketiga[]">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Kuantiti Keluar Stok Keempat</label>
-                            <input class="form-control form-control-sm" type="text" name="kuantiti_keluar_stok_keempat[]">
+                            <label for="" class="">Kuantiti Keluar Stok Keempat</label>
+                            <input class="form-control" type="text" name="kuantiti_keluar_stok_keempat[]">
                         </div>
                         <div class="col-4 mt-2">
-                            <label for="" class="col-form-label col-form-label-sm">Nilai Kuantiti Keluar
+                            <label for="" class="">Nilai Kuantiti Keluar
                                 Keempat</label>
-                            <input class="form-control form-control-sm" type="text" name="nilai_kuantiti_keluar_keempat[]">
+                            <input class="form-control" type="text" name="nilai_kuantiti_keluar_keempat[]">
                         </div>    
                 `
             )

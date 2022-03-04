@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">kewps1</a></li>
+                                <li class="breadcrumb-item"><a href="/kewps1">kewps1</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -37,15 +37,16 @@
                             <select name="nama_pembekal" class="form-control mb-3" id="kewps1_changepembekalcreate"
                                 required>
                                 @foreach ($pembekal as $p)
-                                    <option value="{{ $p->nama }}">{{ $p->nama }}</option>
+                                    <option {{ old('nama_pembekal') == $p->nama ? 'selected' : '' }}
+                                        value="{{ $p->nama }}">{{ $p->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="col-4">
                             <label for="">Alamat Pembekal</label>
-                            <input class="form-control mb-3" type="text" name="alamat_pembekal" value=""
-                                id="kewps1_changealamatcreate" required>
+                            <input class="form-control mb-3" type="text" name="alamat_pembekal"
+                                value="{{ old('alamat_pembekal') }}" id="kewps1_changealamatcreate" required>
                         </div>
                         <div class="col-4">
                             <label for="">Jenis Penerimaan</label>
@@ -115,38 +116,43 @@
                     <div class="row" id="info1">
                         <div class="col-12">
                             <h3>Info 1</h3>
-                            <input type="hidden" id="increament" value="1">
+                            <input type="hidden" id="iteration" value="1">
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Perihal Barang</label>
                             <input class="form-control" type="text" name="perihal_barang[]"
-                                value="{{ old('perihal_barang[]') }}">
+                                value="{{ old('perihal_barang[]') }}" required>
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Kuantiti Dipesan</label>
                             <input class="form-control" type="number" name="kuantiti_dipesan[]"
-                                value="{{ old('kuantiti_dipesan[]') }}">
+                                value="{{ old('kuantiti_dipesan[]') }}" required>
                         </div>
                         <div class="col-4 mt-2">
                             <label for="" class="col-form-label ">Kuantiti DO</label>
                             <input class="form-control" type="number" name="kuantiti_do[]"
-                                value="{{ old('kuantiti_do[]') }}">
+                                value="{{ old('kuantiti_do[]') }}" required>
                         </div>
-                        <div class="col-4 mt-2">
+                        <div class="col-3 mt-2">
                             <label for="" class="col-form-label ">Kuantiti Diterima</label>
-                            <input class="form-control" type="number" name="kuantiti_diterima[]" value=""
-                                id="kewps1_kuantiti_diterima[]">
+                            <input class="form-control" id="id-kuantiti-diterima-1" onkeyup="diterima(this,1)"
+                                type="number" name="kuantiti_diterima[]" value="" required>
                         </div>
-                        <div class="col-4 mt-2">
+                        <div class="col-3 mt-2">
                             <label for="" class="col-form-label ">Harga Seunit</label>
                             <div class="input-group">
                                 <span class="input-group-text">RM</span>
-                                <input class="form-control" type="number" step="0.01" name="harga_seunit[]" value=""
-                                    id="kewps1_harga_seunit[]">
+                                <input id="id-harga-seunit-1" class="form-control" type="number" step="0.01"
+                                    name="harga_seunit[]" onkeyup="seunit(this,1)" value="" required>
                             </div>
                         </div>
+                        <div class="col-3 mt-2">
+                            <label for="" class="col-form-label ">Jumlah</label>
+                            <input class="form-control" name="jumlah_harga[]" type="number" value="" id="jumlah-1"
+                                readonly required>
+                        </div>
 
-                        <div class="col-4 mt-2">
+                        <div class="col-3 mt-2">
                             <label for="" class="col-form-label ">Catatan</label>
                             <input class="form-control" type="text" name="catatan[]" value="{{ old('catatan[]') }}">
                         </div>
@@ -156,7 +162,7 @@
 
             <div class="row my-3">
                 <div class="col">
-                    <button class="btn btn-primary" type="submit" onclick="confirmSimpan(event,this)">Simpan</button>
+                    <button class="btn btn-primary" type="submit" onclick="confirmSimpan(event,this)">Simpan Stok</button>
                     <a class="btn btn-primary text-white" onclick="tambahAset()">Tambah Stok</a>
                 </div>
             </div>
@@ -165,9 +171,22 @@
     </div>
 
     <script>
+        function diterima(el, iteration) {
+            let diterima = el.value;
+            let seunit = $("#id-harga-seunit-" + iteration).val();
+            $("#jumlah-" + iteration).val(diterima * seunit);
+        }
+
+        function seunit(el, iteration) {
+            let seunit = el.value;
+            let diterima = $("#id-kuantiti-diterima-" + iteration).val();
+            $("#jumlah-" + iteration).val(diterima * seunit);
+
+        }
+
         function tambahAset() {
 
-            var val = $("#increament").val();
+            var val = $("#iteration").val();
             val++;
             $("#info1").append(
                 `   <div class="col-12 mt-4">
@@ -185,26 +204,34 @@
                             <label for="" class="col-form-label ">Kuantiti DO</label>
                             <input class="form-control" type="number" name="kuantiti_do[]" value="{{ old('kuantiti_do[]') }}">
                         </div>
-                        <div class="col-4 mt-2">
+                        <div class="col-3 mt-2">
                             <label for="" class="col-form-label ">Kuantiti Diterima</label>
-                            <input class="form-control" type="number" name="kuantiti_diterima[]" value="" id="kewps1_kuantiti_diterima[]">
+                            <input class="form-control" id="id-kuantiti-diterima-` + val +
+                `" onkeyup="diterima(this,` + val + `)" type="number"
+                                name="kuantiti_diterima[]" value="">
                         </div>
-                        <div class="col-4 mt-2">
+                        <div class="col-3 mt-2">
                             <label for="" class="col-form-label ">Harga Seunit</label>
                             <div class="input-group">
                                 <span class="input-group-text">RM</span>
-                                <input class="form-control" type="number" step="0.01" name="harga_seunit[]" value="" id="kewps1_harga_seunit[]">
+                                <input id="id-harga-seunit-` + val + `" class="form-control" type="number" step="0.01"
+                                    name="harga_seunit[]" onkeyup="seunit(this,` + val + `)" value="">
                             </div>
                         </div>
+                        <div class="col-3 mt-2">
+                            <label for="" class="col-form-label ">Jumlah</label>
+                            <input class="form-control" name="jumlah_harga[]" type="number" value="" id="jumlah-` +
+                val + `" readonly>
+                        </div>
                         
-                        <div class="col-4 mt-2">
+                        <div class="col-3 mt-2">
                             <label for="" class="col-form-label ">Catatan</label>
                             <input class="form-control" type="text" name="catatan[]" value="{{ old('catatan[]') }}">
                         </div>
                 `
             )
 
-            $("#increament").val(val);
+            $("#iteration").val(val);
 
             $("html, body").animate({
                 scrollTop: $(document).height() - $(window).height()
