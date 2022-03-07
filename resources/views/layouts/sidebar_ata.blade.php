@@ -165,7 +165,7 @@
                             aria-controls="navbar-dashboards">
 
                             <i class="fas fa-road text-primary"></i>
-                            <span class="nav-link-text">Jalan</span>
+                            <span class="nav-link-text">JALAN</span>
                         </a>
 
                         <div class="collapse {{ Request::is('plpkpa0102*') ? 'show' : '' }}" id="navbar-jalan">
@@ -184,13 +184,13 @@
                                         <span class="sidenav-normal"> Pendaftaran Jalan </span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="/bahujalan"
                                         class="nav-link {{ Request::is('bahujalan*') ? 'active' : '' }}">
                                         <span class="sidenav-mini-icon">Pendaftaran BahuJalan </span>
                                         <span class="sidenav-normal"> Pendaftaran BahuJalan </span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a href="/plpkpa0102"
                                         class="nav-link {{ Request::is('plpkpa0102*') ? 'active' : '' }}">

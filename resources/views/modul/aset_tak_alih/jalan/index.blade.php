@@ -58,11 +58,8 @@
                                     <form action="/jalan/{{ $j->id }}" class="d-inline mx-0" method="POST">
                                         @method('delete')
                                         @csrf
-                                        
-                                        @if (Auth::user()->jawatan=='superadmin')
                                         <button class="btn btn-sm bg-white border-0" type="submit"> <i
                                                 class=" fas fa-trash"></i></button>
-                                        @endif
                                     </form>
                                 </td>
                             </tr>

@@ -24,7 +24,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">Jalan</h2>
+                            <h2 class="mb-0">Aduan Jalan</h2>
                         </div>
                     </div>
                 </div>
@@ -32,105 +32,149 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-4 mt-3">
-                            <label for="">No Arahan Kerja</label>
+                        <div class="col-12">
+
+                        <div class="row">
+
+                        
+                        <div class="col-12 my-3">
+                            <label for=""><strong>MAKLUMAT PENGGUNA</strong></label>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <label for="">No. Arahan Kerja</label>
+                        </div>
+                        <div class="col-6 mt-3">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="no_arahan_kerja" value="">
+                                <input class="form-control" type="text" name="no_arahan_kerja" value="" required>
                             </div>
                         </div>
-                        <div class="col-4 mt-3">
-                            <label for="">nama Penerima</label>
+                        <div class="col-6 mt-3">
+                            <label for="">Nama Kontraktor</label>
+                        </div>
+                        <div class="col-6 mt-3">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="nama_penerima" value="">
+                                <input class="form-control" type="text" name="nama_penerima" value="" required>
                             </div>
                         </div>
-                        <div class="col-4 mt-3">
+                        <div class="col-6 mt-3">
                             <label for="">Bil</label>
+                        </div>
+                        <div class="col-6 mt-3">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="bil" value="">
+                                <input class="form-control" type="text" name="bil" value="" required>
                             </div>
                         </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Lokasi</label>
+                        <div class="col-6 mt-3">
+                            <label for="">Lokasi/Kedudukan</label>
+                        </div>
+                        <div class="col-6 mt-3">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="lokasi" value="">
+                                <input class="form-control" type="text" name="lokasi" value="" required>
                             </div>
                         </div>
-                        <div class="col-4 mt-3">
+                        {{-- <div class="col-12" id="form_kerosakan_div">
+                        </div> --}}
+                        
+
+                        
+                        <div class="col-6 mt-3">
                             <label for="">Nama Pengadu</label>
+                        </div>
+                        <div class="col-6 mt-3">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="nama_pengadu" value="">
+                                <input class="form-control" type="text" name="nama_pengadu" value="" required>
                             </div>
                         </div>
-                        <div class="col-4 mt-3">
+                        <div class="col-6 mt-3">
                             <label for="">No Telefon Pengadu</label>
+                            
+                        </div>
+                        <div class="col-6 mt-3">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="no_telefon_pengadu" value="">
+                                <input class="form-control" type="text" name="no_telefon_pengadu" value="" required>
                             </div>
                         </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Nota</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="nota" value="">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
+                        
+                        <div class="col-6 mt-3">
                             <label for="">Tarikh Pengesahan</label>
+                            
+                        </div>
+                        <div class="col-6 mt-3">
                             <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh_pengesahan" value="">
+                                <input class="form-control" type="date" name="tarikh_pengesahan" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <label for="">Nota</label>
+                        </div>
+
+                        <div class="col-6 mt-3">
+                            <div class="input-group">
+                                <textarea class="form-control" name="nota" value="" rows="5" required></textarea>
+                            </div>
+                        </div>
+                        <hr style="width: 100%; color: black;">
+
+                        <div class="col-12 ">
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for=""><strong>MAKLUMAT KEROSAKAN</strong> </label>&nbsp;
+                                </div>
                             </div>
                         </div>
 
-
+                        <div class="col-12" id="form_kerosakan_div"></div>
                         <input type="hidden" name="" value="{{ Auth::user()->id }}">
+                        </div>
+                        </div>
                     </div>
 
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
-                    <a class="btn btn-primary mt-5 text-white" onclick="tambahKerosakan()">Tambah Kerosakan</a>
+                    <a class="mt-5 btn btn-primary text-white" onclick="tambahKerosakan()">Tambah Kerosakan</a>
                 </div>
             </div>
     </div>
 
     <br>
     <br>
-    <div class="container-fluid mt--6" id="form_kerosakan_div">
-    </div>
+    
 
     </form>
 
 
     <script>
-        var form_kerosakan = `<div class="card mt-4">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col">
-                            <h2 class="mb-0">Kerosakan Jalan</h2>
-                        </div>
-                    </div>
-                </div>
-
-                </br>
-                <div class="card-body pt-0">
-                    <div class="row">
-                        <div class="col-6 mt-3">
-                            <label for="">Kerosakan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kerosakan[]" value="">
+        var form_kerosakan = `
+                
+                    
+                    <div class="row xtra">
+                        <div class="col-11">
+                            <div class=" row">
+                            <div class="col-2 mt-3">
+                                <label for="">Kerosakan</label>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="kerosakan[]" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-2 mt-3">
+                                <label for="">Catatan</label>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="catatan[]" value="" required>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6 mt-3">
-                            <label for="">Catatan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="catatan[]" value="">
-                            </div>
                         </div>
+                        <div class="col-1">
+                            <a class="mt-3 align-self-end btn btn-primary text-white" onclick="$(this).closest('.xtra').remove()">-</a>
+                        </div>
+                        
                     </div>
 
-                <br>
-                <a class="align-self-end btn btn-primary text-white" onclick="$(this).closest('.card').remove()">Buang</a>
 
-                </div>
-            </div>`
+                    `
 
 
       $(document).ready(function() {

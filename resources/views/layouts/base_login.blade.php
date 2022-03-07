@@ -56,19 +56,74 @@
   <link rel="stylesheet" href="/assets/css/custom-style.css" type="text/css">
 
 </head>
+<style>
+  .footer {
+     bottom: 0;
+     position: fixed;
+     width: 90%;
+     color: white;
+     text-align: center;
+  }
+  .sidebar-custom {
+    position: absolute;
+    left: 0;
+    height: 100vh;
+    color: white;
+    text-align: center;
+  }
+
+
+  .sidenav {
+  height: 100%;
+  width: 100px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(248,249,254);
+  overflow-x: hidden;
+  padding-top: 20px;
+  border-right: 1px solid rgba(0, 0, 0, .1);
+  
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+  </style>
+
 <body class="">
 
  
   
   
   <!-- Main content -->
-  <div class="main-content" id="panel">
-      {{-- @include('layouts.sidebar_stor') --}}
-        @yield('content')
-    <!-- Page content -->
 
+  <div class="sidenav">
+    @include('layouts.sidebar_landing')
+  </div>
+  <div class="main-content" style="margin-left: 100px;">
+    
+
+      @yield('content')
+
+    <!-- Page content -->
+    <div class="footer">
+      @include('layouts.footer')
+    </div>
     
   </div>
+
+ 
 
   
   <!-- Argon Scripts -->
@@ -213,4 +268,6 @@
       });
   </script>
 </body>
+
+
 </html>

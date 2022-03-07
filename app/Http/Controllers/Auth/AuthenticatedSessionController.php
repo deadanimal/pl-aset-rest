@@ -18,15 +18,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-      $context = [
-        "pengumuman" => Pengumuman::where('status', 'Aktif')->first()
-        // "pengumumans" => Pengumuman::all()->take(3)
-
-      ];
-
-
-      return view('auth.new_login2', $context);
-      //return view('auth.login');
+      return view('auth.new_login2');
     }
 
     /**
@@ -37,9 +29,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+
         $request->authenticate();
 
         $request->session()->regenerate();
+
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
