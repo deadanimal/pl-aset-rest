@@ -19,43 +19,43 @@
         </div>
     </section>
     <div class="container-fluid">
-        <div class="row mt-5">
+        <div class="row ">
             <div class="col-xl col-lg col-sm-0"></div>
             <div class="col-xl-4 col-lg-6 col-sm-12">
                 <div class="card shadow-lg" style="border-radius: 20px;">
                     <div class="card-body">
                         <div class="text-center">
-                            <h1 style="color: rgba(26,65,102)"><strong>LOG MASUK</strong></h1>
+                            <h1 style="color: rgba(26,65,102)"><strong>MAKLUM BALAS</strong></h1>
                         </div>
-                        <form method="POST" action="/login">
+                        <form method="POST" action="">
                         @csrf
-                        <div class="row mt-3 px-3 mb-3" style="color: rgba(26,65,102)">
+                        <div class="row mt-3 px-3" style="color: rgba(26,65,102)">
+                            <div class="col-12">
+                                <label for=""><strong>Nama</strong></label>
+                            </div>
+                            <div class="col-12 mb-3 input-group">
+                                <input class="form-control" type="text" name="nama" type="text" value="" required>
+                            </div>
                             <div class="col-12">
                                 <label for=""><strong>E-mel</strong></label>
                             </div>
                             <div class="col-12 mb-3 input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                </div>
+                                
                                 <input class="form-control" name="email" type="text" value="" required>
                             </div>
-                            
+
                             <div class="col-12">
-                                <label for=""><strong>Kata Laluan</strong></label>
+                                <label for=""><strong>Komen</strong></label>
                             </div>
                             <div class="col-12 mb-3 input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                </div>
-                                <input class="form-control" type="password" name="password" type="text" value="" required>
+                                
+                                <textarea class="form-control" name="email" type="text" value="" rows="3" required></textarea>
                             </div>
-                            <div class="col-6">
-                                <input class="" type="checkbox" value="">
-                                <label for="" style="font-size: 12px;"><strong>Ingat Saya!</strong></label>
-                            </div>
-                            <div class="col-6"></div>
-                            <div class="col-6 mt-3">
-                                <input class="btn btn-md btn-primary" type="submit" value="Log Masuk"></input>
+                            
+                            
+                            
+                            <div class="col-12 mt-3 text-center">
+                                <input class="btn btn-md btn-primary" type="submit" value="Hantar"></input>
                             </div>
                         </div>
                         </form>
@@ -68,11 +68,9 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#login").css("border-left", "5px solid rgba(26,65,102)");
+            $("#maklum-balas").css("border-left", "5px solid rgba(26,65,102)");
         });
 
-        function updatePicture(pengumuman) {
-            $("#imageviewer").attr("src", `/storage/${pengumuman.gambar_pengumuman}`);
-        }
+        
     </script>
 @endsection

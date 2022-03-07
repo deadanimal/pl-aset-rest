@@ -144,6 +144,8 @@ use App\Http\Controllers\Kewps6Controller;
 use App\Http\Controllers\Kewps7Controller;
 use App\Http\Controllers\Kewps8Controller;
 use App\Http\Controllers\Kewps9Controller;
+use App\Http\Controllers\GuestController;
+
 
 # atk controller
 use App\Http\Controllers\Kewps10Controller;
@@ -206,7 +208,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect('/login');
+    return redirect('/utama');
 });
 
 Route::get('/dashboard', function () {
@@ -571,3 +573,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kewpa37pdf/{kewpa37}', [Kewpa37Controller::class, 'generatePDF']);
 
 });
+
+//guest Routes
+Route::get('/utama', [GuestController::class, 'utamaView']);
+Route::get('/maklum-balas', [GuestController::class, 'maklumbalasView']);
+
