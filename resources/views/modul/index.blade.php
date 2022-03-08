@@ -158,5 +158,7 @@
             $("#susut_nilai").click(function() {
                 window.location.href = ""
             });
+
+            $("#menu").css("border-left", "5px solid rgba(24,79,121)");
         </script>
     @endsection

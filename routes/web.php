@@ -577,4 +577,6 @@ Route::group(['middleware' => 'auth'], function () {
 //guest Routes
 Route::get('/utama', [GuestController::class, 'utamaView']);
 Route::get('/maklum-balas', [GuestController::class, 'maklumbalasView']);
+Route::get('/utama-auth', [GuestController::class, 'utamaViewAuth']);
+Route::get('/maklum-balas-auth', [GuestController::class, 'maklumbalasViewAuth']);
 
