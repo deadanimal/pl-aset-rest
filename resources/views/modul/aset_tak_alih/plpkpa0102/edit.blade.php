@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">Jkr.Pata.f6/8</a></li>
+                                <li class="breadcrumb-item"><a href="">PL-PK(PA)-01/02</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -17,15 +17,16 @@
         </div>
     </div>
 
-    <div class="container-fluid mt--6">
-        <form method="POST" action="/jkrpataf68/{{ $jkrpataf68->id }}">
-            @method('put')
+    {{ $plpkpa0102->id }}
+    <form method="POST" action="/plpkpa0102/{{ $plpkpa0102->id }}">
+        <div class="container-fluid mt--6">
             @csrf
+            @method('put')
             <div class="card mt-4">
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                            <h2 class="mb-0">Pendaftaran Aset Tak Alih</h2>
+                            <h2 class="mb-0">Aduan Jalan</h2>
                         </div>
                     </div>
                 </div>
@@ -33,187 +34,200 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-4 mt-3">
-                            <label for="">No Rujukan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="no_rujukan"
-                                    value="{{ $jkrpataf68->no_rujukan }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Tarikh</label>
-                            <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh" value="{{ $jkrpataf68->tarikh }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Kategori Aset</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kategori_aset"
-                                    value="{{ $jkrpataf68->kategori_aset }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Fungsi Aset</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="fungsi_aset"
-                                    value="{{ $jkrpataf68->fungsi_aset }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Nama Premis</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="nama_premis"
-                                    value="{{ $jkrpataf68->nama_premis }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Alamat Premis</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="alamat_premis"
-                                    value="{{ $jkrpataf68->alamat_premis }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Koordinat GPS</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="koordinat_gps"
-                                    value="{{ $jkrpataf68->koordinat_gps }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Kumpulan Agensi</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kumpulan_agensi"
-                                    value="{{ $jkrpataf68->kumpulan_agensi }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Kementerian</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kementerian" value="Perbadanan Labuan">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Jabatan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="jabatan"
-                                    value="{{ $jkrpataf68->jabatan }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Negara</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="negara"
-                                    value="{{ $jkrpataf68->negara }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Negeri</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="negeri"
-                                    value="{{ $jkrpataf68->negeri }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Daerah</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="daerah"
-                                    value="{{ $jkrpataf68->daerah }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Mukim</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="mukim" value="{{ $jkrpataf68->mukim }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Kategori Fungsi Premis</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kategori_fungsi_premis"
-                                    value="{{ $jkrpataf68->kategori_fungsi_premis }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">No Laluan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="no_laluan"
-                                    value="{{ $jkrpataf68->no_laluan }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Bilangan Blok</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="bilangan_blok"
-                                    value="{{ $jkrpataf68->bilangan_blok }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Jumlah Saiz Premis</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="jumlah_saiz_premis"
-                                    value="{{ $jkrpataf68->jumlah_saiz_premis }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Tarikh Siap Bina Asal</label>
-                            <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh_siap_bina_asal"
-                                    value="{{ $jkrpataf68->tarikh_siap_bina_asal }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Tarikh Warta</label>
-                            <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh_warta"
-                                    value="{{ $jkrpataf68->tarikh_warta }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Jumlah Kos Peralihan Asal</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="jumlah_kos_perolehan_asal"
-                                    value="{{ $jkrpataf68->jumlah_kos_perolehan_asal }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">No Lukisan Plan Lokasi</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="no_lukisan_pelan_lokasi"
-                                    value="{{ $jkrpataf68->no_lukisan_pelan_lokasi }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">No Lokisan Pelan Tapak</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="no_lukisan_pelan_tapak"
-                                    value="{{ $jkrpataf68->no_lukisan_pelan_tapak }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Gambar Premis</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="gambar_premis"
-                                    value="{{ $jkrpataf68->gambar_premis }}">
-                            </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Pegawai Teknikal</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="pegawai_teknikal"
-                                    value="{{ $jkrpataf68->pegawai_teknikal }}">
-                            </div>
-                        </div>
+                        <div class="col-12">
 
-                        <input type="hidden" name="pegawai_daftar" value="{{ Auth::user()->id }}">
+                            <div class="row">
+
+
+                                <div class="col-12 my-3">
+                                    <label for=""><strong>MAKLUMAT PENGGUNA</strong></label>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="">No. Arahan Kerja</label>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="no_arahan_kerja"
+                                            value="{{ $plpkpa0102->no_arahan_kerja }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="">Nama Kontraktor</label>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="nama_penerima"
+                                            value="{{ $plpkpa0102->nama_penerima }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="">Lokasi/Kedudukan</label>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="lokasi"
+                                            value="{{ $plpkpa0102->lokasi }}" required>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-12" id="form_kerosakan_div">
+                        </div> --}}
+
+
+
+                                <div class="col-6 mt-3">
+                                    <label for="">Nama Pengadu</label>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="nama_pengadu"
+                                            value="{{ $plpkpa0102->nama_pengadu }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="">No Telefon Pengadu</label>
+
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="no_telefon_pengadu"
+                                            value="{{ $plpkpa0102->no_telefon_pengadu }}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 mt-3">
+                                    <label for="">Tarikh Arahan Kerja</label>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="date" name="tarikh_pengesahan"
+                                            value="{{ $plpkpa0102->tarikh_pengesahan }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="">Tarikh Siap Kerja</label>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="date" name="tarikh_siap_kerja"
+                                            value="{{ $plpkpa0102->tarikh_siap_kerja }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="">Nota</label>
+                                </div>
+
+                                <div class="col-6 mt-3">
+                                    <div class="input-group">
+                                        <textarea class="form-control" name="nota" rows="5"
+                                            value="{{ $plpkpa0102->nota }}" required>{{$plpkpa0102->nota}}</textarea>
+                                    </div>
+                                </div>
+                                <hr style="width: 100%; color: black;">
+
+                                <div class="col-12 ">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label for=""><strong>MAKLUMAT KEROSAKAN</strong> </label>&nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input class="form-control" type="text" name="bil" hidden
+                                            value="{{ $plpkpa0102->bil }}">
+                                <div class="col-12">
+                                    @foreach($data_kerosakan as $dk)
+                                    <div class="row xtra">
+                                        <div class="col-11">
+                                            <div class=" row">
+                                                <div class="col-2 mt-3">
+                                                    <label for="">Kerosakan</label>
+                                                </div>
+                                                <div class="col-4 mt-3">
+                                                    <div class="input-group">
+                                                        <input class="form-control" type="text" name="kerosakan[]"
+                                                            value="{{$dk->kerosakan}}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 mt-3">
+                                                    <label for="">Catatan</label>
+                                                </div>
+                                                <div class="col-4 mt-3">
+                                                    <div class="input-group">
+                                                        <input class="form-control" type="text" name="catatan[]" value="{{$dk->catatan}}"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-1">
+                                            <a class="mt-3 align-self-end btn btn-primary text-white"
+                                                onclick="$(this).closest('.xtra').remove()">-</a>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+
+                                <div class="col-12" id="form_kerosakan_div"></div>
+
+                                <input type="hidden" name="" value="{{ Auth::user()->id }}">
+                            </div>
+                        </div>
                     </div>
 
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
+                    <a class="mt-5 btn btn-primary text-white" onclick="tambahKerosakan()">Tambah Kerosakan</a>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+
+        <br>
+        <br>
 
 
+    </form>
+
+
+    <script>
+        var form_kerosakan = `
+                    <div class="row xtra">
+                        <div class="col-11">
+                            <div class=" row">
+                            <div class="col-2 mt-3">
+                                <label for="">Kerosakan</label>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="kerosakan[]" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-2 mt-3">
+                                <label for="">Catatan</label>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="catatan[]" value="" required>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-1">
+                            <a class="mt-3 align-self-end btn btn-primary text-white" onclick="$(this).closest('.xtra').remove()">-</a>
+                        </div>
+                    </div>
+
+                    `
+
+
+        $(document).ready(function() {
+            // $("#form_kerosakan_div").append(form_kerosakan);
+
+
+        });
+
+
+        function tambahKerosakan() {
+            $("#form_kerosakan_div").append(form_kerosakan);
+
+        }
+    </script>
 @endsection

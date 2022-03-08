@@ -96,12 +96,19 @@
                         </div>
                         
                         <div class="col-6 mt-3">
-                            <label for="">Tarikh Pengesahan</label>
-                            
+                            <label for="">Tarikh Arahan Kerja</label>
                         </div>
                         <div class="col-6 mt-3">
                             <div class="input-group">
                                 <input class="form-control" type="date" name="tarikh_pengesahan" value="" required>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <label for="">Tarikh Siap Kerja</label>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <div class="input-group">
+                                <input class="form-control" type="date" name="tarikh_siap_kerja" value="" required>
                             </div>
                         </div>
                         <div class="col-6 mt-3">

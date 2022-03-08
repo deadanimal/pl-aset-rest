@@ -1,6 +1,24 @@
 @extends('layouts.base_module')
 @section('content')
     <div class="position-relative">
+        <section>
+            <div class="row pb-4">
+                <div class="col-1"></div>
+                <div class="col-2 d-flex align-items-center">
+                    <a class="navbar-brand">
+                        <img src="/assets/img/logo-labuan.png" class="mt-3 ml-3 navbar-brand-img" style="max-height: 6rem;">
+                    </a>
+                </div>
+    
+                <div class="col-9"
+                    style="display: flex; justify-content: flex-end; border-bottom-left-radius: 300px; background: rgba(24,79,121)">
+                    <div class="mx-auto my-auto">
+                        <h1 class="text-white text-center" style="font-size: 30px;">SISTEM PENGURUSAN ASET DAN STOR</h1>
+                        <h1 class="text-white text-center" style="font-size: 30px;">PERBADANAN LABUAN</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="section section-sm section-shaped" style="padding-bottom: 50px;">
             <div class="shape shape-style-1 shape-default">
                 <span></span>

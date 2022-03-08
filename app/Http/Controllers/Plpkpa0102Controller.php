@@ -58,8 +58,22 @@ class Plpkpa0102Controller extends Controller
      */
     public function show(Plpkpa0102 $plpkpa0102)
     {
+
+        $array_kerosakan = json_decode($plpkpa0102->kerosakan);
+        $array_catatan = json_decode($plpkpa0102->catatan);
+
+        $data_kerosakan = [];
+
+        foreach (range(0, count($array_catatan) - 1) as $i) {
+            $obj = (object)[];
+            $obj->kerosakan = $array_kerosakan[$i];
+            $obj->catatan = $array_catatan[$i];
+            array_push($data_kerosakan, $obj);
+        }
+
         return view('modul.aset_tak_alih.plpkpa0102.edit', [
             'plpkpa0102' => $plpkpa0102,
+            'data_kerosakan' => $data_kerosakan,
         ]);
     }
 
@@ -83,8 +97,14 @@ class Plpkpa0102Controller extends Controller
      */
     public function update(Request $request, Plpkpa0102 $plpkpa0102)
     {
+        $request->merge([
+            'kerosakan' => json_encode($request->kerosakan),
+            'catatan' => json_encode($request->catatan),
+            'staff_id' => $request->user()->id,
+          ]);
+
         $plpkpa0102->update($request->all());
-        return redirect('\plpkpa0102');
+        return redirect('plpkpa0102');
     }
 
     /**
@@ -95,7 +115,14 @@ class Plpkpa0102Controller extends Controller
      */
     public function destroy(Plpkpa0102 $plpkpa0102)
     {
-        $plpkpa0102->delete();
-        return redirect('\plpkpa0102');
+        try {
+            $plpkpa0102->delete();
+            return redirect('plpkpa0102');
+        }
+        catch (\Exception $e) {
+            return redirect('plpkpa0102');
+        }
+        
+        
     }
 }
