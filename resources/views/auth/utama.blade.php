@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-9"
-                style="display: flex; justify-content: flex-end; border-bottom-left-radius: 300px; background: rgba(26,65,102)">
+                style="display: flex; justify-content: flex-end; border-bottom-left-radius: 300px; background: rgba(24,79,121)">
                 <div class="mx-auto my-auto">
                     <h1 class="text-white text-center" style="font-size: 30px;">SISTEM PENGURUSAN ASET DAN STOR</h1>
                     <h1 class="text-white text-center" style="font-size: 30px;">PERBADANAN LABUAN</h1>
@@ -21,7 +21,7 @@
 
         <div class="container-fluid">
             <div class="text-center p-4">
-                <h1 class="" style="font-size: 40px; color: rgba(26,65,102)">PENGUMUMAN TERKINI</h1>
+                <h1 class="" style="font-size: 40px; color: rgba(24,79,121)">PENGUMUMAN TERKINI</h1>
             </div>
             <div class="row" style="width: 90%; margin: auto">
                 <div class="col-6">
@@ -63,7 +63,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#utama").css("border-left", "5px solid rgba(26,65,102)");
+            $("#utama").css("border-left", "5px solid rgba(24,79,121)");
         });
 
         function updatePicture(pengumuman) {

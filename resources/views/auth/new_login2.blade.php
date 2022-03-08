@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-9"
-                style="display: flex; justify-content: flex-end; border-bottom-left-radius: 300px; background: rgba(26,65,102)">
+                style="display: flex; justify-content: flex-end; border-bottom-left-radius: 300px; background: rgba(24, 79,121)">
                 <div class="mx-auto my-auto">
                     <h1 class="text-white text-center" style="font-size: 30px;">SISTEM PENGURUSAN ASET DAN STOR</h1>
                     <h1 class="text-white text-center" style="font-size: 30px;">PERBADANAN LABUAN</h1>
@@ -25,11 +25,11 @@
                 <div class="card shadow-lg" style="border-radius: 20px;">
                     <div class="card-body">
                         <div class="text-center">
-                            <h1 style="color: rgba(26,65,102)"><strong>LOG MASUK</strong></h1>
+                            <h1 style="color: rgba(24,79,121)"><strong>LOG MASUK</strong></h1>
                         </div>
                         <form method="POST" action="/login">
                         @csrf
-                        <div class="row mt-3 px-3 mb-3" style="color: rgba(26,65,102)">
+                        <div class="row mt-3 px-3 mb-3" style="color: rgba(24,79,121)">
                             <div class="col-12">
                                 <label for=""><strong>E-mel</strong></label>
                             </div>
@@ -68,7 +68,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#login").css("border-left", "5px solid rgba(26,65,102)");
+            $("#login").css("border-left", "5px solid rgba(24,79,121)");
         });
 
         function updatePicture(pengumuman) {

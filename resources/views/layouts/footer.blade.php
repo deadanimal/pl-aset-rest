@@ -3,9 +3,9 @@
 
         <div class="row align-items-center justify-content-xl-between">
             <div class="col-sm-1">
-                <a>
+                {{-- <a>
                     <img src="/assets/img/logo-labuan.png" style="height: 40px" />
-                </a>
+                </a> --}}
             </div>
             <div class="col-md-7">
                 <div class="copyright text-center text-xl-left text-muted">

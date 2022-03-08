@@ -36,11 +36,9 @@
                 <table class="table table-custom-simplified table-flush" id="table">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Bil</th>
                             <th scope="col">No Arahan Kerja</th>
                             <th scope="col">Nama Penerima</th>
-                            <th scope="col">Bil</th>
-                            <th scope="col">Kerosakan</th>
                             <th scope="col">Nama Pengadu</th>
                             <th scope="col">Tindakan</th>
                         </tr>
@@ -48,18 +46,16 @@
                     <tbody>
                         @foreach ($plpkpa0102 as $pa0102)
                             <tr>
-                                <td scope="col">{{ $pa0102->id }}</td>
+                                <td scope="col">{{ $loop->index + 1}}</td>
                                 <td scope="col">{{ $pa0102->no_arahan_kerja }}</td>
                                 <td scope="col">{{ $pa0102->nama_penerima }}</td>
-                                <td scope="col">{{ $pa0102->bil }}</td>
-                                <td scope="col">{{ $pa0102->kerosakan }}</td>
                                 <td scope="col">{{ $pa0102->nama_pengadu }}</td>
                                 <td scope="col">
                                     <a class="btn-sm bg-white border-0" href="/plpkpa0102/{{ $pa0102->id }}"><i
                                             class="fas fa-pen"></i></a>
                                     <a class="btn-sm bg-white border-0" href="/plpkpa0102pdf/{{ $pa0102->id }}"><i
                                             class="fas fa-print"></i></a>
-                                    <form action="/plpkpa0102/{{ $pa0102->id }}" class="d-inline" method="POST">
+                                    <form action="plpkpa0102/{{ $pa0102->id }}" class="d-inline" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button class="btn-sm bg-white border-0" type="submit"> <i
