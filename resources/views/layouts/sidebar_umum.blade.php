@@ -124,6 +124,10 @@
                             <i class="fas fa-industry text-primary"></i>
                             <span class="nav-link-text">Pembekal Aset & Stor</span>
                         </a>
+                        <a class="nav-link" href="/comments">
+                            <i class="fas fa-comments text-primary"></i>
+                            <span class="nav-link-text">Maklum Balas</span>
+                        </a>
                     </li>
                 </ul>
             </div>

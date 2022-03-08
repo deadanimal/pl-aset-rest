@@ -93,4 +93,12 @@ class JalanController extends Controller
         $jalan->delete();
         return redirect('/jalan');
     }
+
+    public function dashboardIndex() {
+        $plpkpa0102 = Plpkpa0102::all();
+        return view('modul.aset_tak_alih.plpkpa0102.dashboard', [
+            'plpkpa0102' => $plpkpa0102,
+            'total_count' => count($plpkpa0102)
+        ]);
+    }
 }
