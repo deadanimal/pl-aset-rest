@@ -117,8 +117,8 @@
                                             @endif
                                         </td>
                                     @endif
-                                    @if ($k1->status == 'DERAF')
-                                    <a href="/kewps1" class="btn btn-primary btn-sm"><i class="fas fa-check-circle"></i></a>
+                                    @if ($k1->status == 'DIBUANG')
+                                    <a href="/kewps1" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
                                     @endif
 
                                 </tr>
