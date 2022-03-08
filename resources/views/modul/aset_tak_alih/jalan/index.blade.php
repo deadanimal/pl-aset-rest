@@ -53,8 +53,7 @@
                                 <td scope="col">
                                     <a class="btn btn-sm bg-white border-0 mx-0" href="/jalan/{{ $j->id }}/edit"><i
                                             class="fas fa-pen"></i></a>
-                                    <a class="btn btn-sm bg-white border-0 mx-0" href="/jalanpdf/{{ $j->id }}"><i
-                                            class="fas fa-print"></i></a>
+                                    
                                     <form action="/jalan/{{ $j->id }}" class="d-inline mx-0" method="POST">
                                         @method('delete')
                                         @csrf

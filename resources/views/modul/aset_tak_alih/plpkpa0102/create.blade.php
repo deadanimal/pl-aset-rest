@@ -56,12 +56,10 @@
                                 <input class="form-control" type="text" name="nama_penerima" value="" required>
                             </div>
                         </div>
-                        <div class="col-6 mt-3">
-                            <label for="">Bil</label>
-                        </div>
-                        <div class="col-6 mt-3">
+                        
+                        <div class="col-6 mt-3" style="display: none;">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="bil" value="" required>
+                                <input class="form-control" type="hidden" name="bil" value="deprecated field" required>
                             </div>
                         </div>
                         <div class="col-6 mt-3">

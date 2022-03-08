@@ -79,6 +79,8 @@ class JalanController extends Controller
     public function update(Request $request, Jalan $jalan)
     {
         $jalan->update($request->all());
+        $jalan->susut_nilai = $request->susut_nilai;
+        $jalan->save();
         return redirect('/jalan');
     }
 
