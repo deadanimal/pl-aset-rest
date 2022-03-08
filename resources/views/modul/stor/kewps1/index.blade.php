@@ -55,7 +55,6 @@
                                             {{ $ik1->no_kod }}<br>
                                         @endforeach
                                     </td>
-                                    {{$k1->status}}
 
                                     @if ($k1->status == 'DERAF')
                                         <td scope="col"><span class="badge bg-warning">{{ $k1->status }}</span></th>
@@ -118,7 +117,9 @@
                                         </td>
                                     @endif
                                     @if ($k1->status == 'DIBUANG')
-                                    <a href="/kewps1" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                        <td scope="col">
+                                            <a href="/kewps1" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                        </td>
                                     @endif
 
                                 </tr>
