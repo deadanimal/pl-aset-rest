@@ -532,6 +532,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/jkrpataf104pdf/{jkrpataf104}', [Jkrpataf104Controller::class, 'generatePdf']);
     Route::get('/jkrpataf114pdf', [Jkrpataf114Controller::class, 'generatePdf']);
     Route::get('/jkrpataf612pdf/{jkrpataf612}', [Jkrpataf612Controller::class, 'generatePdf']);
+    Route::get('/plpkpa0102pdf/{plpk0102}', [Plpkpa0102Controller::class, 'generatePdf']);
 
 //kewpa utility
 //branch israa

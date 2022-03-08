@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plpkpa0102;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Plpkpa0102Controller extends Controller
 {
@@ -124,5 +125,43 @@ class Plpkpa0102Controller extends Controller
         }
         
         
+    }
+
+
+    public function generatePdf(Request $request, $plpkpa0102)
+    {
+        $plpkpa0102 = Plpkpa0102::where('id', $plpkpa0102)->first();
+
+        $array_kerosakan = json_decode($plpkpa0102->kerosakan);
+        $array_catatan = json_decode($plpkpa0102->catatan);
+
+        $combined_kerosakan_catatan = [];
+
+        foreach(range(0, count($array_kerosakan)-1) as $i) {
+            $obj_holder = (object)[];
+            $obj_holder->kerosakan = $array_kerosakan[$i];
+            $obj_holder->catatan = $array_catatan[$i];
+            $obj_holder->lokasi = $plpkpa0102->lokasi;
+            $obj_holder->no = $i + 1;
+            array_push($combined_kerosakan_catatan, $obj_holder);
+        }
+        
+        // add key to plpkpa0102 object for pdf render
+        $plpkpa0102->data_kerosakan = $combined_kerosakan_catatan;
+
+        // dd($plpkpa0102);
+
+        $response = Http::post('https://libreoffice.prototype.com.my/cetak/plpk0102', [$plpkpa0102]);
+
+        $res = $response->getBody()->getContents();
+
+        $url = "data:application/pdf;base64," . $res;
+
+        $context = [
+            "url" => $url,
+            "title" => "plpkpa0102",
+        ];
+
+        return view('modul.borang_viewer_ata', $context);
     }
 }
