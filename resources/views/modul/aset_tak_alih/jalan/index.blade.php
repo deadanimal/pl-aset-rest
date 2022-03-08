@@ -36,7 +36,7 @@
                 <table class="table table-custom-simplified table-flush" id="table">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Bil</th>
                             <th scope="col">Nama Jalan</th>
                             <th scope="col">Tahun Daftar</th>
                             <th scope="col">Panjang Jalan(KM)</th>

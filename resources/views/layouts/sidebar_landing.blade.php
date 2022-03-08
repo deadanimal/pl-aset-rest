@@ -10,7 +10,7 @@
         </div>
         <div id="maklum-balas" class="bg-transparent cursor-pointer" >
             <div class="" style="background-color: rgba(248,249,254); ">
-                <a href="/maklum-balas" ><span><i style="color: rgba(24,79,121);" class="fas fa-clipboard-list"></i></span></a>
+                <a href="/maklum-balas" ><span><i style="color: rgba(24,79,121);" class="fas fa-comment"></i></span></a>
             </div>
             <div class="text-center">
                 <h5>MAKLUM </br>BALAS</h5>

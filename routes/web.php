@@ -205,6 +205,7 @@ use App\Http\Controllers\SenaraiBlokBangunanController;
 use App\Http\Controllers\UnitUkuranStorController;
 # umum controller
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -311,6 +312,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('unit_ukuran', UnitUkuranStorController::class);
     Route::resource('/pembekal-stor', PembekalStorController::class);
     Route::resource('/pembekal-aset', PembekalAsetController::class);
+    Route::resource('/comments', CommentController::class);
+
 
     Route::prefix('/kategori-stor')->group(function () {
         Route::resource('alat-tulis-pejabat', KategoriStorController::class)->names('atp');
@@ -444,9 +447,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/jalan', JalanController::class);
     Route::resource('/bahujalan', BahuJalanController::class);
     Route::resource('/jkrpataf612', Jkrpataf612Controller::class);
+
     Route::get('/senarai-blok-bangunan', [Jkrpataf612Controller::class, 'senaraiBB']);
     Route::get('/senarai-binaan-luar', [Jkrpataf612Controller::class, 'senaraiBL']);
     Route::get('/senarai-maklumat-aras', [Jkrpataf612Controller::class, 'senaraiMA']);
+    Route::get('/dashboard-jalan', [JalanController::class, 'dashboardIndex']);
 
     Route::get('modul', [OtherController::class, 'modul_index']);
     Route::get('aset-alih', [OtherController::class, 'aset_alih_index']);

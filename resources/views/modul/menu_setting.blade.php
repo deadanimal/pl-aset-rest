@@ -1,5 +1,12 @@
 @extends('layouts.base_module')
 @section('content')
+
+<style>
+.nav-pills > .active {
+    background-color: rgba(24,79,121) !important;
+    
+}
+</style>
 <section>
     <div class="row pb">
         <div class="col-1"></div>
@@ -24,17 +31,17 @@
             <div class="col-3">
                 <div class="nav flex-column nav-pills mt-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <p class="h3 fw-bold text-center">Hi, {{auth()->user()->name}}</p>
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                    <a onclick="clickProfil()" class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
                         aria-controls="v-pills-home" aria-selected="true">
-                        <p class="h4 fw-bold m-0"><span class="fas fa-user-alt mr-2"></span> Profil Pengguna</p>
+                        <p id="profil_title" class="h4 fw-bold m-0"><span class="fas fa-user-alt mr-2"></span> Profil Pengguna</p>
                     </a>
-                    <a class="nav-link mt-3" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                    <a onclick="clickNotifikasi()" class="nav-link mt-3" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
                         aria-controls="v-pills-profile" aria-selected="false">
-                        <p class="h4 fw-bold m-0"><span class="fas fa-bell mr-2"></span> Notifikasi</p>
+                        <p id="notifikasi_title" class="h4 fw-bold m-0"><span class="fas fa-bell mr-2"></span> Notifikasi</p>
                     </a>
-                    <a class="nav-link mt-3" href="{{ route('logout') }}" aria-selected="false">
+                    {{-- <a class="nav-link mt-3" href="{{ route('logout') }}" aria-selected="false">
                         <p class="h4 fw-bold m-0"><span class="fas fa-sign-out-alt mr-2"></span> Log Keluar</p>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
             <div class="col-9">
@@ -132,6 +139,21 @@
             
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            clickProfil();
+        })
+        function clickProfil() {
+            $("#profil_title").css("color", "white");
+            $("#notifikasi_title").css("color", "rgba(24,79,121)");
+        }
+
+        function clickNotifikasi() {
+            $("#profil_title").css("color", "rgba(24,79,121)");
+            $("#notifikasi_title").css("color", "white");
+        }
+
+    </script>
 
 
 

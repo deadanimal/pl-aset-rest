@@ -172,7 +172,7 @@
                             <ul class="nav nav-sm flex-column">
 
                                 <li class="nav-item">
-                                    <a class="nav-link {{ Request::is('jalan*') ? 'active' : '' }}">
+                                    <a href="/dashboard-jalan" class="nav-link {{ Request::is('jalan*') ? 'active' : '' }}">
                                         <span class="sidenav-mini-icon">D</span>
                                         <span class="sidenav-normal"> Dashboard Aduan <br/>(PL-PK(PA)-01/02) </span>
                                     </a>

@@ -1,6 +1,19 @@
 @extends('layouts.base_module')
 
 @section('content')
+@if(session()->has('message'))
+    <div id="errorMsg" class="alert alert-success">
+        <div class="row">
+            <div class="col-1">
+                <a onclick="tutupErrorMsg()">x</a>
+            </div>
+            <div class="col">
+                {{ session()->get('message')}}
+
+            </div>
+        </div>
+    </div>
+@endif
     <section>
         <div class="row pb-4">
             <div class="col-1"></div>
@@ -28,14 +41,14 @@
                         <div class="text-center">
                             <h1 style="color: rgba(24,79,121)"><strong>MAKLUM BALAS</strong></h1>
                         </div>
-                        <form method="POST" action="">
+                        <form method="POST" action="/comments">
                         @csrf
                         <div class="row mt-3 px-3" style="color: rgba(24,79,121)">
                             <div class="col-12">
                                 <label for=""><strong>Nama</strong></label>
                             </div>
                             <div class="col-12 mb-3 input-group">
-                                <input class="form-control" type="text" name="nama" type="text" value="{{auth()->user()->name}}" disabled>
+                                <input class="form-control" type="text" name="name" type="text" value="{{auth()->user()->name}}" disabled>
                             </div>
                             <div class="col-12">
                                 <label for=""><strong>E-mel</strong></label>
@@ -72,6 +85,10 @@
             $("#maklum-balas-auth").css("border-left", "5px solid rgba(24,79,121)");
         });
 
+
+        function tutupErrorMsg() {
+            $("#errorMsg").css("display","none");
+        }
         
     </script>
 @endsection
