@@ -93,7 +93,7 @@
                 </table>
 
                 <a class="btn btn-primary ml-3" href="/kewps8pdf">
-                    Print <span class=" fas fa-print"></span></a>
+                    Cetak <span class=" fas fa-print"></span></a>
 
 
             </div>

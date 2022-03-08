@@ -107,6 +107,8 @@ class Kewps12Controller extends Controller
     {
 
         $kewps12->tahun = $kewps12->first()->kewps10->tahun;
+
+        $kewps12['tarikh'] = $kewps12->created_at->format('d/m/Y');
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps12', [$kewps12]);
 
         $res = $response->getBody()->getContents();

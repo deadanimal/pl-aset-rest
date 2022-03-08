@@ -10,7 +10,7 @@ class Kewps3a extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $with = ['parasstok', 'terima', 'keluar', 'kewps1'];
+    protected $with = ['parasstok', 'terima', 'keluar', 'kewps1', 'stor'];
 
     public function kewps1()
     {
@@ -30,5 +30,10 @@ class Kewps3a extends Model
     public function keluar()
     {
         return $this->hasMany(KeluaranStokSukuTahun::class);
+    }
+
+    public function stor()
+    {
+        return $this->belongsTo(KodStor::class, 'kod_stor_id', 'id');
     }
 }

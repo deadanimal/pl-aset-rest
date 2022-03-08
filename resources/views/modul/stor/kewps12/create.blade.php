@@ -35,7 +35,7 @@
                         <div class="col-6 mt-3">
                             <label for="">Kew.PS-10</label>
                             <select class="form-control mb-3" name="kewps10_id" id="k12_k10">
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps10 as $k10)
                                     <option value="{{ $k10->id }}">{{ $k10->id }} -
                                         {{ $k10->kementerian }}
@@ -46,15 +46,16 @@
                         <div class="col-6 mt-3">
                             <label for="">Kategori Stor</label>
                             <select name="kategori_stor" class="form-control" id="k12_kategori_stor">
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 <option value="Stor Alat Ganti">Stor Alat Ganti</option>
                                 <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
                             </select>
                         </div>
                         <div class="col-4 mt-3">
-                            <label for="">Jabatan</label>
+                            <label for="">Agensi</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="jabatan" value="" id="k12_jabatan">
+                                <input class="form-control" type="text" name="jabatan" value="Perbadanan Labuan"
+                                    id="k12_jabatan" readonly>
                             </div>
                         </div>
                         <div class="col-4 mt-3">
@@ -94,7 +95,6 @@
                         'id': k12_k10
                     },
                     success: function(data) {
-                        $("#k12_jabatan").val(data.kementerian);
                         $("#k12_kategori_stor").val(data.kategori_stor);
                     },
                     error: function() {

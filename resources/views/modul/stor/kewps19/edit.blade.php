@@ -33,24 +33,37 @@
                 </br>
                 <div class="card-body pt-0">
                     <div class="row">
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-3">
+                            <label for="">No Rujukan</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" value="{{ $kewps19->id }}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-3">
                             <label for="">Tarikh</label>
                             <div class="input-group">
                                 <input class="form-control" type="date" name="tarikh" value="{{ $kewps19->tarikh }}">
                             </div>
                         </div>
-                        <div class="col-6 mt-3">
+
+                        <div class="col-4 mt-3">
                             <label for="">Tarikh Mula</label>
                             <div class="input-group">
                                 <input class="form-control" type="date" name="tempoh_mula"
                                     value="{{ $kewps19->tempoh_mula }}">
                             </div>
                         </div>
-                        <div class="col-6 mt-3">
+                        <div class="col-4 mt-3">
                             <label for="">Tarikh Tamat</label>
                             <div class="input-group">
                                 <input class="form-control" type="date" name="tempoh_tamat"
                                     value="{{ $kewps19->tempoh_tamat }}">
+                            </div>
+                        </div>
+                        <div class="col-4 mt-3">
+                            <label for="">Tempoh</label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" value="{{ $kewps19->tempoh }}" readonly>
                             </div>
                         </div>
 
@@ -63,6 +76,4 @@
             </div>
         </form>
     </div>
-
-
 @endsection
