@@ -48,13 +48,13 @@
                                 <label for=""><strong>Nama</strong></label>
                             </div>
                             <div class="col-12 mb-3 input-group">
-                                <input class="form-control" type="text" name="name" type="text" value="{{auth()->user()->name}}" >
+                                <input class="form-control" type="text" name="name" type="text" value="{{auth()->user()->name}}" readonly>
                             </div>
                             <div class="col-12">
                                 <label for=""><strong>E-mel</strong></label>
                             </div>
                             <div class="col-12 mb-3 input-group">
-                                <input class="form-control" name="email" type="text" value="{{auth()->user()->email}}" >
+                                <input class="form-control" name="email" type="text" value="{{auth()->user()->email}}" readonly>
                             </div>
 
                             <div class="col-12">
