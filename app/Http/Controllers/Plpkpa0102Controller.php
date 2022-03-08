@@ -147,9 +147,9 @@ class Plpkpa0102Controller extends Controller
         }
         
         // add key to plpkpa0102 object for pdf render
+        // dd($plpkpa0102);
         $plpkpa0102->data_kerosakan = $combined_kerosakan_catatan;
 
-        // dd($plpkpa0102);
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/plpk0102', [$plpkpa0102]);
 
