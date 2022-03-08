@@ -161,12 +161,12 @@
                 <div class="row">
                     <div class="col-12 mt-4">
                         <h3 class="d-inline-flex">Paras Stok {{ $loop->iteration }}</h3>
-                        <form action="/parasstok/{{ $p->id }}" class="d-inline-flex" method="post">
+                        {{-- <form action="/parasstok/{{ $p->id }}" class="d-inline-flex" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-sm">
                                 <span class="fas fa-trash text-danger"></span></button>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
 
@@ -209,7 +209,7 @@
                 </div>
                 @foreach ($terimaan as $t)
                     <div class="col-12 mt-4">
-                        <h6>Terimaan {{ $loop->iteration }}</h6>
+                        <h4>Terimaan {{ $t->tahun_terima_stok }}</h4>
                     </div>
                     <div class="col-4 mt-2">
                         <label for="" class="">Tahun</label>
@@ -264,7 +264,7 @@
                 </div>
                 @foreach ($keluaran as $k)
                     <div class="col-12 mt-4">
-                        <h6>Keluaran {{ $loop->iteration }}</h6>
+                        <h4>Keluaran {{ $k->tahun_keluar_stok }}</h4>
                     </div>
                     <div class="col-4 mt-2">
                         <label for="" class="">Tahun</label>

@@ -70,6 +70,8 @@ class Kewps3aController extends Controller
 
         $request['staff_id'] = Auth::user()->id;
 
+        // $kod_stor = KodStor::where('perihal',$request->)
+
         $kewps3a = Kewps3a::create($request->all());
 
         //Terimaan

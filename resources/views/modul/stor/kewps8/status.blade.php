@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">kewps8</a></li>
+                                <li class="breadcrumb-item"><a href="/kewps8">kewps8</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -34,7 +34,6 @@
                 <div class="card-body pt-0">
                     <div class="row">
                         @if ($kewps8->status == 'DIPOHON')
-
                             <input class="form-control mb-3" type="hidden" name="pelulus_id"
                                 value="{{ Auth::user()->id }}">
                             <input class="form-control mb-3" type="hidden" name="status" value="DILULUS">
@@ -71,7 +70,6 @@
                                 <label for="">Catatan Pelulus</label>
                                 <input class="form-control mb-3" type="text" name="catatan_pelulus" value="">
                             </div>
-
                         @elseif($kewps8->status == 'DILULUS')
                             <input class="form-control mb-3" type="hidden" name="penerima_id"
                                 value="{{ Auth::user()->id }}">

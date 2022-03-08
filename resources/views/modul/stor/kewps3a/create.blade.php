@@ -35,8 +35,8 @@
 
                         <div class="col-4 mt-2">
                             <label for="">No Kod</label>
-                            <select class="form-control" name="no_kad" id="3a_no_kad">
-                                <option selected>Pilih</option>
+                            <select class="form-control" name="no_kad" id="3a_no_kad" required>
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($infokewps1 as $ik1)
                                     @if (!in_array($ik1->no_kod, $k3a))
                                         <option value="{{ $ik1->no_kod }}">{{ $ik1->no_kod }}
@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-4 mt-2">
                             <label for="">Nama Stor</label>
-                            <select class="form-control" name="nama_stor">
+                            <select class="form-control" name="nama_stor" required>
                                 <option value="Stor Alat Ganti">Stor Alat Ganti</option>
                                 <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
                             </select>

@@ -33,13 +33,13 @@
                 <div class="card-body pt-0">
                     <div class="row">
                         <div class="col-6 mt-3">
-                            <label for="">Kementerian</label>
-                            <input class="form-control" type="text" name="agensi" value="Perbadanan Aset Labuan">
+                            <label for="">Agensi</label>
+                            <input class="form-control" type="text" name="agensi" value="Perbadanan Labuan" readonly>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">Bahagian</label>
                             <select name="bahagian" class="form-control">
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($bahagian as $b)
                                     <option value="{{ $b->nama_jabatan }}">{{ $b->singkatan }}</option>
                                 @endforeach
@@ -48,11 +48,13 @@
 
                         <div class="col-6 mt-3">
                             <label for="">Ulasan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="ulasan" value="">
-                            </div>
+                            <select name="ulasan" id="id-ulasan" class="form-control">
+                                <option disabled hidden selected>Sila Pilih</option>
+                                <option value="Tindakan">Tindakan</option>
+                                <option value="Tanpa Tindakan">Tanpa Tindakan</option>
+                            </select>
                         </div>
-                        <div class="col-6 mt-3">
+                        <div class="col-6 mt-3" id="tindakan">
                             <label for="">Tindakan</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="tindakan" value="">
@@ -62,83 +64,67 @@
                         <input type="hidden" name="pegawai_mengambil" value="{{ Auth::user()->id }}">
                         <input type="hidden" name="pegawai_mengesahkan" value="{{ Auth::user()->id }}">
                     </div>
-                    <div class="row" id="info_kewps16">
-                        <div class="col-12 mt-2 mb-2">
-                            <h3 class="mt-4">Aset</h3>
-                        </div>
-                        <div class="col-3">
-                            <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id[]">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps3a as $k3)
-                                    <option value="{{ $k3->id }}">{{ $k3->no_kad }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-3">
-                            <label for="">Kuantiti Fizikal Diserahkan</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="kuantiti_fizikal_diserahkan[]"
-                                    value="">
+
+                    @foreach ($kewps3a as $k3a)
+                        <div class="row" id="info_kewps16">
+                            <div class="col-12 mt-2 mb-2">
+                                <h3 class="mt-4">Aset {{ $loop->iteration }}</h3>
+                            </div>
+                            <div class="col-4">
+                                <label for="">No Kod</label>
+                                <input type="text" value="{{ $k3a->no_kad }}" class="form-control">
+                                <input type="hidden" name="kewps3a_id[]" value="{{ $k3a->id }}" class="form-control">
+                            </div>
+                            <div class="col-4">
+                                <label for="">Nama Stor</label>
+                                <select class="form-control">
+                                    <option {{ $k3a->nama_stor == 'Stor Alat Ganti' ? 'selected' : '' }}
+                                        value="Stor Alat Ganti">Stor Alat Ganti</option>
+                                    <option {{ $k3a->nama_stor == '>Stor Bekalan Pejabat' ? 'selected' : '' }}
+                                        value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti Fizikal Diserahkan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="number" name="kuantiti_fizikal_diserahkan[]"
+                                        value="">
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <label for="">Kuantiti Fizikal Diambil</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="number" name="kuantiti_fizikal_diambil[]"
+                                        value="">
+                                </div>
+                            </div>
+                            <div class="col-7">
+                                <label for="">Catatan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="catatan[]" value="">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <label for="">Kuantiti Fizikal Diambil</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="kuantiti_fizikal_diambil[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <label for="">Catatan</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="catatan[]" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <a class="btn btn-sm btn-primary text-white" onclick="tambahAsetK16()">Tambah Aset</a>
-                    </div>
+                    @endforeach
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
                 </div>
             </div>
         </form>
     </div>
 
+
     <script>
-        function tambahAsetK16() {
-            $("#info_kewps16").append(
-                `       <div class="col-3">
-                            <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id[]">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps3a as $k3)
-                                    <option value="{{ $k3->id }}">{{ $k3->no_kad }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-3">
-                            <label for="">Kuantiti Fizikal Diserahkan</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="kuantiti_fizikal_diserahkan[]"
-                                    value="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <label for="">Kuantiti Fizikal Diambil</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="kuantiti_fizikal_diambil[]" value="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <label for="">Catatan</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="catatan[]" value="">
-                            </div>
-                        </div>
-                `
-            )
-        }
+        $(document).ready(function() {
+            $("#tindakan").hide();
+        });
+
+        $("#id-ulasan").change(function() {
+            let val = this.value;
+            if (val == "Tindakan") {
+                $("#tindakan").show();
+            } else {
+                $("#tindakan").hide();
+            }
+        });
     </script>
 @endsection

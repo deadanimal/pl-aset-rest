@@ -33,15 +33,16 @@
                 <div class="card-body pt-0">
                     <div class="row">
                         <div class="col-6 mt-3">
-                            <label for="">Kementerian</label>
+                            <label for="">Agensi</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="kementerian" value="Perbadanan Labuan">
+                                <input class="form-control" type="text" name="kementerian" value="Perbadanan Labuan"
+                                    readonly>
                             </div>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">Kategori Stor</label>
                             <select class="form-control" name="kategori_stor">
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 <option value="Stor Alat Ganti">Stor Alat Ganti</option>
                                 <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
                             </select>
@@ -71,7 +72,7 @@
                         <div class="col-4">
                             <label for="">No Kod</label>
                             <select class="form-control mb-3" name="kewps3a_id[]">
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps3a as $k3)
                                     <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                     </option>
@@ -93,7 +94,7 @@
                         <div class="col-4">
                             <label for="">Kaedah Pelupusan</label>
                             <select class="form-control mb-3" name="kaedah_pelupusan[]">
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kaedah as $k)
                                     <option value="{{ $k->value }}">{{ $k->text }}</option>
                                 @endforeach
