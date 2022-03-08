@@ -39,7 +39,7 @@
                             <input id="check-text" type="hidden" name="selected" value="{{ $kewps9->selected }}">
                         </div>
                         <div class="col-6">
-                            <label for="">No Permohonan</label>
+                            <label for="">No Rujukan Kewps7</label>
                             <select class="form-control mb-3" name="kewps7_id">
                                 <option selected value="{{ $kewps9->infokewps7_id }}">{{ $kewps9->infokewps7_id }}
                                 </option>

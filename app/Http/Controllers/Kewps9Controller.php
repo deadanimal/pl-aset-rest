@@ -119,7 +119,7 @@ class Kewps9Controller extends Controller
     public function generatePdf(Kewps9 $kewps9)
     {
         $kewps7 = Kewps7::all()->get(0);
-        $kewps9->data = $kewps9->all();
+        $kewps9->data = $kewps9->where('status', 'DITERIMA')->get();
 
         //(BPS/0000001)
         $newid = sprintf('%07d', $kewps9->id);

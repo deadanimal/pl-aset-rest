@@ -128,7 +128,7 @@ class Kewps11Controller extends Controller
 
         $result = ($total / $t) * 100;
 
-        $kewps11->result = $result;
+        $kewps11->result = number_format((float) $result, 2, '.', '');
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps11', [$kewps11]);
 

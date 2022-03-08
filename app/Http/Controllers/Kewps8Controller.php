@@ -42,25 +42,22 @@ class Kewps8Controller extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     "kuantiti_dimohon.*" => "required|lte:5",
-        // ]);
-
-        foreach ($request->sebelum as $s) {
-            if ($request->kuantiti_dimohon > $s) {
-                return redirect()->back()->with('error', 'Kuantiti Sebelum melebihi kuantiti dimohon');
+        foreach ($request->sebelum as $key => $s) {
+            if ($request->kuantiti_dimohon[$key] > $s) {
+                notify()->error('Kuantiti Sebelum melebihi kuantiti dimohon', 'Gagal');
+                return redirect()->back();
             }
         }
 
         for ($i = 0; $i < count($request->kuantiti_dimohon); $i++) {
 
-            // Kewps8::create([
-            //     'kewps3a_id' => $request->kewps3a_id[$i],
-            //     'kuantiti_dimohon' => $request->kuantiti_dimohon[$i],
-            //     'catatan_pemohon' => $request->catatan_pemohon[$i],
-            //     'pemohon_id' => $request->pemohon_id,
-            //     'status' => "DIPOHON",
-            // ]);
+            Kewps8::create([
+                'kewps3a_id' => $request->kewps3a_id[$i],
+                'kuantiti_dimohon' => $request->kuantiti_dimohon[$i],
+                'catatan_pemohon' => $request->catatan_pemohon[$i],
+                'pemohon_id' => $request->pemohon_id,
+                'status' => "DIPOHON",
+            ]);
         }
 
         return redirect('/kewps8');
@@ -101,13 +98,18 @@ class Kewps8Controller extends Controller
      */
     public function update(Request $request, Kewps8 $kewps8)
     {
-        // if($kewps8->status == "DIPOHON"){
-        //     $validatedData = $request->validate([
-        //         'title' => ['required', 'unique:posts', 'max:255'],
-        //         'body' => ['required'],
-        //     ]);
 
-        // }
+        if ($request->kuantiti_diluluskan > $kewps8->kuantiti_dimohon) {
+            notify()->error('Kuantiti Diluluskan Melebihi Kuantiti Dimohon', 'Gagal');
+            return redirect()->back();
+        }
+
+        if ($kewps8->kuantiti_diluluskan != null) {
+            if ($request->kuantiti_diterima > $kewps8->kuantiti_diluluskan) {
+                notify()->error('Kuantiti Diluluskan Melebihi Kuantiti Dimohon', 'Gagal');
+                return redirect()->back();
+            }
+        }
 
         $kewps8->update($request->all());
         return redirect('/kewps8');
@@ -127,7 +129,7 @@ class Kewps8Controller extends Controller
 
     public function generatePdf(Kewps8 $kewps8)
     {
-        $kewps8->data = Kewps8::all();
+        $kewps8->data = Kewps8::where('status', "DITERIMA")->get();
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps8', [$kewps8]);
 

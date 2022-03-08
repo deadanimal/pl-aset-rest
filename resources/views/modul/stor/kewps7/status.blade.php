@@ -40,6 +40,20 @@
                                 <input type="hidden" name="pelulus_id" value="{{ Auth::user()->id }}">
                                 <input type="hidden" name="status" value="DILULUS">
                                 <input type="hidden" name="infokewps7_id[]" value="{{ $ik7->id }}">
+                                <div class="col-6 mt-3">
+                                    <label for="">No Kod</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" value="{{ $ik7->kewps3a->no_kad }}"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="">Perihal Stok</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                            value="{{ $ik7->kewps3a->perihal_stok }}" readonly>
+                                    </div>
+                                </div>
                                 <div class="col-2 mt-3">
                                     <label for="">Kuantiti Dimohon</label>
                                     <div class="input-group">
@@ -54,16 +68,32 @@
                                             readonly>
                                     </div>
                                 </div>
+                                <div class="col-3 mt-3">
+                                    <label for="">Unit Pengukuran</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                            value="{{ $ik7->kewps3a->unit_pengukuran }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-3 mt-3">
+                                    <label for="">Baki Semasa</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                            value="{{ $ik7->kewps3a->baki_semasa }}" readonly>
+                                    </div>
+                                </div>
                                 <div class="col-2 mt-3">
                                     <label for="">Kuantiti Diluluskan</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="number" name="kuantiti_diluluskan[]" value="">
+                                        <input class="form-control" type="number" name="kuantiti_diluluskan[]" value=""
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-4 mt-3">
                                     <label for="">Catatan Pelulus</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="text" name="catatan_pelulus[]" value="">
+                                        <input class="form-control" type="text" name="catatan_pelulus[]" value=""
+                                            required>
                                     </div>
                                 </div>
                             @endif
@@ -72,6 +102,20 @@
                                 <input type="hidden" name="pengeluar_id" value="{{ Auth::user()->id }}">
                                 <input type="hidden" name="status" value="DITERIMA">
                                 <input type="hidden" name="infokewps7_id[]" value="{{ $ik7->id }}">
+                                <div class="col-6 mt-3">
+                                    <label for="">No Kod</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" value="{{ $ik7->kewps3a->no_kad }}"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="">Perihal Stok</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                            value="{{ $ik7->kewps3a->perihal_stok }}" readonly>
+                                    </div>
+                                </div>
                                 <div class="col-2 mt-3">
                                     <label for="">Kuantiti Dimohon</label>
                                     <div class="input-group">
@@ -84,6 +128,20 @@
                                     <div class="input-group">
                                         <input class="form-control" type="text" value="{{ $ik7->catatan_pemohon }}"
                                             readonly>
+                                    </div>
+                                </div>
+                                <div class="col-3 mt-3">
+                                    <label for="">Unit Pengukuran</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                            value="{{ $ik7->kewps3a->unit_pengukuran }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-3 mt-3">
+                                    <label for="">Baki Semasa</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                            value="{{ $ik7->kewps3a->baki_semasa }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-2 mt-3">
@@ -100,26 +158,39 @@
                                             readonly>
                                     </div>
                                 </div>
-                                <div class="col-4 mt-3">
+                                <div class="col-6 mt-3">
                                     <label for="">Kuantiti Dikeluarkan</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="number" name="kuantiti_dikeluarkan[]" value="">
+                                        <input class="form-control" type="number" name="kuantiti_dikeluarkan[]" value=""
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-4 mt-3">
                                     <label for="">Pembungkusan</label>
-                                    <select class="form-control" name="pembungkusan[]">
+                                    <select class="form-control" name="pembungkusan[]" required>
                                         {{-- onchange="bungkus(this,{{ $ik7->id }})" --}}
                                         <option selected value="Tidak Perlu">Tidak Perlu</option>
                                         <option value="Perlu">Perlu</option>
                                     </select>
                                 </div>
-
-
                             @endif
                             @if ($kewps7->status == 'DITERIMA')
                                 <input type="hidden" name="status" value="SELESAI">
                                 <input type="hidden" name="infokewps7_id[]" value="{{ $ik7->id }}">
+                                <div class="col-6 mt-3">
+                                    <label for="">No Kod</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" value="{{ $ik7->kewps3a->no_kad }}"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="">Perihal Stok</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                            value="{{ $ik7->kewps3a->perihal_stok }}" readonly>
+                                    </div>
+                                </div>
                                 <div class="col-2 mt-3">
                                     <label for="">Kuantiti Dimohon</label>
                                     <div class="input-group">
@@ -134,6 +205,20 @@
                                             readonly>
                                     </div>
                                 </div>
+                                <div class="col-3 mt-3">
+                                    <label for="">Unit Pengukuran</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                            value="{{ $ik7->kewps3a->unit_pengukuran }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-3 mt-3">
+                                    <label for="">Baki Semasa</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text"
+                                            value="{{ $ik7->kewps3a->baki_semasa }}" readonly>
+                                    </div>
+                                </div>
                                 <div class="col-2 mt-3">
                                     <label for="">Kuantiti Diluluskan</label>
                                     <div class="input-group">
@@ -141,17 +226,17 @@
                                             value="{{ $ik7->kuantiti_diluluskan }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-4 mt-3">
+                                <div class="col-3 mt-3">
                                     <label for="">Catatan Pelulus</label>
                                     <div class="input-group">
                                         <input class="form-control" type="text" value="{{ $ik7->catatan_pelulus }}"
                                             readonly>
                                     </div>
                                 </div>
-                                <div class="col-4 mt-3">
+                                <div class="col-3 mt-3">
                                     <label for="">Kuantiti Dikeluarkan</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="number" name="kuantiti_dikeluarkan[]"
+                                        <input class="form-control" type="number"
                                             value="{{ $ik7->kuantiti_dikeluarkan }}" readonly>
                                     </div>
                                 </div>
@@ -165,9 +250,10 @@
                                     </select>
                                 </div>
                                 <div class="col-4 mt-3">
-                                    <label for="">Kuantiti Diterima</label>
+                                    <label for="">Kuantiti Pemesan</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="number" name="kuantiti_diterima[]" value="">
+                                        <input class="form-control" type="number" name="kuantiti_diterima[]" value=""
+                                            required>
                                     </div>
                                 </div>
                             @endif

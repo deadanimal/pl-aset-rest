@@ -45,41 +45,55 @@
                         </div>
                         <div class="col-6">
                             <label for="">ID Borang BTB</label>
-                            <input type="text" name="kewps1_id" class="form-control mb-3"
+                            <input type="text" class="form-control mb-3" readonly
+                                value="BTB/{{ sprintf("%'.07d\n", $kewps1->id) }}">
+                            <input type="hidden" name="kewps1_id" class="form-control mb-3"
                                 value="{{ sprintf("%'.07d\n", $kewps1->id) }}">
                         </div>
                         <input type="hidden" name="status" value="DERAF">
 
                     </div>
                     @foreach ($kewps1->infokewps1 as $infokewps1)
-
                         <div id="div{{ $infokewps1->id }}" class="row">
                             <div class="col-12">
                                 <h4 class="d-inline">Aset {{ $loop->iteration }}</h4>
                                 <a onclick="minus_infokewps1({{ $infokewps1->id }})"
                                     class="btn btn-danger btn-sm ml-3 text-white">Buang</a>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label for="">No Kod</label>
-                                <input type="text" class="form-control mb-3" value="{{ $infokewps1->no_kod }}">
+                                <input type="text" class="form-control mb-3" value="{{ $infokewps1->no_kod }}" readonly>
                                 <input type="hidden" name="infokewps1_id[]" value="{{ $infokewps1->id }}">
                             </div>
-                            <div class="col-3">
-                                <label for="">Perihal Barang</label>
-                                <input type="text" class="form-control mb-3" value="{{ $infokewps1->perihal_barang }}">
+                            <div class="col-4">
+                                <label for="">Kuantiti Diterima</label>
+                                <input type="text" id="kuantiti_diterima-{{ $infokewps1->id }}" class="form-control mb-3"
+                                    value="{{ $infokewps1->kuantiti_diterima }}" readonly>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
+                                <label for="">Perihal Barang</label>
+                                <input type="text" class="form-control mb-3" value="{{ $infokewps1->perihal_barang }}"
+                                    readonly>
+                            </div>
+                            <div class="col-4">
                                 <label for="">Kuantiti Ditolak</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kuantiti_ditolak[]" value="">
+                                    <input class="form-control mb-3" onkeyup="forKurangLebih(this,{{ $infokewps1->id }})"
+                                        type="text" name="kuantiti_ditolak[]" value="" required>
                                 </div>
                             </div>
 
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label for="">Sebab penolakan</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="sebab_penolakan[]" value="">
+                                    <input class="form-control mb-3" type="text" name="sebab_penolakan[]" value="" required>
                                 </div>
+                            </div>
+
+                            <div class="col-4">
+                                <label for="">Kuantiti Kurang/Lebih</label>
+                                <input type="number" name="kuantiti_kurang_lebih[]" class="form-control mb-3"
+                                    id="kurang-lebih-{{ $infokewps1->id }}" readonly>
                             </div>
                         </div>
                     @endforeach
@@ -96,7 +110,16 @@
         function minus_infokewps1(id) {
             $("#div" + id + "").hide();
         }
+
+        function forKurangLebih(el, infokewps1_id) {
+            let ditolak = el.value;
+
+            let diterima = $('#kuantiti_diterima-' + infokewps1_id).val();
+
+            let kurangLebih = diterima - ditolak;
+
+            $('#kurang-lebih-' + infokewps1_id).val(kurangLebih);
+
+        }
     </script>
-
-
 @endsection

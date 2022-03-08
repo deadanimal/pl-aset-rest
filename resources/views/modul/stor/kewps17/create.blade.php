@@ -35,7 +35,10 @@
                         <div class="col-12 mt-3">
                             <label for="">Status Pindahan</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="status_pindahan" value="">
+                                <select name="status_pindahan" class="form-control">
+                                    <option value="from">From</option>
+                                    <option value="to">To</option>
+                                </select>
                             </div>
                         </div>
                         <input type="hidden" name="pemohon_id" value="{{ Auth::user()->id }}">
@@ -49,7 +52,7 @@
                         </div>
                         <div class="col-3">
                             <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id[]">
+                            <select class="form-control mb-3" name="kewps3a_id[]" onchange="kod(this,1)">
                                 <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps3a as $k3)
                                     <option value="{{ $k3->id }}">{{ $k3->no_kad }}
@@ -58,18 +61,30 @@
                             </select>
                         </div>
                         <div class="col-3">
+                            <label for="">Perihal Stok</label>
+                            <input type="text" class="form-control" disabled id="perihal-1">
+                        </div>
+                        <div class="col-3">
+                            <label for="">Unit Ukuran</label>
+                            <input type="text" class="form-control" disabled id="unit_ukuran-1">
+                        </div>
+                        <div class="col-3">
+                            <label for="">Jumlah Stok</label>
+                            <input type="text" class="form-control" disabled id="jumlah_stok-1">
+                        </div>
+                        <div class="col-4">
                             <label for="">Kuantiti Dimohon</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="kuantiti_dimohon[]" value="">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <label for="">Kuantiti Dilulus</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="kuantiti_dilulus[]" value="">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <label for="">Catatan</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="text" name="catatan[]" value="">
@@ -77,6 +92,7 @@
                         </div>
                     </div>
                     <div class="mt-2">
+                        <input type="hidden" id="iteration" value="2">
                         <a class="btn btn-sm btn-primary text-white" onclick="tambahAsetK17()">Tambah Aset</a>
                     </div>
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
@@ -86,12 +102,30 @@
     </div>
 
     <script>
+        function kod(el, id) {
+            let val = el.value;
+            var kewps3a = @json($kewps3a->toArray());
+
+            kewps3a.forEach(e => {
+                if (e.id == val) {
+                    $("#perihal-" + id).val(e.perihal_stok);
+                    $("#unit_ukuran-" + id).val(e.unit_pengukuran);
+                    $("#jumlah_stok-" + id).val(e.stor.baki_stok_semasa);
+                }
+            });
+
+        }
+
         function tambahAsetK17() {
+            let val = $("#iteration").val();
             $("#info_kewps17").append(
-                `       <div class="col-3">
+                `       <div class="col-12 mt-2 mb-2">
+                            <h3 class="mt-4">Aset</h3>
+                        </div>
+                         <div class="col-3">
                             <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id[]">
-                                <option disabled hidden selected>Pilih</option>
+                            <select class="form-control mb-3" name="kewps3a_id[]" onchange="kod(this,` + val + `)">
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps3a as $k3)
                                     <option value="{{ $k3->id }}">{{ $k3->no_kad }}
                                     </option>
@@ -99,25 +133,41 @@
                             </select>
                         </div>
                         <div class="col-3">
+                            <label for="">Perihal Stok</label>
+                            <input type="text" class="form-control" disabled id="perihal-` + val + `">
+                        </div>
+                        <div class="col-3">
+                            <label for="">Unit Ukuran</label>
+                            <input type="text" class="form-control" disabled id="unit_ukuran-` + val + `">
+                        </div>
+                        <div class="col-3">
+                            <label for="">Jumlah Stok</label>
+                            <input type="text" class="form-control" disabled id="jumlah_stok-` + val + `">
+                        </div>
+                        <div class="col-4">
                             <label for="">Kuantiti Dimohon</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="kuantiti_dimohon[]" value="">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <label for="">Kuantiti Dilulus</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="number" name="kuantiti_dilulus[]" value="">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <label for="">Catatan</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="text" name="catatan[]" value="">
                             </div>
                         </div>
                 `
-            )
+            );
+
+            val++;
+            $("#iteration").val(val);
+
         }
     </script>
 @endsection

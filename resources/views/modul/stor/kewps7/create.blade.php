@@ -35,7 +35,7 @@
                         <div class="col-3 mt-3">
                             <label for="">Nama Stor Pemesan</label>
                             <div class="input-group">
-                                <select name="nama_stor_pemesan" class="form-control">
+                                <select name="nama_stor_pemesan" class="form-control" required>
                                     <option disabled hidden selected>Pilih</option>
                                     <option value="Stor Alat Ganti">Stor Alat Ganti</option>
                                     <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
@@ -46,13 +46,13 @@
                             <label for="">Alamat Stor Pemesan</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="alamat_stor_pemesan"
-                                    value="Wisma Perbadanan Labuan, Peti Surat 81245, 87022, WP Labuan">
+                                    value="Wisma Perbadanan Labuan, Peti Surat 81245, 87022, WP Labuan" required>
                             </div>
                         </div>
                         <div class="col-3 mt-3">
                             <label for="">Nama Stor Pengeluar</label>
                             <div class="input-group">
-                                <select name="nama_stor_pengeluar" class="form-control">
+                                <select name="nama_stor_pengeluar" class="form-control" required>
                                     <option disabled hidden selected>Pilih</option>
                                     <option value="Stor Alat Ganti">Stor Alat Ganti</option>
                                     <option value="Stor Bekalan Pejabat">Stor Bekalan Pejabat</option>
@@ -63,7 +63,7 @@
                             <label for="">Alamat Stor Pengeluar</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="alamat_stor_pengeluar"
-                                    value="Wisma Perbadanan Labuan, Peti Surat 81245, 87022, WP Labuan">
+                                    value="Wisma Perbadanan Labuan, Peti Surat 81245, 87022, WP Labuan" required>
                             </div>
                         </div>
 
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-3">
                             <label for="">No Kod</label>
-                            <select class="form-control" name="kewps3a_id[]" onchange="noKod(this,'#perihal1')">
+                            <select class="form-control" name="kewps3a_id[]" onchange="noKod(this,'#perihal1')" required>
                                 <option disabled hidden selected>Pilih</option>
                                 @foreach ($kewps3a as $k3a)
                                     <option value="{{ $k3a->id }}">{{ $k3a->no_kad }}
@@ -105,17 +105,18 @@
                             </div>
                         </div>
                         <div class="col-3">
-                            <label for="">Catatan Pemohon</label>
+                            <label for="">Kuantiti Dimohon</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="catatan_pemohon[]" value="">
+                                <input class="form-control" type="number" name="kuantiti_dimohon[]" value="" required>
                             </div>
                         </div>
                         <div class="col-3">
-                            <label for="">Kuantiti Dimohon</label>
+                            <label for="">Catatan Pemohon</label>
                             <div class="input-group">
-                                <input class="form-control" type="number" name="kuantiti_dimohon[]" value="">
+                                <input class="form-control" type="text" name="catatan_pemohon[]" value="" required>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
@@ -142,7 +143,7 @@
                         <div class="col-3">
                             <label for="">No Kod</label>
                             <select class="form-control" name="kewps3a_id[]" onchange="noKod(this,'#perihal` +
-                iteration + `')">
+                iteration + `')" required>
                                 <option disabled hidden selected>Pilih</option>
                                 @foreach ($kewps3a as $k3a)
                                     <option value="{{ $k3a->id }}">{{ $k3a->no_kad }}
@@ -153,21 +154,22 @@
                         <div class="col-3">
                             <label for="">Perihal Stok</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" value="" readonly id="perihal` + iteration + `">
+                                <input class="form-control" type="text" value="" readonly id="perihal` + iteration + `" required>
+                            </div>
+                        </div>
+                         <div class="col-3">
+                            <label for="">Kuantiti Dimohon</label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" name="kuantiti_dimohon[]" value="" required>
                             </div>
                         </div>
                         <div class="col-3">
                             <label for="">Catatan Pemohon</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="catatan_pemohon[]" value="">
+                                <input class="form-control" type="text" name="catatan_pemohon[]" value="" required>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <label for="">Kuantiti Dimohon</label>
-                            <div class="input-group">
-                                <input class="form-control" type="number" name="kuantiti_dimohon[]" value="">
-                            </div>
-                        </div>
+                       
                 `
             )
 

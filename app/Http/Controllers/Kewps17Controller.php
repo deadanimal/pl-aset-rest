@@ -30,7 +30,7 @@ class Kewps17Controller extends Controller
     public function create()
     {
         return view('modul.stor.kewps17.create', [
-            'kewps3a' => Kewps3a::all(),
+            'kewps3a' => Kewps3a::where('pergerakan', 'aktif')->with('stor')->get(),
         ]);
     }
 
@@ -122,7 +122,7 @@ class Kewps17Controller extends Controller
             $ik17->jumlah = (int) $ik17->kuantiti_dilulus * (int) $harga_seunit;
         }
 
-        $kewps17['newid'] = sprintf('%07d', $kewps17->id);
+        $kewps17['newid'] = "BPIN/" . sprintf('%07d', $kewps17->id);
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps17', [$kewps17]);
 

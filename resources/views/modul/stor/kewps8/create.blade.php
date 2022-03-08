@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">kewps8</a></li>
+                                <li class="breadcrumb-item"><a href="/kewps8">kewps8</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -39,7 +39,7 @@
                             <select class="form-control mb-3" name="kewps3a_id[]" onchange="kewps(this,1)">
                                 <option disabled hidden selected>Pilih</option>
                                 @foreach ($kewps3a as $k3)
-                                    @if ($k3->parasstok->first()->maksimum_stok == 0)
+                                    @if ($k3->stor->baki_stok_semasa == 0)
                                         <option disabled value="{{ $k3->id }}">{{ $k3->no_kad }}</option>
                                     @else
                                         <option value="{{ $k3->id }}">{{ $k3->no_kad }}</option>
@@ -118,7 +118,7 @@
             kewps3a.forEach(el => {
                 if (el.id == kewps3a_id) {
                     $('#perihal' + num).val(el.perihal_stok);
-                    $('#kuantiti' + num).val(el.parasstok[0].maksimum_stok);
+                    $('#kuantiti' + num).val(el.stor.baki_stok_semasa);
 
                 }
             });

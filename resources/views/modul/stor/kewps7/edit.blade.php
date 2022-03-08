@@ -126,7 +126,7 @@
                                 </select>
                             </div>
                             <div class="col-4 mt-3">
-                                <label for="">Kuantiti Diterima</label>
+                                <label for="">Kuantiti Pemesan</label>
                                 <div class="input-group">
                                     <input class="form-control" type="number" name="kuantiti_diterima[]"
                                         value="{{ $k7->kuantiti_diterima }}">
@@ -140,6 +140,4 @@
             </div>
         </form>
     </div>
-
-
 @endsection

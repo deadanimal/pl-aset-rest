@@ -47,7 +47,7 @@
                         <tbody>
                             @foreach ($kewps1 as $k1)
                                 <tr>
-                                    <td scope="col">{{ sprintf("%'.07d\n", $k1->id) }}</td>
+                                    <td scope="col">{{ 'BTB/' . sprintf("%'.07d\n", $k1->id) }}</td>
                                     <td scope="col">{{ $k1->nama_pembekal }}</td>
                                     <td scope="col">{{ $k1->jenis_penerimaan }}</td>
                                     <td scope="col">
@@ -67,6 +67,8 @@
                                         <td scope="col"><span class="badge bg-success">{{ $k1->status }}</span></th>
                                         @elseif ($k1->status == 'DITOLAK')
                                         <td scope="col"><span class="badge bg-danger">{{ $k1->status }}</span></th>
+                                        @elseif ($k1->status == 'DIBUANG')
+                                        <td scope="col"><span class="badge bg-danger">{{ $k1->status }}</span></th>
                                     @endif
 
                                     @if ($k1->status == 'HANTAR')
@@ -75,6 +77,13 @@
                                                     class="fas fa-print"></span></a>
                                             <a href="/kewps2fromk1/{{ $k1->id }}" class="btn btn-warning btn-sm">
                                                 <span class="fas fa-minus"></span></a>
+                                            <form action="/kewps1/{{ $k1->id }}" class="d-inline"
+                                                method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button onclick="confirmDel(event,this)" class="btn btn-danger btn-sm"
+                                                    type="submit"> <i class=" fas fa-trash"></i></button>
+                                            </form>
                                         </td>
                                     @endif
 
@@ -87,12 +96,12 @@
                                                     class="btn btn-primary btn-sm"><i class="fas fa-times-circle"></i></a>
                                                 <a href="" onclick="cetakPdf()" class="btn btn-success btn-sm"><i
                                                         class="fas fa-print"></i></a>
-
                                             @else
                                                 <form action="/kewps1/{{ $k1->id }}/edit" class="d-inline mr-2"
                                                     method="GET">
                                                     @csrf
-                                                    <button class="btn btn-primary btn-sm" type="submit">
+                                                    <button onclick="confirmSimpan(event,this)"
+                                                        class="btn btn-primary btn-sm" type="submit">
                                                         <i class="fas fa-arrow-up"></i>
                                                     </button>
                                                 </form>
@@ -119,5 +128,4 @@
                 </div>
             </div>
         </div>
-
     @endsection

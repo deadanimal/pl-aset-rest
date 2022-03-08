@@ -30,8 +30,10 @@ class Kewps16Controller extends Controller
      */
     public function create()
     {
+        $kewps3a = Kewps3a::where('pergerakan', 'aktif')->get();
+
         return view('modul.stor.kewps16.create', [
-            'kewps3a' => Kewps3a::all(),
+            'kewps3a' => $kewps3a,
             'bahagian' => KodJabatan::all(),
         ]);
     }
@@ -48,7 +50,8 @@ class Kewps16Controller extends Controller
 
         foreach (range(0, count($request->kewps3a_id) - 1) as $i) {
             $kewps3a = Kewps3a::where('id', $request->kewps3a_id[$i])->first();
-            $kuantiti_kad_daftar = $kewps3a->parasstok[0]->maksimum_stok;
+
+            $kuantiti_kad_daftar = $kewps3a->stor->baki_stok_semasa;
             $perbezaan_diserahkan = (int) $request->kuantiti_fizikal_diserahkan[$i] - (int) $kuantiti_kad_daftar;
             $perbezaan_diambil = (int) $request->kuantiti_fizikal_diambil[$i] - (int) $kuantiti_kad_daftar;
 
