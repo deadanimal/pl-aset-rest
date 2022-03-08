@@ -23,4 +23,18 @@ class GuestController extends Controller
     
         return view('auth.maklum-balas');
     }
+
+    public function utamaViewAuth() {
+        $context = [
+            "pengumumans" => Pengumuman::where('status', 'Aktif')->get()
+        ];
+    
+    
+        return view('auth.utama-auth', $context);
+    }
+
+    public function maklumbalasViewAuth() {
+    
+        return view('auth.maklum-balas-auth');
+    }
 }
