@@ -48,7 +48,7 @@
                             <tr>
                                 <td scope="col">{{ $loop->iteration }}</td>
                                 <td scope="col">{{ $k6->kewps3a_id }}</td>
-                                <td scope="col">{{ $k6->kewps3a->perihal_stok }}</td>
+                                <td scope="col">{{ $k6->kewps3a->perihal_stok ?? 'Dipadam' }}</td>
                                 <td scope="col">{{ $k6->agensi }}</td>
                                 <td scope="col">
                                     <a href="/kewps6/{{ $k6->id }}"><i class="fas fa-pen"></i></a>

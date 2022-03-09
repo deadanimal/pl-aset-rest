@@ -15,6 +15,7 @@ use App\Http\Controllers\BahuJalanController;
 use App\Http\Controllers\DataAsetKhususBinaanLuarController;
 use App\Http\Controllers\DataAsetKhususController;
 use App\Http\Controllers\DataTanahController;
+use App\Http\Controllers\FixingController;
 use App\Http\Controllers\GambarbinaanluarController;
 use App\Http\Controllers\GambarblokController;
 use App\Http\Controllers\HomeStorController;
@@ -208,6 +209,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/login');
 });
+
+Route::resource('/fixing', FixingController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
