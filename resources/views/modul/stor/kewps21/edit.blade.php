@@ -8,7 +8,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-file"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">kewps19</a></li>
+                                <li class="breadcrumb-item"><a href="">kewps21</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="container-fluid mt--6">
-        <form method="POST" action="/kewps19/{{ $kewps19->id }}">
+        <form method="POST" action="/kewps21/{{ $kewps21->id }}">
             @method('put')
             @csrf
             <div class="card mt-4">
@@ -36,21 +36,21 @@
                         <div class="col-12 mt-3">
                             <label for="">Tarikh</label>
                             <div class="input-group">
-                                <input class="form-control" type="date" name="tarikh" value="{{ $kewps19->tarikh }}">
+                                <input class="form-control" type="date" name="tarikh" value="{{ $kewps21->tarikh }}">
                             </div>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">Tarikh Mula</label>
                             <div class="input-group">
                                 <input class="form-control" type="date" name="tempoh_mula"
-                                    value="{{ $kewps19->tempoh_mula }}">
+                                    value="{{ $kewps21->tempoh_mula }}">
                             </div>
                         </div>
                         <div class="col-6 mt-3">
                             <label for="">Tarikh Tamat</label>
                             <div class="input-group">
                                 <input class="form-control" type="date" name="tempoh_tamat"
-                                    value="{{ $kewps19->tempoh_tamat }}">
+                                    value="{{ $kewps21->tempoh_tamat }}">
                             </div>
                         </div>
 
@@ -63,6 +63,4 @@
             </div>
         </form>
     </div>
-
-
 @endsection

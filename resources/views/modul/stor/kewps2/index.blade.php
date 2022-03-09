@@ -1,5 +1,4 @@
 @extends('layouts.base_stor') @section('content')
-
     <div class="header bg-primary pb-6">
         <div class="container-fluid">
             <div class="header-body">
@@ -50,7 +49,7 @@
                     <tbody>
                         @foreach ($kewps2 as $k2)
                             <tr>
-                                <td scope="col"> {{ sprintf("%'.07d", $k2->id) }}</td>
+                                <td scope="col"> BPB/{{ sprintf("%'.07d", $k2->id) }}</td>
                                 <td scope="col">{{ $k2->kewps1->nama_pembekal }}</td>
                                 <td scope="col">{{ $k2->tindakan }}</td>
 
@@ -81,7 +80,6 @@
                                                         class=" fas fa-trash"></i></button>
                                             </form>
                                         </a>
-
                                     @elseif($k2->status == 'LULUS')
                                         <a href="/kewps2pdf/{{ $k2->id }}" class="btn btn-success btn-sm"><i
                                                 class="fas fa-print"></i></a>
