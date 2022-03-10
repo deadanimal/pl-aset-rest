@@ -152,6 +152,10 @@ class Jkrpataf68Controller extends Controller
 
         // return view('modul.aset_tak_alih.jkrpataf68.doc', ['jkrpataf68' => $jkrpataf68]);
 
+
+      
+       
+
         $pdff = new Dompdf();
         $options = new Options();
         $options->set('isHtml5ParserEnabled', true);
@@ -170,8 +174,40 @@ class Jkrpataf68Controller extends Controller
 
         exit(0);
 
+
+ 
+
         // view()->share('jkrpataf68', $jkrpataf68);
         // $pdf = PDF::loadView('modul.aset_tak_alih.jkrpataf68.doc', $jkrpataf68);
         // return $pdf->download('pdf_file.pdf');
+    }
+
+    public function generatePdfPermohonanTanah(Request $request)
+    {
+        
+        $jkrpataf68 = DataTanah::where('id', $request->id)->first();
+        $data = base64_encode(Storage::get($jkrpataf68->gambar_premis));
+        $jkrpataf68->gambar_premis = "data:image/png;base64, ".$data;
+        
+        // dd($jkrpataf68->gambar_premis);
+        $pdff = new Dompdf();
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $pdff->setOptions($options);
+        $pdff->loadHtml(view('modul.aset_tak_alih.jkrpataf68.doc', [
+            'jkrpataf68' => $jkrpataf68,
+        ]));
+        $customPaper = array(50, -60, 500, 560);
+        $pdff->setPaper($customPaper);
+        $pdff->render();
+        $pdff->stream(
+            "newdompdf",
+            array("Attachment" => false)
+        );
+
+       
+
+        exit(0);
     }
 }

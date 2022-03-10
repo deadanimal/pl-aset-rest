@@ -332,56 +332,61 @@
         <div style="position:absolute;left:576.77px;top:53.26px" class="cls_004"><span
                 class="cls_004">83</span></div>
         <div style="position:absolute;left:478.52px;top:115.59px" class="cls_005"><span
-                class="cls_005">JKR.PATA.F6/8 (TANAH)</span></div>
+                class="cls_005">PL.PATA.F6/8 (TANAH)</span></div>
         <div style="position:absolute;left:120px;top:156.02px" class="cls_006"><span class="cls_006">No.
-                Rujukan Tanah : {{ $jkrpataf68->id }}</span></div>
+                Rujukan Tanah : {{ $jkrpataf68->no_rujukan_tanah }}</span></div>
         <div style="position:absolute;left:120px;top:171.93px" class="cls_006"><span class="cls_006">Tarikh
-                Pendaftaran : {{ $jkrpataf68->tarikh }}</span></div>
-        <div style="position:absolute;left:300px;top:187.41px" class="cls_020"><span class="cls_020">KAD
-                PENDAFTARAN ASET TAK ALIH</span></div>
-        <div style="position:absolute;left:120px;top:220px" class="cls_009"><span class="cls_009">Kategori
+                Pendaftaran : {{ $jkrpataf68->tarikh_pendaftaran }}</span></div>
+        
+        {{-- <div style="position:absolute;left:120px;top:220px" class="cls_009"><span class="cls_009">Kategori
                 Aset :
                 @switch($jkrpataf68->kategori_aset)
                     @case(1)
                         Bangunan & Binaan Lain
                     @break
+
                     @case(2)
                         Infrastruktur Jalan & Jambatan
                     @break
+
                     @case(3)
                         Infrastruktur (* Saliran / Pembetungan/ Aset Air)
                     @break
+
                     @case(4)
                         Lain-lain: ......(Nyatakan) ...........
                     @break
                 @endswitch
-            </span></div>
-        <div style="position:absolute;left:120px;top:240px" class="cls_009"><span class="cls_009">Fungsi
+            </span></div> --}}
+        {{-- <div style="position:absolute;left:120px;top:240px" class="cls_009"><span class="cls_009">Fungsi
                 Aset :
                 @switch($jkrpataf68->fungsi_aset)
                     @case(1)
                         Pejabat / Ruang Kerja
                     @break
+
                     @case(2)
                         Perumahan/ Penginapan
                     @break
+
                     @case(3)
                         Fasiliti/ Infrastruktur Awam
                     @break
+
                     @case(4)
                         Lain-lain: ......(Nyatakan) ...........
                     @break
                 @endswitch
-            </span></div>
+            </span></div> --}}
 
         <div style="position:absolute;left:120px;top:261.38px" class="cls_009"><span class="cls_009">Nama
                 Tanah</span></div>
         <div style="position:absolute;left:184px;top:261.38px" class="cls_009"><span class="cls_009">:
-                {{ $jkrpataf68->nama_premis }}</span></div>
+                {{ $jkrpataf68->nama_tanah }}</span></div>
         <div style="position:absolute;left:120px;top:272.35px" class="cls_009"><span
                 class="cls_009">Alamat Tanah</span></div>
         <div style="position:absolute;left:184px;top:272.35px" class="cls_009"><span class="cls_009">:
-                {{ $jkrpataf68->alamat_premis }}</span></div>
+                {{ $jkrpataf68->alamat_tanah }}</span></div>
         <div style="position:absolute;left:120px;top:284.82px" class="cls_009"><span
                 class="cls_009">**Koordinat GPS <br> (Tanah)</span></div>
         <div style="position:absolute;left:184px;top:284.82px" class="cls_009"><span class="cls_009">:
@@ -394,7 +399,7 @@
         <div style="position:absolute;left:150px;top:340px" class="cls_009"><span class="cls_009">***No.
                 DPA <br> (Tanah)</span></div>
         <div style="position:absolute;left:194px;top:340px" class="cls_009"><span class="cls_009">:
-                {{ $jkrpataf68->id }}</span></div>
+                {{ $jkrpataf68->no_dpa }}</span></div>
         <div style="position:absolute;left:182.29px;top:353px" class="cls_010"><span
                 class="cls_010">***diperolehi selepas pendaftaran ke dalam sistem mySPATA</span></div>
 
@@ -420,26 +425,21 @@
                 <th><span class="cls_009">Luas (m2)</span></th>
 
             </tr>
-            @foreach ($jkrpataf68->datatanah as $dt)
-                @if ($loop->iteration == 5)
+           
     </div>
     <div class="page_break">
-
-        @endif
         <tr>
-            <td><span class="cls_009">{{ $dt->pemilikan_tarikh }}</span></td>
-            <td><span class="cls_009">{{ $dt->pemilikan_kos }}</span></td>
-            <td><span class="cls_009">{{ $dt->mukim_bandar }}</span></td>
-            <td><span class="cls_009">{{ $dt->hakmilik_jenis }}</span></td>
-            <td><span class="cls_009">{{ $dt->hakmilik_nombor }}</span></td>
-            <td><span class="cls_009">{{ $dt->lot_nombor }}</span></td>
-            <td><span class="cls_009">{{ $dt->lot_luas }}</span></td>
-            <td><span class="cls_009">{{ $dt->status }}</span></td>
-            <td><span class="cls_009">{{ $dt->tarikh_ptp }}</span></td>
-            <td><span class="cls_009">{{ $dt->catatan }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->pemilikan_tarikh }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->pemilikan_kos }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->mukim_bandar }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->hakmilik_jenis }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->hakmilik_nombor }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->lot_nombor }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->lot_luas }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->status }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->tarikh_ptp }}</span></td>
+            <td><span class="cls_009">{{ $jkrpataf68->catatan }}</span></td>
         </tr>
-
-        @endforeach
         </table>
 
 
@@ -478,8 +478,8 @@
         <div style="position:absolute;left:260.56px;top:175px" class="cls_021"><span
                 class="cls_021">GAMBAR PREMIS</span>
         </div>
-        <div style="position:absolute;left:120px;top:250px" class="cls_019">
-            <img src="{{ asset($jkrpataf68->gambar_premis) }}" width="400px" height="400px" alt="">
+        <div style='position:absolute;left:120px;top:250px; width:400px !important; height: 400px !important; background-image: url("{{$jkrpataf68->gambar_premis}}")' class="cls_019">
+            {{-- <img src="{{ $jkrpataf68->gambar_premis }}" width="400px" height="400px" alt=""> --}}
             {{-- <img src="{{ URL::to('/') }}/images/img.png" width="400px" height="400px" alt=""> --}}
         </div>
     </div>

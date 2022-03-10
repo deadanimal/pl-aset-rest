@@ -50,6 +50,7 @@
                                     <td scope="col">{{ 'BTB/' . sprintf("%'.07d\n", $k1->id) }}</td>
                                     <td scope="col">{{ $k1->nama_pembekal }}</td>
                                     <td scope="col">{{ $k1->jenis_penerimaan }}</td>
+                                    
                                     <td scope="col">
                                         @foreach ($k1->infokewps1 as $ik1)
                                             {{ $ik1->no_kod }}<br>
