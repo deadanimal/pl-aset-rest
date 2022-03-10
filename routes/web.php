@@ -206,6 +206,7 @@ use App\Http\Controllers\SenaraiBlokBangunanController;
 use App\Http\Controllers\UnitUkuranStorController;
 # umum controller
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
@@ -541,6 +542,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/jkrpataf114pdf', [Jkrpataf114Controller::class, 'generatePdf']);
     Route::get('/jkrpataf612pdf/{jkrpataf612}', [Jkrpataf612Controller::class, 'generatePdf']);
     Route::get('/plpkpa0102pdf/{plpk0102}', [Plpkpa0102Controller::class, 'generatePdf']);
+
+    Route::get('/permohonantanahpdf', [Jkrpataf68Controller::class, 'generatePdfPermohonanTanah']);
+
 
 //kewpa utility
 //branch israa

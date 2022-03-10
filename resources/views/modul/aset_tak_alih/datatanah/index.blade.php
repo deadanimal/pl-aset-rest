@@ -57,6 +57,8 @@
                                 <td scope="col">
                                     <a class="btn-sm bg-white border-0" href="/datatanah/{{ $dt->id }}"><i
                                             class="fas fa-pen"></i></a>
+                                    <a class="btn-sm bg-white border-0" href="/permohonantanahpdf?id={{ $dt->id }}" target="_blank"><i
+                                            class="fas fa-print"></i></a>
                                     <form action="/datatanah/{{ $dt->id }}" class="d-inline" method="POST">
                                         @method('delete')
                                         @csrf
@@ -71,5 +73,4 @@
             </div>
         </div>
     </div>
-
 @endsection

@@ -27,6 +27,7 @@ class DataTanahController extends Controller
      */
     public function create()
     {
+
         return view('modul.aset_tak_alih.datatanah.create', [
             'jkrpataf68' => Jkrpataf68::all(),
         ]);
@@ -40,7 +41,12 @@ class DataTanahController extends Controller
      */
     public function store(Request $request)
     {
-        DataTanah::create($request->all());
+
+
+        $gambar_premis_path = $request->file('gambar_premis')->store('gambar_premis');
+        $datatanah = DataTanah::create($request->all());
+        $datatanah->gambar_premis = $gambar_premis_path;
+        $datatanah->save();
         return redirect('/datatanah');
     }
 
@@ -54,7 +60,6 @@ class DataTanahController extends Controller
     {
         return view('modul.aset_tak_alih.datatanah.edit', [
             'dt' => $datatanah,
-            'jkrpataf68' => Jkrpataf68::all(),
         ]);
 
     }
@@ -80,6 +85,13 @@ class DataTanahController extends Controller
     public function update(Request $request, DataTanah $datatanah)
     {
         $datatanah->update($request->all());
+
+        if ($request->file('gambar_premis') != null) {
+            $gambar_premis_path = $request->file('gambar_premis')->store('gambar_premis');
+            $datatanah->gambar_premis = $gambar_premis_path;
+            $datatanah->save();
+        }
+
         return redirect('/datatanah');
     }
 
