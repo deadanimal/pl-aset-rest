@@ -168,7 +168,7 @@
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="status" value="" required>
+                                <input class="form-control mb-3" type="text" name="status_penggunaan" value="" required>
                             </div>
                         </div>
                         <div class="col-6">

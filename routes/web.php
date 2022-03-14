@@ -464,6 +464,26 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('stor', [OtherController::class, 'stor_index']);
     Route::get('umum', [OtherController::class, 'umum_index']);
 
+    #custom method permohonan bangunan
+    Route::get('pilihan-blok', [Jkrpataf68Controller::class, 'returnBlokPilihanPage']);
+    Route::get('create-permohonan-bangunan', [Jkrpataf68Controller::class, 'return_create_page']);
+    Route::post('create-permohonan-bangunan', [Jkrpataf68Controller::class, 'save_bahagian_1']);
+    Route::get('permohonan-bangunan-edit/{id}', [Jkrpataf68Controller::class, 'return_edit_page']);
+    Route::post('permohonan-bangunan-edit/{id}', [Jkrpataf68Controller::class, 'update_bahagian_1']);
+
+    
+    Route::get('edit-blok', [Jkrpataf68Controller::class, 'return_blok_edit_page']);
+    Route::post('edit-blok/{id}', [Jkrpataf68Controller::class, 'updateMaklumatBlok']);
+
+    Route::get('edit-aras', [Jkrpataf68Controller::class, 'returnArasSingle']);
+    Route::post('edit-aras/{id}', [Jkrpataf68Controller::class, 'updateMaklumatAras']);
+
+    Route::get('pilihan-aras', [Jkrpataf68Controller::class, 'returnArasPilihanPage']);
+
+
+
+
+
 # kewatk1 utility
     Route::get('kewatk1pdf/{kewatk1}', [Kewatk1Controller::class, 'generatePdf']);
     Route::get('kewatk2pdf/{kewatk2}', [Kewatk2Controller::class, 'generatePdf']);

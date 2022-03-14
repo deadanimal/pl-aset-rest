@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-6">
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="status" value="{{$dt->status}}" required>
+                                <input class="form-control mb-3" type="text" name="status_penggunaan" value="{{$dt->status_penggunaan}}" required>
                             </div>
                         </div>
                         <div class="col-6">
