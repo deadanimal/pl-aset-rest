@@ -442,7 +442,62 @@
         </tr>
         </table>
 
+        <table style="position:absolute;left:118.42px;top:680px;">
+            <tr style="background-color: rgb(218, 217, 217)">
+                <th style="width: 450px;"><span class="cls_011">PENGESAHAN</span></th>
+            </tr>
+            <tr>
+                <td style="height: 100px;">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
 
+        <div style="position:absolute;left:180px;top:700px" class="cls_009"><span class="cls_009">Pegawai
+                Daftar & Data <br>Fasiliti: </span></div>
+        <div style="position:absolute;left:420px;top:700px" class="cls_009"><span
+                class="cls_009">Pegawai
+                Teknikal Fasiliti :</span></div>
+
+        <div style="position:absolute;left:140px;top:730px" class="cls_009"><span
+                class="cls_009">Tandatangan</span></div>
+        <div style="position:absolute;left:190px;top:730px" class="cls_009"><span
+                class="cls_009">:</span></div>
+
+        <div style="position:absolute;left:370px;top:730px" class="cls_009"><span
+                class="cls_009">Tandatangan</span></div>
+        <div style="position:absolute;left:420px;top:730px" class="cls_009"><span
+                class="cls_009">:</span></div>
+
+        <div style="position:absolute;left:140px;top:740px" class="cls_009"><span
+                class="cls_009">Nama</span></div>
+        <div style="position:absolute;left:190px;top:740px" class="cls_009"><span
+                class="cls_009">:</span></div>
+
+        <div style="position:absolute;left:370px;top:740px" class="cls_009"><span
+                class="cls_009">Nama</span></div>
+        <div style="position:absolute;left:420px;top:740px" class="cls_009"><span
+                class="cls_009">:</span></div>
+
+        <div style="position:absolute;left:140px;top:750px" class="cls_009"><span
+                class="cls_009">Jawatan</span></div>
+        <div style="position:absolute;left:190px;top:750px" class="cls_009"><span
+                class="cls_009">:</span></div>
+
+        <div style="position:absolute;left:370px;top:750px" class="cls_009"><span
+                class="cls_009">Jawatan</span></div>
+        <div style="position:absolute;left:420px;top:750px" class="cls_009"><span
+                class="cls_009">:</span></div>
+
+        <div style="position:absolute;left:140px;top:760px" class="cls_009"><span
+                class="cls_009">Tarikh</span></div>
+        <div style="position:absolute;left:190px;top:760px" class="cls_009"><span
+                class="cls_009">:</span></div>
+
+        <div style="position:absolute;left:370px;top:760px" class="cls_009"><span
+                class="cls_009">Tarikh</span></div>
+        <div style="position:absolute;left:420px;top:760px" class="cls_009"><span
+                class="cls_009">:</span></div>
     </div>
 
 

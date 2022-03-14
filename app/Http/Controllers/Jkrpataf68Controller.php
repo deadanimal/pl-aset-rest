@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\DataTanah;
 use App\Models\Jkrpataf68;
+use App\Models\PermohonanBangunanBahagian1;
+use App\Models\PermohonanBangunanBahagian2;
+use App\Models\PermohonanBangunanBahagian3;
 use App\Models\KodJabatan;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -22,7 +25,7 @@ class Jkrpataf68Controller extends Controller
     public function index()
     {
         return view('modul.aset_tak_alih.jkrpataf68.index', [
-            'jkrpataf68' => Jkrpataf68::all(),
+            'jkrpataf68' => PermohonanBangunanBahagian1::all(),
         ]);
     }
 
@@ -123,10 +126,10 @@ class Jkrpataf68Controller extends Controller
      * @param  \App\Models\Jkrpataf68  $jkrpataf68
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jkrpataf68 $jkrpataf68)
+    public function destroy($jkrpataf68)
     {
-        Storage::delete($jkrpataf68->gambar_premis);
-        DataTanah::where('jkrpataf68_id', $jkrpataf68->id)->delete();
+        $jkrpataf68 = PermohonanBangunanBahagian1::where('id', $jkrpataf68)->first();
+
         $jkrpataf68->delete();
         return redirect('/jkrpataf68');
     }
@@ -210,4 +213,157 @@ class Jkrpataf68Controller extends Controller
 
         exit(0);
     }
+
+    public function return_edit_page(Request $request, $id) {
+        $permohonan = PermohonanBangunanBahagian1::where('id', $id)->first();
+        return view('modul.aset_tak_alih.jkrpataf68.edit_bahagian1', [
+            'jabatan' => KodJabatan::all(),
+            'negara' => DB::table('negara')->get(),
+            'negeri' => DB::table('negeri')->get(),
+            'permohonan' => $permohonan,
+        ]);
+    }
+
+    public function return_create_page() {
+        return view('modul.aset_tak_alih.jkrpataf68.create_bahagian1', [
+            'jabatan' => KodJabatan::all(),
+            'negara' => DB::table('negara')->get(),
+            'negeri' => DB::table('negeri')->get(),
+        ]);
+    }
+
+    public function save_bahagian_1(Request $request) {
+        $out = $request->file('gambar_premis')->store('aset_tak_alih/gambarpremis/gambarpremis');
+        $bahagian_1 = PermohonanBangunanBahagian1::create($request->all());
+        $bahagian_1['gambar_premis'] = $out;
+        $bahagian_1->save();
+
+        foreach(range(1, $bahagian_1->bilangan_blok) as $i) {
+            PermohonanBangunanBahagian2::create(
+                [
+                    "id_bahagian1" => $bahagian_1->id
+                ]
+            );
+        }
+
+        return view('modul.aset_tak_alih.jkrpataf68.pilihan_blok', [
+            'blok' => PermohonanBangunanBahagian2::where('id_bahagian1', $bahagian_1->id)->get(),
+            'bahagian1_id' => $bahagian_1->id,
+        ]);
+    }
+
+    public function update_bahagian_1(Request $request, $id) {
+        $permohonan = PermohonanBangunanBahagian1::where('id', $id)->first();
+        if (gettype($request->gambar_premis) != "string" && $request->gambar_premis != null) {
+            $out = $request->file('gambar_premis')->store('aset_tak_alih/gambarpremis/gambarpremis');
+            $permohonan->gambar_premis = $out;
+        }
+
+        $permohonan->update($request->all());
+        $permohonan->save();
+
+        $existing_blok = PermohonanBangunanBahagian2::where('id_bahagian1', $permohonan->id)->get();
+
+        $new_blok = $request->bilangan_blok - count($existing_blok);
+        if ($new_blok > 0) {
+            foreach (range(0, $new_blok -1) as $i) {
+                PermohonanBangunanBahagian2::create(
+                    [
+                        "id_bahagian1" => $permohonan->id
+                    ]
+                );
+            }
+        }
+
+        return view('modul.aset_tak_alih.jkrpataf68.pilihan_blok', [
+            'blok' => PermohonanBangunanBahagian2::where('id_bahagian1', $permohonan->id)->get(),
+            'bahagian1_id' => $permohonan->id,
+        ]);
+    }
+
+    public function return_blok_edit_page(Request $request) {
+        $bahagian1_id = $request->id_bahagian1;
+        $blok_id = $request->blok_id;
+
+        $maklumat_blok = PermohonanBangunanBahagian2::where('id_bahagian1',$bahagian1_id)->where('id', $blok_id)->first();
+        return view('modul.aset_tak_alih.jkrpataf68.create_bahagian2', [
+            'maklumat_blok' => $maklumat_blok,
+        ]);
+
+    }
+
+    public function updateMaklumatBlok(Request $request, $id) {
+        $maklumat_blok = PermohonanBangunanBahagian2::where('id', $id)->first();
+        $maklumat_blok->update($request->all());
+
+
+        
+        return redirect()->back();
+        
+    }
+
+    public function returnBlokPilihanPage(Request $request) {
+        $bahagian1_id = $request->bahagian1_id;
+        $blok_id = $request->blok_id;
+
+        return view('modul.aset_tak_alih.jkrpataf68.pilihan_blok', [
+            'blok' => PermohonanBangunanBahagian2::where('id_bahagian1', $bahagian1_id)->get(),
+        ]);
+    }
+
+    public function returnArasPilihanPage(Request $request) {
+        $blok_id = $request->blok_id;
+        $maklumat_blok = PermohonanBangunanBahagian2::where('id', $blok_id)->first();
+        $total_aras = (int)$maklumat_blok->bil_aras_atas_tanah + (int)$maklumat_blok->bil_aras_bawah_tanah;
+
+        $existing_aras = PermohonanBangunanBahagian3::where('id_blok', $blok_id)->get();
+
+        $new_aras = $total_aras - count($existing_aras);
+        if ($new_aras > 0) {
+            foreach (range(0, $new_aras -1) as $i) {
+                PermohonanBangunanBahagian3::create(
+                    [
+                        'id_blok' => $maklumat_blok->id
+                    ]
+                );
+            }
+        }
+
+        $link = "pilihan-blok?bahagian1_id=".$maklumat_blok->id_bahagian1."&blok_id=".$blok_id;        
+        return view('modul.aset_tak_alih.jkrpataf68.pilihan_aras', [
+            'aras' => PermohonanBangunanBahagian3::where('id_blok', $blok_id)->get(),
+            'link' => $link
+        ]);
+    }
+
+    public function returnArasSingle(Request $request) {
+        $aras_id = $request->aras_id;
+        return view('modul.aset_tak_alih.jkrpataf68.create_bahagian3', [
+            'aras' => PermohonanBangunanBahagian3::where('id', $aras_id)->first(),
+        ]);
+
+    }
+
+    public function updateMaklumatAras(Request $request, $id) {
+        $maklumat_aras = PermohonanBangunanBahagian3::where('id', $id)->first();
+        $maklumat_aras->senarai_ruang_untuk_aras = $request->senarai_ruang_untuk_aras;
+        $maklumat_aras->kod_ruang = json_encode($request->kod_ruang);
+        $maklumat_aras->nama_ruang = json_encode($request->nama_ruang);
+        $maklumat_aras->luas_ruang = json_encode($request->luas_ruang);
+        $maklumat_aras->tinggi_ruang = json_encode($request->fungsi_ruang);
+
+        $storage_path_array = [];
+        
+        foreach (range(0, count($request->lampiran) - 1) as $i) {
+            $path_obj = $request->file('lampiran')[$i]->store('aset_tak_alih/gambarpremis/gambarpremis');
+            array_push($storage_path_array, $path_obj);
+        }
+        $maklumat_aras->lampiran = json_encode($storage_path_array);
+        $maklumat_aras->save();
+
+        return redirect()->back()->with('status', 'success');
+
+    }
+
+    
 }

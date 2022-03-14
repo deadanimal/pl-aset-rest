@@ -54,43 +54,24 @@
                         </a>
                         <div class="collapse" id="navbar-bangunan-premis">
                             <ul class="nav nav-sm flex-column">
-                                <a class="nav-link" href="#senarai-bangunan" data-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="navbar-dashboards">
-                                    <span class="sidenav-mini-icon"> </span>
-                                    <span class="nav-link-text ml-2">SENARAI</span>
-                                </a>
-                                <div class="collapse" id="senarai-bangunan">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="/jkrpataf612" class="nav-link ">
-                                                <span class="sidenav-normal"> BANGUNAN/PREMIS</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/senarai-blok-bangunan" class="nav-link ">
-                                                <span class="sidenav-normal"> BLOK BANGUNAN </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/senarai-maklumat-aras" class="nav-link ">
-                                                <span class="sidenav-normal"> ARAS DAN RUANG </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/senarai-binaan-luar" class="nav-link ">
-                                                <span class="sidenav-normal"> BINAAN LUAR </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
 
                                 <li class="nav-item">
                                     <a href="/jkrpataf68"
                                         class="nav-link  {{ Request::is('jkrpataf68') ? 'active' : '' }}">
                                         <span class="sidenav-mini-icon"> </span>
+                                        <span class="sidenav-normal"> SENARAI <br> BANGUNAN/PREMIS </span>
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a href="/create-permohonan-bangunan"
+                                        class="nav-link  {{ Request::is('jkrpataf68') ? 'active' : '' }}">
+                                        <span class="sidenav-mini-icon"> </span>
                                         <span class="sidenav-normal"> PERMOHONAN <br> BANGUNAN/PREMIS </span>
                                     </a>
                                 </li>
+
+                                
 
                                 <a class="nav-link" href="#pengumpulan-data" data-toggle="collapse" role="button"
                                     aria-expanded="false" aria-controls="navbar-dashboards">
