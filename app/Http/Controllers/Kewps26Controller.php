@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoKewps23;
 use App\Models\InfoKewps26;
 use App\Models\Kewps3a;
 use App\Models\Kewps26;
@@ -29,8 +30,10 @@ class Kewps26Controller extends Controller
      */
     public function create()
     {
+        $infokewps23 = InfoKewps23::all();
         return view('modul.stor.kewps26.create', [
             'kewps3a' => Kewps3a::all(),
+            'infokewps23' => $infokewps23,
         ]);
 
     }

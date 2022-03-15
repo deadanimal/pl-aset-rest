@@ -87,9 +87,9 @@
                             <h3 class="mt-4">Aset</h3>
                         </div>
                         <div class="col-4">
-                            <label for="">Kenyataan Tawaran Tender Pelupusan ID</label>
+                            <label for="">Info Kewps23 ID</label>
                             <select class="form-control mb-3" name="kewps23_id[]">
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps23 as $k23)
                                     <option value="{{ $k23->id }}">{{ $k23->id }}
                                     </option>

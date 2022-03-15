@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoKewps20;
 use App\Models\Kewps3a;
 use App\Models\Kewps29;
 use App\Models\Kewps30;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class Kewps30Controller extends Controller
 {
@@ -17,6 +19,10 @@ class Kewps30Controller extends Controller
      */
     public function index()
     {
+        $a = "sadsad\\n\\nTamat\}";
+
+        dd(Str::contains($a, 'Tamat'));
+
         return view('modul.stor.kewps30.index', [
             'kewps30' => Kewps30::all(),
         ]);
@@ -29,9 +35,11 @@ class Kewps30Controller extends Controller
      */
     public function create()
     {
+        $infokewps20 = InfoKewps20::where('cara', 'Lelong')->get();
         return view('modul.stor.kewps30.create', [
             'kewps29' => Kewps29::all(),
             'kewps3a' => Kewps3a::all(),
+            'infokewps20' => $infokewps20,
         ]);
 
     }
@@ -44,8 +52,22 @@ class Kewps30Controller extends Controller
      */
     public function store(Request $request)
     {
-        Kewps30::create($request->all());
+
+        for ($i = 0; $i < count($request->kewps3a_id); $i++) {
+            Kewps30::create([
+                'kewps29_id' => $request->kewps29_id[$i],
+                'kewps3a_id' => $request->kewps3a_id[$i],
+                'kuantiti' => $request->kuantiti[$i],
+                'harga_simpanan' => $request->harga_simpanan[$i],
+                'deposit' => $request->deposit[$i],
+            ]);
+        }
         return redirect('/kewps30');
+    }
+
+    public function getDinamic(Request $request)
+    {
+        return response()->json();
     }
 
     /**
