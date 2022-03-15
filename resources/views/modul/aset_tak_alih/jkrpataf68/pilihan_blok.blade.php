@@ -31,7 +31,20 @@
                 <div class="row">
                     <div class="col-12 my-3">
                         @foreach ($blok as $b)
-                            <a href="/edit-blok?id_bahagian1={{$b->id_bahagian1}}&blok_id={{$b->id}}" class="btn btn-primary text-white">Blok {{ $loop->index + 1 }}</a>
+                        <div class="">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3><u>Blok {{$loop->index + 1 }}</u></h3>
+                                    <a href="/delete-blok?id={{$b->id}}" class="btn-sm btn-danger text-white">Delete</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 my-3">
+                                    <a href="/edit-blok?id_bahagian1={{$b->id_bahagian1}}&blok_id={{$b->id}}" class="btn btn-primary text-white">Maklumat Blok</a>
+                                    <a href="/edit-blok-binaan-luar?id_bahagian1={{$b->id_bahagian1}}&blok_id={{$b->id}}" class="btn btn-primary text-white">Binaan Luar</a>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>

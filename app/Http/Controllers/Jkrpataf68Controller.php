@@ -294,6 +294,17 @@ class Jkrpataf68Controller extends Controller
 
     }
 
+    public function return_blblok_edit_page(Request $request) {
+        $bahagian1_id = $request->id_bahagian1;
+        $blok_id = $request->blok_id;
+
+        $maklumat_blok = PermohonanBangunanBahagian2::where('id_bahagian1',$bahagian1_id)->where('id', $blok_id)->first();
+        return view('modul.aset_tak_alih.jkrpataf68.create_bahagian2_bl', [
+            'maklumat_blok' => $maklumat_blok,
+        ]);
+
+    }
+
     public function updateMaklumatBlok(Request $request, $id) {
         $maklumat_blok = PermohonanBangunanBahagian2::where('id', $id)->first();
         $maklumat_blok->update($request->all());
@@ -343,34 +354,46 @@ class Jkrpataf68Controller extends Controller
 
         $aras_data = PermohonanBangunanBahagian3::where('id', $aras_id)->first();
         
-        $length = count(json_decode($aras_data->kod_ruang));
         $array_data = [];
 
-        if ($length > 0) {
-            foreach(range(0, $length-1) as $i) {
-                $obj = (object)[];
-                $obj->kod_ruang = json_decode($aras_data->kod_ruang)[$i];
-                $obj->nama_ruang = json_decode($aras_data->nama_ruang)[$i];
-                $obj->luas_ruang = json_decode($aras_data->luas_ruang)[$i];
-                $obj->tinggi_ruang = json_decode($aras_data->tinggi_ruang)[$i];
-                $obj->lampiran = json_decode($aras_data->lampiran)[$i];
-                array_push($array_data, $obj);
+      
+
+        if ($aras_data->kod_ruang != null) {
+            $length = count(json_decode($aras_data->kod_ruang));
+
+            try {
+                foreach(range(0, $length-1) as $i) {
+                    $obj = (object)[];
+                    $obj->kod_ruang = json_decode($aras_data->kod_ruang)[$i];
+                    $obj->nama_ruang = json_decode($aras_data->nama_ruang)[$i];
+                    $obj->luas_ruang = json_decode($aras_data->luas_ruang)[$i];
+                    $obj->fungsi_ruang = json_decode($aras_data->fungsi_ruang)[$i];
+                    $obj->tinggi_ruang = json_decode($aras_data->tinggi_ruang)[$i];
+                    // $obj->lampiran = json_decode($aras_data->lampiran)[$i];
+                    array_push($array_data, $obj);
+                }
+        
             }
-    
+            catch (\Exception $e) {
+
+            }
+            
             $context = (object)[];
             $context->nama_aras = $aras_data->senarai_ruang_untuk_aras;
-            $context->list_ruang = $aras_data;
+            $context->list_ruang = $array_data;
         }
 
 
         else {
             $context = (object)[];
+            $context->list_ruang = [];
         }
+
         // dd(json_encode($context));
 
 
         return view('modul.aset_tak_alih.jkrpataf68.create_bahagian3', [
-            'context' => json_encode($context),
+            'context' => $context,
             'aras' => $aras_data
         ]);
     }
@@ -379,21 +402,41 @@ class Jkrpataf68Controller extends Controller
         $maklumat_aras = PermohonanBangunanBahagian3::where('id', $id)->first();
         $maklumat_aras->senarai_ruang_untuk_aras = $request->senarai_ruang_untuk_aras;
         $maklumat_aras->kod_ruang = json_encode($request->kod_ruang);
+        $maklumat_aras->fungsi_ruang = json_encode($request->fungsi_ruang);
         $maklumat_aras->nama_ruang = json_encode($request->nama_ruang);
         $maklumat_aras->luas_ruang = json_encode($request->luas_ruang);
         $maklumat_aras->tinggi_ruang = json_encode($request->fungsi_ruang);
 
         $storage_path_array = [];
         
-        foreach (range(0, count($request->lampiran) - 1) as $i) {
-            $path_obj = $request->file('lampiran')[$i]->store('aset_tak_alih/gambarpremis/gambarpremis');
-            array_push($storage_path_array, $path_obj);
+        try {
+            if ($request->lampiran != null) {
+                foreach (range(0, count($request->lampiran) - 1) as $i) {
+                    $path_obj = $request->file('lampiran')[$i]->store('aset_tak_alih/gambarpremis/gambarpremis');
+                    array_push($storage_path_array, $path_obj);
+                }
+            }
+        } 
+        catch (\Exception $e) {
         }
+       
+        
         $maklumat_aras->lampiran = json_encode($storage_path_array);
         $maklumat_aras->save();
 
         return redirect()->back()->with('status', 'success');
 
+    }
+
+    public function deleteBlok(Request $request) {
+        $id = $request->id;
+        $permohonan_bahagian2 = PermohonanBangunanBahagian2::where('id', $id)->first();
+        $permohonan_bahagian2->delete();
+
+        $permohonan1 = PermohonanBangunanBahagian1::where('id', $permohonan_bahagian2->id_bahagian1)->first();
+        $permohonan1->bilangan_blok = $permohonan1->bilangan_blok - 1;
+        $permohonan1->save();
+        return redirect()->back();
     }
 
     
