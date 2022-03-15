@@ -473,12 +473,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     
     Route::get('edit-blok', [Jkrpataf68Controller::class, 'return_blok_edit_page']);
+    Route::get('edit-blok-binaan-luar', [Jkrpataf68Controller::class, 'return_blblok_edit_page']);
     Route::post('edit-blok/{id}', [Jkrpataf68Controller::class, 'updateMaklumatBlok']);
+
 
     Route::get('edit-aras', [Jkrpataf68Controller::class, 'returnArasSingle']);
     Route::post('edit-aras/{id}', [Jkrpataf68Controller::class, 'updateMaklumatAras']);
 
     Route::get('pilihan-aras', [Jkrpataf68Controller::class, 'returnArasPilihanPage']);
+    Route::get('delete-blok', [Jkrpataf68Controller::class, 'deleteBlok']);
 
 
 

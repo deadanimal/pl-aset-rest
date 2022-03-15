@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                {{$context}}
+                
 
                 </br>
                 <div class="card-body pt-0">
@@ -52,11 +52,73 @@
                                 </div>
                             </div>
 
-
-
-                            {{-- if already exist show here --}}
-                            
                             <hr style="width: 100%; color: black;">
+
+
+                            @if(count($context->list_ruang) > 0)
+                            @foreach($context->list_ruang as $ruang)
+                            <div class="col-12 row">
+                                <div class="col-2 mt-3">
+                                    <label for="">Kod Ruang</label>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="kod_ruang[]" value="{{$ruang->kod_ruang}}" required>
+                                    </div>
+                                </div>
+                                <div class="col-2 mt-3">
+                                    <label for="">Nama Ruang</label>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="nama_ruang[]" value="{{$ruang->nama_ruang}}" required>
+                                    </div>
+                                </div>
+                                <div class="col-2 mt-3">
+                                    <label for="">Luas Ruang</label>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="luas_ruang[]" value="{{$ruang->luas_ruang}}" required>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">M<sup>2</sup></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 mt-3">
+                                    <label for="">Tinggi Ruang</label>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="tinggi_ruang[]" value="{{$ruang->tinggi_ruang}}" required>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">M</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 mt-3">
+                                    <label for="">Fungsi Ruang</label>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" name="fungsi_ruang[]" value="{{$ruang->fungsi_ruang}}" required>
+                                    </div>
+                                </div>
+                                <div class="col-2 mt-3">
+                                    <label for="">Lampiran</label>
+                                </div>
+                                <div class="col-4 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control" type="file" name="lampiran[]" value="">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                           
+                            {{-- if already exist show here --}}
+                            <hr style="width: 100%; color: black;">
+                            @endforeach
+                            @endif
 
                             <div id="maklumat_ruang" class="col-12">
 
