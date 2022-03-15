@@ -39,11 +39,10 @@
                             <tr>
 
                                 <th scope="col">Bil</th>
-                                <th scope="col">No Kad</th>
-                                <th scope="col">Kategori Stok</th>
-                                <th scope="col">No Kod</th>
-                                <th scope="col">Perihal</th>
+                                <th scope="col">Perihal Stok</th>
+                                <th scope="col">No Perihal Stok</th>
                                 <th scope="col">Unit Ukuran</th>
+                                <th scope="col">Kod Stor</th>
                                 <th scope="col">Tindakan</th>
 
                             </tr>
@@ -51,19 +50,17 @@
                         <tbody>
                             @foreach ($kod_stor as $kod_stor)
                                 <tr>
-
                                     <td scope="col">{{ $loop->iteration }}</td>
-                                    <td scope="col">{{ $kod_stor->no_kad }}</td>
-                                    <td scope="col">{{ $kod_stor->kategori_stor }}</td>
-                                    <td scope="col">{{ $kod_stor->kod_stor }}</td>
                                     <td scope="col">{{ $kod_stor->perihal }}</td>
+                                    <td scope="col">{{ $kod_stor->kategori_stor }}</td>
                                     <td scope="col">{{ $kod_stor->unit_ukuran }}</td>
+                                    <td scope="col">{{ $kod_stor->no_kad }}-{{$kod_stor->kod_stor}}-{{$kod_stor->kategori_stor}}</td>
+                                    
 
                                     <td scope="col">
                                         <a href="#" onclick="updateData({{ $kod_stor }})"><i
                                                 class="fas fa-pen"></i></a>
-                                        <a href="/kod-storpdf"><i class="fas fa-print"></i></a>
-                                        <a href="/kod-stor" onclick="deleteData({{ $kod_stor }})"><i
+                                        <a href="/kod-stor?kategori={{$kod_stor->kod_stor}}&nokad={{$kod_stor->no_kad}}" onclick="deleteData({{ $kod_stor }})"><i
                                                 class="fas fa-trash"></i></a>
                                     </td>
 
@@ -93,23 +90,24 @@
                             <div class="col-4">
                                 <label for="">No Kad</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="no_kad" value="">
-                                </div>
-                            </div>
-
-                            <div class="col-4">
-                                <label for="">Kategori Stok</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kategori_stor" value="">
+                                    <input class="form-control mb-3" type="text" name="no_kad" value="{{$no_kad}}" readonly>
                                 </div>
                             </div>
 
                             <div class="col-4">
                                 <label for="">No Kod</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kod_stor" value="">
+                                    <input class="form-control mb-3" type="text" name="kod_stor" value="{{$kategori}}" readonly>
                                 </div>
                             </div>
+
+                            <div class="col-4">
+                                <label for="">No Perihal Stok</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kategori_stor" value="">
+                                </div>
+                            </div>
+
 
                             <div class="col-6">
                                 <label for="">Perihal</label>
@@ -159,23 +157,25 @@
                             <div class="col-4">
                                 <label for="">No Kad</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="no_kad" value="">
-                                </div>
-                            </div>
-
-                            <div class="col-4">
-                                <label for="">Kategori Stok</label>
-                                <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kategori_stor" value="">
+                                    <input class="form-control mb-3" type="text" name="no_kad" value="{{$no_kad}}" readonly>
                                 </div>
                             </div>
 
                             <div class="col-4">
                                 <label for="">No Kod</label>
                                 <div class="input-group">
-                                    <input class="form-control mb-3" type="text" name="kod_stor" value="">
+                                    <input class="form-control mb-3" type="text" name="kod_stor" value="{{$kategori}}" readonly>
                                 </div>
                             </div>
+
+                            <div class="col-4">
+                                <label for="">No Perihal Stok</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="text" name="kategori_stor" value="">
+                                </div>
+                            </div>
+
+              
 
                             <div class="col-6">
                                 <label for="">Perihal</label>
@@ -223,6 +223,11 @@
         $("#tambah").click(function() {
             $("#show").hide();
             $("#create").show();
+
+            //TODO: get context
+            //set value to input
+            // var no_kad = <?php echo $no_kad; ?>
+
         });
 
         function updateData(obj) {
@@ -249,7 +254,7 @@
                 url: "/kod-stor/" + id,
                 type: "DELETE",
                 success: function() {
-                    location.replace = "/kod-stor";;
+                    window.location.reload();
                 }
             })
 

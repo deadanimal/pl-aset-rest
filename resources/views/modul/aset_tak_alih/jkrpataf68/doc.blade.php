@@ -310,17 +310,17 @@
     <div class="page_break">
         <table style="margin-top: 47px; border: 0px;">
             <tr>
-                <td style="width: 100px; height:29px;border: 0px; ">
+                <td style="width: 100px; height:29px;border: 0px;">
                     <p></p>
                 </td>
-                <td style="background-color:rgb(149, 149, 152); width: 220px;border: 0px;">
+                <td style="background-color:rgb(138, 168, 110); width: 220px;border: 0px;">
                     <p></p>
                 </td>
                 <td style="background-color:rgb(138, 168, 110); width: 245px;border: 0px;">
                     <span class="cls_003" style="margin-left:10px">Permohonan Tanah (Kad Pendaftaran Aset Tak Alih
-                        - Tanah)</span>
+                        )</span>
                 </td>
-                <td style="width: 35px;border: 0px;">
+                <td style="width: 35px;border: 0px; background-color:rgb(138, 168, 110);">
                     <p></p>
                 </td>
                 <td style="background-color:rgb(138, 168, 110); width: 75px;border: 0px;">
@@ -329,8 +329,7 @@
             </tr>
         </table>
 
-        <div style="position:absolute;left:576.77px;top:53.26px" class="cls_004"><span
-                class="cls_004">83</span></div>
+        
         <div style="position:absolute;left:478.52px;top:115.59px" class="cls_005"><span
                 class="cls_005">PL.PATA.F6/8 (TANAH)</span></div>
         <div style="position:absolute;left:120px;top:156.02px" class="cls_006"><span class="cls_006">No.
@@ -505,20 +504,19 @@
     <div class="page_break">
         <table style="margin-top: 47px; border: 0px solid black;">
             <tr>
-                <td style="width: 3px;border: 0px solid black;">
+                <td style="width: 3px;border: 0px solid black; background-color:rgb(138, 168, 110)">
                     <p></p>
                 </td>
                 <td style="background-color:rgb(138, 168, 110); width: 35px;border: 0px solid black;">
                     <p></p>
                 </td>
-                <td style="width: 35px;border: 0px solid black;">
+                <td style="width: 35px;border: 0px solid black; background-color:rgb(138, 168, 110)">
                     <p></p>
                 </td>
                 <td style="background-color:rgb(138, 168, 110); width: 245px;border: 0px solid black;">
-                    <span class="cls_003" style="margin-left: 10px;">Tatacara Pengurusan Aset Tak Alih
-                        Kerajaan</span>
+                    <span class="cls_003" style="margin-left: 10px;">Permohonan Tanah (Kad Pendaftaran Aset Tak Alih)</span>
                 </td>
-                <td style="background-color:rgb(149, 149, 152); width: 220px;border: 0px solid black;">
+                <td style="background-color:rgb(138, 168, 110); width: 220px;border: 0px solid black;">
                     <p></p>
                 </td>
                 <td style="width: 100px; height:29px;border: 0px solid black; ">
@@ -527,8 +525,8 @@
             </tr>
         </table>
 
-        <div style="position:absolute;left:48.90px;top:53.26px" class="cls_004"><span
-                class="cls_004">84</span></div>
+        <div style="position:absolute;left:48.90px;top:53.26px; background-color:rgb(138, 168, 110);" class="cls_004"><span
+                class="cls_004"></span></div>
 
         <div style="position:absolute;left:260.56px;top:175px" class="cls_021"><span
                 class="cls_021">GAMBAR PREMIS</span>

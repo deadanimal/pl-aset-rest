@@ -292,24 +292,6 @@
                                     <input class="form-control" type="file" name="gambar_premis" value="" required>
                                 </div>
                             </div>
-                            <div class="col-6 mt-3">
-                                <label for="">Pegawai Teknikal Fasiliti</label>
-
-                            </div>
-                            <div class="col-6 mt-3">
-                                <div class="input-group">
-                                    <input class="form-control" type="text" name="pegawai_teknikal" value="" required>
-                                </div>
-                            </div>
-                            <div class="col-6 mt-3">
-                                <label for="">Pegawai Daftar & Data Fasiliti</label>
-
-                            </div>
-                            <div class="col-6 mt-3">
-                                <div class="input-group">
-                                    <input class="form-control" type="text" name="pegawai_daftar" value="" required>
-                                </div>
-                            </div>
                             <div class="col-12">
                                 <div class="text-right">
                                     <button class="btn btn-primary mt-5" type="submit">Seterusnya</button>

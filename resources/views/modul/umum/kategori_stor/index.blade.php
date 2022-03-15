@@ -52,7 +52,7 @@
                             <tr>
                                 <th scope="col">BIL</th>
                                 <th scope="col">KATEGORI STOK</th>
-                                <th scope="col">KO KOD</th>
+                                <th scope="col">NO KOD</th>
                                 <th scope="col">Tindakan</th>
                             </tr>
                         </thead>
@@ -63,6 +63,15 @@
                                     <td scope="col">{{ $k->nama_kategori }}</td>
                                     <td scope="col">{{ $k->ko_kod }}</td>
                                     <td scope="col">
+
+                                        @if($r == 'atp')
+                                            <a href="/kod-stor?kategori={{$k->ko_kod}}&nokad=1" onclick="" class="btn btn-sm btn-primary">Kod Stor</a>
+                                        @elseif ($r == 'bap')
+                                            <a href="/kod-stor?kategori={{$k->ko_kod}}&nokad=2" onclick="" class="btn btn-sm btn-primary">Kod Stor</a>
+                                        @else
+                                            <a href="/kod-stor?kategori={{$k->ko_kod}}&nokad=3" onclick="" class="btn btn-sm btn-primary">Kod Stor</a>
+                                        @endif
+
                                         <button onclick="update({{ $k }})" class="btn btn-sm btn-primary"><i
                                                 class="fas fa-pen"></i></button>
                                         <form action="{{ route($r . '.destroy', $k->id) }}" method="post"

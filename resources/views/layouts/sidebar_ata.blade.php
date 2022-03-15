@@ -73,30 +73,7 @@
 
                                 
 
-                                <a class="nav-link" href="#pengumpulan-data" data-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="navbar-dashboards">
-                                    <span class="sidenav-mini-icon"> </span>
-                                    <span class="nav-link-text ml-2">PENGUMPULAN DATA <br> ASET KHUSUS</span>
-                                </a>
-                                <div class="collapse" id="pengumpulan-data">
-                                    <ul class="nav nav-sm flex-column">
-                                        <li class="nav-item">
-                                            <a href="/dataasetkhusus" class="nav-link ">
-                                                <span class="sidenav-normal"> BLOK </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/maklumataras" class="nav-link ">
-                                                <span class="sidenav-normal"> ARAS & RUANG </span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="/dakbinaanluar" class="nav-link ">
-                                                <span class="sidenav-normal"> BINAAN LUAR </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                
                             </ul>
                         </div>
 
