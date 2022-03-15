@@ -49,16 +49,16 @@
                                 <td scope="col">{{ $k25->pengerusi_id }}</td>
                                 <td scope="col">{{ count($k25->infokewps25) }}</td>
                                 <td scope="col">
-                                    <a href="/kewps25/{{ $k25->id }}"><i class="fas fa-pen"></i></a>
+                                    {{-- <a href="/kewps25/{{ $k25->id }}"><i class="fas fa-pen"></i></a> --}}
                                     <a href="/kewps25pdf/{{ $k25->id }}"><i class="fas fa-print"></i></a>
-                                    <a href="">
+                                    {{-- <a href="">
                                         <form action="/kewps25/{{ $k25->id }}" class="d-inline" method="POST">
                                             @method('delete')
                                             @csrf
                                             <button class="btn-sm bg-white border-0" type="submit"> <i
                                                     class=" fas fa-trash"></i></button>
                                         </form>
-                                    </a>
+                                    </a> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -68,5 +68,4 @@
             </div>
         </div>
     </div>
-
 @endsection

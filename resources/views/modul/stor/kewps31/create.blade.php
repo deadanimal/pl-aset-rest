@@ -37,7 +37,7 @@
                             <input type="text" name="tahun" class="form-control mb-3 tahun">
                         </div>
                         <div class="col-6">
-                            <label for="">Kementerian</label>
+                            <label for="">Agensi</label>
                             <div class="input-group">
                                 <input class="form-control mb-3" type="text" name="kementerian_display"
                                     value="Perbadanan Labuan">
@@ -53,10 +53,10 @@
                         </div>
                         <input type="hidden" name="kementerian[]" value="Perbadanan Labuan">
                         <div class="col-4">
-                            <label for="">Pelupusan Stok</label>
+                            <label for="">No Rujukan InfoKewps20</label>
                             <select class="form-control mb-3" name="kewps20_id[]">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps20 as $k20)
+                                <option selected disabled hidden>Pilih</option>
+                                @foreach ($infokewps20 as $k20)
                                     <option value="{{ $k20->id }}">{{ $k20->id }}
                                     </option>
                                 @endforeach
@@ -87,16 +87,6 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            $(".tahun").datepicker({
-                format: "yyyy",
-                viewMode: "years",
-                minViewMode: "years",
-                autoclose: true
-            });
-            $(".tahun").attr('autocomplete', 'off');
-        });
-
         function tambahAsetK31() {
             $("#info_kewps31").append(
                 `       
@@ -105,8 +95,8 @@
                         <div class="col-4">
                             <label for="">Pelupusan Stok</label>
                             <select class="form-control mb-3" name="kewps20_id[]">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps20 as $k20)
+                                <option selected disable hidden>Pilih</option>
+                                @foreach ($infokewps20 as $k20)
                                     <option value="{{ $k20->id }}">{{ $k20->id }}
                                     </option>
                                 @endforeach

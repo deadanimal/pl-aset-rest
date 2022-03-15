@@ -136,6 +136,8 @@
             minViewMode: "years",
             autoclose: true
         });
+        $(".tahun").attr('autocomplete', 'off');
+
 
         function sweetalert(e, btn, t1, t2, t3) {
             e.preventDefault();
