@@ -171,6 +171,7 @@
                                 <input class="form-control mb-3" type="text" name="status_penggunaan" value="" required>
                             </div>
                         </div>
+                        <input class="form-control mb-3" type="hidden" name="status" value="DERAF" required>
                         <div class="col-6">
                             <label class="form-label" for="">Tarikh PTP</label>
                         </div>
