@@ -44,6 +44,26 @@
                             <div class="col-12 my-3">
                                 <label for=""><strong>MAKLUMAT BANGUNAN/PREMIS</strong></label>
                             </div>
+                            <div class="col-6 mt-3">
+                                <label for="">Kod Lokasi</label>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="kod_lokasi" value="{{$permohonan->kod_lokasi}}" required>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <label for="">Nama Tanah</label>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <div class="input-group">
+                                    <select name="nama_tanah" class="form-control" required>
+                                        @foreach ($data_tanah as $dt)
+                                        <option value="{{$dt->nama_tanah}}">{{$dt->nama_tanah}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="col-6 mt-3">
                                 <label for="">No Rujukan Bangunan</label>

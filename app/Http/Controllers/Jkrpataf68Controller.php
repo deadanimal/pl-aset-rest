@@ -221,6 +221,7 @@ class Jkrpataf68Controller extends Controller
             'negara' => DB::table('negara')->get(),
             'negeri' => DB::table('negeri')->get(),
             'permohonan' => $permohonan,
+            'data_tanah' => DataTanah::all(),
         ]);
     }
 
@@ -229,6 +230,7 @@ class Jkrpataf68Controller extends Controller
             'jabatan' => KodJabatan::all(),
             'negara' => DB::table('negara')->get(),
             'negeri' => DB::table('negeri')->get(),
+            'data_tanah' => DataTanah::all(),
         ]);
     }
 
