@@ -103,12 +103,12 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="/kod-stor" class="nav-link">
                                         <span class="sidenav-mini-icon"> A </span>
                                         <span class="sidenav-normal"> Kod Stor </span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li class="nav-item">
                                     <a href="/unit_ukuran" class="nav-link">
