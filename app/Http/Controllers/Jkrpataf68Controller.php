@@ -340,10 +340,39 @@ class Jkrpataf68Controller extends Controller
 
     public function returnArasSingle(Request $request) {
         $aras_id = $request->aras_id;
-        return view('modul.aset_tak_alih.jkrpataf68.create_bahagian3', [
-            'aras' => PermohonanBangunanBahagian3::where('id', $aras_id)->first(),
-        ]);
 
+        $aras_data = PermohonanBangunanBahagian3::where('id', $aras_id)->first();
+        
+        $length = count(json_decode($aras_data->kod_ruang));
+        $array_data = [];
+
+        if ($length > 0) {
+            foreach(range(0, $length-1) as $i) {
+                $obj = (object)[];
+                $obj->kod_ruang = json_decode($aras_data->kod_ruang)[$i];
+                $obj->nama_ruang = json_decode($aras_data->nama_ruang)[$i];
+                $obj->luas_ruang = json_decode($aras_data->luas_ruang)[$i];
+                $obj->tinggi_ruang = json_decode($aras_data->tinggi_ruang)[$i];
+                $obj->lampiran = json_decode($aras_data->lampiran)[$i];
+                array_push($array_data, $obj);
+            }
+    
+            $context = (object)[];
+            $context->nama_aras = $aras_data->senarai_ruang_untuk_aras;
+            $context->list_ruang = $aras_data;
+        }
+
+
+        else {
+            $context = (object)[];
+        }
+        // dd(json_encode($context));
+
+
+        return view('modul.aset_tak_alih.jkrpataf68.create_bahagian3', [
+            'context' => json_encode($context),
+            'aras' => $aras_data
+        ]);
     }
 
     public function updateMaklumatAras(Request $request, $id) {

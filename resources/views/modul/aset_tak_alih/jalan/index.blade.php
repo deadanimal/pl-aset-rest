@@ -46,7 +46,7 @@
                     <tbody>
                         @foreach ($jalan as $j)
                             <tr>
-                                <td scope="col">{{ $j->id }}</td>
+                                <td scope="col">{{ $loop->index + 1}}</td>
                                 <td scope="col">{{ $j->nama_jalan }}</td>
                                 <td scope="col">{{ $j->tahun_daftar }}</td>
                                 <td scope="col">{{ $j->panjang_jalan }}</td>

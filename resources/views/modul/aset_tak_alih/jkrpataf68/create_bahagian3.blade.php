@@ -17,6 +17,8 @@
         </div>
     </div>
 
+    
+
     <div class="container-fluid mt--6">
         <form method="POST" action="/edit-aras/{{ $aras->id }}" enctype="multipart/form-data">
             @csrf
@@ -29,6 +31,7 @@
                     </div>
                 </div>
 
+                {{$context}}
 
                 </br>
                 <div class="card-body pt-0">
@@ -48,7 +51,7 @@
                                         value="{{ $aras->senarai_ruang_untuk_aras }}" required>
                                 </div>
                             </div>
-                            
+
 
 
                             {{-- if already exist show here --}}
