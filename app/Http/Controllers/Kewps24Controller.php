@@ -18,9 +18,19 @@ class Kewps24Controller extends Controller
      */
     public function index()
     {
-        return view('modul.stor.kewps24.index', [
-            'kewps24' => Kewps24::all(),
-        ]);
+        $obj = (object)[];
+        $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps24', [$obj]);
+
+        $res = $response->getBody()->getContents();
+
+        $url = "data:application/pdf;base64," . $res;
+
+        $context = [
+            "url" => $url,
+            "title" => "kewps24",
+        ];
+
+        return view('modul.borang_viewer_ps', $context);
     }
 
     /**

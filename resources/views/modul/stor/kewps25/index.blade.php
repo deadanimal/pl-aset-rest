@@ -26,8 +26,8 @@
                         <h2 class="mb-0">Jadual Tender Pelupusan</h2>
                     </div>
                     <div class="text-end mr-2">
-                        <a href="/kewps25/create"><button class="align-self-end btn btn-sm btn-primary"
-                                id="tambah">Tambah</button></a>
+                        <a href="/kewps25pdf"><button class="align-self-end btn btn-sm btn-primary"
+                                id="tambah">Cetak</button></a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,6 @@
                             <th scope="col">ID</th>
                             <th scope="col">pengerusi_id</th>
                             <th scope="col">Bilangan Aset</th>
-                            <th scope="col">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +47,7 @@
                                 <td scope="col">{{ $k25->id }}</td>
                                 <td scope="col">{{ $k25->pengerusi_id }}</td>
                                 <td scope="col">{{ count($k25->infokewps25) }}</td>
+
                                 <td scope="col">
                                     {{-- <a href="/kewps25/{{ $k25->id }}"><i class="fas fa-pen"></i></a> --}}
                                     <a href="/kewps25pdf/{{ $k25->id }}"><i class="fas fa-print"></i></a>
@@ -60,6 +60,7 @@
                                         </form>
                                     </a> --}}
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>
