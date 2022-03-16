@@ -33,13 +33,13 @@
                         <div class="collapse" id="navbar-tanah">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link ">
+                                    <a href="/datatanah?jenis=senarai" class="nav-link ">
                                         <span class="sidenav-mini-icon"> </span>
                                         <span class="sidenav-normal"> SENARAI TANAH </span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/datatanah" class="nav-link">
+                                    <a href="/datatanah?jenis=crud" class="nav-link">
                                         <span class="sidenav-mini-icon"> </span>
                                         <span class="sidenav-normal"> PERMOHONAN TANAH </span>
                                     </a>
@@ -56,7 +56,7 @@
                             <ul class="nav nav-sm flex-column">
 
                                 <li class="nav-item">
-                                    <a href="/jkrpataf68"
+                                    <a href="/jkrpataf68?jenis=senarai"
                                         class="nav-link  {{ Request::is('jkrpataf68') ? 'active' : '' }}">
                                         <span class="sidenav-mini-icon"> </span>
                                         <span class="sidenav-normal"> SENARAI <br> BANGUNAN/PREMIS </span>
@@ -64,7 +64,7 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a href="/create-permohonan-bangunan"
+                                    <a href="/jkrpataf68?jenis=crud"
                                         class="nav-link  {{ Request::is('jkrpataf68') ? 'active' : '' }}">
                                         <span class="sidenav-mini-icon"> </span>
                                         <span class="sidenav-normal"> PERMOHONAN <br> BANGUNAN/PREMIS </span>

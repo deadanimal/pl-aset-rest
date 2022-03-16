@@ -22,10 +22,11 @@ class Jkrpataf68Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('modul.aset_tak_alih.jkrpataf68.index', [
             'jkrpataf68' => PermohonanBangunanBahagian1::all(),
+            'jenis' => $request->jenis,
         ]);
     }
 
@@ -62,7 +63,8 @@ class Jkrpataf68Controller extends Controller
             'gambar_premis' => $out,
         ]);
 
-        return redirect('/jkrpataf68');
+        return redirect('/jkrpataf68?jenis=crud');
+
     }
 
     /**
@@ -117,7 +119,8 @@ class Jkrpataf68Controller extends Controller
             ]);
 
         }
-        return redirect('/jkrpataf68');
+        return redirect('/jkrpataf68?jenis=crud');
+
     }
 
     /**
@@ -131,7 +134,7 @@ class Jkrpataf68Controller extends Controller
         $jkrpataf68 = PermohonanBangunanBahagian1::where('id', $jkrpataf68)->first();
 
         $jkrpataf68->delete();
-        return redirect('/jkrpataf68');
+        return redirect('/jkrpataf68?jenis=crud');
     }
     public function generatePdf2(Jkrpataf68 $jkrpataf68)
     {
@@ -439,6 +442,23 @@ class Jkrpataf68Controller extends Controller
         return redirect()->back();
     }
 
+    public function generatePdfSijilTanah(Request $request) {
+
+        $data_tanah = PermohonanBangunanBahagian1::where('id', $request->id)->first();
+
+        $response = Http::post('https://libreoffice.prototype.com.my/cetak/sijil_tanah', [$data_tanah]);
+
+        $res = $response->getBody()->getContents();
+
+        $url = "data:application/pdf;base64," . $res;
+
+        $context = [
+            "url" => $url,
+            "title" => "jkrpataf68",
+        ];
+
+        return view('modul.borang_viewer_ata', $context);
+    }
 
     
 }

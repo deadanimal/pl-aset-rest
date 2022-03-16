@@ -33,14 +33,12 @@
                 <div class="card-body pt-0">
                     <div class="row">
                         <div class="col-3 mt-3">
-                            <label for="">No Pendaftaran</label>
+                            <label for="">No Dpa</label>
                             <div class="input-group">
                                 <select name="jkrpataf68_id" class="form-control">
                                     <option selected>Pilih</option>
                                     @foreach ($jkrpataf68 as $ata68)
-                                        @if (!in_array($ata68->id, $check))
-                                            <option value="{{ $ata68->id }}">{{ $ata68->id }}</option>
-                                        @endif
+                                            <option value="{{ $ata68->no_dpa }}">{{ $ata68->no_dpa }}</option>
                                     @endforeach
                                 </select>
                             </div>

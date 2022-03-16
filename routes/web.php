@@ -225,7 +225,7 @@ require __DIR__ . '/auth.php';
 # authentication
 Route::post('auth', [AuthenticationController::class, 'authenticateUser']);
 
-Route::group(['middleware' => 'auth'], function () {
+// Route::group(['middleware' => 'auth'], function () {
     Route::resource('/menu-setting', MenuSettingController::class);
 
     Route::resource('kewpa1', Kewpa1Controller::class);
@@ -567,6 +567,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/plpkpa0102pdf/{plpk0102}', [Plpkpa0102Controller::class, 'generatePdf']);
 
     Route::get('/permohonantanahpdf', [Jkrpataf68Controller::class, 'generatePdfPermohonanTanah']);
+    Route::get('/sijilpdf', [Jkrpataf68Controller::class, 'generatePdfSijilTanah']);
 
 
 //kewpa utility
@@ -608,7 +609,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kewpa36pdf/{kewpa36}', [Kewpa36Controller::class, 'generatePDF']);
     Route::get('/kewpa37pdf/{kewpa37}', [Kewpa37Controller::class, 'generatePDF']);
 
-});
+// });
 
 //guest Routes
 Route::get('/utama', [GuestController::class, 'utamaView']);

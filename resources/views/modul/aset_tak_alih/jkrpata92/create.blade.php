@@ -44,13 +44,14 @@
                                 <input class="form-control" type="text" name="catatan" value="">
                             </div>
                         </div>
+                        
                         <div class="col-4 mt-3">
-                            <label for="">No Pendaftaran</label>
+                            <label for="">No Dpa</label>
                             <div class="input-group">
                                 <select name="jkrpataf68_id" class="form-control">
                                     <option selected>Pilih</option>
                                     @foreach ($jkrpataf68 as $ata68)
-                                        <option value="{{ $ata68->id }}">{{ $ata68->id }}</option>
+                                        <option value="{{ $ata68->no_dpa }}">{{ $ata68->no_dpa }}</option>
                                     @endforeach
                                 </select>
                             </div>

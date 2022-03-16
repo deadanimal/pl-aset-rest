@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jkrpataf68;
+use App\Models\PermohonanBangunanBahagian1;
 use App\Models\Jkrpataf102;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -36,7 +37,7 @@ class Jkrpataf102Controller extends Controller
         }
 
         return view('modul.aset_tak_alih.jkrpataf102.create', [
-            'jkrpataf68' => Jkrpataf68::all(),
+            'jkrpataf68' => PermohonanBangunanBahagian1::all(),
             'check' => $jkrpataf68_id,
         ]);
 
@@ -50,7 +51,7 @@ class Jkrpataf102Controller extends Controller
      */
     public function store(Request $request)
     {
-        $jkpataf68 = Jkrpataf68::where('id', $request->jkrpataf68_id)->firstorfail();
+        $jkpataf68 = PermohonanBangunanBahagian1::where('no_dpa', $request->jkrpataf68_id)->firstorfail();
 
         $request['no_rujukan_laporan'] = $jkpataf68->no_rujukan;
         $request['tahun_rujukan_laporan'] = date('Y', strtotime($jkpataf68->tarikh));

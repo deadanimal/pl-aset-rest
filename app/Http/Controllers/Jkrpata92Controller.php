@@ -6,6 +6,7 @@ use App\Models\InfoJkrpata92;
 use App\Models\Jkrpata92;
 use App\Models\Jkrpataf610;
 use App\Models\Jkrpataf68;
+use App\Models\PermohonanBangunanBahagian1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -20,7 +21,6 @@ class Jkrpata92Controller extends Controller
     {
         return view('modul.aset_tak_alih.jkrpata92.index', [
             'jkrpata92' => Jkrpata92::all(),
-
         ]);
     }
 
@@ -32,7 +32,7 @@ class Jkrpata92Controller extends Controller
     public function create()
     {
         return view('modul.aset_tak_alih.jkrpata92.create', [
-            'jkrpataf68' => Jkrpataf68::all(),
+            'jkrpataf68' => PermohonanBangunanBahagian1::all(),
         ]);
 
     }
@@ -46,7 +46,7 @@ class Jkrpata92Controller extends Controller
     public function store(Request $request)
     {
 
-        $jkrpataf68 = Jkrpataf68::where('id', $request->jkrpataf68_id)->firstorfail();
+        $jkrpataf68 = PermohonanBangunanBahagian1::where('no_dpa', $request->jkrpataf68_id)->firstorfail();
 
         $request['kementerian'] = $jkrpataf68->kementerian;
         $request['jabatan'] = $jkrpataf68->jabatan;

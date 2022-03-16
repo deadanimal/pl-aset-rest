@@ -26,8 +26,14 @@
                         <h2 class="mb-0">Data Tanah</h2>
                     </div>
                     <div class="text-end mr-2">
+                        @if($jenis == "senarai")
+                        <a><button class="align-self-end btn btn-sm btn-primary"
+                           >Cetak</button></a>
+                        @else
                         <a href="/datatanah/create"><button class="align-self-end btn btn-sm btn-primary"
-                                id="tambah">Tambah</button></a>
+                            id="tambah">Tambah</button></a>
+                        @endif
+                        
                     </div>
                 </div>
             </div>
@@ -42,7 +48,11 @@
                             <th scope="col">Mukim Bandar</th>
                             <th scope="col">Jenis Hakmilik</th>
                             <th scope="col">No Hakmilik</th>
+                            <th scope="col">QR Code</th>
+                            @if($jenis == "crud")
                             <th scope="col">Tindakan</th>
+                            @endif
+
                         </tr>
                     </thead>
                     <tbody>
@@ -55,10 +65,15 @@
                                 <td scope="col">{{ $dt->hakmilik_jenis }}</td>
                                 <td scope="col">{{ $dt->hakmilik_nombor }}</td>
                                 <td scope="col">
+                                    <a download>{!! QrCode::size(100)->generate('https://labuan-aset.prototype.com.my/permohonantanahpdf?id=' . $dt->id . '') !!}</a>
+                                </td>
+                                @if($jenis == "crud")
+                                <td scope="col">
                                     <a class="btn-sm bg-white border-0" href="/datatanah/{{ $dt->id }}"><i
                                             class="fas fa-pen"></i></a>
-                                    <a class="btn-sm bg-white border-0" href="/permohonantanahpdf?id={{ $dt->id }}" target="_blank"><i
-                                            class="fas fa-print"></i></a>
+                                    
+                                    <a class="btn-sm bg-white border-0" href="/permohonantanahpdf?id={{ $dt->id }}"
+                                        target="_blank"><i class="fas fa-print"></i></a>
                                     <form action="/datatanah/{{ $dt->id }}" class="d-inline" method="POST">
                                         @method('delete')
                                         @csrf
@@ -66,6 +81,7 @@
                                                 class=" fas fa-trash"></i></button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

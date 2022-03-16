@@ -13,10 +13,13 @@ class DataTanahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $jenis = $request->jenis;
+
         return view('modul.aset_tak_alih.datatanah.index', [
             'datatanah' => DataTanah::all(),
+            'jenis' => $jenis,
         ]);
     }
 
@@ -41,12 +44,11 @@ class DataTanahController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $gambar_premis_path = $request->file('gambar_premis')->store('gambar_premis');
         $datatanah = DataTanah::create($request->all());
         $datatanah->gambar_premis = $gambar_premis_path;
         $datatanah->save();
+
         return redirect('/datatanah');
     }
 
