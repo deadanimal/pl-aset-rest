@@ -29,7 +29,7 @@ class Kewps22Controller extends Controller
     public function create()
     {
         return view('modul.stor.kewps22.create', [
-            'kewps20' => InfoKewps20::all()
+            'kewps20' => InfoKewps20::all(),
         ]);
     }
 
@@ -41,6 +41,8 @@ class Kewps22Controller extends Controller
      */
     public function store(Request $request)
     {
+        $out = $request->file('gambar')->store('kewps22');
+        $request['url_gamba'] = $out;
         Kewps22::create($request->all());
         return redirect('/kewps22');
     }
@@ -55,7 +57,7 @@ class Kewps22Controller extends Controller
     {
         return view('modul.stor.kewps22.edit', [
             'kewps22' => $kewps22,
-            'kewps20' => InfoKewps20::all()
+            'kewps20' => InfoKewps20::all(),
 
         ]);
     }
@@ -98,7 +100,7 @@ class Kewps22Controller extends Controller
 
     public function generatePdf(Kewps22 $kewps22)
     {
-        $kewps22['tarikh'] = $kewps22->updated_at->format("d/m/Y");
+        $kewps22['newtarikh'] = date('d/m/Y', strtotime($kewps22->tarikh));
 
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps22', [$kewps22]);
 

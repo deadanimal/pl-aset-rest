@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoKewps20;
 use App\Models\InfoKewps31;
 use App\Models\Kewps20;
 use App\Models\Kewps31;
@@ -30,7 +31,7 @@ class Kewps31Controller extends Controller
     public function create()
     {
         return view('modul.stor.kewps31.create', [
-            'kewps20' => Kewps20::all(),
+            'infokewps20' => InfoKewps20::all(),
         ]);
 
     }
@@ -67,7 +68,7 @@ class Kewps31Controller extends Controller
     public function show(Kewps31 $kewps31)
     {
         return view('modul.stor.kewps31.edit', [
-            'kewps20' => Kewps20::all(),
+            'infokewps20' => InfoKewps20::all(),
             'kewps31' => $kewps31,
         ]);
 

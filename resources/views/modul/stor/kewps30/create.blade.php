@@ -31,53 +31,64 @@
 
                 </br>
                 <div class="card-body pt-0">
-                    <div class="row">
-                        <div class="col-6 mt-3">
-                            <label for="">Kenyataan Jual Lelong</label>
-                            <select class="form-control" name="kewps29_id">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps29 as $k29)
-                                    <option value="{{ $k29->id }}">{{ $k29->id }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-6 mt-3">
-                            <label for="">No Kod</label>
-                            <select class="form-control" name="kewps3a_id">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps3a as $k3a)
-                                    <option value="{{ $k3a->id }}">{{ $k3a->id }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Kuantiti</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="kuantiti" value="">
+                    @foreach ($infokewps20 as $ik20)
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <h3>No Rujukan Infokewps20 : {{ $ik20->id }}</h3>
                             </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Harga Simpanan</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="harga_simpanan" value="">
+                            <div class="col-4 mt-3">
+                                <label for="">No Rujukan Kewps29</label>
+                                <select class="form-control" name="kewps29_id[]" required>
+                                    <option selected disabled hidden>Pilih</option>
+                                    @foreach ($kewps29 as $k29)
+                                        <option value="{{ $k29->id }}">{{ $k29->id }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
-                        <div class="col-4 mt-3">
-                            <label for="">Deposit</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="deposit" value="">
+                            <div class="col-4 mt-3">
+                                <label for="">No Kod</label>
+                                <select class="form-control" name="kewps3a_id[]">
+                                    <option selected disabled hidden>Pilih</option>
+                                    @foreach ($kewps3a as $k3a)
+                                        <option {{ $k3a->id == $ik20->kewps3a_id ? 'selected' : '' }}
+                                            value="{{ $k3a->id }}">{{ $k3a->no_kad }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
+                            <div class="col-4 mt-3">
+                                <label for="">Agensi</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" value="Perbadanan Labuan" readonly>
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <label for="">Kuantiti</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="number" name="kuantiti[]"
+                                        value="{{ $ik20->kuantiti }}">
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <label for="">Harga Simpanan</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="harga_simpanan[]" value="">
+                                </div>
+                            </div>
+                            <div class="col-4 mt-3">
+                                <label for="">Deposit</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="deposit[]" value="">
+                                </div>
+                            </div>
 
-                    </div>
+                        </div>
+                    @endforeach
 
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
                 </div>
             </div>
         </form>
     </div>
-
-
 @endsection

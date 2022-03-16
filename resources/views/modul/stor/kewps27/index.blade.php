@@ -51,16 +51,16 @@
                                 <td scope="col">{{ $k27->ic_no_syarikat }}</td>
                                 <td scope="col">{{ count($k27->infokewps27) }}</td>
                                 <td scope="col">
-                                    <a href="/kewps27/{{ $k27->id }}"><i class="fas fa-pen"></i></a>
+                                    {{-- <a href="/kewps27/{{ $k27->id }}"><i class="fas fa-pen"></i></a> --}}
                                     <a href="/kewps27pdf/{{ $k27->id }}"><i class="fas fa-print"></i></a>
-                                    <a href="">
+                                    {{-- <a href="">
                                         <form action="/kewps27/{{ $k27->id }}" class="d-inline" method="POST">
                                             @method('delete')
                                             @csrf
                                             <button class="btn-sm bg-white border-0" type="submit"> <i
                                                     class=" fas fa-trash"></i></button>
                                         </form>
-                                    </a>
+                                    </a> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -70,5 +70,4 @@
             </div>
         </div>
     </div>
-
 @endsection

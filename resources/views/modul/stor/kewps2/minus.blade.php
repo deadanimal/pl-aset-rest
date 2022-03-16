@@ -79,7 +79,7 @@
                                 <label for="">Kuantiti Ditolak</label>
                                 <div class="input-group">
                                     <input class="form-control mb-3" onkeyup="forKurangLebih(this,{{ $infokewps1->id }})"
-                                        type="text" name="kuantiti_ditolak[]" value="" required>
+                                        type="number" name="kuantiti_ditolak[]" value="" required>
                                 </div>
                             </div>
 

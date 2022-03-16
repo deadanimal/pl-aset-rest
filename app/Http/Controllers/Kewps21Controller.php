@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfoKewps20;
+use App\Models\InfoKewps21;
 use App\Models\Kewps21;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -29,7 +30,7 @@ class Kewps21Controller extends Controller
     public function create()
     {
         return view('modul.stor.kewps21.create', [
-            'kewps20' => InfoKewps20::all(),
+            'kewps20' => InfoKewps20::where('kaedah_pelupusan', 'Musnah')->get(),
         ]);
     }
 
@@ -41,7 +42,15 @@ class Kewps21Controller extends Controller
      */
     public function store(Request $request)
     {
-        Kewps21::create($request->all());
+        $kewps21 = Kewps21::create($request->all());
+
+        for ($i = 0; $i < count($request->kuantiti); $i++) {
+            InfoKewps21::create([
+                'kewps21_id' => $kewps21->id,
+                'kuantiti' => $request->kuantiti[$i],
+                'secara' => $request->secara[$i],
+            ]);
+        }
         return redirect('/kewps21');
     }
 
@@ -95,10 +104,6 @@ class Kewps21Controller extends Controller
     }
     public function generatePdf(Kewps21 $kewps21)
     {
-        $kewps21->kementerian = $kewps21->infokewps20->kewps20->kementerian;
-
-        $kewps21['kaedah_pelupusan'] = $kewps21->infokewps20->kaedahPelupusans->text;
-
         $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps21', [$kewps21]);
 
         $res = $response->getBody()->getContents();

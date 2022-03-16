@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfoKewps20;
+use App\Models\KaedahPelupusan;
 use App\Models\Kewps3a;
 use App\Models\Kewps20;
+use App\Models\SubKaedahPelupusan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -30,9 +32,12 @@ class Kewps20Controller extends Controller
      */
     public function create()
     {
+        $kaedah = KaedahPelupusan::all();
+
         return view('modul.stor.kewps20.create', [
             'kewps3a' => Kewps3a::all(),
-            'kaedah' => DB::table('kaedah_pelupusans')->get(),
+            'kaedah' => $kaedah,
+            'sub' => SubKaedahPelupusan::all(),
         ]);
     }
 
@@ -55,6 +60,7 @@ class Kewps20Controller extends Controller
                 'kaedah_pelupusan' => $request->kaedah_pelupusan[$i],
                 'justifikasi' => $request->justifikasi[$i],
                 'keputusan' => $request->keputusan[$i],
+                'cara' => $request->cara[$i],
             ]);
         }
 
