@@ -108,6 +108,14 @@
                                 </div>
                             </div>
                             <div class="col-6 mt-3">
+                                <label for="">No Dpa</label>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <div class="input-group">
+                                    <input class="form-control" type="number" name="no_dpa" value="{{$permohonan->no_dpa}}" required>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-3">
                                 <label for="">Nama Premis</label>
                             </div>
                             <div class="col-6 mt-3">

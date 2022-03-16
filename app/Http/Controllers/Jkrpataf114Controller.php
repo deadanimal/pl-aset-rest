@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jkrpataf68;
+use App\Models\PermohonanBangunanBahagian1;
 use App\Models\Jkrpataf114;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -29,7 +30,7 @@ class Jkrpataf114Controller extends Controller
     public function create()
     {
         return view('modul.aset_tak_alih.jkrpataf114.create', [
-            'jkrpataf68' => Jkrpataf68::all(),
+            'jkrpataf68' => PermohonanBangunanBahagian1::all(),
         ]);
     }
 

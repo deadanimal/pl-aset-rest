@@ -26,8 +26,13 @@
                         <h2 class="mb-0">Permohon Bangunan/Premis</h2>
                     </div>
                     <div class="text-end mr-2">
+                        @if($jenis=="crud")
                         <a href="/create-permohonan-bangunan"><button class="align-self-end btn btn-sm btn-primary"
                                 id="tambah">Tambah</button></a>
+                        @else
+                        <a href=><button class="align-self-end btn btn-sm btn-primary"
+                            >Cetak</button></a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -42,7 +47,11 @@
                             <th scope="col">Tarikh</th>
                             <th scope="col">Nama Premis</th>
                             <th scope="col">Kumpulan Agensi</th>
+                            <th scope="col">QR Code</th>
+                            @if($jenis == "crud")
+
                             <th scope="col">Tindakan</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -54,8 +63,14 @@
                                 <td scope="col">{{ $ata68->tarikh }}</td>
                                 <td scope="col">{{ $ata68->nama_premis }}</td>
                                 <td scope="col">{{ $ata68->kumpulan_agensi }}</td>
-
                                 <td scope="col">
+                                    <a download>{!! QrCode::size(100)->generate($ata68->no_rujukan) !!}</a>
+                                </td>
+
+                                @if($jenis == "crud")
+                                <td scope="col">
+                                    <a class="btn-sm bg-white border-0" href="/sijilpdf?id={{ $ata68->id }}"
+                                        ><i class="fas fa-certificate"></i></a>
                                     <a class="btn-sm bg-white border-0" href="/permohonan-bangunan-edit/{{ $ata68->id }}"><i
                                             class="fas fa-pen"></i></a>
                                     <a class="btn-sm bg-white border-0" href="/jkrpataf68pdf/{{ $ata68->id }}"><i
@@ -67,6 +82,7 @@
                                                 class=" fas fa-trash"></i></button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

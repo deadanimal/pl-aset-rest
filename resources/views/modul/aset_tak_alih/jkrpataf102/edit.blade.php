@@ -33,15 +33,13 @@
                 <div class="card-body pt-0">
                     <div class="row">
                         <div class="col-4 mt-3">
-                            <label for="">No Pendaftaran</label>
+                            <label for="">No Dpa</label>
                             <div class="input-group">
                                 <select name="jkrpataf68_id" class="form-control">
                                     <option selected value="{{ $jkrpataf102->jkrpataf68_id }}">
                                         {{ $jkrpataf102->jkrpataf68_id }}</option>
                                     @foreach ($jkrpataf68 as $ata68)
-                                        @if ($ata68->id != $jkrpataf102->jkrpataf68_id)
-                                            <option value="{{ $ata68->id }}">{{ $ata68->id }}</option>
-                                        @endif
+                                            <option value="{{ $ata68->no_dpa }}">{{ $ata68->no_dpa }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -90,14 +88,14 @@
                         <div class="col-4 mt-3">
                             <label for="">Kapasiti</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="kapasiti"
+                                <input class="form-control" type="number" name="kapasiti"
                                     value="{{ $jkrpataf102->kapasiti }}">
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">Bilangan Unit</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="bilangan_unit"
+                                <input class="form-control" type="number" name="bilangan_unit"
                                     value="{{ $jkrpataf102->bilangan_unit }}">
                             </div>
                         </div>
@@ -153,14 +151,14 @@
                         <div class="col-4 mt-3">
                             <label for="">From Page</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="from_page"
+                                <input class="form-control" type="number" name="from_page"
                                     value="{{ $jkrpataf102->from_page }}">
                             </div>
                         </div>
                         <div class="col-4 mt-3">
                             <label for="">To Page</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="to_page"
+                                <input class="form-control" type="number" name="to_page"
                                     value="{{ $jkrpataf102->to_page }}">
                             </div>
                         </div>
