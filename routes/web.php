@@ -539,7 +539,7 @@ Route::post('auth', [AuthenticationController::class, 'authenticateUser']);
     Route::get('/kewps22pdf/{kewps22}', [Kewps22Controller::class, 'generatePdf']);
     Route::get('/kewps23pdf/{kewps23}', [Kewps23Controller::class, 'generatePdf']);
     Route::get('/kewps24pdf/{kewps24}', [Kewps24Controller::class, 'generatePdf']);
-    Route::get('/kewps25pdf/{kewps25}', [Kewps25Controller::class, 'generatePdf']);
+    Route::get('/kewps25pdf', [Kewps25Controller::class, 'generatePdf']);
     Route::get('/kewps26pdf/{kewps26}', [Kewps26Controller::class, 'generatePdf']);
     Route::get('/kewps27pdf/{kewps27}', [Kewps27Controller::class, 'generatePdf']);
     Route::get('/kewps28pdf/{kewps28}', [Kewps28Controller::class, 'generatePdf']);

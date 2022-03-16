@@ -17,9 +17,20 @@ class Kewps25Controller extends Controller
      */
     public function index()
     {
-        return view('modul.stor.kewps25.index', [
-            'kewps25' => Kewps25::all(),
-        ]);
+
+        $obj = (object)[];
+        $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps25', [$obj]);
+
+        $res = $response->getBody()->getContents();
+
+        $url = "data:application/pdf;base64," . $res;
+
+        $context = [
+            "url" => $url,
+            "title" => "kewps25",
+        ];
+
+        return view('modul.borang_viewer_ps', $context);
     }
 
     /**
@@ -116,12 +127,10 @@ class Kewps25Controller extends Controller
         return redirect('/kewps25');
     }
 
-    public function generatePdf(Kewps25 $kewps25)
+    public function generatePdf(Request $request)
     {
 
-        $kewps25->tarikh = $kewps25->created_at->format('d/m/Y');
-
-        $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps25', [$kewps25]);
+        $response = Http::post('https://libreoffice.prototype.com.my/cetak/kps25', []);
 
         $res = $response->getBody()->getContents();
 
