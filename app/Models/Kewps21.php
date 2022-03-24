@@ -9,11 +9,11 @@ class Kewps21 extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['infokewps20'];
+    protected $with = ['infokewps21'];
 
-    public function infokewps20()
+    public function infokewps21()
     {
-        return $this->belongsTo(InfoKewps20::class);
+        return $this->hasMany(InfoKewps21::class);
     }
 
 }

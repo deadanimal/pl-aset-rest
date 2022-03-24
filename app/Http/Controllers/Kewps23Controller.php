@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InfoKewps20;
 use App\Models\InfoKewps23;
 use App\Models\Kewps3a;
 use App\Models\Kewps23;
@@ -29,8 +30,11 @@ class Kewps23Controller extends Controller
      */
     public function create()
     {
+        $infokewps20 = InfoKewps20::where('cara', 'Tender')->get();
+
         return view('modul.stor.kewps23.create', [
             'kewps3a' => Kewps3a::all(),
+            'infokewps20' => $infokewps20,
         ]);
     }
 

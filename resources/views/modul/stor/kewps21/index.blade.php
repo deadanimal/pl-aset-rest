@@ -53,16 +53,16 @@
                                 <td scope="col">{{ $k21->infokewps20_id }}</td>
 
                                 <td scope="col">
-                                    <a href="/kewps21/{{ $k21->id }}"><i class="fas fa-pen"></i></a>
-                                    <a href="/kewps21pdf/{{ $k21->id }}"><i class="fas fa-print"></i></a>
-                                    <a href="">
-                                        <form action="/kewps21/{{ $k21->id }}" class="d-inline" method="POST">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="btn-sm bg-white border-0" type="submit"> <i
-                                                    class=" fas fa-trash"></i></button>
-                                        </form>
-                                    </a>
+                                    <a class="btn btn-primary btn-sm" href="/kewps21/{{ $k21->id }}"><i
+                                            class="fas fa-pen"></i></a>
+                                    <a class="btn btn-primary btn-sm" href="/kewps21pdf/{{ $k21->id }}"><i
+                                            class="fas fa-print"></i></a>
+                                    <form action="/kewps21/{{ $k21->id }}" class="d-inline" method="POST">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm" type="submit"> <i
+                                                class=" fas fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -72,5 +72,4 @@
             </div>
         </div>
     </div>
-
 @endsection

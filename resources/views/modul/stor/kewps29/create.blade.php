@@ -39,9 +39,9 @@
                             </div>
                         </div>
                         <div class="col-4 mt-3">
-                            <label for="">Pelupusan Stok</label>
+                            <label for="">No Rujukan Kewps20</label>
                             <select class="form-control" name="kewps20_id">
-                                <option selected>Pilih</option>
+                                <option selected disabled hidden>Pilih</option>
                                 @foreach ($kewps20 as $k20)
                                     <option value="{{ $k20->id }}">{{ $k20->id }}
                                     </option>
@@ -106,6 +106,4 @@
             </div>
         </form>
     </div>
-
-
 @endsection

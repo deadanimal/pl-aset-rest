@@ -1,5 +1,4 @@
 @extends('layouts.base_umum') @section('content')
-
     <div class="header bg-primary pb-6">
         <div class="container-fluid">
             <div class="header-body">
@@ -174,5 +173,4 @@
             $("#update").show();
         }
     </script>
-
 @endsection

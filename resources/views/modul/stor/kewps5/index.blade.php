@@ -49,8 +49,8 @@
                             @foreach ($kewps5 as $k5)
                                 <tr>
                                     <td scope="col">{{ $loop->iteration }}</td>
-                                    <td scope="col">{{ $k5->kewps3a->no_kad }}</td>
-                                    <td scope="col">{{ $k5->kewps3a->perihal_stok }}</td>
+                                    <td scope="col">{{ $k5->kewps3a->no_kad ?? 'Dipadam' }}</td>
+                                    <td scope="col">{{ $k5->kewps3a->perihal_stok ?? 'Dipadam' }}</td>
                                     <td scope="col">{{ $k5->purata_pembelian }}</td>
                                     <td scope="col">{{ $k5->peratusan }}%</td>
                                     <td scope="col">

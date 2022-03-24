@@ -33,10 +33,15 @@
                 <div class="card-body pt-0">
                     <div class="row">
                         <div class="col-12">
-                            <label for="">Pengerusi</label>
+                            <label for="">Agensi</label>
                             <div class="input-group">
-                                <input class="form-control mb-3" type="text" name="kementerian" value="Perbadanan Labuan">
+                                <input class="form-control mb-3" type="text" name="kementerian"
+                                    value="Wisma Perbadanan Labuan, Peti Surat 81245, 87022, Wilayah Persekutuan Labuan.">
                             </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="">No Sebut Harga</label>
+                            <input type="text" name="no_sebut_harga" class="form-control mb-3">
                         </div>
                         <div class="col-3">
                             <label for="">Tarikh Mula</label>
@@ -90,37 +95,42 @@
                         <input type="hidden" name="ketua_jabatan" value="{{ Auth::user()->id }}">
 
                     </div>
-                    <div class="row" id="info_kewps26">
-                        <div class="col-12 mt-2 mb-2">
-                            <h3 class="mt-4">Aset</h3>
-                        </div>
-                        <div class="col-4">
-                            <label for="">No Kod</label>
-                            <select class="form-control mb-3" name="kewps3a_id[]">
-                                <option selected>Pilih</option>
-                                @foreach ($kewps3a as $k3a)
-                                    <option value="{{ $k3a->id }}">{{ $k3a->id }} - {{ $k3a->nama_stor }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-4">
-                            <label for="">Kuantiti</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="kuantiti[]" value="">
+                    @foreach ($infokewps23 as $ik23)
+                        <div class="row">
+                            <div class="col-12 mt-2 mb-2">
+                                <h3 class="mt-4">No Rujukan Infokewps23 : {{ $ik23->id }}</h3>
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <label for="">Harga Simpanan</label>
-                            <div class="input-group">
-                                <input class="form-control mb-3" type="number" name="harga_simpanan[]" value="">
+                            <div class="col-4">
+                                <label for="">No Kod</label>
+                                <select class="form-control mb-3" name="kewps3a_id[]">
+                                    <option selected disabled hidden>Pilih</option>
+                                    @foreach ($kewps3a as $k3a)
+                                        <option value="{{ $k3a->id }}">{{ $k3a->id }} - {{ $k3a->nama_stor }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
+                            <div class="col-4">
+                                <label for="">Kuantiti</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="number" name="kuantiti[]"
+                                        value="{{ $ik23->id }}">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="">Harga Simpanan</label>
+                                <div class="input-group">
+                                    <input class="form-control mb-3" type="number" name="harga_simpanan[]"
+                                        value="{{ $ik23->harga_simpanan }}">
+                                </div>
+                            </div>
 
-                    </div>
-                    <div class="mt-2">
+                        </div>
+                    @endforeach
+
+                    {{-- <div class="mt-2">
                         <a class="btn btn-sm btn-primary text-white" onclick="tambahAsetK26()">Tambah Aset</a>
-                    </div>
+                    </div> --}}
                     <button class="btn btn-primary mt-5" type="submit">Simpan</button>
                 </div>
             </div>
