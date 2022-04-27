@@ -21,7 +21,7 @@ class Kewps30Controller extends Controller
     {
         $a = "sadsad\\n\\nTamat\}";
 
-        dd(Str::contains($a, 'Tamat'));
+        //dd(Str::contains($a, 'Tamat'));
 
         return view('modul.stor.kewps30.index', [
             'kewps30' => Kewps30::all(),
